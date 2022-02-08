@@ -1,6 +1,6 @@
 FROM continuumio/miniconda3:4.10.3p1
 
-ARG IMAGE_NAME
+ARG IMAGE_REF
 
 RUN mkdir /projects
 WORKDIR /projects
@@ -14,7 +14,7 @@ RUN git clone --single-branch --branch master https://github.com/MAAP-Project/ma
     && cd maap-py \
     && pip install -e .
 
-ENV DOCKERIMAGE_PATH=${IMAGE_NAME}
+ENV DOCKERIMAGE_PATH=${IMAGE_REF}
 RUN find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy
