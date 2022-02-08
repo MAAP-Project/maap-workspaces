@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+set -ex
 jupyterlab_dir=$(dirname $0)
 BRANCH=$(git name-rev --name-only HEAD)
 BRANCH=$(basename ${BRANCH})
@@ -10,8 +10,8 @@ if [[ ${SKIP_BASE_IMAGE_BUILD} -eq 0 ]]; then
     for base_image in $(cat built_images.txt); do
         IMAGE_NAME=$(basename $base_image)
         IMAGE_REF=${CI_REGISTRY_IMAGE}/jupyterlab3/${IMAGE_NAME}
-        echo docker build -t ${IMAGE_REF} --build-arg BASE_IMAGE=${base_image} -f docker/Dockerfile .
-        echo docker push ${IMAGE_REF}
+        docker build -t ${IMAGE_REF} --build-arg BASE_IMAGE=${base_image} -f docker/Dockerfile .
+        docker push ${IMAGE_REF}
     done
 
     elif [[ ${SKIP_BASE_IMAGE_BUILD} -eq 1 ]]; then

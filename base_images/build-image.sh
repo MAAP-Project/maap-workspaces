@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -ex
 base_image_dir=$(dirname $0)
 BRANCH=$(basename $(git name-rev --name-only HEAD))
 
