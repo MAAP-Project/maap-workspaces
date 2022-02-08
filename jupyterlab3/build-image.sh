@@ -8,7 +8,7 @@ if [[ ${SKIP_BASE_IMAGE_BUILD} -eq 0 ]]; then
     pushd $(dirname $jupyterlab_dir)
     bash base_images/build-image.sh
     for base_image in $(cat built_images.txt); do
-        pushd ${PWD}/jupyterlab_dir
+        pushd ${PWD}/$jupyterlab_dir
         IMAGE_NAME=$(basename $base_image)
         IMAGE_REF=${CI_REGISTRY_IMAGE}/jupyterlab3/${IMAGE_NAME}
         docker build -t ${IMAGE_REF} --build-arg BASE_IMAGE=${base_image} -f docker/Dockerfile .
@@ -17,7 +17,7 @@ if [[ ${SKIP_BASE_IMAGE_BUILD} -eq 0 ]]; then
     done
 
     elif [[ ${SKIP_BASE_IMAGE_BUILD} -eq 1 ]]; then
-        pushd ${PWD}/jupyterlab3
+        pushd ${PWD}/$jupyterlab_dir
         if [[ -z ${BASE_IMAGE_NAME} ]]; then
             echo "WARNING: No value provided for BASE_IMAGE_NAME, will continue with default miniconda3 image"
             BASE_IMAGE_NAME=miniconda3:4.10.3p1
