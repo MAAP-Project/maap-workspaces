@@ -7,6 +7,7 @@ BRANCH=$(basename ${BRANCH})
 if [[ ${SKIP_BASE_IMAGE_BUILD} -eq 0 ]]; then
     pushd $(dirname $jupyterlab_dir)
     bash base_images/build-image.sh
+    popd
     for base_image in $(cat built_images.txt); do
         IMAGE_NAME=$(basename $base_image)
         IMAGE_REF=${CI_REGISTRY_IMAGE}/jupyterlab3/${IMAGE_NAME}
