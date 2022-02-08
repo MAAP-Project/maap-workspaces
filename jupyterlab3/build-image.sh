@@ -17,6 +17,7 @@ if [[ ${SKIP_BASE_IMAGE_BUILD} -eq 0 ]]; then
     done
 
     elif [[ ${SKIP_BASE_IMAGE_BUILD} -eq 1 ]]; then
+        pushd jupyterlab3
         if [[ -z ${BASE_IMAGE_NAME} ]]; then
             echo "WARNING: No value provided for BASE_IMAGE_NAME, will continue with default miniconda3 image"
             BASE_IMAGE_NAME=miniconda3:4.10.3p1
