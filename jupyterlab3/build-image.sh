@@ -16,14 +16,14 @@ if [[ ${BASE_IMAGE_BUILD} -eq 1 ]]; then
         popd
     done
 
-    elif [[ ${SKIP_BASE_IMAGE_BUILD} -eq 0 ]]; then
+    elif [[ ${BASE_IMAGE_BUILD} -eq 0 ]]; then
         pushd ${PWD}/$jupyterlab_dir
         echo "WARNING: Skipping building base images"
         if [[ -z ${BASE_IMAGE_NAME} ]]; then
             echo "WARNING: No value provided for BASE_IMAGE_NAME, will continue with default miniconda3 image"
             BASE_IMAGE_NAME=continuumio/miniconda3:4.10.3p1
         fi
-        IMAGE_REF=${CI_REGISTRY_IMAGE}/jupyterlab3/${BASE_IMAGE_NAME}
+        IMAGE_REF=${CI_REGISTRY_IMAGE}/jupyterlab3/$(basename ${BASE_IMAGE_NAME})
         docker build -t ${IMAGE_REF} --build-arg BASE_IMAGE=${BASE_IMAGE_NAME} -f docker/Dockerfile .
         docker push ${IMAGE_REF}
 fi
