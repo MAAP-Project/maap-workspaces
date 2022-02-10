@@ -4,7 +4,7 @@ jupyterlab_dir=$(dirname $0)
 BRANCH=$(git name-rev --name-only HEAD)
 BRANCH=$(basename ${BRANCH})
 
-if [[ ${SKIP_BASE_IMAGE_BUILD} -eq 0 ]]; then
+if [[ ${BASE_IMAGE_BUILD} -eq 1 ]]; then
     pushd $(dirname $jupyterlab_dir)
     bash base_images/build-image.sh
     for base_image in $(cat built_images.txt); do
@@ -16,7 +16,7 @@ if [[ ${SKIP_BASE_IMAGE_BUILD} -eq 0 ]]; then
         popd
     done
 
-    elif [[ ${SKIP_BASE_IMAGE_BUILD} -eq 1 ]]; then
+    elif [[ ${SKIP_BASE_IMAGE_BUILD} -eq 0 ]]; then
         pushd ${PWD}/$jupyterlab_dir
         echo "WARNING: Skipping building base images"
         if [[ -z ${BASE_IMAGE_NAME} ]]; then
