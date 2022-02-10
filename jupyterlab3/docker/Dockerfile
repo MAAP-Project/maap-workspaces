@@ -45,6 +45,11 @@ RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
 #    && jupyter serverextension enable --py jupyterlab_git --sys-prefix
 RUN npm install typescript -g
 
+###############################
+# Custom Jupyter Extensions.
+###############################
+RUN jupyter labextension install @maap-jupyterlab/hide-che-panel-jupyter-extension@1.0.0 --no-build
+
 RUN jupyter lab build && \
     jupyter lab clean && \
     jlpm cache clean && \
