@@ -8,7 +8,7 @@ THE_MACHINE=''
 
 # Get the Che machine name from either MACHINE_NAME, used by Che v6, or CHE_MACHINE_NAME, used by Che v7
 if [[ -z "${MACHINE_NAME}" ]]; then
-  THE_MACHINE=`echo $CHE_MACHINE_NAME | tr 'a-z' 'A-Z' | tr '-' '_'`
+  THE_MACHINE=`echo $CHE_MACHINE_NAME | tr 'a-z' 'A-Z' | tr '-' '_' | tr '/' '_'`
 else
   THE_MACHINE="${MACHINE_NAME}"
 fi
@@ -50,9 +50,9 @@ conda init
 
 VERSION=$(jupyter lab --version)
 if [[ $VERSION > '2' ]] && [[ $VERSION < '3' ]]; then
-    jupyter lab --ip=0.0.0.0 --port=3101 --allow-root --NotebookApp.token='' --NotebookApp.base_url=$PREVIEW_URL --no-browser --debug
+    jupyter lab --ip=0.0.0.0 --port=3100 --allow-root --NotebookApp.token='' --NotebookApp.base_url=$PREVIEW_URL --no-browser --debug
 elif [[ $VERSION > '3' ]] && [[ $VERSION < '4' ]]; then
-    jupyter lab --ip=0.0.0.0 --port=3101 --allow-root --ContentsManager.allow_hidden=True --ServerApp.token='' --ServerApp.base_url=$PREVIEW_URL --no-browser --debug --ServerApp.disable_check_xsrf=True
+    jupyter lab --ip=0.0.0.0 --port=3100 --allow-root --ContentsManager.allow_hidden=True --ServerApp.token='' --ServerApp.base_url=$PREVIEW_URL --no-browser --debug --ServerApp.disable_check_xsrf=True
 else
     echo "Error!"
 fi
