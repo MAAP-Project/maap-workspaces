@@ -4,7 +4,7 @@ set -ex
 base_image_dir=$(dirname $0)
 BRANCH=$(basename $(git name-rev --name-only HEAD))
 
-for dir in vanilla plant r; do
+for dir in vanilla r; do
     pushd $base_image_dir/$dir
     IMAGE_NAME=$(basename $dir)
     IMAGE_REF=${CI_REGISTRY_IMAGE}/base_images/${IMAGE_NAME}:${BRANCH}
