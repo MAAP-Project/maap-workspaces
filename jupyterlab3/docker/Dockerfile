@@ -17,7 +17,8 @@ RUN apt-get clean && apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Jupyterlab3 does not work with Node 17.x
-RUN conda install -c conda-forge jupyterlab=3.2.8 nodejs=16.13.2 gitpython=3.1.26 python=3.8 jupyter-packaging=0.11.1
+RUN conda install -c conda-forge mamba && \
+    mamba install -c conda-forge jupyterlab=3.2.8 nodejs=16.13.2 gitpython=3.1.26 jupyter-packaging=0.11.1
 
 #ARG NB_USER="ops"
 # Adjust permissions on home directory so writable by group root.
@@ -34,7 +35,7 @@ RUN chmod g+w /etc/passwd
 ###############################
 # Non Custom Jupyter Extensions.
 ###############################
-RUN conda install -c conda-forge plotly=5.5.0 jupyterlab_widgets=1.0.2 jupyterlab-git=0.34.2
+RUN mamba install -c conda-forge plotly=5.5.0 jupyterlab_widgets=1.0.2 jupyterlab-git=0.34.2
 RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
 # install git extension - needs dev install to modify paths in entrypoint script
 #RUN git clone -b v0.20.0 https://github.com/jupyterlab/jupyterlab-git.git

@@ -6,8 +6,8 @@ RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
-RUN conda init && conda install --no-update-deps conda-build -y
-RUN conda install -c plant plant
+RUN conda install -c conda-forge mamba && \
+    mamba install -c plant plant
 
 # install maap-py library
 ENV MAAP_CONF='/maap-py/'

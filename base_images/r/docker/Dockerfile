@@ -6,7 +6,8 @@ RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
-RUN conda install -c r r=3.6.0 && conda install -c conda-forge mamba r-essentials r-base r-irkernel r-rgdal --yes
+RUN conda install -c r r=3.6.0 && conda install -c conda-forge mamba && \
+    mamba install -c conda-froge r-essentials r-base r-irkernel r-rgdal
 RUN mamba install fonts-anaconda
 
 # install maap-py library
