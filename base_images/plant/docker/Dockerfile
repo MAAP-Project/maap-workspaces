@@ -7,9 +7,7 @@ WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
 RUN conda init && conda install --no-update-deps conda-build -y
-RUN git clone https://gitlab.com/plant/plant.git --branch stable
-RUN conda build plant --python=3.7 && \
-    conda install --use-local plant -y
+RUN conda install -c plant plant
 
 # install maap-py library
 ENV MAAP_CONF='/maap-py/'
