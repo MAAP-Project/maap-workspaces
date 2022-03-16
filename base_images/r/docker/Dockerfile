@@ -6,9 +6,7 @@ RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
-RUN conda install -c r r=3.6.0 && conda install -c conda-forge mamba && \
-    mamba install -c conda-froge r-essentials r-base r-irkernel r-rgdal
-RUN mamba install fonts-anaconda
+RUN conda install -c conda-forge mamba
 
 # install maap-py library
 ENV MAAP_CONF='/maap-py/'
@@ -23,7 +21,7 @@ SHELL ["/bin/bash", "-c"]
 RUN mamba create --name r-with-gdal -c conda-forge -c r gdal r-rgdal r-sf r-irkernel r-gridExtra r-tidyverse r-randomForest r-raster r-rgdal r-data.table r-rlist r-gdalutils r-stringr r-gdalutils --yes
 RUN echo "source activate r-with-gdal" > ~/.bashrc
 
-RUN groupadd conda-users && chgrp -R conda-users /opt/conda && chmod 770 -R /opt/conda
+RUN groupadd conda-users && chgrp -R conda-users /opt/conda && chmod 775 -R /opt/conda
 ENV DOCKERIMAGE_PATH=${IMAGE_REF}
 RUN find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
