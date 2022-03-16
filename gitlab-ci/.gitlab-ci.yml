@@ -1,4 +1,61 @@
-build_image:
+stages:
+  - build
+
+vanilla:
+  stage: build
+
+  before_script:
+  - docker info
+  # TODO: Uncomment after the initial CI build!
+  # - docker inspect -f '{{.State.Running}}' registry
+
+  script:
+    - docker login -u gitlab-ci-token -p "$CI_JOB_TOKEN" "$CI_REGISTRY"
+    - git clone https://github.com/MAAP-Project/maap-workspaces.git
+    - pushd maap-workspaces
+    - LATEST_COMMIT=$(git log -n 1 --all --format='%h')
+    - git checkout ${LATEST_COMMIT}
+    - bash base_images/build-image.sh vanilla
+    - BASE_IMAGE_NAME=$(tail -1 base_images/built_images.txt)
+    - bash jupyterlab3/build-image.sh
+
+  tags:
+    - shell
+
+  only:
+    refs:
+      - main
+    variables:
+      - BASE_IMAGE_BUILD
+
+r:
+  stage: build
+
+  before_script:
+  - docker info
+  # TODO: Uncomment after the initial CI build!
+  # - docker inspect -f '{{.State.Running}}' registry
+
+  script:
+    - docker login -u gitlab-ci-token -p "$CI_JOB_TOKEN" "$CI_REGISTRY"
+    - git clone https://github.com/MAAP-Project/maap-workspaces.git
+    - pushd maap-workspaces
+    - LATEST_COMMIT=$(git log -n 1 --all --format='%h')
+    - git checkout ${LATEST_COMMIT}
+    - bash base_images/build-image.sh r
+    - BASE_IMAGE_NAME=$(tail -1 base_images/built_images.txt)
+    - bash jupyterlab3/build-image.sh
+
+  tags:
+    - shell
+
+  only:
+    refs:
+      - main
+    variables:
+      - BASE_IMAGE_BUILD
+
+miniconda3:
   stage: build
 
   before_script:
@@ -18,4 +75,9 @@ build_image:
     - shell
 
   only:
-   - main
+    refs:
+      - main
+
+  except:
+    variables:
+      - BASE_IMAGE_BUILD
