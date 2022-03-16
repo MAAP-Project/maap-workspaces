@@ -3,7 +3,7 @@ set -ex
 jupyterlab_dir=$(dirname $0)
 BRANCH=$(git name-rev --name-only HEAD)
 BRANCH=$(basename ${BRANCH})
-
+pushd jupyterlab_dir
 if [[ -z ${BASE_IMAGE_NAME} ]]; then
     echo "WARNING: No value provided for BASE_IMAGE_NAME, will ./build with default miniconda3 image"
     BASE_IMAGE_NAME=continuumio/miniconda3:4.10.3p1
