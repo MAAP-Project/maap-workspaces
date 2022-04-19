@@ -2,17 +2,17 @@ FROM continuumio/miniconda3:4.10.3p1
 
 ARG IMAGE_REF
 
-RUN mkdir /projects
-WORKDIR /projects
-RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
-
-RUN conda install -c conda-forge mamba
-
 # install maap-py library
 ENV MAAP_CONF='/maap-py/'
 RUN git clone --single-branch --branch master https://github.com/MAAP-Project/maap-py.git \
     && cd maap-py \
     && pip install -e .
+
+RUN mkdir /projects
+WORKDIR /projects
+RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
+
+RUN conda install -c conda-forge mamba
 
 RUN mamba install nb_conda_kernels
 RUN apt-get update && apt-get install -y libxt-dev
