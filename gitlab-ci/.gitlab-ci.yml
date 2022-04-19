@@ -6,8 +6,6 @@ vanilla:
 
   before_script:
   - docker info
-  # TODO: Uncomment after the initial CI build!
-  # - docker inspect -f '{{.State.Running}}' registry
 
   script:
     - docker login -u gitlab-ci-token -p "$CI_JOB_TOKEN" "$CI_REGISTRY"
@@ -16,17 +14,18 @@ vanilla:
     - LATEST_COMMIT=$(git log -n 1 --all --format='%h')
     - git checkout ${LATEST_COMMIT}
     - bash base_images/build-image.sh vanilla
-    - BASE_IMAGE_NAME=$(tail -1 base_images/built_images.txt)
+    - cat built_images.txt
+    - export BASE_IMAGE_NAME=$(tail -1 built_images.txt)
     - bash jupyterlab3/build-image.sh
 
   tags:
     - shell
 
   only:
+    variables:
+      - $BASE_IMAGE_BUILD
     refs:
       - main
-    variables:
-      - BASE_IMAGE_BUILD
 
 r:
   stage: build
@@ -43,7 +42,7 @@ r:
     - LATEST_COMMIT=$(git log -n 1 --all --format='%h')
     - git checkout ${LATEST_COMMIT}
     - bash base_images/build-image.sh r
-    - BASE_IMAGE_NAME=$(tail -1 base_images/built_images.txt)
+    - export BASE_IMAGE_NAME=$(tail -1 built_images.txt)
     - bash jupyterlab3/build-image.sh
 
   tags:
@@ -53,15 +52,13 @@ r:
     refs:
       - main
     variables:
-      - BASE_IMAGE_BUILD
+      - $BASE_IMAGE_BUILD
 
 miniconda3:
   stage: build
 
   before_script:
   - docker info
-  # TODO: Uncomment after the initial CI build!
-  # - docker inspect -f '{{.State.Running}}' registry
 
   script:
     - docker login -u gitlab-ci-token -p "$CI_JOB_TOKEN" "$CI_REGISTRY"
@@ -80,4 +77,4 @@ miniconda3:
 
   except:
     variables:
-      - BASE_IMAGE_BUILD
+      - $BASE_IMAGE_BUILD
