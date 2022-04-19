@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=continuumio/miniconda3:4.10.3p1
+ARG BASE_IMAGE
 FROM ${BASE_IMAGE} as jupyterlab_base
 
 RUN mkdir -p /projects
@@ -52,6 +52,8 @@ RUN npm install typescript -g
 RUN jupyter labextension install @maap-jupyterlab/hide-che-panel-jupyter-extension@1.0.0 --no-build
 RUN jupyter labextension install @maap-jupyterlab/jobs-dps-jupyter-extension@jupyterlab_v3 --no-build
 RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-server-extension@jupyterlab_v3 --no-build
+RUN jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@1.0.1 --no-build
+RUN jupyter labextension install @maap-jupyterlab/maapsec-jupyter-extension@1.0.0 --no-build
 
 RUN jupyter lab build && \
     jupyter lab clean && \
