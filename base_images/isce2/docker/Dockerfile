@@ -19,7 +19,7 @@ RUN set -ex \
     python3-h5py \
     python3-numpy \
     python3-scipy && \
-    apr-get clean
+    apt-get clean
 
 
 RUN mkdir /projects
