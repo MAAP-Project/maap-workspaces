@@ -47,6 +47,7 @@ RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
 #    && pip install -e . \
 #    && jupyter serverextension enable --py jupyterlab_git --sys-prefix
 RUN npm install typescript -g
+RUN pip install xmltodict
 
 ###############################
 # Custom Jupyter Extensions.
