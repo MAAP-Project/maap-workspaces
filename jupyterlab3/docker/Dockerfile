@@ -52,7 +52,8 @@ RUN npm install typescript -g
 # Custom Jupyter Extensions.
 ###############################
 RUN pip install -i https://test.pypi.org/simple/ jupyter-server-extension
-RUN jupyter server extension enable jupyter_server_extension
+#RUN jupyter server extension enable jupyter_server_extension
+RUN jupyter serverextension enable --py jupyter_server_extension --sys-prefix
 
 RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension --no-build
 RUN jupyter labextension install @maap-jupyterlab/hide-che-panel-jupyter-extension@1.0.0 --no-build
