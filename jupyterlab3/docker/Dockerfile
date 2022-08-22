@@ -74,4 +74,8 @@ RUN find /opt/conda/ -follow -type f -name '*.a' -delete && \
 
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./jupyter_patch /opt/jupyter_patch
+
+ENV ENVIRONMENTS_FILE_PATH=/opt/environments.json
+COPY ./environments.json $ENVIRONMENTS_FILE_PATH
+
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
