@@ -53,6 +53,7 @@ RUN pip install xmltodict
 # Custom Jupyter Extensions.
 ###############################
 RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@latest --no-build
+
 RUN pip install -i https://test.pypi.org/simple/ jupyter-server-extension
 RUN jupyter server extension enable jupyter_server_extension
 
