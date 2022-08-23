@@ -9,5 +9,5 @@ if [[ -z ${BASE_IMAGE_NAME} ]]; then
     BASE_IMAGE_NAME=${CI_REGISTRY_IMAGE}/base_images/vanilla:${BRANCH}
 fi
 IMAGE_REF=${CI_REGISTRY_IMAGE}/jupyterlab3/$(basename ${BASE_IMAGE_NAME})
-docker build -t ${IMAGE_REF} --build-arg BASE_IMAGE=${BASE_IMAGE_NAME} -f docker/Dockerfile .
+docker build --no-cache -t ${IMAGE_REF} --build-arg BASE_IMAGE=${BASE_IMAGE_NAME} -f docker/Dockerfile .
 docker push ${IMAGE_REF}
