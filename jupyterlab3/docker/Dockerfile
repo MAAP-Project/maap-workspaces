@@ -54,7 +54,7 @@ RUN pip install xmltodict
 ###############################
 RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@latest --no-build
 
-RUN pip install -i https://test.pypi.org/simple/ jupyter-server-extension==0.1.8
+RUN pip install -i https://test.pypi.org/simple/ jupyter-server-extension
 RUN jupyter server extension enable jupyter_server_extension
 
 RUN jupyter labextension install @maap-jupyterlab/hide-che-panel-jupyter-extension@latest --no-build
@@ -62,7 +62,7 @@ RUN jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@latest -
 RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@latest --no-build
 RUN jupyter labextension install @maap-jupyterlab/maapsec-jupyter-extension@latest --no-build
 RUN jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@latest --no-build
-#RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@latest --no-build
+RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@latest --no-build
 
 
 RUN jupyter lab build && \
