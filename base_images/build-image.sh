@@ -3,7 +3,7 @@
 set -ex
 base_image_dir=$(dirname $0)
 BRANCH=$(basename $(git name-rev --name-only HEAD))
-DIRS="vanilla r"
+DIRS="vanilla r rsgislib"
 if [[ ! -z "$@" ]]; then
     DIRS=$@
 fi
