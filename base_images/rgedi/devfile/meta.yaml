@@ -1,0 +1,6 @@
+---
+displayName: "MAAP RGEDI Stable"
+description: Latest version of MAAP RGEDI
+tags: ["Python", "R", "JupyterLab", "MAAP"]
+icon: /images/r.png
+globalMemoryLimit: 2710Mi
