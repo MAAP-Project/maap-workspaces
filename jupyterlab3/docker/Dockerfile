@@ -14,7 +14,7 @@ USER root
 # can be used to copy files into the running container.
 
 RUN apt-get clean && apt-get update && \
-    apt-get install -y --no-install-recommends rsync gcc python3 && \
+    apt-get install -y --no-install-recommends rsync gcc python3 vim && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -83,5 +83,7 @@ COPY ./jupyter_patch /opt/jupyter_patch
 
 ENV ENVIRONMENTS_FILE_PATH=/opt/environments.json
 COPY ./environments.json $ENVIRONMENTS_FILE_PATH
+
+RUN echo 'printf "\e[101mNOTE: This terminal uses the default environment which might not be the same as your notebook.\e[49m\n\n"' >> /etc/profile
 
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]

@@ -6,7 +6,9 @@ RUN npm install && npm run build
 COPY discovery.json /maap-edav-esa-front/dist/data/
 
 FROM nginx:1.23.1
-RUN apt-get update && apt-get install -y python3
+RUN apt-get update && apt-get install -y python3 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 COPY --from=0 /maap-edav-esa-front/dist/ /usr/share/nginx/html
 
 COPY entrypoint.sh /
