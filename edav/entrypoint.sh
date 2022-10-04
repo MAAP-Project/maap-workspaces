@@ -57,7 +57,7 @@ done
 # end more robust method
 
 perl -pi -e "s|base href=\"|base href=\"$PREVIEW_URL|g" /usr/share/nginx/html/index.html
-perl -pi -e "s|80;|3000;|g" /etc/nginx/conf.d/default.conf
+perl -pi -e "s|80;|3100;|g" /etc/nginx/conf.d/default.conf
 
 . docker-entrypoint.sh
 

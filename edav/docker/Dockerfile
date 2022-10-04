@@ -12,7 +12,7 @@ COPY --from=0 /maap-edav-esa-front/dist/ /usr/share/nginx/html
 COPY entrypoint.sh /
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 # below is copied from nginx's Dockerfile
-EXPOSE 3000
+EXPOSE 3100
 
 STOPSIGNAL SIGQUIT
 

@@ -12,7 +12,7 @@ components:
           public: 'true'
           protocol: http
         name: jupyter
-        port: 3000
+        port: 3100 
     referenceContent: |
       kind: List
       items:
