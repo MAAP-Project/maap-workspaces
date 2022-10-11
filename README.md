@@ -15,6 +15,6 @@ Order of build is
 - Base images
 - Jupyterlab image using those base images 
 
-## devfile-registry
+## Devfile publication
 
-To be listed in the ADE stack directory, the devfile and its metadata must be included in the [devfile-registry](/devfile-registry) directory. 
+To be listed in the ADE stack directory, the devfile and its metadata must be included in the [devfiles](/devfiles) directory. 
