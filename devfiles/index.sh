@@ -2,13 +2,13 @@
 
 set -e
 
-readarray -d '' metas < <(find devfiles -name 'meta.yaml' -print0)
+readarray -d '' metas < <(find . -name 'meta.yaml' -print0)
 N=0
 
 echo [
 
 for meta in "${metas[@]}"; do
-    if [ $N -eq 1 ]
+    if [ $N -gt 0 ]
     then
       echo ,
     fi
