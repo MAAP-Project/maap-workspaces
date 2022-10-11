@@ -15,6 +15,7 @@ for meta in "${metas[@]}"; do
     N=$((N+1))
 
     META_DIR=$(dirname "${meta}")
+    echo -e "links:\n  self: /${META_DIR}/devfile.yaml" >> "${meta}"
     yq r --prettyPrint -j ${META_DIR}/meta.yaml
 done
 
