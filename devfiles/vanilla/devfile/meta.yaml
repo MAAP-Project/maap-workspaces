@@ -2,5 +2,5 @@
 displayName: "MAAP Basic Stable"
 description: Latest version of MAAP Basic
 tags: ["JupyterLab", "Python", "MAAP"]
-icon: /images/jupyter.png
+icon: /devfiles/vanilla/jupyter.png
 globalMemoryLimit: 2710Mi

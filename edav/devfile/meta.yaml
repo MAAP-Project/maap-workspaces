@@ -1,6 +1,0 @@
----
-displayName: "MAAP ESA EDAV"
-description: Latest version of MAAP ESA EDAV
-tags: ["EDAV", "MAAP"]
-icon: /images/earth.png
-globalMemoryLimit: 2710Mi
