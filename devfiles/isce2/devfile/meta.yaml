@@ -2,5 +2,5 @@
 displayName: "MAAP ISCE2"
 description: Latest version of MAAP ISCE2
 tags: ["JupyterLab", "Python", "MAAP", "ISCE2"]
-icon: /devfiles/isce2/jupyter.png
+icon: /devfiles/isce2/devfile/jupyter.png
 globalMemoryLimit: 2710Mi

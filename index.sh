@@ -2,7 +2,7 @@
 
 set -e
 
-readarray -d '' metas < <(find . -name 'meta.yaml' -print0)
+readarray -d '' metas < <(find devfiles -name 'meta.yaml' -print0)
 N=0
 
 echo [
