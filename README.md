@@ -14,3 +14,7 @@ To build all base images use the `BASE_IMAGE_BUILD` flag and set it to `1`
 Order of build is
 - Base images
 - Jupyterlab image using those base images 
+
+## devfile-registry
+
+To be listed in the ADE stack directory, the devfile and its metadata must be included in the [devfile-registry](/devfile-registry) directory. 
