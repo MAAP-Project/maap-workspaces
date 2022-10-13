@@ -1,5 +1,5 @@
 ---
-displayName: "MAAP PLAnT Stable"
+displayName: "PLAnT Stable"
 description: Latest version of MAAP PLAnT
 tags: ["Python", "JupyterLab", "MAAP", "PLAnT"]
 icon: /devfiles/plant/devfile/plant.jpg
