@@ -1,5 +1,5 @@
 ---
-displayName: "MAAP Basic Stable"
+displayName: "Basic Stable"
 description: Latest version of MAAP Basic
 tags: ["JupyterLab", "Python", "MAAP"]
 icon: /devfiles/vanilla/devfile/jupyter.png
