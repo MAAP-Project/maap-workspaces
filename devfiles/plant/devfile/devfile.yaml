@@ -1,6 +1,6 @@
 apiVersion: 1.0.0
 metadata:
-  name: PlAnT-
+  generateName: PlAnT-
 attributes:
   editorFree: 'true'
 components:
@@ -29,7 +29,7 @@ components:
                   claimName: ws
               - name: s3fs-volume
                 emptyDir: {}
-            containers: 
+            containers:
               - name: jupyter
                 image: 'mas.ops.maap-project.org/root/jupyter-image/plant:develop'
                 imagePullPolicy: Always
