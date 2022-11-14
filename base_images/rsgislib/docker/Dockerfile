@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:4.10.3p1
+FROM continuumio/miniconda3:4.12.0
 
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
