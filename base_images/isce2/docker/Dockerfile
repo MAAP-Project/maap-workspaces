@@ -1,6 +1,6 @@
 FROM isce/isce2:20220424 as builder
 
-FROM continuumio/miniconda3:4.10.3p1 as deploy
+FROM continuumio/miniconda3:4.12.0 as deploy
 ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive

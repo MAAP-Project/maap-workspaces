@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:4.10.3p1
+FROM continuumio/miniconda3:4.12.0
 
 # install maap-py library
 ENV MAAP_CONF='/maap-py/'
