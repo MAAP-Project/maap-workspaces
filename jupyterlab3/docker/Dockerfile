@@ -57,6 +57,7 @@ RUN jupyter labextension install @maap-jupyterlab/maapsec-jupyter-extension@late
 RUN jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@latest --no-build
 RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@latest --no-build
 RUN jupyter labextension install @maap-jupyterlab/ades-metrics-visualization-jupyter-extension --no-build
+RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension --no-build
 
 
 RUN jupyter lab build && \
