@@ -38,7 +38,7 @@ RUN chmod g+w /etc/passwd
 # Non Custom Jupyter Extensions.
 ###############################
 RUN mamba install -c conda-forge plotly=5.5.0 jupyterlab_widgets=1.0.2 jupyterlab-git=0.34.2 
-RUN conda install -c conda-forge jupyterlab-tour
+RUN conda install --yes -c conda-forge jupyterlab-tour
 RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
 RUN npm install typescript -g
 RUN pip install xmltodict
