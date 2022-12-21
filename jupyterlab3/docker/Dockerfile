@@ -37,7 +37,7 @@ RUN chmod g+w /etc/passwd
 ###############################
 # Non Custom Jupyter Extensions.
 ###############################
-RUN mamba install -c conda-forge plotly=5.5.0 jupyterlab_widgets=1.0.2 jupyterlab-git=0.34.2 jupyterlab-tour=3.1.1 
+RUN mamba install -c conda-forge plotly=5.5.0 jupyterlab_widgets=1.0.2 jupyterlab-git=0.34.2 jupyterlab-tour=3.1.4 
 RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
 RUN npm install typescript -g
 RUN pip install xmltodict
@@ -57,7 +57,7 @@ RUN jupyter labextension install @maap-jupyterlab/maapsec-jupyter-extension@late
 RUN jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@latest --no-build
 RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@latest --no-build
 RUN jupyter labextension install @maap-jupyterlab/ades-metrics-visualization-jupyter-extension --no-build
-RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@0.0.10 --no-build
+RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@0.0.11 --no-build
 
 RUN jupyter labextension enable "jupyterlab-tour:default-tours"
 RUN jupyter labextension enable "jupyterlab-tour:user-tours"
