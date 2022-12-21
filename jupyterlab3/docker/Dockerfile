@@ -60,7 +60,7 @@ RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupy
 RUN jupyter labextension install @maap-jupyterlab/ades-metrics-visualization-jupyter-extension --no-build
 RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@0.0.11 --no-build
 
-RUN jupyter labextension disable "jupyterlab-tour:default-tours"
+RUN jupyter labextension enable "jupyterlab-tour:default-tours"
 RUN jupyter labextension enable "jupyterlab-tour:user-tours"
 
 RUN jupyter lab build && \
