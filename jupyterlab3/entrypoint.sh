@@ -1,17 +1,19 @@
 #!/bin/bash
-# set -ex
-# install maap-py stable
-# pip install -U --user git+https://gitlab.com/geospec/maap-py.git@stable
 
 # A more robust method of constructing the workspace url prefix
 get_workspace_url_prefix() {
 	python3 - <<END
 import os
 import json
+import re
 import ssl
 from urllib.request import urlopen, Request
 
-namespace = "$1" #
+namespace = "$1"
+# Replicate Che's namespace converter policy
+# by substituting any non-alphanumeric characters with hyphens.
+namespace = re.sub("[^0-9a-zA-Z-]+", "-", namespace)
+
 svc_host = os.environ.get('KUBERNETES_SERVICE_HOST')
 svc_host_https_port = os.environ.get('KUBERNETES_SERVICE_PORT_HTTPS')
 che_workspace_id = os.environ.get('CHE_WORKSPACE_ID')
@@ -73,7 +75,20 @@ done
 export NOTEBOOKLIBPATH=$(find /opt/conda/lib/ -maxdepth 3 -type d -name "notebook")
 export JUPYTERSERVERLIBPATH=$(find /opt/conda/lib -maxdepth 3 -type d -name "jupyter_server")
 
-JUPYTER_PATCH=$(cat /opt/jupyter_patch)
+read -r -d '' JUPYTER_PATCH << EOM
+    # Fix for Tornado's inability to handle proxy requests
+    from tornado.routing import _RuleList
+    def fix_handlers(self, handlers: _RuleList, base_url: str):
+        for i in range(len(handlers)):
+            l = list(handlers[i])
+            l[0] = l[0].replace(base_url.rstrip('/'), '')
+            handlers[i] = tuple(l)
+        return handlers
+
+    def add_handlers(self, host_pattern: str, host_handlers: _RuleList) -> None:
+        super().add_handlers(host_pattern, self.fix_handlers(host_handlers, self.settings['base_url']))
+EOM
+
 if [[ -f "$JUPYTERSERVERLIBPATH/serverapp.py" ]]; then
     perl -pi -e "s|(.*)\(web.Application\):|\$1\(web.Application\):\n$JUPYTER_PATCH|g" "$JUPYTERSERVERLIBPATH/serverapp.py"
     perl -pi -e 's|(.*)__init__\(handlers(.*)|$1__init__\(self.fix_handlers\(handlers, base_url\)$2|g' "$JUPYTERSERVERLIBPATH/serverapp.py"
@@ -85,12 +100,20 @@ if [[ -f "$NOTEBOOKLIBPATH/notebookapp.py" ]]; then
 fi
 
 # Dump all env variables into file so they exist still though SSH
-# env | grep _ >> /etc/environment
-
+env | grep _ >> /etc/environment
 
 # Add conda bin to path
 export PATH=$PATH:/opt/conda/bin
+cp /root/.bashrc ~/.bash_profile
 conda init
+
+# Need to fix directory permissions for publickey authentication
+chmod 700 /projects
+mkdir -p /projects/.ssh/
+chmod 700 /projects/.ssh/
+service ssh restart
+
+# TBD maap-py install
 
 VERSION=$(jupyter lab --version)
 if [[ $VERSION > '2' ]] && [[ $VERSION < '3' ]]; then
@@ -98,5 +121,5 @@ if [[ $VERSION > '2' ]] && [[ $VERSION < '3' ]]; then
 elif [[ $VERSION > '3' ]] && [[ $VERSION < '4' ]]; then
     SHELL=/bin/bash jupyter lab --ip=0.0.0.0 --port=3100 --allow-root --ContentsManager.allow_hidden=True --ServerApp.token='' --ServerApp.base_url=$PREVIEW_URL --no-browser --debug --ServerApp.disable_check_xsrf=True --collaborative
 else
-    echo "Error!"
+    echo "Error! Jupyterlab version not supported."
 fi
