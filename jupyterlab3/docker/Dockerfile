@@ -42,7 +42,7 @@ RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
 RUN npm install typescript -g
 RUN pip install xmltodict
 RUN pip install jupyterlab_notifications
-RUN conda install --yes -c conda-forge jupyterlab_tour
+RUN conda install --yes -c conda-forge jupyterlab-tour==3.1.4
 
 ###############################
 # Custom Jupyter Extensions.
