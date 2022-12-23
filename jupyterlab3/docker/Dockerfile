@@ -41,7 +41,6 @@ RUN mamba install -c conda-forge plotly=5.5.0 jupyterlab_widgets=1.0.2 jupyterla
 RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
 RUN npm install typescript -g
 RUN pip install xmltodict
-RUN pip install jupyterlab_notifications
 RUN conda install --yes -c conda-forge jupyterlab-tour==3.1.4
 
 ###############################
@@ -61,7 +60,7 @@ RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupy
 RUN jupyter labextension install @maap-jupyterlab/ades-metrics-visualization-jupyter-extension --no-build
 RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@0.0.16 --no-build
 
-RUN jupyter labextension enable "jupyterlab-tour:default-tours"
+RUN jupyter labextension disable "jupyterlab-tour:default-tours"
 RUN jupyter labextension enable "jupyterlab-tour:user-tours"
 
 RUN jupyter lab build && \
