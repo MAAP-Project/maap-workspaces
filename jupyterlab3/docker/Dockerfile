@@ -59,7 +59,7 @@ RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupy
 RUN jupyter labextension install @maap-jupyterlab/ades-metrics-visualization-jupyter-extension --no-build
 RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@0.0.36 --no-build
 
-RUN jupyter lab build && \
+RUN jupyter lab build --dev-build=False --minimize=False && \
     jupyter lab clean && \
     jlpm cache clean && \
     npm cache clean --force && \
