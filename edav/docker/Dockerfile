@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y git npm
 #RUN git clone https://github.com/MAAP-Project/maap-edav-esa-front.git
-RUN git clone https://github.com/grallewellyn/maap-edav-esa-front2.git
+RUN git clone https://github.com/grallewellyn/maap-edav-esa-front2.git 
 WORKDIR "/maap-edav-esa-front2"
 RUN npm install 
 RUN npm run build
