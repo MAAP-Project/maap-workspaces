@@ -3,8 +3,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install 
 #RUN git clone https://github.com/MAAP-Project/maap-edav-esa-front.git
 RUN git clone https://github.com/grallewellyn/maap-edav-esa-front2.git
 WORKDIR "/maap-edav-esa-front2"
-RUN npm install 
-RUN npm run build
+RUN npm install && npm run build
 COPY discovery.json /maap-edav-esa-front/dist/data/
 
 FROM nginx:1.23.1
