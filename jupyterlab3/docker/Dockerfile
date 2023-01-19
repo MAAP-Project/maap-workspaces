@@ -37,7 +37,7 @@ RUN chmod g+w /etc/passwd
 ###############################
 # Non Custom Jupyter Extensions.
 ###############################
-RUN mamba install -c conda-forge plotly=5.5.0 jupyterlab_widgets=1.0.2 jupyterlab-git=0.34.2
+RUN mamba install -c conda-forge plotly=5.5.0 jupyterlab_widgets=1.0.2 jupyterlab-git=0.34.2 ipyleaflet@0.17.2
 RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
 # install git extension - needs dev install to modify paths in entrypoint script
 #RUN git clone -b v0.20.0 https://github.com/jupyterlab/jupyterlab-git.git
