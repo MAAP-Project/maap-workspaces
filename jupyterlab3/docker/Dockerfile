@@ -39,6 +39,7 @@ RUN chmod g+w /etc/passwd
 ###############################
 RUN mamba install -c conda-forge plotly=5.5.0 jupyterlab_widgets=1.0.2 jupyterlab-git=0.34.2 ipyleaflet@0.17.2
 RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
+RUN jupyter labextension install --no-build jupyter-leaflet@0.17.2
 RUN npm install typescript -g
 RUN pip install xmltodict
 
