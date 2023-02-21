@@ -41,6 +41,7 @@ RUN mamba install -c conda-forge plotly=5.5.0 jupyterlab_widgets=1.0.2 jupyterla
 RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
 RUN npm install typescript -g
 RUN pip install xmltodict
+RUN pip install git+https://github.com/jupytercalpoly/jupyterlab-notifications.git
 
 ###############################
 # Custom Jupyter Extensions.
