@@ -43,6 +43,3 @@ RUN git clone --single-branch --branch master https://github.com/MAAP-Project/ma
 
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH=${IMAGE_REF}
-
-# COPY --from=builder /usr/lib/python3.8/dist-packages/isce2 /opt/conda/lib/python3.9/dist-packages/isce2
-# COPY --from=builder /usr/lib/*gdal* /opt/conda/lib/
