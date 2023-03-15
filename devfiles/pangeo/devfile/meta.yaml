@@ -1,6 +1,6 @@
 ---
 displayName: "Pangeo"
 description: Latest version of Pangeo
-tags: ["Pangeo" "JupyterLab", "MAAP"]
+tags: ["Pangeo", "JupyterLab", "MAAP"]
 icon: /devfiles/pangeo/devfile/pangeo_simple_logo.svg
 globalMemoryLimit: 2710Mi
