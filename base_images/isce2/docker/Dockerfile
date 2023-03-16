@@ -1,9 +1,13 @@
-FROM isce/isce2:v2.6.2 as builder
-
-FROM continuumio/miniconda3:22.11.1 as deploy
+FROM continuumio/miniconda3:22.11.1
 ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
+
+# install maap-py library
+ENV MAAP_CONF='/maap-py/'
+RUN git clone --single-branch --branch master https://github.com/MAAP-Project/maap-py.git \
+    && cd maap-py \
+    && pip install -e .
 
 RUN set -ex \
  && apt-get update \
@@ -26,7 +30,6 @@ RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
-
 RUN conda install -y -c conda-forge mamba=1.3.1
 
 # need to uninstall jupyter_server_terminals as it conflicts with Jupyterlab 3.4.x. Doesn't seem to break anything
@@ -37,12 +40,6 @@ RUN mamba install -y -c conda-forge -c plant plant=0.1.89dev isce2=2.6.2 matplot
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy
-
-# install maap-py library
-ENV MAAP_CONF='/maap-py/'
-RUN git clone --single-branch --branch master https://github.com/MAAP-Project/maap-py.git \
-    && cd maap-py \
-    && pip install -e .
 
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH=${IMAGE_REF}
