@@ -19,6 +19,8 @@ RUN conda install -c conda-forge mamba && \
 #        mamba install --file pangeo/conda-linux-64.lock \
 #        ; fi
 
+ONBUILD RUN echo "Checking for 'pangeo/conda-linux-64.lock'..."
+ONBUILD RUN pwd
 ONBUILD RUN mamba install --file pangeo/conda-linux-64.lock
 
 RUN find /opt/conda/ -follow -type f -name '*.a' -delete \
