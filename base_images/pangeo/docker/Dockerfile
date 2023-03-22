@@ -14,10 +14,12 @@ RUN conda install -c conda-forge mamba && \
     mamba install -c conda-forge -y conda-lock gdal=3.6.2 matplotlib=3.6.2 Cython=0.29.33 h5py=3.7.0 numba=0.56.4 \
     pygeos=0.14 pyproj=3.4.1 rasterio=1.3.4 scipy=1.10.0
 
-ONBUILD RUN echo "Checking for 'pangeo/conda-linux-64.lock'..." \
-        ; if test -f "pangeo/conda-linux-64.lock" ; then \
-        mamba install --file pangeo/conda-linux-64.lock \
-        ; fi
+#ONBUILD RUN echo "Checking for 'pangeo/conda-linux-64.lock'..." \
+#        ; if test -f "pangeo/conda-linux-64.lock" ; then \
+#        mamba install --file pangeo/conda-linux-64.lock \
+#        ; fi
+
+ONBUILD RUN mamba install --file pangeo/conda-linux-64.lock
 
 RUN find /opt/conda/ -follow -type f -name '*.a' -delete \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
