@@ -20,7 +20,7 @@ RUN apt-get clean && apt-get update && \
 
 # Jupyterlab3 does not work with Node 17.x
 # Mamba should be installed in all base images
-RUN mamba install -c conda-forge jupyterlab=3.4.4 nodejs=16.13.2 gitpython=3.1.26 jupyter-packaging=0.11.1
+RUN mamba install -c conda-forge jupyterlab=3.4.4 nodejs=16.14.2 gitpython=3.1.26 jupyter-packaging=0.11.1
 
 #ARG NB_USER="ops"
 # Adjust permissions on home directory so writable by group root.
@@ -37,7 +37,7 @@ RUN chmod g+w /etc/passwd
 ###############################
 # Non Custom Jupyter Extensions.
 ###############################
-RUN mamba install -c conda-forge plotly=5.5.0 jupyterlab_widgets=1.0.2 jupyterlab-git=0.34.2 ipyleaflet=0.17.2 
+RUN mamba install -c conda-forge plotly=5.5.0 jupyterlab_widgets=1.0.2 jupyterlab-git=0.34.2 ipyleaflet=0.17.2
 RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
 RUN npm install typescript -g
 RUN pip install xmltodict
@@ -50,7 +50,6 @@ RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@latest -
 RUN pip install -i https://test.pypi.org/simple/ jupyter-server-extension
 RUN jupyter server extension enable jupyter_server_extension
 
-RUN jupyter labextension install @maap-jupyterlab/hide-che-panel-jupyter-extension@latest --no-build
 RUN jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@latest --no-build
 RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@latest --no-build
 RUN jupyter labextension install @maap-jupyterlab/maapsec-jupyter-extension@latest --no-build

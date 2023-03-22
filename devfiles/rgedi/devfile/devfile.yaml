@@ -31,7 +31,7 @@ components:
                 emptyDir: {}
             containers:
               - name: jupyter
-                image: 'mas.dit.maap-project.org/root/maap-workspaces/jupyterlab3/rgedi:dit'
+                image: 'mas.dit.maap-project.org/root/maap-workspaces/jupyterlab3/rgedi:develop'
                 imagePullPolicy: Always
                 resources:
                   limits:
