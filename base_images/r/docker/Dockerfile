@@ -1,7 +1,7 @@
-FROM continuumio/miniconda3:4.12.0
-
-RUN conda update -n base -c defaults conda
-RUN conda install -y python=3.10.9
+FROM continuumio/miniconda3:22.11.1
+ENV LANG en_US.UTF-8
+ENV TZ US/Pacific
+ARG DEBIAN_FRONTEND=noninteractive
 
 # install maap-py library
 ENV MAAP_CONF='/maap-py/'
@@ -9,24 +9,21 @@ RUN git clone --single-branch --branch master https://github.com/MAAP-Project/ma
     && cd maap-py \
     && pip install -e .
 
+RUN set -ex \
+ && apt-get update
+
 RUN mkdir /projects
 WORKDIR /projects
-RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd && echo "source activate r-with-gdal" > ~/.bashrc
-RUN apt-get update && apt-get install -y libxt-dev && apt-get clean
+RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
-# NOTE: I might have to install a newer version of python here 
-RUN conda install -c conda-forge mamba && \
-    conda install -y nb_conda_kernels && \
-    conda create --name r-with-gdal -c conda-forge r==4.2 gdal r-rgdal r-sf r-irkernel r-gridExtra r-tidyverse \
-    r-randomForest r-raster r-data.table r-rlist r-gdalutils r-stringr --yes && \
+RUN conda install -y -c conda-forge mamba=1.3.1
+
+RUN mamba install -y -c conda-forge r==4.2 r-rgdal==1.5_32 r-sf==1.0_7 r-irkernel==1.3.2 r-gridExtra==2.3 \
+    r-tidyverse==2.0.0 r-randomForest==4.7_1.1 r-raster==3.6_20 r-data.table==1.14.8 r-rlist==0.4.6.2 \
+    r-gdalutils==2.0.3.2 r-stringr==1.5.0 && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy
 
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH=${IMAGE_REF}
-
-
-# Original mamba create 
-# mamba create --name r-with-gdal -c conda-forge -c r gdal r-rgdal r-sf r-irkernel r-gridExtra r-tidyverse \
-#    r-randomForest r-raster r-rgdal r-data.table r-rlist r-gdalutils r-stringr r-gdalutils --yes && \
