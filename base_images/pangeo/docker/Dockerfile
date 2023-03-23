@@ -6,6 +6,9 @@ RUN git clone --single-branch --branch master https://github.com/MAAP-Project/ma
     && cd maap-py \
     && pip install -e .
 
+ONBUILD RUN echo "Checking 'pwd'..."
+ONBUILD RUN pwd
+
 RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
