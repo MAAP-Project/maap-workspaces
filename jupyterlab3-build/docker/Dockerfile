@@ -3,6 +3,9 @@ FROM ${BASE_IMAGE} as jupyterlab_base
 
 ADD . /
 
+ARG IMAGE_NAME
+COPY ${IMAGE_NAME}/conda-linux-64.lock /tmp/
+
 RUN mkdir -p /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
