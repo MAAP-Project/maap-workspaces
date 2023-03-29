@@ -21,7 +21,7 @@ RUN conda install -c conda-forge mamba && \
 ARG CACHE_BUST
 ENV CACHE_BUST=${CACHE_BUST}
 
-ONBUILD COPY ${IMAGE_NAME}/conda-linux-64.lock /tmp/
+ONBUILD COPY pangeo/conda-linux-64.lock /tmp/
 ONBUILD RUN mamba install --file /tmp/conda-linux-64.lock
 
 RUN find /opt/conda/ -follow -type f -name '*.a' -delete \
