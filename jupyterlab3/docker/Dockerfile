@@ -12,7 +12,6 @@ USER root
 # Install additional libraries required by Python packages which are in
 # the minimal base image. Also install 'rsync' so the 'oc rsync' command
 # can be used to copy files into the running container.
-
 RUN apt-get clean && apt-get update && \
     apt-get install -y --no-install-recommends rsync gcc python3 vim && \
     apt-get clean && \
@@ -20,9 +19,18 @@ RUN apt-get clean && apt-get update && \
 
 # Jupyterlab3 does not work with Node 17.x
 # Mamba should be installed in all base images
-RUN mamba install -c conda-forge jupyterlab=3.4.4 nodejs=16.14.2 gitpython=3.1.26 jupyter-packaging=0.11.1
+RUN mamba install -c conda-forge gitpython=3.1.26 \
+                                 ipyleaflet=0.17.2 \
+                                 jupyterlab=3.6.1 \
+                                 jupyterlab-git=0.34.2 \
+                                 jupyter-packaging=0.12.3 \
+                                 jupyterlab_widgets=1.0.2 \
+                                 nodejs=16.14.2 \
+                                 plotly=5.5.0
 
-#ARG NB_USER="ops"
+RUN npm install typescript -g
+RUN pip install xmltodict jupyter-server==2.5.0
+
 # Adjust permissions on home directory so writable by group root.
 RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
 
@@ -32,15 +40,10 @@ RUN chmod a+rwx -R /opt/conda/lib/python*/site-packages/
 # Adjust permissions on /etc/passwd so writable by group root.
 RUN chmod g+w /etc/passwd
 
-#ENV ENVIRONMENT=DEV
-
 ###############################
 # Non Custom Jupyter Extensions.
 ###############################
-RUN mamba install -c conda-forge plotly=5.5.0 jupyterlab_widgets=1.0.2 jupyterlab-git=0.34.2 ipyleaflet=0.17.2
 RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
-RUN npm install typescript -g
-RUN pip install xmltodict
 
 ###############################
 # Custom Jupyter Extensions.
@@ -50,12 +53,10 @@ RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@latest -
 RUN pip install -i https://test.pypi.org/simple/ jupyter-server-extension
 RUN jupyter server extension enable jupyter_server_extension
 
-RUN jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@latest --no-build
-RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@latest --no-build
-RUN jupyter labextension install @maap-jupyterlab/maapsec-jupyter-extension@latest --no-build
+RUN jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@1.0.0 --no-build
+RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@1.0.0 --no-build
 RUN jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@latest --no-build
-RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@latest --no-build
-RUN jupyter labextension install @maap-jupyterlab/ades-metrics-visualization-jupyter-extension --no-build
+RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@0.0.3 --no-build
 RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@0.0.41 --no-build
 
 RUN jupyter lab build && \
