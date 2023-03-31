@@ -26,10 +26,11 @@ RUN mamba install -c conda-forge gitpython=3.1.26 \
                                  jupyter-packaging=0.12.3 \
                                  jupyterlab_widgets=1.0.2 \
                                  nodejs=16.14.2 \
-                                 plotly=5.5.0
+                                 plotly=5.5.0 \
+                                 xmltodict=0.13.0
 
 RUN npm install typescript -g
-RUN pip install xmltodict jupyter-server==2.5.0
+RUN pip install jupyter-server==2.5.0
 
 # Adjust permissions on home directory so writable by group root.
 RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
