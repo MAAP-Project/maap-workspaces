@@ -42,12 +42,12 @@ RUN chmod a+rwx -R /opt/conda/lib/python*/site-packages/
 RUN chmod g+w /etc/passwd
 
 ###############################
-# Non Custom Jupyter Extensions.
+# Non Custom Jupyter Extensions
 ###############################
 RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
 
 ###############################
-# Custom Jupyter Extensions.
+# Custom Jupyter Extensions
 ###############################
 RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@latest --no-build
 
