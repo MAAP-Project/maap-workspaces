@@ -2,7 +2,8 @@
 
 set -ex
 base_image_dir=$(dirname $0)
-BRANCH=$(basename $(git name-rev --name-only HEAD))
+# Check if on a branch or in a detached HEAD state get commit sha
+BRANCH=$(basename $(git symbolic-ref -q --short HEAD || git rev-parse --short HEAD))
 DIRS="vanilla r rgedi rsgislib"
 if [[ ! -z "$@" ]]; then
     DIRS=$@
