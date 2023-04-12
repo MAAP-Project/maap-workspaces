@@ -4,8 +4,8 @@ basedir=$( cd "$(dirname "$0")" ; pwd -P )
 git clone https://github.com/MAAP-Project/maap-workspaces.git
 pushd maap-workspaces
 LATEST_COMMIT=$(git log -n 1 --all --format='%h')
-if [[ ! -z ${FORCE_BRANCH_BUILD} ]]; then
-    LATEST_COMMIT=${FORCE_BRANCH_BUILD}
+if [[ ! -z ${FORCE_REF_BUILD} ]]; then
+    LATEST_COMMIT=${FORCE_REF_BUILD}
 fi
 git checkout ${LATEST_COMMIT}
 
