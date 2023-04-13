@@ -21,7 +21,7 @@ RUN apt-get clean && apt-get update && \
 # Jupyterlab3 does not work with Node 17.x
 # Mamba should be installed in all base images
 #RUN mamba install -c conda-forge nodejs=16.14.2 jupyter-packaging=0.11.1
-RUN mamba install -c conda-forge jupyter-packaging=0.11.1
+RUN mamba install -c conda-forge nodejs=16.14.2 jupyter-packaging=0.11.1
 
 #ARG NB_USER="ops"
 # Adjust permissions on home directory so writable by group root.
