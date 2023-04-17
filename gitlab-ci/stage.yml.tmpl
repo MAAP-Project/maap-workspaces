@@ -1,0 +1,10 @@
+${BASE_IMAGE_TYPE}:
+  script:
+    - docker login -u gitlab-ci-token -p "$CI_JOB_TOKEN" "$CI_REGISTRY"
+    - git clone https://github.com/MAAP-Project/maap-workspaces.git
+    - pushd maap-workspaces
+    - git checkout ${LATEST_COMMIT}
+    - bash base_images/build-image.sh ${BASE_IMAGE_TYPE}
+    - cat built_images.txt
+    - export BASE_IMAGE_NAME=$(tail -1 built_images.txt)
+    - bash jupyterlab3/build-image.sh

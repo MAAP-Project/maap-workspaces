@@ -1,6 +1,6 @@
 ---
 displayName: "Pangeo"
-description: Latest version of Pangeo
+description: "Version: 2023.04.15"
 tags: ["Pangeo", "JupyterLab", "MAAP"]
 icon: /devfiles/pangeo/devfile/pangeo_simple_logo.svg
 globalMemoryLimit: 2710Mi
