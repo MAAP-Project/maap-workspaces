@@ -1,6 +1,8 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE} as jupyterlab_base
 
+ARG BASE_IMAGE_TYPE
+
 ADD . /
 
 RUN mkdir -p /projects
@@ -17,17 +19,13 @@ RUN apt-get clean && apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Jupyterlab3 does not work with Node 17.x
-# Mamba should be installed in all base images
-RUN mamba install -c conda-forge gitpython=3.1.26 \
-                                 ipyleaflet=0.17.2 \
-                                 jupyterlab=3.6.1 \
-                                 jupyterlab-git=0.34.2 \
-                                 jupyter-packaging=0.12.3 \
-                                 jupyterlab_widgets=1.0.2 \
-                                 nodejs=16.14.2 \
-                                 plotly=5.5.0 \
-                                 xmltodict=0.13.0
+# Install workspace specific packages for conda environment
+RUN echo "Checking if environments.yml exists for ${BASE_IMAGE_TYPE}" \
+    ; if [[ -d "/${BASE_IMAGE_TYPE}" ]]; then \
+        mamba env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" \
+    ; else \
+        mamba env update --name base --file "/shared/environment.yml" \
+    ; fi
 
 RUN npm install typescript -g
 RUN pip install jupyter-server==2.5.0
