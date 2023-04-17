@@ -20,11 +20,13 @@ RUN apt-get clean && apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install workspace specific packages for conda environment
-RUN echo "Checking if environments.yml exists for ${BASE_IMAGE_TYPE}" \
-    ; if [[ -f "/${BASE_IMAGE_TYPE}/environment.yml" ]]; then \
-        mamba env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" \
+RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
+    ; if [ -f "/${BASE_IMAGE_TYPE}/environment.yml" ]; then \
+        echo "Installing packages from '/${BASE_IMAGE_TYPE}/environment.yml'" \
+        ; mamba env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" \
     ; else \
-        mamba env update --name base --file "/shared/environment.yml" \
+        echo "Installing packages from '/shared/environment.yml'" \
+        ; mamba env update --name base --file "/shared/environment.yml" \
     ; fi
 
 RUN npm install typescript -g
