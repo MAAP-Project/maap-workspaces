@@ -21,7 +21,7 @@ RUN apt-get clean && apt-get update && \
 
 # Install workspace specific packages for conda environment
 RUN echo "Checking if environments.yml exists for ${BASE_IMAGE_TYPE}" \
-    ; if [[ -d "/${BASE_IMAGE_TYPE}" ]]; then \
+    ; if [[ -f "/${BASE_IMAGE_TYPE}/environment.yml" ]]; then \
         mamba env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" \
     ; else \
         mamba env update --name base --file "/shared/environment.yml" \
