@@ -1,7 +1,7 @@
 name: base
 channels:
-  - defaults
   - conda-forge
+  - nodefaults
 dependencies:
   - gitpython=3.1.26
   - ipyleaflet=0.17.2
