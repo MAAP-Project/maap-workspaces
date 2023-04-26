@@ -31,7 +31,7 @@ components:
                 emptyDir: {}
             containers:
               - name: jupyter
-                image: 'mas.dit.maap-project.org/root/maap-workspaces/pangeo/pangeo:develop'
+                image: 'mas.dit.maap-project.org/root/maap-workspaces/jupyterlab3/pangeo:develop'
                 imagePullPolicy: Always
                 resources:
                   limits:
