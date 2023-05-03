@@ -12,8 +12,10 @@ git checkout ${LATEST_COMMIT}
 if [[ ! -z ${BUILD_ALL_BASE_IMAGES} ]]; then
     ls -d base_images/*/* > ${basedir}/files_changed.txt
 elif [[ ! -z ${BUILD_SPECIFIC_BASE_IMAGES} ]]; then
-    new_str="${BUILD_SPECIFIC_BASE_IMAGES// /$'\n'}"
-    echo "base_images/${new_str}/docker" > ${basedir}/files_changed.txt
+    base_image_array=(${BUILD_SPECIFIC_BASE_IMAGES})
+    for path in ${base_image_array[@]}; do
+        echo "base_images/${path}/docker" >> ${basedir}/files_changed.txt
+    done
 else
     # Find files changed in the latest commit
     echo "BUILD_ALL_BASE_IMAGES and BUILD_SPECIFIC_BASE_IMAGES unset"
@@ -36,8 +38,9 @@ do
     cat ${template} | CI_JOB_TOKEN='$CI_JOB_TOKEN' CI_REGISTRY='$CI_REGISTRY' envsubst >> stages.yml
   else
     echo "Path does not begin with base_images or does not have a second directory, will not do anything"
+    touch stages.yml
   fi
 done
 
 echo "Generate stages.yaml"
-cat stages.yml
+cat stages.yml || true
