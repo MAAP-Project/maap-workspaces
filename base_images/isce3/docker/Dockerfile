@@ -24,5 +24,7 @@ RUN mamba install -y -c conda-forge isce3=0.12.0 xarray=2023.4.2 \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy
 
+RUN pip install git+https://github.com/opera-adt/RTC.git@v0.3
+
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH=${IMAGE_REF}
