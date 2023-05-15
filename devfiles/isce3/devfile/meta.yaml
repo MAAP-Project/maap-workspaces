@@ -1,6 +1,6 @@
 ---
-displayName: "MAAP ISCE3/PLAnT"
+displayName: "MAAP ISCE3"
 description: Latest version of MAAP ISCE3
-tags: ["JupyterLab", "Python", "MAAP", "ISCE3", "PLAnT"]
-icon: /devfiles/isce3/devfile/jupyter.png
+tags: ["JupyterLab", "Python", "MAAP", "ISCE3"]
+icon: /devfiles/isce3/devfile/isce.png
 globalMemoryLimit: 2710Mi
