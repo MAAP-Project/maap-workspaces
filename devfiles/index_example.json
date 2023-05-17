@@ -1,118 +1,88 @@
 [
-    {
-      "displayName": "R",
-      "description": "MAAP RSGISLib workspace v2.0. Released September 2022.",
-      "tags": [
-        "Python",
-        "R",
-        "JupyterLab",
-        "MAAP"
-      ],
-      "icon": "/images/r.png",
-      "globalMemoryLimit": "2710Mi",
-      "links": {
-        "self": "/devfiles/maap-r/devfile_2.0.yaml"
-      }
-    },
-    {
-      "displayName": "Basic",
-      "description": "MAAP Basic workspace v2.0. Released September 2022.",
-      "tags": [
-        "JupyterLab",
-        "Python",
-        "MAAP"
-      ],
-      "icon": "/images/jupyter.png",
-      "globalMemoryLimit": "2810Mi",
-      "links": {
-        "self": "/devfiles/maap-vanilla/devfile_2.0.yaml"
-      }
-    },
-    {
-      "displayName": "MAAP RGEDI Stable",
-      "description": "Latest version of MAAP RGEDI",
-      "tags": [
-        "JupyterLab",
-        "Python",
-        "R",
-        "MAAP"
-      ],
-      "icon": "/images/r.png",
-      "globalMemoryLimit": "2710Mi",
-      "links": {
-        "self": "/devfiles/rgedi/devfile.yaml"
-      }
-    },
-    {
-      "displayName": "MAAP ESA EDAV",
-      "description": "Latest version of MAAP ESA EDAV",
-      "tags": [
-        "EDAV",
-        "MAAP"
-      ],
-      "icon": "/images/earth.png",
-      "globalMemoryLimit": "2710Mi",
-      "links": {
-        "self": "/devfiles/edav/devfile.yaml"
-      }
-    },
-    {
-        "displayName": "PLAnT (v1.0)",
-        "description": "MAAP PLAnT workspace v1.0. Released February 2022.",
-        "tags": [
-          "Python",
-          "JupyterLab",
-          "MAAP",
-          "PLAnT"
-        ],
-        "default": false,
-        "icon": "/images/plant.jpg",
-        "globalMemoryLimit": "2710Mi",
-        "links": {
-          "self": "/devfiles/maap-plant/devfile.yaml"
-        }
-      },
-      {
-        "displayName": "RSGISLib (v1.0)",
-        "description": "MAAP RSGISLib workspace v1.0. Released February 2022.",
-        "tags": [
-          "JupyterLab",
-          "Python",
-          "MAAP"
-        ],
-        "icon": "/images/rsgislib.png",
-        "globalMemoryLimit": "2810Mi",
-        "links": {
-          "self": "/devfiles/maap-rsgislib/devfile.yaml"
-        }
-      },
-      {
-        "displayName": "R (v1.0)",
-        "description": "MAAP RSGISLib workspace v1.0. Released February 2022.",
-        "tags": [
-          "Python",
-          "R",
-          "JupyterLab",
-          "MAAP"
-        ],
-        "icon": "/images/r.png",
-        "globalMemoryLimit": "2710Mi",
-        "links": {
-          "self": "/devfiles/maap-r/devfile.yaml"
-        }
-      },
-      {
-        "displayName": "Basic (v1.0)",
-        "description": "MAAP Basic workspace v1.0. Released February 2022.",
-        "tags": [
-          "JupyterLab",
-          "Python",
-          "MAAP"
-        ],
-        "icon": "/images/jupyter.png",
-        "globalMemoryLimit": "2810Mi",
-        "links": {
-          "self": "/devfiles/maap-vanilla/devfile.yaml"
-        }
-      }
-  ]
+  {
+    "displayName": "R",
+    "description": "MAAP RSGISLib workspace v2.0. Released September 2022.",
+    "tags": [
+      "Python",
+      "R",
+      "JupyterLab",
+      "MAAP"
+    ],
+    "icon": "/images/r.png",
+    "globalMemoryLimit": "2710Mi",
+    "links": {
+      "self": "/devfiles/maap-r/devfile_2.0.yaml"
+    }
+  },
+  {
+    "displayName": "Basic",
+    "description": "MAAP Basic workspace v2.0. Released September 2022.",
+    "tags": [
+      "JupyterLab",
+      "Python",
+      "MAAP"
+    ],
+    "icon": "/images/jupyter.png",
+    "globalMemoryLimit": "2810Mi",
+    "links": {
+      "self": "/devfiles/maap-vanilla/devfile_2.0.yaml"
+    }
+  },
+  {
+    "displayName": "MAAP RGEDI Stable",
+    "description": "Latest version of MAAP RGEDI",
+    "tags": [
+      "JupyterLab",
+      "Python",
+      "R",
+      "MAAP"
+    ],
+    "icon": "/images/r.png",
+    "globalMemoryLimit": "2710Mi",
+    "links": {
+      "self": "/devfiles/rgedi/devfile.yaml"
+    }
+  },
+  {
+    "displayName": "MAAP ESA EDAV",
+    "description": "Latest version of MAAP ESA EDAV",
+    "tags": [
+      "EDAV",
+      "MAAP"
+    ],
+    "icon": "/images/earth.png",
+    "globalMemoryLimit": "2710Mi",
+    "links": {
+      "self": "/devfiles/edav/devfile.yaml"
+    }
+  },
+  {
+    "displayName": "R (v1.0)",
+    "description": "MAAP RSGISLib workspace v1.0. Released February 2022.",
+    "tags": [
+      "Python",
+      "R",
+      "JupyterLab",
+      "MAAP"
+    ],
+    "icon": "/images/r.png",
+    "globalMemoryLimit": "2710Mi",
+    "links": {
+      "self": "/devfiles/maap-r/devfile.yaml"
+    }
+  },
+  {
+    "displayName": "Basic (v1.0)",
+    "description": "MAAP Basic workspace v1.0. Released February 2022.",
+    "tags": [
+      "JupyterLab",
+      "Python",
+      "MAAP"
+    ],
+    "icon": "/images/jupyter.png",
+    "globalMemoryLimit": "2810Mi",
+    "links": {
+      "self": "/devfiles/maap-vanilla/devfile.yaml"
+    }
+  }
+]
