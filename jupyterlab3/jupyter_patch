@@ -1,0 +1,11 @@
+    # Fix for Tornado's inability to handle proxy requests
+    from tornado.routing import _RuleList
+    def fix_handlers(self, handlers: _RuleList, base_url: str):
+        for i in range(len(handlers)):
+            l = list(handlers[i])
+            l[0] = l[0].replace(base_url.rstrip('/'), '')
+            handlers[i] = tuple(l)
+        return handlers
+
+    def add_handlers(self, host_pattern: str, host_handlers: _RuleList) -> None:
+        super().add_handlers(host_pattern, self.fix_handlers(host_handlers, self.settings['base_url']))

@@ -1,0 +1,23 @@
+stages:
+  - build
+  - setup
+  - trigger
+  - test
+
+generate-config:
+  stage: setup
+  script:
+    - bash ./generate_configs.sh
+  artifacts:
+    paths:
+      - stages.yml
+  only:
+    refs:
+      - main
+
+build_image_trigger:
+  stage: trigger
+  trigger:
+    include:
+      - artifact: stages.yml
+        job: generate-config

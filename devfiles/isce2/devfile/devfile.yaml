@@ -1,0 +1,95 @@
+apiVersion: 1.0.0
+metadata:
+  generateName: isce2-
+attributes:
+  editorFree: 'true'
+components:
+  - endpoints:
+      - attributes:
+          type: ide
+          discoverable: 'false'
+          path: /
+          public: 'true'
+          protocol: http
+        name: jupyter
+        port: 3100
+    referenceContent: |
+      kind: List
+      items:
+        - apiVersion: v1
+          kind: Pod
+          metadata:
+            name: ws
+            labels:
+              ssh: enabled
+          spec:
+            volumes:
+              - name: ws-pvc
+                persistentVolumeClaim:
+                  claimName: ws
+              - name: s3fs-volume
+                emptyDir: {}
+            containers:
+              - name: jupyter
+                image: 'mas.dit.maap-project.org/root/maap-workspaces/jupyterlab3/isce2:develop'
+                imagePullPolicy: Always
+                resources:
+                  limits:
+                    memory: 8096Mi
+                volumeMounts:
+                  - name: ws-pvc
+                    mountPath: /projects
+                    subPath: projects
+                  - name: s3fs-volume
+                    mountPath: /projects/.jupyter
+                    subPath: dotjupyter
+                  - name: s3fs-volume
+                    mountPath: /projects/my-private-bucket
+                    subPath: my-private-bucket
+                    mountPropagation: HostToContainer
+                  - name: s3fs-volume
+                    mountPath: /projects/my-public-bucket
+                    subPath: my-public-bucket
+                    mountPropagation: HostToContainer
+                  - name: s3fs-volume
+                    mountPath: /projects/shared-buckets
+                    subPath: shared-buckets
+                    mountPropagation: HostToContainer
+              - name: s3fs
+                image: 'mas.ops.maap-project.org/root/che-sidecar-s3fs:master'
+                imagePullPolicy: Always
+                resources:
+                  limits:
+                    memory: 256Mi
+                securityContext:
+                  privileged: true
+                volumeMounts:
+                  - name: s3fs-volume
+                    mountPath: /my-public-bucket
+                    subPath: my-public-bucket
+                    mountPropagation: Bidirectional
+                  - name: s3fs-volume
+                    mountPath: /my-private-bucket
+                    subPath: my-private-bucket
+                    mountPropagation: Bidirectional
+                  - name: s3fs-volume
+                    mountPath: /shared-buckets
+                    subPath: shared-buckets
+                    mountPropagation: Bidirectional
+        - apiVersion: v1
+          kind: PersistentVolumeClaim
+          metadata:
+            name: ws
+          spec:
+            storageClassName: nfs-client-che
+        - apiVersion: v1
+          kind: Service
+          metadata:
+            generateName: sshport-
+          spec:
+            type: NodePort
+            ports:
+              - port: 22
+          selector:
+            ssh: enabled
+    type: kubernetes

@@ -1,0 +1,6 @@
+---
+displayName: "MAAP R Stable"
+description: Latest version of MAAP R
+tags: ["Python", "R", "JupyterLab", "MAAP"]
+icon: /devfiles/r/devfile/r.png
+globalMemoryLimit: 2710Mi

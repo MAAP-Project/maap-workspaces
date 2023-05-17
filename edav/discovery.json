@@ -1,0 +1,593 @@
+[
+  {
+    "id": "maap",
+    "name": "MAAP",
+    "opensearchUrl": "https://edav-das.val.esa-maap.org/opensearch",
+    "wcsUrl": "https://edav-das.val.esa-maap.org/wcs",
+    "internalWcsUrl": "http://edav-backend-mwcs.edav:680/wcs",
+    "staticCatalogue": true,
+    "additionalDatasetConfig": {
+      "ESACCI_Biomass_L4_AGB": {
+        "aoiRequired": true,
+	"fixedTime": true
+      },
+      "FOS": {
+        "disabled": true
+      }
+    }
+  },
+  {
+    "id": "nasa",
+    "name": "Nasa",
+    "opensearchUrl": "https://nasa-edav-das.val.esa-maap.org/opensearch",
+    "wcsUrl": "https://nasa-edav-das.val.esa-maap.org/wcs",
+    "internalWcsUrl": "http://edav-backend-mwcsnasa.edav:680/wcs",
+    "staticCatalogue": true,
+    "additionalDatasetConfig": {
+      "GEDI02_A": {
+        "type": "vector",
+        "fixedTime": false
+      },
+      "GEDI02_B": {
+        "type": "vector",
+        "fixedTime": false
+      }
+    }
+  },
+  {
+    "id": "maap_user",
+    "name": "User data",
+    "opensearchUrl": "https://edav-das-vap.val.esa-maap.org/opensearch",
+    "wcsUrl": "https://edav-das-vap.val.esa-maap.org/wcs",
+    "internalWcsUrl": "http://edav-backend-mwcsvap.edav:680/wcs"
+  },
+  {
+    "id": "creodias",
+    "name": "Creodias",
+    "opensearchUrl": "https://maap-creodias.adamplatform.eu/opensearch/v1",
+    "wcsUrl": "https://maap-creodias.adamplatform.eu/wcs",
+    "staticCatalogue": true,
+    "additionalDatasetConfig": {
+      "FOS": {
+        "disabled": true
+      }
+    }
+  },
+  {
+    "id": "aux",
+    "name": "External data",
+    "edavServices": {
+      "wcsServiceUrl": "https://edav-wcs.adamplatform.eu/wcs",
+      "cswServiceUrl": "https://edav-pycsw.adamplatform.eu/pycsw/csw.py",
+      "wpsServiceUrl": "https://edav-wps.adamplatform.eu/wps"
+    },
+    "fosService": {
+      "url": "/fos",
+      "intendedUse": "view",
+      "applicationId": "maap",
+      "dasAccess": {
+        "opensearchUrl": "https://edav-das.val.esa-maap.org/opensearch",
+        "datasetId": "FOS"
+      }
+    },    
+    "datasets": [{
+        "id": "fos",
+        "name": "FOS plots",
+        "datasetType": "fos",
+        "description": "The Forest Observation System is an international cooperation to establish a global in-situ forest biomass database to support earth observation and to encourage investment in relevant field-based observations and science. The Forest Observation System provides well curated biomass plot data in a unified format, that is aggregated from tree level data consistently across different networks."
+      }, {
+      "id": "biosar-1",
+      "name": "Biosar 1",
+      "datasetType": "edav",
+      "description": "ESA Biosar 1 campaign data",
+      "type": "raster",
+      "cswCollection": "biosar1_SLC",
+      "coverages": [{
+          "id": "biosar_amplitude",
+          "name": "Amplitude",
+          "domain": {
+              "min": 0,
+              "max": 10,
+              "noData": -9999
+          },
+          "wcsCoverage": "biosar1_SLC",
+          "wcsSubset": {
+              "id": "gfix",
+              "value": "1",
+              "idx": 2
+          }
+      }, {
+          "id": "biosar_slc_q",
+          "name": "Q",
+          "domain": {
+              "min": -5,
+              "max": 5,
+              "noData": -9999
+          },
+          "wcsCoverage": "biosar1_SLC",
+          "wcsSubset": {
+              "id": "gfix",
+              "value": "2",
+              "idx": 2
+          }
+      }, {
+          "id": "biosar_slc_i",
+          "name": "I",
+          "domain": {
+              "min": -5,
+              "max": 5,
+              "noData": -9999
+          },
+          "wcsCoverage": "biosar1_SLC",
+          "wcsSubset": {
+              "id": "gfix",
+              "value": "3",
+              "idx": 2
+          }
+      }],
+      "dimensions": [{
+          "id": "scene",
+          "name": "Scene number",
+          "domain": {
+            "values": [{
+                "value": 105
+            }, {
+                "value": 106
+            }, {
+                "value": 107
+            }, {
+                "value": 109
+            }, {
+                "value": 301
+            }, {
+                "value": 302
+            }, {
+                "value": 303
+            }, {
+                "value": 304
+            }, {
+                "value": 306
+            }, {
+                "value": 406
+            }, {
+                "value": 407
+            }, {
+                "value": 408
+            }, {
+                "value": 409
+            }, {
+                "value": 411
+            }, {
+                "value": 110
+            }, {
+                "value": 206
+            }, {
+                "value": 412
+            }]
+          },
+          "wcsSubset": {
+              "id": "gfix",
+              "idx": 0
+          },
+          "wcsResponseKey": "gfix",
+          "tarFilenameRegex": "_([0-9]*)_"
+      }, {
+          "id": "polarization",
+          "name": "Polarization",
+          "domain": {
+              "values": [{
+                "value": "11",
+                "label": "VV"
+            }, {
+                "value": "00",
+                "label": "HH"
+            }, {
+                "value": "10",
+                "label": "VH"
+            }, {
+                "value": "01",
+                "label": "HV"
+            }]
+          },
+          "wcsSubset": {
+              "id": "gfix",
+              "idx": 1
+          },
+          "wcsResponseKey": "gfix",
+          "tarFilenameRegex": "SLC_([A-Z]*)_"
+      }]
+    },{
+      "id": "globbiomass",
+      "name": "Globbiomass",
+      "datasetType": "edav",
+      "description": "The data products consist of global datasets including estimates of growing stock volume (GSV, unit: m3/ha) for the year 2010 and above ground biomass (AGB, unit: tons/ha i.e., Mg/ha) for the year 2010",
+      "type": "raster",
+      "cswCollection": "GLOBBIOMASS_AGB",
+      "coverages": [{
+          "id": "agb",
+          "name": "Above ground biomass",
+          "units": "Mg · ha⁻¹",
+          "domain": {
+              "min": 0,
+              "max": 400,
+              "noData": -9999
+          },
+          "wcsCoverage": "GLOBBIOMASS_AGB_4326_0000889"
+      }, {
+          "id": "agb_err",
+          "name": "Above ground biomass error",
+          "units": "Mg · ha⁻¹",
+          "domain": {
+              "min": 0,
+              "max": 200,
+              "noData": -9999
+          },
+          "wcsCoverage": "GLOBBIOMASS_AGB_ERR_4326_0000889"
+      }, {
+          "id": "gsv",
+          "name": "Growing stock volume",
+          "units": "m³ · ha⁻¹",
+          "domain": {
+              "min": 0,
+              "max": 400,
+              "noData": -9999
+          },
+          "wcsCoverage": "GLOBBIOMASS_GSV_4326_0000889"
+      }, {
+          "id": "gsv_err",
+          "name": "Growing stock volume error",
+          "units": "m³ · ha⁻¹",
+          "domain": {
+              "min": 0,
+              "max": 200,
+              "noData": -9999
+          },
+          "wcsCoverage": "GLOBBIOMASS_GSV_ERR_4326_0000889"
+      }]
+    }, {
+        "id": "biomass_tomo_onera_lope",
+        "name": "Tomographic biomass Onera Lope",
+        "datasetType": "edav",
+        "description": "Synthetic tomographic biomass product",
+        "type": "volume",
+        "cswCollection": "TOMO_GROUND_ONERA",
+        "coverages": [{
+            "id": "biomass",
+            "name": "Biomass",
+            "domain": {
+                "min": 0,
+                "max": 20,
+                "noData": -9999
+            },
+            "units": "g/m²",
+            "wcsCoverage": "TOMO_GROUND_ONERA_Lope_32732_48"
+        }],
+        "dimensions": [{
+            "id": "height",
+            "name": "Height",
+            "domain": {
+                "min": -20,
+                "max": 70,
+                "step": 1
+            },
+            "units": "m",
+            "wcsSubset": {
+                "id": "h"
+            },
+            "wcsResponseKey": "high"
+        }]
+    }, {
+      "id": "biomass_tomo_onera_lope_geo",
+      "name": "Tomographic biomass Onera Lope (GEO)",
+      "datasetType": "edav",
+      "type": "volume",
+      "cswCollection": "TOMO_GROUND_ONERA",
+      "coverages": [{
+          "id": "biomass",
+          "name": "Biomass",
+          "domain": {
+              "min": 0,
+              "max": 20,
+              "noData": -9999
+          },
+          "units": "g/m²",
+          "wcsCoverage": "TOMO_GROUND_ONERA_Lope_GEO_32732_5"
+      }],
+      "dimensions": [{
+          "id": "height",
+          "name": "Height",
+          "domain": {
+              "min": -20,
+              "max": 70,
+              "step": 1
+          },
+          "units": "m",
+          "wcsSubset": {
+              "id": "h"
+          },
+          "wcsResponseKey": "high"
+      }]
+    }, {
+      "id": "congo_gedi_icesat",
+      "name": "GEDI Congo derived height",
+      "datasetType": "edav",
+      "type": "raster",
+      "coverages": [{
+        "id": "height",
+        "name": "Mean Height",
+        "units": "m",
+        "domain": {
+            "min": 0,
+            "max": 150,
+            "noData": -9999
+        },
+        "wcsCoverage": "GEDI_icesat",
+        "wcsSubset": {
+            "id": "band",
+            "value": "1"
+        }
+        }, {
+        "id": "height_variance",
+        "name": "Height variance",
+        "units": "m",
+        "domain": {
+            "min": 0,
+            "max": 2,
+            "noData": -9999
+        },
+        "wcsCoverage": "GEDI_icesat",
+        "wcsSubset": {
+            "id": "band",
+            "value": "2"
+        }
+      }, {
+        "id": "num_shots",
+        "name": "Number of shots",
+        "domain": {
+            "min": 0,
+            "max": 100,
+            "noData": -9999
+        },
+        "wcsCoverage": "GEDI_icesat",
+        "wcsSubset": {
+            "id": "band",
+            "value": "3"
+        }
+      }]
+    }, {
+      "id": "gedi_rh",
+      "name": "GEDI L2A RH",
+      "datasetType": "edav",
+      "type": "vertical_profile",
+      "coverages": [{
+          "id": "rh",
+          "name": "Relative height",
+          "description": "Relative height metrics at 1 % interval",
+          "units": "m",
+          "domain": {
+              "min": -10,
+              "max": 70,
+              "noData": -9999
+          },
+          "wcsCoverage": "GEDI02_A_RH",
+          "default": {
+            "range": {
+              "min": 0,
+              "max": 50
+            },
+            "colorScale": "turbo"
+          }
+      }],
+      "fixedTime": "2020-10-27T22:49:57Z",
+      "dimensions": [{
+        "id": "beam",
+        "name": "Beam",
+        "domain": {
+            "values": [{
+              "value": "0",
+              "label": "0"
+          }, {
+              "value": "1",
+              "label": "1"
+          }, {
+              "value": "10",
+              "label": "10"
+          }, {
+              "value": "11",
+              "label": "11"
+          }, {
+              "value": "101",
+              "label": "101"
+          }, {
+              "value": "110",
+              "label": "110"
+          }, {
+              "value": "1000",
+              "label": "1000"
+          }, {
+              "value": "1011",
+              "label": "1011"
+          }]
+        },
+	"allowRange": true,
+        "wcsSubset": {
+            "id": "gfix",
+            "idx": 0
+        }
+      }],
+      "verticalScaleConfig": {
+        "min": 0.2,
+        "max": 2,
+        "step": 0.05,
+        "default": 0.5
+      } 
+    }, {
+      "id": "gedi_l4a",
+      "name": "GEDI L4B",
+      "datasetType": "edav",
+      "type": "raster",
+      "coverages": [{
+        "id": "mu",
+        "name": "Mean aboveground biomass (MU)",
+        "units": "Mg · ha⁻¹",
+        "description": "Mean aboveground biomass density: Estimated mean AGBD for the 1 km grid cell, including forest and non-forest",
+        "domain": {
+            "min": 0,
+            "max": 600,
+            "noData": -9999
+        },
+        "wcsCoverage": "GEDI04_B_MU_4326_001",
+        "default": {
+          "range": {
+            "min": 0,
+            "max": 350
+          },
+          "colorScale": "viridis"
+        }
+      }, {
+        "id": "V1",
+        "name": "Variance component 1 (V1)",
+        "description": "Uncertainty in the estimate of mean biomass due to the field-to-GEDI model used in L4A",
+        "domain": {
+            "min": 0,
+            "max": 1000,
+            "noData": -9999
+        },
+        "wcsCoverage": "GEDI04_B_V1_4326_001",
+        "default": {
+          "range": {
+            "min": 0,
+            "max": 100
+          },
+          "colorScale": "turbo"
+        }
+      }, {
+        "id": "V2",
+        "name": "Variance component 2 (V2)",
+        "description": "If Mode of Inference = 1, this is the uncertainty due to GEDI's sampling of the 1 km cell. If Mode of Inference = 2, this is uncertainty owing to the model predicting biomass using wall-to-wall data, calibrated with the L4A footprint product",
+        "domain": {
+            "min": 0,
+            "max": 10000,
+            "noData": -9999
+        },
+        "wcsCoverage": "GEDI04_B_V2_4326_001",
+        "default": {
+          "range": {
+            "min": 0,
+            "max": 1000
+          },
+          "colorScale": "turbo"
+        }
+      }, {
+        "id": "SE",
+        "name": "Mean AGBD standard error (SE)",
+        "description": "Mean aboveground biomass density standard error: Standard Error of the mean estimate, combining sampling and modeling uncertainty",
+        "units": "Mg · ha⁻¹",
+        "domain": {
+            "min": 0,
+            "max": 500,
+            "noData": -9999
+        },
+        "wcsCoverage": "GEDI04_B_SE_4326_001",
+        "default": {
+          "range": {
+            "min": 0,
+            "max": 200
+          },
+          "colorScale": "turbo"
+        }
+      }, {
+        "id": "PE",
+        "name": "Mean AGB standard error % (PE)",
+        "description": "Standard error as a fraction of the estimated mean AGBD (PE). If >100%, the cell values are truncated to 100.",
+        "units": "%",
+        "domain": {
+            "min": 0,
+            "max": 100,
+            "noData": 255
+        },
+        "wcsCoverage": "GEDI04_B_PE_4326_001",
+        "default": {
+          "range": {
+            "min": 0,
+            "max": 100
+          },
+          "colorScale": "turbo"
+        }
+      }, {
+        "id": "NC",
+        "name": "Number of clusters (NC)",
+        "description": "Number of unique GEDI ground tracks with at least one high-quality waveform intersecting the grid cell",
+        "domain": {
+            "min": 0,
+            "max": 100
+        },
+        "wcsCoverage": "GEDI04_B_NC_4326_001",
+        "default": {
+          "range": {
+            "min": 0,
+            "max": 20
+          },
+          "colorScale": "turbo"
+        }
+      }, {
+        "id": "NS",
+        "name": "Number of samples (NS)",
+        "description": "Total number of high-quality waveforms across all ground tracks within the grid cell",
+        "domain": {
+            "min": 0,
+            "max": 1000
+        },
+        "wcsCoverage": "GEDI04_B_NS_4326_001",
+        "default": {
+          "range": {
+            "min": 0,
+            "max": 200
+          },
+          "colorScale": "turbo"
+        }
+      }, {
+        "id": "QF",
+        "name": "Quality flag (QF)",
+        "description": "0=Outside the GEDI domain, 1=Land surface, 2=Land surface and meets GEDI mission L1 requirement (Percent standard error <20% or Standard Error < 20 Mg ha-1)",
+        "domain": {
+            "min": 0,
+            "max": 2,
+            "step": 1
+        },
+        "wcsCoverage": "GEDI04_B_QF_4326_001",
+        "default": {
+          "colorScale": "jet"
+        }
+      }, {
+        "id": "PS",
+        "name": "Prediction stratum (PS)",
+        "description": "Determined by plant functional type and continent. PS is associated with an L4A model parameter covariance matrix that contributes to the Model Error Variance.",
+        "domain": {
+            "min": 0,
+            "max": 35,
+            "noData": 241,
+            "step": 1
+        },
+        "wcsCoverage": "GEDI04_B_PS_4326_001",
+        "default": {
+          "colorScale": "jet",
+          "clamp": false
+        }
+      }, {
+        "id": "MI",
+        "name": "Mode of interference (MI)",
+        "description": "Method used for a particular cell. Until mission completion, only those cells where hybrid inference is possible will be populated with a mean biomass value. 0=None applied, 1=Hybrid Model-Based, 2=Generalized Hierarchical Model-Based",
+        "domain": {
+            "min": 0,
+            "max": 2,
+            "step": 1
+        },
+        "default": {
+          "colorScale": "jet"
+        },
+        "wcsCoverage": "GEDI04_B_MI_4326_001"
+      }]
+    }]
+  }
+]
