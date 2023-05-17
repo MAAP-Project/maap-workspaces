@@ -1,35 +1,5 @@
 [
     {
-      "displayName": "PLAnT",
-      "description": "MAAP PLAnT workspace v2.0. Released September 2022.",
-      "tags": [
-        "Python",
-        "JupyterLab",
-        "MAAP",
-        "PLAnT"
-      ],
-      "default": true,
-      "icon": "/images/plant.jpg",
-      "globalMemoryLimit": "2710Mi",
-      "links": {
-        "self": "/devfiles/maap-plant/devfile_2.0.yaml"
-      }
-    },
-    {
-      "displayName": "RSGISLib",
-      "description": "MAAP RSGISLib workspace v2.0. Released September 2022.",
-      "tags": [
-        "JupyterLab",
-        "Python",
-        "MAAP"
-      ],
-      "icon": "/images/rsgislib.png",
-      "globalMemoryLimit": "2810Mi",
-      "links": {
-        "self": "/devfiles/maap-rsgislib/devfile_2.0.yaml"
-      }
-    },
-    {
       "displayName": "R",
       "description": "MAAP RSGISLib workspace v2.0. Released September 2022.",
       "tags": [
