@@ -5,6 +5,7 @@ channels:
 dependencies:
   - pangeo-notebook=2023.04.15
   - gitpython=3.1.30
+  - ipyevents=2.0.1
   - ipyleaflet=0.17.2
   - jupyterlab=3.6.3
   - jupyterlab-git=0.34.2
@@ -12,4 +13,12 @@ dependencies:
   - jupyterlab_widgets=3.0.7
   - nodejs=18.15.0
   - plotly=5.14.1
+  - pydantic=1.10.8 
+  - rioxarray=0.14.1
+  - shapely=2.0.1
   - xmltodict=0.13.0
+  - xarray=2023.5.0
+  - pip:
+    - rio_tiler==4.1.11
+    - pystac_client==0.6.1
+    - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@dev/wug-map-refresh#egg-info=stac_ipyleaflet
