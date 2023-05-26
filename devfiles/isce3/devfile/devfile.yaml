@@ -1,6 +1,6 @@
 apiVersion: 1.0.0
 metadata:
-  generateName: PlAnT-
+  generateName: isce3-
 attributes:
   editorFree: 'true'
 components:
@@ -31,7 +31,7 @@ components:
                 emptyDir: {}
             containers:
               - name: jupyter
-                image: 'mas.ops.maap-project.org/root/jupyter-image/plant:develop'
+                image: 'mas.dit.maap-project.org/root/maap-workspaces/jupyterlab3/isce3:develop'
                 imagePullPolicy: Always
                 resources:
                   limits:
