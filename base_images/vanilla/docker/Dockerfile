@@ -2,7 +2,7 @@ FROM continuumio/miniconda3:22.11.1
 
 # install maap-py library
 ENV MAAP_CONF='/maap-py/'
-RUN git clone --single-branch --branch master https://github.com/MAAP-Project/maap-py.git \
+RUN git clone --single-branch --branch v3.0.0 https://github.com/MAAP-Project/maap-py.git \
     && cd maap-py \
     && pip install -e .
 
