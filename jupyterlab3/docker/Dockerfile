@@ -26,15 +26,17 @@ RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
     ; else \
         echo "Installing packages from '/shared/environment.yml'" \
         ; mamba env update --name base --file "/shared/environment.yml" \
-    ; fi
+    ; fi && \
+    find /opt/conda/ -follow -type f -name '*.a' -delete && \
+    find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
+    /opt/conda/bin/conda clean -afy && \
+    # Grant access to jupyterlab config files for base url rewriting \
+    chmod a+rwx -R /opt/conda/lib/python*/site-packages/ && \
+    # Adjust permissions on /etc/passwd so writable by group root.
+    chmod g+w /etc/passwd \
 
 # Adjust permissions on home directory so writable by group root.
 RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
-
-# Grant access to jupyterlab config files for base url rewriting
-RUN chmod a+rwx -R /opt/conda/lib/python*/site-packages/ && \
-# Adjust permissions on /etc/passwd so writable by group root.
-    chmod g+w /etc/passwd
 
 ###############################
 # Non Custom Jupyter Extensions
