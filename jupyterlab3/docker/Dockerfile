@@ -3,8 +3,6 @@ FROM ${BASE_IMAGE} as jupyterlab_base
 
 ARG BASE_IMAGE_TYPE
 
-ADD . /
-
 RUN mkdir -p /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
@@ -20,6 +18,7 @@ RUN apt-get clean && apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install workspace specific packages for conda environment
+ADD . /
 RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
     ; if [ -f "/${BASE_IMAGE_TYPE}/environment.yml" ]; then \
         echo "Installing packages from '/${BASE_IMAGE_TYPE}/environment.yml'" \
@@ -29,38 +28,36 @@ RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
         ; mamba env update --name base --file "/shared/environment.yml" \
     ; fi
 
-RUN npm install typescript -g
-RUN pip install jupyter-server==2.5.0
-
 # Adjust permissions on home directory so writable by group root.
 RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
 
 # Grant access to jupyterlab config files for base url rewriting
-RUN chmod a+rwx -R /opt/conda/lib/python*/site-packages/
-
+RUN chmod a+rwx -R /opt/conda/lib/python*/site-packages/ && \
 # Adjust permissions on /etc/passwd so writable by group root.
-RUN chmod g+w /etc/passwd
+    chmod g+w /etc/passwd
 
 ###############################
 # Non Custom Jupyter Extensions
 ###############################
-RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
-RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
+RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0 && \
+    jupyter labextension disable @jupyterlab/apputils-extension:announcements
 
 ###############################
 # Custom Jupyter Extensions
 ###############################
 RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.2.0 --no-build
 
-# PyPi package prepended with 'maap' so it more easily discoverable
-RUN pip install maap-jupyter-server-extension==1.0.0
-RUN jupyter server extension enable jupyter_server_extension
+RUN npm install typescript -g && \
+    pip install jupyter-server==2.5.0 && \
+    # PyPi package prepended with 'maap' so it more easily discoverable
+    pip install maap-jupyter-server-extension==1.0.0 && \
+    jupyter server extension enable jupyter_server_extension
 
-RUN jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@1.0.0 --no-build
-RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@1.0.0 --no-build
-RUN jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@1.0.4 --no-build
-RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@0.0.3 --no-build
-RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@0.0.46 --no-build
+RUN jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@1.0.0 --no-build && \
+    jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@1.0.0 --no-build && \
+    jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@1.0.4 --no-build && \
+    jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@0.0.3 --no-build && \
+    jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@0.0.46 --no-build
 
 RUN jupyter lab build && \
     jupyter lab clean && \
