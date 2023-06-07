@@ -33,7 +33,7 @@ RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
     # Grant access to jupyterlab config files for base url rewriting \
     chmod a+rwx -R /opt/conda/lib/python*/site-packages/ && \
     # Adjust permissions on /etc/passwd so writable by group root.
-    chmod g+w /etc/passwd \
+    chmod g+w /etc/passwd
 
 # Adjust permissions on home directory so writable by group root.
 RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
