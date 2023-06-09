@@ -56,7 +56,7 @@ RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.2.0 --
 RUN pip install maap-jupyter-server-extension==1.1.0
 RUN jupyter server extension enable jupyter_server_extension
 
-RUN jupyter labextension install @maap-jupyterlab/algorithms_jupyter_extension@0.1.0 --no-build
+RUN jupyter labextension install @maap-jupyterlab/algorithms_jupyter_extension@0.1.1 --no-build
 RUN jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@1.0.0 --no-build
 RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@1.0.0 --no-build
 RUN jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@1.0.4 --no-build
