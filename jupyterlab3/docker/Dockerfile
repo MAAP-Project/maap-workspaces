@@ -50,7 +50,7 @@ RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
 ###############################
 # Custom Jupyter Extensions
 ###############################
-RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.2.0 --no-build
+RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.3.0 --no-build
 
 # PyPi package prepended with 'maap' so it more easily discoverable
 RUN pip install maap-jupyter-server-extension==1.1.0
