@@ -1,5 +1,7 @@
 FROM continuumio/miniconda3:22.11.1
 
+# Create user ops to be used in DPS
+RUN groupadd -g 1000 ops && useradd --uid 1000 --gid 1000 --create-home ops
 # install maap-py library
 ENV MAAP_CONF='/maap-py/'
 RUN git clone --single-branch --branch v3.0.1 https://github.com/MAAP-Project/maap-py.git \
@@ -15,7 +17,9 @@ RUN conda install -c conda-forge mamba && \
     pygeos=0.12.0 pyproj=3.3.0 rasterio=1.2.10 scipy=1.8.0 && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
-    /opt/conda/bin/conda clean -afy
+    /opt/conda/bin/conda clean -afy && \
+    chgrp -R ops /opt/conda && chmod -R 770 /opt/conda
+# https://docs.anaconda.com/anaconda/install/multi-user/?highlight=chgrp#multi-user-anaconda-installation-on-linux
 
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH=${IMAGE_REF}
