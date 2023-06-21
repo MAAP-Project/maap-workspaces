@@ -12,5 +12,3 @@ dependencies:
   - nodejs=16.14.2
   - plotly=5.5.0
   - xmltodict=0.13.0
-  - pip
-    - git+https://github.com/MAAP-Project/che-sidebar-visibility-jupyter-extension.git@develop#egg-info=che-sidebar-visibility-jupyter-extension
