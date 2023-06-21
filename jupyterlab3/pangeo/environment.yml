@@ -22,3 +22,4 @@ dependencies:
     - rio_tiler==4.1.11
     - pystac_client==0.6.1
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.2.0#egg-info=stac_ipyleaflet
+    - git+https://github.com/MAAP-Project/che-sidebar-visibility-jupyter-extension.git@develop#egg-info=che-sidebar-visibility-jupyter-extension
