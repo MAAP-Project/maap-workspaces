@@ -50,7 +50,7 @@ RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
 ###############################
 # Custom Jupyter Extensions
 ###############################
-RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.3.0 --no-build
+RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.4.0 --no-build
 
 # PyPi package prepended with 'maap' so it more easily discoverable
 RUN pip install maap-jupyter-server-extension==1.1.1
@@ -62,6 +62,7 @@ RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@1.
 RUN jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@1.0.4 --no-build
 RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@0.0.3 --no-build
 RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@0.0.46 --no-build
+RUN jupyter labextension install @maap-jupyterlab/che-sidebar-visibility-jupyter-extension@1.0.1 --no-build
 
 RUN jupyter lab build && \
     jupyter lab clean && \
