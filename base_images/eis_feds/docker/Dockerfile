@@ -9,7 +9,7 @@ RUN git clone --single-branch --branch v3.0.1 https://github.com/MAAP-Project/ma
 RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
-COPY eis_feds/environment.yaml /root/environment.yaml
+COPY environment.yaml /root/environment.yaml
 
 RUN conda install -c conda-forge mamba && \
     mamba install -c conda-forge -y gdal=3.4.1 matplotlib=3.5.1 Cython=0.29.28 h5py=3.6.0 numba=0.55.1 \
