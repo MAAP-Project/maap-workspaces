@@ -58,7 +58,7 @@ RUN jupyter server extension enable jupyter_server_extension
 
 RUN jupyter labextension install @maap-jupyterlab/algorithms_jupyter_extension@0.1.1 --no-build
 RUN jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@1.0.0 --no-build
-RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@1.0.0 --no-build
+RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@1.0.1 --no-build
 RUN jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@1.0.4 --no-build
 RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@0.0.3 --no-build
 RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@0.0.46 --no-build
