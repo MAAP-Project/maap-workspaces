@@ -65,7 +65,7 @@ RUN jupyter labextension install @maap-jupyterlab/algorithms_jupyter_extension@0
 RUN jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@1.0.0 --no-build
 RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@1.0.0 --no-build
 RUN jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@1.0.4 --no-build
-RUN git clone --single-branch --branch bugs/presigned-url https://github.com/MAAP-Project/user-workspace-management-jupyter-extension.git
+RUN git clone --single-branch --branch feature/use-jlab-notifications https://github.com/MAAP-Project/user-workspace-management-jupyter-extension.git
 RUN cd user-workspace-management-jupyter-extension \
     && npm install \
     && npm run build \
