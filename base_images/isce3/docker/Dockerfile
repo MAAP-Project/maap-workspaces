@@ -16,10 +16,11 @@ RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
-RUN conda install -y -c conda-forge mamba=1.4.2
-RUN pip install pyOpenSSL==23.2.0
+RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
+    conda install -y -n base conda-libmamba-solver && \
+    conda config --set solver libmamba
 
-RUN mamba install -y -c conda-forge isce3=0.12.0 xarray=2023.4.2 \
+RUN conda install -y --solver=libmamba -c conda-forge isce3=0.12.0 xarray=2023.4.2 \
     hvplot=0.8.3 fsspec=2023.5.0 scikit-learn=1.2.2 && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
