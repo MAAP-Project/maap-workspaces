@@ -54,23 +54,13 @@ RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.4.0 --
 
 # PyPi package prepended with 'maap' so it more easily discoverable
 RUN pip install maap-jupyter-server-extension==1.1.1
-#RUN git clone --single-branch --branch bugs/presigned-url https://github.com/MAAP-Project/jupyter-server-extension.git
-#RUN cd jupyter-server-extension \
-#    && npm install \
-#    && npm run build \
-#    && jupyter labextension install --no-build
 RUN jupyter server extension enable jupyter_server_extension
 
 RUN jupyter labextension install @maap-jupyterlab/algorithms_jupyter_extension@0.1.1 --no-build
 RUN jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@1.0.0 --no-build
 RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@1.0.0 --no-build
 RUN jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@1.0.4 --no-build
-RUN git clone --single-branch --branch bugs/presigned-url https://github.com/MAAP-Project/user-workspace-management-jupyter-extension.git
-RUN cd user-workspace-management-jupyter-extension \
-    && npm install \
-    && npm run build \
-    && jupyter labextension install --no-build
-RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@0.0.3 --no-build
+RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@0.0.5 --no-build
 RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@0.0.46 --no-build
 RUN jupyter labextension install @maap-jupyterlab/che-sidebar-visibility-jupyter-extension@1.0.1 --no-build
 
