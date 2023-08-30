@@ -19,6 +19,13 @@ RUN apt-get clean && apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Install workspace specific env vars for conda environment
+RUN echo "Checking if env_vars.sh exists for ${BASE_IMAGE_TYPE}" \
+    ; if [ -f "/${BASE_IMAGE_TYPE}/env_vars.sh" ]; then \
+        echo "Setting up environment variables from '/${BASE_IMAGE_TYPE}/env_vars.sh'" \
+        ; chmod u+x /${BASE_IMAGE_TYPE}/env_vars.sh && /${BASE_IMAGE_TYPE}/env_vars.sh \
+    ; fi
+
 # Install workspace specific packages for conda environment
 RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
     ; if [ -f "/${BASE_IMAGE_TYPE}/environment.yml" ]; then \
