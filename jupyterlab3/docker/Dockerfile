@@ -20,18 +20,23 @@ RUN apt-get clean && apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install workspace specific env vars for conda environment
-RUN echo "Checking if env_vars.sh exists for ${BASE_IMAGE_TYPE}" \
+RUN echo -n "Checking existence of an 'env_vars.sh' script for ${BASE_IMAGE_TYPE} image ..." \
     ; if [ -f "/${BASE_IMAGE_TYPE}/env_vars.sh" ]; then \
+        echo "EXISTS!" \
         echo "Setting up environment variables from '/${BASE_IMAGE_TYPE}/env_vars.sh'" \
         ; chmod u+x /${BASE_IMAGE_TYPE}/env_vars.sh && /${BASE_IMAGE_TYPE}/env_vars.sh \
+    ; else \
+        echo "DOES NOT EXIST!" \
     ; fi
 
 # Install workspace specific packages for conda environment
-RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
+RUN echo -n "Checking existence of an 'environment.yml' file for ${BASE_IMAGE_TYPE} image ..." \
     ; if [ -f "/${BASE_IMAGE_TYPE}/environment.yml" ]; then \
+        echo "EXISTS!" \
         echo "Installing packages from '/${BASE_IMAGE_TYPE}/environment.yml'" \
         ; mamba env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" \
     ; else \
+        echo "DOES NOT EXIST!" \
         echo "Installing packages from '/shared/environment.yml'" \
         ; mamba env update --name base --file "/shared/environment.yml" \
     ; fi
