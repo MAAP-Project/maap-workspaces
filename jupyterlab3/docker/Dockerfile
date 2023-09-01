@@ -20,24 +20,21 @@ RUN apt-get clean && apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install workspace specific env vars for conda environment
-RUN echo -n "Checking existence of an 'env_vars.sh' script for ${BASE_IMAGE_TYPE} image ..." \
+RUN echo "Checking existence of '/${BASE_IMAGE_TYPE}/env_vars.sh' script..." \
     ; if [ -f "/${BASE_IMAGE_TYPE}/env_vars.sh" ]; then \
-        echo " FOUND" \
-        echo "Setting up environment variables from '/${BASE_IMAGE_TYPE}/env_vars.sh'" \
+        echo "Found '/${BASE_IMAGE_TYPE}/env_vars.sh' script, setting up environment variables." \
         ; chmod u+x /${BASE_IMAGE_TYPE}/env_vars.sh && /${BASE_IMAGE_TYPE}/env_vars.sh \
     ; else \
-        echo " NOT FOUND" \
+        echo "Did not find '/${BASE_IMAGE_TYPE}/env_vars.sh' script. Skipping installation of env vars." \
     ; fi
 
 # Install workspace specific packages for conda environment
-RUN echo -n "Checking existence of an `environment.yml` file for ${BASE_IMAGE_TYPE} image ..." \
+RUN echo "Checking existence of '/${BASE_IMAGE_TYPE}/environment.yml' file..." \
     ; if [ -f "/${BASE_IMAGE_TYPE}/environment.yml" ]; then \
-        echo " FOUND" \
-        echo "Installing packages from '/${BASE_IMAGE_TYPE}/environment.yml'" \
+        echo "Found '/${BASE_IMAGE_TYPE}/environment.yml', setting up environment using this file." \
         ; mamba env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" \
     ; else \
-        echo " NOT FOUND" \
-        echo "Installing packages from '/shared/environment.yml'" \
+        echo "Did not find '/${BASE_IMAGE_TYPE}/environment.yml', installing packages using '/shared/environment.yml' instead." \
         ; mamba env update --name base --file "/shared/environment.yml" \
     ; fi
 
