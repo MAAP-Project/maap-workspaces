@@ -21,4 +21,4 @@ dependencies:
   - pip:
     - rio_tiler==4.1.11
     - pystac_client==0.6.1
-    - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.1#egg-info=stac_ipyleaflet
+    - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.2#egg-info=stac_ipyleaflet
