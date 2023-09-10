@@ -18,6 +18,7 @@ dependencies:
   - shapely=2.0.1
   - xmltodict=0.13.0
   - xarray=2023.5.0
+  - pip
   - pip:
     - rio_tiler==4.1.11
     - pystac_client==0.6.1
