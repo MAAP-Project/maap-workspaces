@@ -20,12 +20,13 @@ RUN apt-get clean && apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install workspace specific env vars for conda environment
-RUN echo "Checking existence of '/${BASE_IMAGE_TYPE}/update-env-vars.sh' script..." \
-    ; if [ -f "/${BASE_IMAGE_TYPE}/update-env-vars.sh" ]; then \
-        echo "Found '/${BASE_IMAGE_TYPE}/update-env-vars.sh' script, setting up environment variables." \
-        ; chmod u+x /${BASE_IMAGE_TYPE}/update-env-vars.sh && /${BASE_IMAGE_TYPE}/update-env-vars.sh \
+RUN echo "Checking existence of '/${BASE_IMAGE_TYPE}/env-vars.sh' script..." \
+    ; if [ -f "/${BASE_IMAGE_TYPE}/env-vars.sh" ]; then \
+        echo "Found '/${BASE_IMAGE_TYPE}/env-vars.sh' script, setting up environment variables." \
+        ; chmod u+x /${BASE_IMAGE_TYPE}/env-vars.sh && cp /${BASE_IMAGE_TYPE}/env-vars.sh /etc/profile.d/ \
+        ; source /etc/profile \
     ; else \
-        echo "Did not find '/${BASE_IMAGE_TYPE}/update-env-vars.sh' script. Skipping installation of env vars." \
+        echo "Did not find '/${BASE_IMAGE_TYPE}/env-vars.sh' script. Skipping installation of env vars." \
     ; fi
 
 # Install workspace specific packages for conda environment
