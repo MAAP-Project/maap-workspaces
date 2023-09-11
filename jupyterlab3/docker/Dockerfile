@@ -24,7 +24,7 @@ RUN echo "Checking existence of '/${BASE_IMAGE_TYPE}/env-vars.sh' script..." \
     ; if [ -f "/${BASE_IMAGE_TYPE}/env-vars.sh" ]; then \
         echo "Found '/${BASE_IMAGE_TYPE}/env-vars.sh' script, setting up environment variables." \
         ; chmod u+x /${BASE_IMAGE_TYPE}/env-vars.sh && cp /${BASE_IMAGE_TYPE}/env-vars.sh /etc/profile.d/ \
-        ; source /etc/profile \
+        ; . /etc/profile \
     ; else \
         echo "Did not find '/${BASE_IMAGE_TYPE}/env-vars.sh' script. Skipping installation of env vars." \
     ; fi
