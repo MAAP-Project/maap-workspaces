@@ -9,4 +9,7 @@ STAC_CATALOG_URL=https://stac.maap-project.org/" >> /tmp/pangeo_env_vars
 # Add our env vars to system environment
 cat /etc/environment >> /tmp/pangeo_env_vars
 cp /tmp/pangeo_env_vars /etc/environment
+source /etc/environment
+
+# Cleanup
 rm /tmp/pangeo_env_vars
