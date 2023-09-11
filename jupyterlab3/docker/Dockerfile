@@ -38,7 +38,7 @@ RUN echo "Checking existence of '/${BASE_IMAGE_TYPE}/environment.yml' file..." \
         echo "Did not find '/${BASE_IMAGE_TYPE}/environment.yml', installing packages using '/shared/environment.yml' instead." \
         ; mamba env update --name base --file "/shared/environment.yml" \
     ; fi
-RUN mamba activate base
+RUN conda activate base
 
 RUN npm install typescript -g
 RUN pip install jupyter-server==2.5.0
