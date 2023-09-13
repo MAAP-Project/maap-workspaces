@@ -20,14 +20,14 @@ RUN apt-get clean && apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install workspace specific env vars for conda environment
-RUN echo "Checking existence of '/${BASE_IMAGE_TYPE}/env-vars.sh' script..." \
-    ; if [ -f "/${BASE_IMAGE_TYPE}/env-vars.sh" ]; then \
-        echo "Found '/${BASE_IMAGE_TYPE}/env-vars.sh' script, setting up environment variables." \
-        ; chmod u+x /${BASE_IMAGE_TYPE}/env-vars.sh && cp /${BASE_IMAGE_TYPE}/env-vars.sh /etc/profile.d/ \
-        ; . /etc/profile \
-    ; else \
-        echo "Did not find '/${BASE_IMAGE_TYPE}/env-vars.sh' script. Skipping installation of env vars." \
-    ; fi
+#RUN echo "Checking existence of '/${BASE_IMAGE_TYPE}/env-vars.sh' script..." \
+#    ; if [ -f "/${BASE_IMAGE_TYPE}/env-vars.sh" ]; then \
+#        echo "Found '/${BASE_IMAGE_TYPE}/env-vars.sh' script, setting up environment variables." \
+#        ; chmod u+x /${BASE_IMAGE_TYPE}/env-vars.sh && cp /${BASE_IMAGE_TYPE}/env-vars.sh /etc/profile.d/ \
+#        ; . /etc/profile \
+#    ; else \
+#        echo "Did not find '/${BASE_IMAGE_TYPE}/env-vars.sh' script. Skipping installation of env vars." \
+#    ; fi
 
 # Install workspace specific packages for conda environment
 RUN echo "Checking existence of '/${BASE_IMAGE_TYPE}/environment.yml' file..." \
@@ -38,6 +38,7 @@ RUN echo "Checking existence of '/${BASE_IMAGE_TYPE}/environment.yml' file..." \
         echo "Did not find '/${BASE_IMAGE_TYPE}/environment.yml', installing packages using '/shared/environment.yml' instead." \
         ; mamba env update --name base --file "/shared/environment.yml" \
     ; fi
+RUN /opt/conda/bin/python -m ipykernel install --user --name base --display-name "Python (base)"
 
 RUN npm install typescript -g
 RUN pip install jupyter-server==2.5.0
