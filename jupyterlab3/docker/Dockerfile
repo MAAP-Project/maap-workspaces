@@ -33,10 +33,10 @@ RUN apt-get clean && apt-get update && \
 RUN echo "Checking existence of '/${BASE_IMAGE_TYPE}/environment.yml' file..." \
     ; if [ -f "/${BASE_IMAGE_TYPE}/environment.yml" ]; then \
         echo "Found '/${BASE_IMAGE_TYPE}/environment.yml', setting up environment using this file." \
-        ; mamba env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" \
+        ; mamba env create --name maap --file "/${BASE_IMAGE_TYPE}/environment.yml" \
     ; else \
         echo "Did not find '/${BASE_IMAGE_TYPE}/environment.yml', installing packages using '/shared/environment.yml' instead." \
-        ; mamba env update --name base --file "/shared/environment.yml" \
+        ; mamba env create --name maap --file "/shared/environment.yml" \
     ; fi
 
 RUN npm install typescript -g
