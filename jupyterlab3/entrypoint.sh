@@ -108,6 +108,8 @@ env | grep _ >> /etc/environment
 export PATH=$PATH:/opt/conda/bin
 cp /root/.bashrc ~/.bash_profile
 conda init
+conda activate base
+python -m ipykernel install --user --name base --display-name "Python (base)"
 
 # Need to fix directory permissions for publickey authentication
 chmod 700 /projects
