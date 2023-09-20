@@ -22,7 +22,7 @@ dependencies:
   - pip:
     - rio_tiler==4.1.11
     - pystac_client==0.6.1
-    - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.2#egg-info=stac_ipyleaflet
+    - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.3#egg-info=stac_ipyleaflet
 variables:
   TITILER_STAC_ENDPOINT: 'https://titiler-stac.maap-project.org/'
   TITILER_ENDPOINT: 'https://titiler.maap-project.org/'
