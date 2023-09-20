@@ -36,8 +36,8 @@ RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
 
 # need to uninstall jupyter_server_terminals as it conflicts with Jupyterlab 3.4.x. Doesn't seem to break anything
 # but can get rid of if/when we upgrade jlab
-RUN conda install -y --solver=libmamba -c conda-forge -c plant plant=0.1.89dev isce2=2.6.2 matplotlib=3.5.1 Cython=0.29.28 \
-    numba=0.55.1 pygeos=0.14.0 pyproj=3.4.1 rasterio=1.3.6 && \
+RUN conda install -y --solver=libmamba -c conda-forge -c plant plant=0.1.89dev isce2=2.6.2 matplotlib=3.6.2 Cython=0.29.33 \
+    numba=0.56.4 pygeos=0.14 pyproj=3.4.1 rasterio=1.3.4 && \
     pip uninstall -y jupyter_server_terminals && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
