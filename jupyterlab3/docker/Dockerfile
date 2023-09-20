@@ -33,11 +33,11 @@ RUN apt-get clean && apt-get update && \
 RUN echo "Checking existence of '/${BASE_IMAGE_TYPE}/environment.yml' file..." \
     ; if [ -f "/${BASE_IMAGE_TYPE}/environment.yml" ]; then \
         echo "Found! Installing packages specifed in '/${BASE_IMAGE_TYPE}/environment.yml'." \
-        ; mamba env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" \
+        ; conda env update --name base --solver=libmamba --file "/${BASE_IMAGE_TYPE}/environment.yml" \
     ; else \
         echo "Not found: '/${BASE_IMAGE_TYPE}/environment.yml'" \
         ; echo "Installing packages specified in '/shared/environment.yml' instead." \
-        ; mamba env update --name base --file "/shared/environment.yml" \
+        ; conda env update --name base --solver=libmamba --file "/shared/environment.yml" \
     ; fi
 
 RUN npm install typescript -g
