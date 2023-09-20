@@ -107,9 +107,7 @@ env | grep _ >> /etc/environment
 # Add conda bin to path
 export PATH=$PATH:/opt/conda/bin
 cp /root/.bashrc ~/.bash_profile
-conda init \
-    && conda activate maap \
-    && python -m ipykernel install --user --name maap --display-name "Python (MAAP)"
+conda init
 
 # Need to fix directory permissions for publickey authentication
 chmod 700 /projects
@@ -121,9 +119,9 @@ service ssh restart
 
 VERSION=$(jupyter lab --version)
 if [[ $VERSION > '2' ]] && [[ $VERSION < '3' ]]; then
-    SHELL=/bin/bash conda activate maap && jupyter lab --ip=0.0.0.0 --port=3100 --allow-root --NotebookApp.token='' --NotebookApp.base_url=$PREVIEW_URL --no-browser --debug
+    SHELL=/bin/bash source /opt/conda/bin/activate base && jupyter lab --ip=0.0.0.0 --port=3100 --allow-root --NotebookApp.token='' --NotebookApp.base_url=$PREVIEW_URL --no-browser --debug
 elif [[ $VERSION > '3' ]] && [[ $VERSION < '4' ]]; then
-    SHELL=/bin/bash conda activate maap && jupyter lab --ip=0.0.0.0 --port=3100 --allow-root --ContentsManager.allow_hidden=True --ServerApp.token='' --ServerApp.base_url=$PREVIEW_URL --no-browser --debug --ServerApp.disable_check_xsrf=True
+    SHELL=/bin/bash source /opt/conda/bin/activate base && jupyter lab --ip=0.0.0.0 --port=3100 --allow-root --ContentsManager.allow_hidden=True --ServerApp.token='' --ServerApp.base_url=$PREVIEW_URL --no-browser --debug --ServerApp.disable_check_xsrf=True
 else
     echo "Error! Jupyterlab version not supported."
 fi
