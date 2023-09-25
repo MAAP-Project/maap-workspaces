@@ -28,4 +28,4 @@ variables:
   TITILER_ENDPOINT: 'https://titiler.maap-project.org/'
   STAC_CATALOG_NAME: 'MAAP STAC'
   STAC_CATALOG_URL: 'https://stac.maap-project.org/'
-  STAC_BROWSER_URL: 'https://stac-browser.maap-project.org'
+  STAC_BROWSER_URL: 'https://stac-browser.maap-project.org/'
