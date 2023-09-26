@@ -1,7 +1,4 @@
-FROM continuumio/miniconda3:22.11.1
-ENV LANG en_US.UTF-8
-ENV TZ US/Pacific
-ARG DEBIAN_FRONTEND=noninteractive
+FROM continuumio/miniconda3:4.12.0
 
 # install maap-py library
 ENV MAAP_CONF='/maap-py/'
