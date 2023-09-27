@@ -13,9 +13,12 @@ RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
+RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
+    conda install -y -n base conda-libmamba-solver && \
+    conda config --set solver libmamba
+
 COPY ./environment.yml /tmp
-RUN conda install -c conda-forge mamba && \
-    mamba env update --name base --file "/tmp/environment.yml" \
+RUN conda env update --solver libmamba --name base --file "/tmp/environment.yml" \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
