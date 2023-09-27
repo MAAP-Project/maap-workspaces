@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:22.11.1
+FROM continuumio/miniconda3:23.5.2-0
 ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
@@ -18,7 +18,7 @@ RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
     conda config --set solver libmamba
 
 COPY ./environment.yml /tmp
-RUN conda env update --solver libmamba --name base --file "/tmp/environment.yml" \
+RUN conda env update --solver libmamba -n base --file "/tmp/environment.yml" \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
