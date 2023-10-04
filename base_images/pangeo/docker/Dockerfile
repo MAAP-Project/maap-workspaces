@@ -14,7 +14,7 @@ WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
 RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
-    conda install -y -n base conda-libmamba-solver && \
+    conda install -y -n base conda-libmamba-solver=23.7.0 && \
     conda config --set solver libmamba
 
 RUN conda install -y --solver=libmamba -c conda-forge gdal=3.6.2 matplotlib=3.6.2 Cython=0.29.33 h5py=3.7.0 numba=0.56.4 \

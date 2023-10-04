@@ -31,7 +31,7 @@ WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
 RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
-    conda install -y -n base conda-libmamba-solver && \
+    conda install -y -n base conda-libmamba-solver=23.7.0 && \
     conda config --set solver libmamba
 
 # need to uninstall jupyter_server_terminals as it conflicts with Jupyterlab 3.4.x. Doesn't seem to break anything
