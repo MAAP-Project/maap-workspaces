@@ -12,7 +12,7 @@ RUN git clone --single-branch --branch v3.0.1 https://github.com/MAAP-Project/ma
 RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
-RUN touch .jupyter/jupyter_server_config.json
+RUN touch jupyter_server_config.json
 
 RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
     conda install -y -n base conda-libmamba-solver=23.7.0 && \
