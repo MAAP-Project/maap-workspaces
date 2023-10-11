@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # A more robust method of constructing the workspace url prefix
-get_workspace_url_prefix() {
+get_request_data() {
 	python3 - <<END
 import os
 import json
@@ -13,11 +13,10 @@ namespace = "$1"
 # Replicate Che's namespace converter policy
 # by substituting any non-alphanumeric characters with hyphens.
 namespace = re.sub("[^0-9a-zA-Z-]+", "-", namespace)
+api_endpoint = "$2"
 
 svc_host = os.environ.get('KUBERNETES_SERVICE_HOST')
 svc_host_https_port = os.environ.get('KUBERNETES_SERVICE_PORT_HTTPS')
-che_workspace_id = os.environ.get('CHE_WORKSPACE_ID')
-che_machine_name = os.environ.get('CHE_MACHINE_NAME').lower().replace('/', '-')
 
 with open ("/var/run/secrets/kubernetes.io/serviceaccount/token", "r") as t:
     token=t.read()
@@ -26,12 +25,25 @@ headers = {
     'Authorization': 'Bearer ' + token,
 }
 
-request_string = 'https://' + svc_host + ':' + svc_host_https_port + '/api/v1/namespaces/' + namespace +  '/endpoints/'
+request_string = 'https://' + svc_host + ':' + svc_host_https_port + '/api/v1/namespaces/' + namespace +  '/' + api_endpoint + '/'
 httprequest = Request(request_string, headers=headers)
 context = ssl._create_unverified_context()
 with urlopen(httprequest, context=context) as raw_response:
     response = raw_response.read().decode()
 data = json.loads(response)
+print(data)
+
+END
+}
+
+# A more robust method of constructing the workspace url prefix
+get_workspace_url_prefix() {
+	python3 - <<END
+data=$(get_request_data "$1" "endpoints")
+
+import os
+che_workspace_id = os.environ.get('CHE_WORKSPACE_ID')
+che_machine_name = os.environ.get('CHE_MACHINE_NAME').lower().replace('/', '-')
 
 endpoints = data['items']
 for endpoint in endpoints:
@@ -39,25 +51,31 @@ for endpoint in endpoints:
         if che_workspace_id == endpoint['metadata']['labels']['che.workspace_id']:
             print("/%s/%s" % (endpoint['metadata']['name'], endpoint['subsets'][0]['ports'][0]['name']))
             break
+
 END
 }
 
-for i in {1..20}
+for i in {1..300}
 do
     echo "Attempt $i to construct PREVIEW_URL"
     PREVIEW_URL=$(get_workspace_url_prefix "$CHE_WORKSPACE_NAMESPACE-che") # Che 7 OPS configuration where the (actual) namespace is "<username>-che"
+    NAMESPACE="$CHE_WORKSPACE_NAMESPACE-che"
     if test -z "$PREVIEW_URL"
     then
         PREVIEW_URL=$(get_workspace_url_prefix "$CHE_WORKSPACE_NAMESPACE-$CHE_WORKSPACE_ID") # Che 7 UAT configuration fallback where the default namespace is "<username>-<workspaceid>", this will be deprecated
+        NAMESPACE="$CHE_WORKSPACE_NAMESPACE-$CHE_WORKSPACE_ID"
     fi
     if test -z "$PREVIEW_URL"
     then
         PREVIEW_URL=$(get_workspace_url_prefix "$CHE_WORKSPACE_ID") # Che 6 configuration fallback where the default namespace is the workspace id, this will be deprecated
+        NAMESPACE="$CHE_WORKSPACE_ID"
     fi
     if ! test -z "$PREVIEW_URL" # exit loop when it has a preview_url
     then
         break
     fi
+    date # print timestamp in the logs if it doesn't get a URL
+    sleep 1
 done
 # end more robust method
 
@@ -113,13 +131,37 @@ mkdir -p /projects/.ssh/
 chmod 700 /projects/.ssh/
 service ssh restart
 
+# Get maximum memory allocation for this workspace to display at bottom of notebook
+get_max_memory() {
+	python3 - <<END
+data_pods=$(get_request_data "$1" "pods")
+
+import os
+import sys
+che_workspace_id = os.environ.get('CHE_WORKSPACE_ID')
+
+for item in data_pods['items']: 
+    if che_workspace_id == item['metadata']['labels'].get('che.workspace_id'):
+        for container in item['spec']['containers']:
+            if container['name']=="jupyter":
+                print(container['resources']['limits']['memory'])
+                sys.exit()
+
+print(8489271296) #default memory
+END
+}
+
+MEMORY=$(get_max_memory "$NAMESPACE")
+
 # TBD maap-py install
 
+source /opt/conda/bin/activate base
+export SHELL=/bin/bash
 VERSION=$(jupyter lab --version)
 if [[ $VERSION > '2' ]] && [[ $VERSION < '3' ]]; then
-    SHELL=/bin/bash jupyter lab --ip=0.0.0.0 --port=3100 --allow-root --NotebookApp.token='' --NotebookApp.base_url=$PREVIEW_URL --no-browser --debug
+    jupyter lab --ip=0.0.0.0 --port=3100 --allow-root --NotebookApp.token='' --NotebookApp.base_url=$PREVIEW_URL --no-browser --debug
 elif [[ $VERSION > '3' ]] && [[ $VERSION < '4' ]]; then
-    SHELL=/bin/bash jupyter lab --ip=0.0.0.0 --port=3100 --allow-root --ContentsManager.allow_hidden=True --ServerApp.token='' --ServerApp.base_url=$PREVIEW_URL --no-browser --debug --ServerApp.disable_check_xsrf=True --collaborative
+    jupyter lab --ip=0.0.0.0 --port=3100 --allow-root --ContentsManager.allow_hidden=True --ServerApp.token='' --ServerApp.base_url=$PREVIEW_URL --no-browser --debug --ServerApp.disable_check_xsrf=True --ResourceUseDisplay.mem_limit=$MEMORY --ResourceUseDisplay.mem_warning_threshold=0.2
 else
     echo "Error! Jupyterlab version not supported."
 fi

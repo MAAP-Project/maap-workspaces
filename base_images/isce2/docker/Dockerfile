@@ -5,7 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # install maap-py library
 ENV MAAP_CONF='/maap-py/'
-RUN git clone --single-branch --branch v3.0.0 https://github.com/MAAP-Project/maap-py.git \
+RUN git clone --single-branch --branch v3.0.1 https://github.com/MAAP-Project/maap-py.git \
     && cd maap-py \
     && pip install -e .
 
@@ -30,12 +30,14 @@ RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
-RUN conda install -y -c conda-forge mamba=1.3.1
+RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
+    conda install -y -n base conda-libmamba-solver=23.7.0 && \
+    conda config --set solver libmamba
 
 # need to uninstall jupyter_server_terminals as it conflicts with Jupyterlab 3.4.x. Doesn't seem to break anything
 # but can get rid of if/when we upgrade jlab
-RUN mamba install -y -c conda-forge -c plant plant=0.1.89dev isce2=2.6.2 matplotlib=3.5.1 Cython=0.29.28 \
-    numba=0.55.1 pygeos=0.14.0 pyproj=3.4.1 rasterio=1.3.6 && \
+RUN conda install -y --solver=libmamba -c conda-forge -c plant plant=0.1.89dev isce2=2.6.2 matplotlib=3.6.2 Cython=0.29.33 \
+    numba=0.56.4 pygeos=0.14 pyproj=3.4.1 rasterio=1.3.4 && \
     pip uninstall -y jupyter_server_terminals && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \

@@ -22,7 +22,7 @@ ADD . /
 RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
     ; if [ -f "/${BASE_IMAGE_TYPE}/environment.yml" ]; then \
         echo "Installing packages from '/${BASE_IMAGE_TYPE}/environment.yml'" \
-        ; mamba env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" \
+        ; conda env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" --solver libmamba \
     ; else \
         echo "Installing packages from '/shared/environment.yml'" \
         ; mamba env update --name base --file "/shared/environment.yml" \
@@ -47,7 +47,7 @@ RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0 && \
 ###############################
 # Custom Jupyter Extensions
 ###############################
-RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.2.0 --no-build
+RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.4.6 --no-build
 
 RUN npm install typescript -g && \
     pip install jupyter-server==2.5.0 && \
@@ -60,6 +60,8 @@ RUN jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@1.0.0 --
     jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@1.0.4 --no-build && \
     jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@0.0.3 --no-build && \
     jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@0.0.46 --no-build
+RUN jupyter labextension install @maap-jupyterlab/che-sidebar-visibility-jupyter-extension@1.0.1 --no-build
+RUN jupyter labextension install @maap-jupyterlab/algorithms_jupyter_extension@0.1.1 --no-build
 
 RUN jupyter lab build && \
     jupyter lab clean && \
