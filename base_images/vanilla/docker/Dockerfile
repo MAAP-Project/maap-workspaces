@@ -14,6 +14,7 @@ WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 RUN touch jupyter_server_config.json
 RUN conda install -c conda-forge jupyter
+RUN conda install -c conda-forge jupyterlab
 RUN jupyter lab --generate-config
 
 RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
