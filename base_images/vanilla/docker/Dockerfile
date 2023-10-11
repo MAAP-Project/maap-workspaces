@@ -13,6 +13,7 @@ RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 RUN touch jupyter_server_config.json
+RUN jupyter server --generate-config
 
 RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
     conda install -y -n base conda-libmamba-solver=23.7.0 && \
