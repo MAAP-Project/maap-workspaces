@@ -3,8 +3,6 @@ FROM ${BASE_IMAGE} as jupyterlab_base
 
 ARG BASE_IMAGE_TYPE
 
-ADD . /
-
 RUN mkdir -p /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
@@ -20,6 +18,7 @@ RUN apt-get clean && apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install workspace specific packages for conda environment
+ADD . /
 RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
     ; if [ -f "/${BASE_IMAGE_TYPE}/environment.yml" ]; then \
         echo "Installing packages from '/${BASE_IMAGE_TYPE}/environment.yml'" \
@@ -27,43 +26,43 @@ RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
     ; else \
         echo "Installing packages from '/shared/environment.yml'" \
         ; conda env update --name base --file "/shared/environment.yml" --solver libmamba \
-    ; fi
+    ; fi && \
+    find /opt/conda/ -follow -type f -name '*.a' -delete && \
+    find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
+    /opt/conda/bin/conda clean -afy
 
-RUN npm install typescript -g
-RUN pip install jupyter-server==2.5.0
-RUN pip install jupyter-resource-usage==0.7.2
 
-# Adjust permissions on home directory so writable by group root.
-RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
-
-# Grant access to jupyterlab config files for base url rewriting
-RUN chmod a+rwx -R /opt/conda/lib/python*/site-packages/
-
-# Adjust permissions on /etc/passwd so writable by group root.
-RUN chmod g+w /etc/passwd
+ # Grant access to jupyterlab config files for base url rewriting
+RUN chmod a+rwx -R /opt/conda/lib/python*/site-packages/ && \
+    # Adjust permissions on /etc/passwd so writable by group root.
+    chmod g+w /etc/passwd && \
+    # Adjust permissions on home directory so writable by group root.
+    chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
 
 ###############################
 # Non Custom Jupyter Extensions
 ###############################
-RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
-RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
+RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0 && \
+    jupyter labextension disable @jupyterlab/apputils-extension:announcements
 
 ###############################
 # Custom Jupyter Extensions
 ###############################
 RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.4.6 --no-build
 
-# PyPi package prepended with 'maap' so it more easily discoverable
-RUN pip install maap-jupyter-server-extension==1.1.1
-RUN jupyter server extension enable jupyter_server_extension
+RUN npm install typescript -g && \
+    pip install jupyter-server==2.5.0 && \
+    # PyPi package prepended with 'maap' so it more easily discoverable
+    pip install maap-jupyter-server-extension==1.1.1 && \
+    jupyter server extension enable jupyter_server_extension
 
-RUN jupyter labextension install @maap-jupyterlab/algorithms_jupyter_extension@0.1.1 --no-build
-RUN jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@1.0.0 --no-build
-RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@1.0.2 --no-build
-RUN jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@1.0.4 --no-build
-RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@0.0.5 --no-build
-RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@1.0.0 --no-build
-RUN jupyter labextension install @maap-jupyterlab/che-sidebar-visibility-jupyter-extension@1.0.1 --no-build
+RUN jupyter labextension install @maap-jupyterlab/algorithms_jupyter_extension@0.1.1 --no-build && \
+    jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@1.0.0 --no-build && \
+    jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@1.0.2 --no-build && \
+    jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@1.0.4 --no-build && \
+    jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@0.0.5 --no-build && \
+    jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@1.0.0 --no-build && \
+    jupyter labextension install @maap-jupyterlab/che-sidebar-visibility-jupyter-extension@1.0.1 --no-build
 
 RUN jupyter lab build && \
     jupyter lab clean && \
