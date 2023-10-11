@@ -25,7 +25,7 @@ RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
         ; conda env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" --solver libmamba \
     ; else \
         echo "Installing packages from '/shared/environment.yml'" \
-        ; mamba env update --name base --file "/shared/environment.yml" \
+        ; conda env update --name base --file "/shared/environment.yml" -solver libmamba \
     ; fi && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
