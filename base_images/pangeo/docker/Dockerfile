@@ -5,7 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # install maap-py library
 ENV MAAP_CONF='/maap-py/'
-RUN git clone --single-branch --branch v3.0.1 https://github.com/MAAP-Project/maap-py.git \
+RUN git clone --single-branch --branch v3.1.2 https://github.com/MAAP-Project/maap-py.git \
     && cd maap-py \
     && pip install -e .
 
