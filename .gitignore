@@ -8,3 +8,5 @@ built_images.txt
 base_images/build-image-local.sh
 
 *.code-workspace
+
+.env*
