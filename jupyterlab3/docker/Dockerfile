@@ -7,7 +7,6 @@ ADD . /
 
 RUN mkdir -p /projects
 WORKDIR /projects
-RUN touch .condarc
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
 USER root
