@@ -13,9 +13,9 @@ RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
-RUN conda install -y -c conda-forge libarchive && \
-    conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
-    conda install -y -n base conda-libmamba-solver && \
+RUN conda install -y -c conda-forge -n base libarchive && \
+    conda install -y -c conda-forge -n base pyOpenSSL=23.2.0 && \
+    conda install -y -c conda-forge -n base conda-libmamba-solver && \
     conda config --set solver libmamba
 
 COPY ./environment.yml /tmp
