@@ -18,7 +18,7 @@ RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
 RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
     conda install -y -n base conda-libmamba-solver=23.7.0 && \
-    conda config --set solver libmamba
+    conda config --system --set solver libmamba
 
 RUN conda install -y --solver=libmamba -c conda-forge isce3=0.12.0 xarray=2023.4.2 \
     hvplot=0.8.3 fsspec=2023.5.0 scikit-learn=1.2.2 && \
