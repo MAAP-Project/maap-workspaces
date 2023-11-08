@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y libxt-dev && apt-get clean
 
 RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
     conda install -y -n base conda-libmamba-solver=23.7.0 && \
-    conda config --set solver libmamba
+    conda config --system --set solver libmamba
 
 RUN conda install -y --solver=libmamba -c conda-forge nb_conda_kernels
 
