@@ -14,7 +14,8 @@ WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
 #RUN conda update conda 
-RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
+RUN conda update conda && \
+    conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
     conda install -y -n base conda-libmamba-solver && \
     conda config --system --set solver libmamba
 
