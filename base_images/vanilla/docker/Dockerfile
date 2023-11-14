@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:23.5.2-0
+FROM continuumio/miniconda3:23.5.2-0-alpine
 ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
