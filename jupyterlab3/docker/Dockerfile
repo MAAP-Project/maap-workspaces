@@ -19,11 +19,12 @@ RUN apt-get clean && apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+RUN conda --version
 # Install workspace specific packages for conda environment
 RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
     ; if [ -f "/${BASE_IMAGE_TYPE}/environment.yml" ]; then \
         echo "Installing packages from '/${BASE_IMAGE_TYPE}/environment.yml'" \
-        ; conda env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" --solver libmamba \
+        ; conda env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" \
     ; else \
         echo "Installing packages from '/shared/environment.yml'" \
         ; conda env update --name base --file "/shared/environment.yml" --solver libmamba \
