@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:22.11.1
+FROM continuumio/miniconda3:23.3.1-0
 ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
@@ -13,7 +13,8 @@ RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
-RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
+RUN conda update conda && \
+    conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
     conda install -y -n base conda-libmamba-solver=23.7.0 && \
     conda config --system --set solver libmamba
 
