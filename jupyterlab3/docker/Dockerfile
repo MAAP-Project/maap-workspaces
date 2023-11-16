@@ -27,7 +27,7 @@ RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
         ; conda env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" \
     ; else \
         echo "Installing packages from '/shared/environment.yml'" \
-        ; conda env update --name base --file "/shared/environment.yml" --solver libmamba \
+        ; conda env update --name base --file "/shared/environment.yml" \
     ; fi
 
 RUN npm install typescript -g
