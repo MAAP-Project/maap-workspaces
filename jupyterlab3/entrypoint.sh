@@ -156,7 +156,6 @@ MEMORY=$(get_max_memory "$NAMESPACE")
 # TBD maap-py install
 
 source /opt/conda/bin/activate base
-conda config --set solver libmamba
 export SHELL=/bin/bash
 VERSION=$(jupyter lab --version)
 if [[ $VERSION > '2' ]] && [[ $VERSION < '3' ]]; then

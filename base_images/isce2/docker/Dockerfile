@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:22.11.1
+FROM continuumio/miniconda3:23.3.1-0
 ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
@@ -30,13 +30,12 @@ RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
-RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
-    conda install -y -n base conda-libmamba-solver=23.7.0 && \
-    conda config --system --set solver libmamba
+RUN conda install conda=23.10 && \
+    conda install -y -c conda-forge pyOpenSSL=23.2.0 
 
 # need to uninstall jupyter_server_terminals as it conflicts with Jupyterlab 3.4.x. Doesn't seem to break anything
 # but can get rid of if/when we upgrade jlab
-RUN conda install -y --solver=libmamba -c conda-forge -c plant plant=0.1.89dev isce2=2.6.2 matplotlib=3.6.2 Cython=0.29.33 \
+RUN conda install -y -c conda-forge -c plant plant=0.1.89dev isce2=2.6.2 matplotlib=3.6.2 Cython=0.29.33 \
     numba=0.56.4 pygeos=0.14 pyproj=3.4.1 rasterio=1.3.4 && \
     pip uninstall -y jupyter_server_terminals && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
