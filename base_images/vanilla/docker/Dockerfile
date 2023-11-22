@@ -15,7 +15,8 @@ RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
 #RUN conda update conda 
 RUN conda install conda=23.10 && \
-    conda install -y -c conda-forge pyOpenSSL=23.2.0 
+    conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
+    conda install -y -c conda-forge libarchive=3.6.2
 
 RUN conda install -y -c conda-forge gdal=3.6.2 matplotlib=3.6.2 Cython=0.29.33 h5py=3.7.0 numba=0.56.4 \
     pygeos=0.14 pyproj=3.4.1 rasterio=1.3.4 scipy=1.10.0 \
