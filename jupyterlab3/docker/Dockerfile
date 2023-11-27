@@ -19,14 +19,15 @@ RUN apt-get clean && apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+RUN conda --version
 # Install workspace specific packages for conda environment
 RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
     ; if [ -f "/${BASE_IMAGE_TYPE}/environment.yml" ]; then \
         echo "Installing packages from '/${BASE_IMAGE_TYPE}/environment.yml'" \
-        ; conda env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" --solver libmamba \
+        ; conda env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" \
     ; else \
         echo "Installing packages from '/shared/environment.yml'" \
-        ; conda env update --name base --file "/shared/environment.yml" --solver libmamba \
+        ; conda env update --name base --file "/shared/environment.yml" \
     ; fi
 
 RUN npm install typescript -g
@@ -52,18 +53,18 @@ RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
 ###############################
 # Custom Jupyter Extensions
 ###############################
-RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.4.6 --no-build
+RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.5.1 --no-build
 
 # PyPi package prepended with 'maap' so it more easily discoverable
-RUN pip install maap-jupyter-server-extension==1.1.1
+RUN pip install maap-jupyter-server-extension==1.2.2
 RUN jupyter server extension enable jupyter_server_extension
 
-RUN jupyter labextension install @maap-jupyterlab/algorithms_jupyter_extension@0.1.1 --no-build
+RUN jupyter labextension install @maap-jupyterlab/algorithms_jupyter_extension@0.2.0 --no-build
 RUN jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@1.0.0 --no-build
 RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@1.0.2 --no-build
 RUN jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@1.0.4 --no-build
 RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@0.0.5 --no-build
-RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@1.0.0 --no-build
+RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@1.0.1 --no-build
 RUN jupyter labextension install @maap-jupyterlab/che-sidebar-visibility-jupyter-extension@1.0.1 --no-build
 
 RUN jupyter lab build && \
