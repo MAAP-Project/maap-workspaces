@@ -34,6 +34,7 @@ RUN npm install typescript -g
 RUN pip install jupyter-server==2.5.0
 RUN pip install jupyter-resource-usage==0.7.2
 RUN pip install jupyter-fs==0.4.1
+RUN conda install -y -c conda-forge jupyterlab=3.6.1
 
 # Adjust permissions on home directory so writable by group root.
 RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
