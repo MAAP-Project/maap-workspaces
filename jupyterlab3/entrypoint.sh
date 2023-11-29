@@ -93,6 +93,9 @@ done
 export NOTEBOOKLIBPATH=$(find /opt/conda/lib/ -maxdepth 3 -type d -name "notebook")
 export JUPYTERSERVERLIBPATH=$(find /opt/conda/lib -maxdepth 3 -type d -name "jupyter_server")
 
+# Fix "fatal: not a git repository" error on startup
+export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
+
 read -r -d '' JUPYTER_PATCH << EOM
     # Fix for Tornado's inability to handle proxy requests
     from tornado.routing import _RuleList
