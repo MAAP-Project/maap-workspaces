@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:23.3.1-0
+FROM continuumio/miniconda3:22.11.1
 ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
@@ -13,15 +13,15 @@ RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
-RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
-    conda install -y -n base conda-libmamba-solver=23.7.0 && \
+RUN conda install -y -n base conda-libmamba-solver=23.11.1 && \
     conda config --system --set solver libmamba
 
 COPY ./environment.yml /tmp
-RUN conda env update --solver=libmamba -n base --file "/tmp/environment.yml" \
+RUN conda env update -vv --solver=libmamba -n base --file "/tmp/environment.yml" \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
+    
 
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH=${IMAGE_REF}

@@ -1,7 +1,6 @@
 name: base
 channels:
-  - conda-forge
-  - nodefaults
+  - defaults
 dependencies:
   - bokeh
   - boto3
