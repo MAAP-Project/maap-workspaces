@@ -1,7 +1,20 @@
 ARG BASE_IMAGE
-FROM ${BASE_IMAGE} as jupyterlab_base
-
 ARG BASE_IMAGE_TYPE
+
+FROM ${BASE_IMAGE} as jupyterlab_base
+# Set WORKSPACE_TYPE, used by entrypoint.sh
+ENV WORKSPACE_TYPE=${BASE_IMAGE_TYPE}
+
+# Create base images for each workspace needed for build stage later
+FROM jupyterlab_base as workspace_base_pangeo
+SHELL ["conda", "run", "-n", "pangeo", "/bin/bash", "-c"]
+
+FROM jupyterlab_base as workspace_base_vanilla
+SHELL ["conda", "run", "-n", "vanilla", "/bin/bash", "-c"]
+
+FROM workspace_base_${BASE_IMAGE_TYPE} AS workspace_base
+
+FROM workspace_base as workspace_build_stage
 
 ADD . /
 
@@ -23,10 +36,10 @@ RUN apt-get clean && apt-get update && \
 RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
     ; if [ -f "/${BASE_IMAGE_TYPE}/environment.yml" ]; then \
         echo "Installing packages from '/${BASE_IMAGE_TYPE}/environment.yml'" \
-        ; conda env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" --solver=libmamba \
+        ; conda env update --file "/${BASE_IMAGE_TYPE}/environment.yml" \
     ; else \
         echo "Installing packages from '/shared/environment.yml'" \
-        ; conda env update --name base --file "/shared/environment.yml" --solver=libmamba \
+        ; conda env update --file "/shared/environment.yml" \
     ; fi
 
 RUN npm install typescript -g
@@ -84,5 +97,8 @@ ENV ENVIRONMENTS_FILE_PATH=/opt/environments.json
 COPY ./environments.json $ENVIRONMENTS_FILE_PATH
 
 RUN echo 'printf "\e[101mNOTE: This terminal uses the default environment which might not be the same as your notebook.\e[49m\n\n"' >> /etc/profile
+
+# Reset Shell
+SHELL ["/bin/sh", "-c"]
 
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
