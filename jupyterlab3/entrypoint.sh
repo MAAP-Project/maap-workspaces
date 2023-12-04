@@ -155,7 +155,7 @@ MEMORY=$(get_max_memory "$NAMESPACE")
 
 # TBD maap-py install
 
-source /opt/conda/bin/activate base
+source /opt/conda/bin/activate ${WORKSPACE_TYPE}
 export SHELL=/bin/bash
 VERSION=$(jupyter lab --version)
 if [[ $VERSION > '2' ]] && [[ $VERSION < '3' ]]; then
