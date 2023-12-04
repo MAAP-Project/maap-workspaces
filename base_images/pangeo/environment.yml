@@ -1,6 +1,7 @@
-name: base
+name: pangeo
 channels:
-  - defaults
+  - conda-forge
+  - nodefaults
 dependencies:
   - bokeh
   - boto3
@@ -41,6 +42,7 @@ dependencies:
   - numpy
   - odc-stac
   - pandas
+  - python=3.10.13
   - pyarrow
   - pydap
   - pygeos
