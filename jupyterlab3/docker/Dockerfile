@@ -43,8 +43,6 @@ RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
     ; fi
 
 RUN npm install typescript -g
-RUN pip install jupyter-server==2.5.0
-RUN pip install jupyter-resource-usage==0.7.2
 
 # Adjust permissions on home directory so writable by group root.
 RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
