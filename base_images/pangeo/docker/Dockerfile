@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:22.11.1
+FROM continuumio/miniconda3:23.10.0-1
 ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
@@ -12,9 +12,6 @@ RUN git clone --single-branch --branch v3.1.3 https://github.com/MAAP-Project/ma
 RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
-
-RUN conda install -y -n base conda-libmamba-solver=23.11.1 && \
-    conda config --system --set solver libmamba
 
 COPY ./environment.yml /tmp
 RUN conda env update -vv --solver=libmamba -n base --file "/tmp/environment.yml" \
