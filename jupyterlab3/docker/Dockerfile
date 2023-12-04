@@ -2,6 +2,7 @@ ARG BASE_IMAGE
 ARG BASE_IMAGE_TYPE
 
 FROM ${BASE_IMAGE} as jupyterlab_base
+ARG BASE_IMAGE_TYPE
 # Set WORKSPACE_TYPE, used by entrypoint.sh
 ENV WORKSPACE_TYPE=${BASE_IMAGE_TYPE}
 
@@ -33,10 +34,10 @@ RUN apt-get clean && apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install workspace specific packages for conda environment
-RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
-    ; if [ -f "/${BASE_IMAGE_TYPE}/environment.yml" ]; then \
-        echo "Installing packages from '/${BASE_IMAGE_TYPE}/environment.yml'" \
-        ; conda env update --file "/${BASE_IMAGE_TYPE}/environment.yml" \
+RUN echo "Checking if environment.yml exists for ${WORKSPACE_TYPE}" \
+    ; if [ -f "/${WORKSPACE_TYPE}/environment.yml" ]; then \
+        echo "Installing packages from '/${WORKSPACE_TYPE}/environment.yml'" \
+        ; conda env update --file "/${WORKSPACE_TYPE}/environment.yml" \
     ; else \
         echo "Installing packages from '/shared/environment.yml'" \
         ; conda env update --file "/shared/environment.yml" \
