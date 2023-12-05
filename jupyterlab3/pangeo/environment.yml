@@ -10,7 +10,7 @@ dependencies:
   - ipyevents
   - ipyleaflet
   - ipywidgets
-  - jupyterlab
+  - jupyterlab=3.6.1
   - jupyterlab-git
   - jupyter-packaging
   - jupyterlab_widgets
