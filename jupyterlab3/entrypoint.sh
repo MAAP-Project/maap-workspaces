@@ -123,7 +123,7 @@ env | grep _ >> /etc/environment
 # Add conda bin to path
 export PATH=$PATH:/opt/conda/bin
 cp /root/.bashrc ~/.bash_profile
-conda init
+#conda init
 
 # Need to fix directory permissions for publickey authentication
 chmod 700 /projects
@@ -155,7 +155,7 @@ MEMORY=$(get_max_memory "$NAMESPACE")
 
 # TBD maap-py install
 
-source /opt/conda/bin/activate ${WORKSPACE_TYPE}
+source /opt/conda/bin/activate $WORKSPACE_TYPE
 export SHELL=/bin/bash
 VERSION=$(jupyter lab --version)
 if [[ $VERSION > '2' ]] && [[ $VERSION < '3' ]]; then
