@@ -11,11 +11,11 @@ dependencies:
   - ipyleaflet
   - ipywidgets
   - jupyterlab=3.6.1
-  - jupyterlab-git
-  - jupyter-packaging
-  - jupyterlab_widgets
+  - jupyterlab-git=0.34.2
+  - jupyter-packaging=0.12.3
+  - jupyterlab_widgets=3.0.7
   - nbstripout
-  - nodejs
+  - nodejs=18.15.0
   - pangeo-notebook
   - plotly
   - pydantic
