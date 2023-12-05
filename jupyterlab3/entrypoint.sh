@@ -123,7 +123,7 @@ env | grep _ >> /etc/environment
 # Add conda bin to path
 export PATH=$PATH:/opt/conda/bin
 cp /root/.bashrc ~/.bash_profile
-#conda init
+conda init
 
 # Need to fix directory permissions for publickey authentication
 chmod 700 /projects
