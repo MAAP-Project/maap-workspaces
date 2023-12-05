@@ -122,7 +122,10 @@ env | grep _ >> /etc/environment
 
 # Add conda bin to path
 export PATH=$PATH:/opt/conda/bin
+
+# Set up default conda environment for terminals
 cp /root/.bashrc ~/.bash_profile
+sed -i "s/conda activate base/conda activate $WORKSPACE_TYPE/g" ~/.bash_profile
 conda init
 
 # Need to fix directory permissions for publickey authentication
