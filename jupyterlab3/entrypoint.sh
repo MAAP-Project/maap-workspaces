@@ -120,8 +120,8 @@ fi
 # Dump all env variables into file so they exist still though SSH
 env | grep _ >> /etc/environment
 
-# Add conda bin to path
-export PATH=$PATH:/opt/conda/bin
+# Add workspace env conda bin to path
+export PATH=$PATH:/opt/conda/envs/$WORKSPACE_TYPE/bin
 
 # Set up default conda environment for terminals
 cp /root/.bashrc ~/.bash_profile
