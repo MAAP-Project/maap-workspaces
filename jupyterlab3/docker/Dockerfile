@@ -48,6 +48,8 @@ RUN echo "Checking if environment.yml exists for ${WORKSPACE_TYPE}" \
 
 RUN npm install typescript -g
 
+RUN conda list
+
 # Adjust permissions on home directory so writable by group root.
 RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
 
