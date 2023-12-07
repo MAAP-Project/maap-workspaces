@@ -46,9 +46,9 @@ RUN echo "Checking if environment.yml exists for ${WORKSPACE_TYPE}" \
         ; conda env update --file "/shared/environment.yml" \
     ; fi
 
-RUN npm install typescript -g
-
 RUN conda list
+
+RUN npm install typescript -g
 
 # Adjust permissions on home directory so writable by group root.
 RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
@@ -106,3 +106,4 @@ RUN echo 'printf "\e[101mNOTE: This terminal uses the default environment which 
 SHELL ["/bin/sh", "-c"]
 
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
+RUN conda list
