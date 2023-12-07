@@ -13,6 +13,9 @@ SHELL ["conda", "run", "-n", "pangeo", "/bin/bash", "-c"]
 FROM jupyterlab_base as workspace_base_vanilla
 SHELL ["conda", "run", "-n", "vanilla", "/bin/bash", "-c"]
 
+FROM jupyterlab_base as workspace_base_r
+SHELL ["conda", "run", "-n", "r", "/bin/bash", "-c"]
+
 FROM workspace_base_${BASE_IMAGE_TYPE} AS workspace_base
 
 FROM workspace_base as workspace_build_stage
