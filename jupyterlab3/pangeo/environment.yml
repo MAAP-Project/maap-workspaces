@@ -26,7 +26,6 @@ dependencies:
   - pip
   - pip:
     - jupyter-resource-usage==0.7.2
-    - jupyter-server==2.5.0
     - rio_tiler
     - pystac_client
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.5#egg-info=stac_ipyleaflet
