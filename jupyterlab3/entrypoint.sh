@@ -90,8 +90,8 @@ done
 # allows `base_url` to be set so that HTTP *responses* include the `base_url` so that browsers make the correct
 # call. However, it strips out `base_url` when listening for *requests* so that handles the ingress/nginx proxy
 # requests correctly.
-export NOTEBOOKLIBPATH=$(find /opt/conda/lib/ -maxdepth 3 -type d -name "notebook")
-export JUPYTERSERVERLIBPATH=$(find /opt/conda/lib -maxdepth 3 -type d -name "jupyter_server")
+export NOTEBOOKLIBPATH=$(find /opt/conda/envs/$WORKSPACE_TYPE/lib -maxdepth 3 -type d -name "notebook")
+export JUPYTERSERVERLIBPATH=$(find /opt/conda/envs/$WORKSPACE_TYPE/lib -maxdepth 3 -type d -name "jupyter_server")
 
 read -r -d '' JUPYTER_PATCH << EOM
     # Fix for Tornado's inability to handle proxy requests
@@ -124,7 +124,7 @@ env | grep _ >> /etc/environment
 export PATH=$PATH:/opt/conda/envs/$WORKSPACE_TYPE/bin
 
 # Set up default conda environment for terminals
-echo ". /opt/conda/etc/profile.d/conda.sh ; conda activate ${WORKSPACE_TYPE}" > /etc/profile.d/init_conda.sh
+echo ". /opt/conda/etc/profile.d/conda.sh ; conda activate $WORKSPACE_TYPE" > /etc/profile.d/init_conda.sh
 
 # Need to fix directory permissions for publickey authentication
 chmod 700 /projects
