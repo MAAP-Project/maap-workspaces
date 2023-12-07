@@ -29,6 +29,9 @@ delete-base-image:
 delete-jupyter-image:
 	docker image rm ${JUPYTER_IMAGE_NAME}
 
+open-jupyter:
+	open http://localhost:3100/
+
 start-jupyter:
 	docker run -p 3100:3100 ${JUPYTER_IMAGE_NAME}
 
