@@ -42,7 +42,8 @@ RUN echo "Checking if environment.yml exists for ${WORKSPACE_TYPE}" \
         echo "Installing packages from '/${WORKSPACE_TYPE}/environment.yml'" \
         ; conda env update --file "/${WORKSPACE_TYPE}/environment.yml" \
     ; else \
-        echo "Installing packages from '/shared/environment.yml'" \
+        sed -i "s/WORKSPACE_ENVIRONMENT_NAME/${WORKSPACE_TYPE}/g" /shared/environment.yml \
+        ; echo "Installing packages from '/shared/environment.yml'" \
         ; conda env update --file "/shared/environment.yml" \
     ; fi
 

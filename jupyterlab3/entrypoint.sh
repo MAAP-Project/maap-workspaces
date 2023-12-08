@@ -126,6 +126,10 @@ export PATH=$PATH:/opt/conda/envs/$WORKSPACE_TYPE/bin
 # Set up default conda environment for terminals
 echo ". /opt/conda/etc/profile.d/conda.sh ; conda activate $WORKSPACE_TYPE" > /etc/profile.d/init_conda.sh
 
+# Cleanup ~/.bash_profile
+sed -i "s/\. \/opt\/conda\/etc\/profile.d\/conda\.sh//g" ~/.bash_profile
+sed -i "s/conda activate base//g" ~/.bash_profile
+
 # Need to fix directory permissions for publickey authentication
 chmod 700 /projects
 mkdir -p /projects/.ssh/

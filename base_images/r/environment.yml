@@ -7,6 +7,7 @@ dependencies:
   - botocore
   - earthaccess
   - parallel
+  - perl
   - postgis
   - python=3.10.13
   - r
