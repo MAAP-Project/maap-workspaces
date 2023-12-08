@@ -1,4 +1,4 @@
-name: base
+name: WORKSPACE_ENVIRONMENT_NAME
 channels:
   - conda-forge
   - nodefaults
