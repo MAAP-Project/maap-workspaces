@@ -3,6 +3,7 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
+  - aiobotocore=2.7.0
   - awscli=2.14.1
   - botocore=1.33.1
   - earthaccess=0.8.2
