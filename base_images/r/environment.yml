@@ -20,7 +20,7 @@ dependencies:
   - r-data.table=1.14.10
   - r-dbi=1.1.3
   - r-deldir=2.0_2
-  - r-dplyr=2.4.0
+  - r-dplyr=1.1.4
   - r-egg=0.4.5
   - r-essentials=4.3
   - r-fs=1.6.3
