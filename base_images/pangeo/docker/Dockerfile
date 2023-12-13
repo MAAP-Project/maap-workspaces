@@ -24,5 +24,7 @@ RUN git clone --single-branch --branch v3.1.3 https://github.com/MAAP-Project/ma
    && cd maap-py \
    && pip install -e .
 
+RUN conda list
+
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH=${IMAGE_REF}
