@@ -58,7 +58,7 @@ RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
 
 # Grant access to jupyterlab config files for base url rewriting
 RUN chmod a+rwx -R /opt/conda/lib/python*/site-packages/
-
+RUN conda list
 # Adjust permissions on /etc/passwd so writable by group root.
 RUN chmod g+w /etc/passwd
 
@@ -68,15 +68,17 @@ RUN chmod g+w /etc/passwd
 RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
 RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
 
+RUN conda list
+
 ###############################
 # Custom Jupyter Extensions
 ###############################
 RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.5.1 --no-build
-
+RUN conda list
 # PyPi package prepended with 'maap' so it more easily discoverable
 RUN pip install maap-jupyter-server-extension==1.2.2
 RUN jupyter server extension enable jupyter_server_extension
-
+RUN conda list
 RUN jupyter labextension install @maap-jupyterlab/algorithms_jupyter_extension@0.2.0 --no-build
 RUN jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@1.0.0 --no-build
 RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@1.0.2 --no-build
@@ -85,6 +87,8 @@ RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupy
 RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@1.0.1 --no-build
 RUN jupyter labextension install @maap-jupyterlab/che-sidebar-visibility-jupyter-extension@1.0.1 --no-build
 
+RUN conda list
+
 RUN jupyter lab build && \
     jupyter lab clean && \
     jlpm cache clean && \
@@ -92,19 +96,27 @@ RUN jupyter lab build && \
     rm -rf $HOME/.node-gyp && \
     rm -rf $HOME/.local
 
+RUN conda list
+
 RUN find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy && \
     npm cache clean --force
 
+RUN conda list
+
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./jupyter_patch /opt/jupyter_patch
+
+RUN conda list
 
 ENV ENVIRONMENTS_FILE_PATH=/opt/environments.json
 COPY ./environments.json $ENVIRONMENTS_FILE_PATH
 
-RUN echo 'printf "\e[101mNOTE: This terminal uses the default environment which might not be the same as your notebook.\e[49m\n\n"' >> /etc/profile
+RUN conda list 
 
+RUN echo 'printf "\e[101mNOTE: This terminal uses the default environment which might not be the same as your notebook.\e[49m\n\n"' >> /etc/profile
+RUN conda list
 # Reset Shell
 SHELL ["/bin/sh", "-c"]
 
