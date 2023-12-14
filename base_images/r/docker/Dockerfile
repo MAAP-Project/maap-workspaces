@@ -25,6 +25,7 @@ SHELL ["conda", "run", "-n", "r", "/bin/bash", "-c"]
 
 # install maap-py library
 ENV MAAP_CONF='/maap-py/'
+WORKDIR /
 RUN pwd
 RUN mkdir /maap-py \
     && cd /maap-py \
