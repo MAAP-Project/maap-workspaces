@@ -29,6 +29,7 @@ WORKDIR /
 RUN pwd
 RUN mkdir /maap-py \
     && cd /maap-py 
+WORKDIR /maap-py
 RUN pwd
 RUN git clone --single-branch --branch v3.1.3 https://github.com/MAAP-Project/maap-py.git \
     && pip install -e .
