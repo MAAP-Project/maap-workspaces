@@ -87,3 +87,5 @@ dependencies:
   - xhistogram
   - xmltodict
   - zarr
+variables:
+  MAAP_CONF: '/maap-py/'
