@@ -37,19 +37,17 @@ RUN apt-get clean && apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install workspace specific packages for conda environment
-#RUN echo "Checking if environment.yml exists for ${WORKSPACE_TYPE}" \
-#    ; if [ -f "/${WORKSPACE_TYPE}/environment.yml" ]; then \
-#        echo "Installing packages from '/${WORKSPACE_TYPE}/environment.yml'" \
-#        ; conda env update --file "/${WORKSPACE_TYPE}/environment.yml" \
-#    ; else \
-#        cat "/shared/environment.yml" \
-#        ; sed -i "s/WORKSPACE_ENVIRONMENT_NAME/${WORKSPACE_TYPE}/g" /shared/environment.yml \
-#        ; cat "/shared/environment.yml" \
-#        ; echo "Installing packages from '/shared/environment.yml'" \
-#        ; conda env update --file "/shared/environment.yml" \
-#    ; fi
-
-#RUN conda list
+RUN echo "Checking if environment.yml exists for ${WORKSPACE_TYPE}" \
+    ; if [ -f "/${WORKSPACE_TYPE}/environment.yml" ]; then \
+        echo "Installing packages from '/${WORKSPACE_TYPE}/environment.yml'" \
+        ; conda env update --file "/${WORKSPACE_TYPE}/environment.yml" \
+    ; else \
+        cat "/shared/environment.yml" \
+        ; sed -i "s/WORKSPACE_ENVIRONMENT_NAME/${WORKSPACE_TYPE}/g" /shared/environment.yml \
+        ; cat "/shared/environment.yml" \
+        ; echo "Installing packages from '/shared/environment.yml'" \
+        ; conda env update --file "/shared/environment.yml" \
+    ; fi
 
 RUN npm install typescript -g
 
@@ -58,36 +56,29 @@ RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
 
 # Grant access to jupyterlab config files for base url rewriting
 RUN chmod a+rwx -R /opt/conda/lib/python*/site-packages/
-RUN conda list
 # Adjust permissions on /etc/passwd so writable by group root.
 RUN chmod g+w /etc/passwd
 
 ###############################
 # Non Custom Jupyter Extensions
 ###############################
-#RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
-#RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
-
-#RUN conda list
+RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
+RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
 
 ###############################
 # Custom Jupyter Extensions
 ###############################
-#RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.5.1 --no-build
-#RUN conda list
+RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.5.1 --no-build
 # PyPi package prepended with 'maap' so it more easily discoverable
 RUN pip install maap-jupyter-server-extension==1.2.2
 RUN jupyter server extension enable jupyter_server_extension
-#RUN conda list
-#RUN jupyter labextension install @maap-jupyterlab/algorithms_jupyter_extension@0.2.0 --no-build
-#RUN jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@1.0.0 --no-build
-#RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@1.0.2 --no-build
-#RUN jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@1.0.4 --no-build
-#RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@0.0.5 --no-build
-#RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@1.0.1 --no-build
-#RUN jupyter labextension install @maap-jupyterlab/che-sidebar-visibility-jupyter-extension@1.0.1 --no-build
-
-#RUN conda list
+RUN jupyter labextension install @maap-jupyterlab/algorithms_jupyter_extension@0.2.0 --no-build
+RUN jupyter labextension install @maap-jupyterlab/umf-jupyter-extension@1.0.0 --no-build
+RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@1.0.2 --no-build
+RUN jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@1.0.4 --no-build
+RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@0.0.5 --no-build
+RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@1.0.1 --no-build
+RUN jupyter labextension install @maap-jupyterlab/che-sidebar-visibility-jupyter-extension@1.0.1 --no-build
 
 RUN jupyter lab build && \
     jupyter lab clean && \
@@ -108,9 +99,7 @@ ENV ENVIRONMENTS_FILE_PATH=/opt/environments.json
 COPY ./environments.json $ENVIRONMENTS_FILE_PATH
 
 RUN echo 'printf "\e[101mNOTE: This terminal uses the default environment which might not be the same as your notebook.\e[49m\n\n"' >> /etc/profile
-
 # Reset Shell
 SHELL ["/bin/sh", "-c"]
 
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
-RUN conda list
