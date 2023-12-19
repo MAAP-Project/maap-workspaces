@@ -1,0 +1,46 @@
+name: vanilla
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - awscli
+  - backoff
+  - boto3
+  - cython
+  - earthengine-api
+  - gdal
+  - geopandas
+  - matplotlib
+  - h5py
+  - hdf5
+  - httpx
+  - mapclassify
+  - matplotlib
+  - mpl-scatter-density
+  - numba
+  - numpy
+  - pandas
+  - pycurl
+  - pygeos
+  - pyogrio
+  - pyproj
+  - pystac-client
+  - python=3.10.13
+  - rasterio
+  - rasterstats
+  - requests
+  - rio-cogeo
+  - rtree
+  - s3fs
+  - scikit-learn
+  - scipy
+  - seaborn
+  - shapely
+  - sliderule
+  - statsmodels
+  - tqdm
+  - unidecode
+  - xmltodict
+  - pip
+variables:
+  MAAP_CONF: '/maap-py/'
