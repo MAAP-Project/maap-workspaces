@@ -3,6 +3,9 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
+  - awscli
+  - backoff
+  - boto3
   - bokeh
   - boto3
   - bottleneck
@@ -13,6 +16,7 @@ dependencies:
   - datashader
   - descartes
   - earthaccess
+  - earthengine-api
   - eofs
   - erddapy
   - esmpy
@@ -25,8 +29,10 @@ dependencies:
   - geoviews-core
   - h5netcdf
   - h5py
+  - hdf5
   - holoviews
   - hvplot
+  - httpx
   - intake
   - intake-geopandas
   - intake-stac
@@ -34,7 +40,9 @@ dependencies:
   - kerchunk
   - lxml
   - lz4
+  - mapclassify
   - matplotlib
+  - mpl-scatter-density
   - nc-time-axis
   - netcdf4
   - numba
@@ -44,27 +52,40 @@ dependencies:
   - pandas
   - python=3.10.13
   - pyarrow
+  - pycurl
   - pydap
   - pygeos
+  - pyogrio
   - pyproj
   - pystac
   - pystac-client
   - python-blosc
   - rasterio
+  - rasterstats
   - rechunker
+  - requests
   - rio-cogeo
   - rioxarray
+  - rtree
   - s3fs
   - scikit-image
   - scikit-learn
   - scipy
   - seaborn
+  - shapely
+  - sliderule
   - sparse
   - stackstac
+  - statsmodels
+  - tqdm
+  - unidecode
   - xarray
   - xarray-datatree
   - xarray-spatial
   - xarrayutils
   - xesmf
   - xhistogram
+  - xmltodict
   - zarr
+variables:
+  MAAP_CONF: '/maap-py/'

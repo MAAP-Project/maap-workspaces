@@ -4,6 +4,7 @@ channels:
   - nodefaults
 dependencies:
   - awscli
+  - folium
   - gitpython
   - gh
   - git-lfs
@@ -20,9 +21,7 @@ dependencies:
   - plotly
   - pydantic
   - rioxarray
-  - shapely
   - xarray_leaflet
-  - xmltodict
   - pip
   - pip:
     - jupyter-resource-usage==0.7.2
