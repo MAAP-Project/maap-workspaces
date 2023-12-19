@@ -16,17 +16,18 @@ RUN conda env create -y -f "/tmp/environment.yml" \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
 
-RUN conda list
-
 # Set the conda environemnt for all subsequent docker RUN commands
 # When maap-py is updated and installed via our environment.yml,
 # we won't need this line unless other envrionment specific commands are added
 SHELL ["conda", "run", "-n", "r", "/bin/bash", "-c"]
 
-ENV MAAP_CONF='/maap-py/'
-RUN git clone --single-branch --branch v3.1.3 https://github.com/MAAP-Project/maap-py.git \
-   && cd maap-py \
-   && pip install -e .
+# Install maap-py library
+#ENV MAAP_CONF='/maap-py/'
+RUN mkdir /maap-py \
+    && git clone --single-branch --branch v3.1.3 https://github.com/MAAP-Project/maap-py.git /maap-py/ \
+    && pip install -e /maap-py/
+
+RUN conda list
 
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH=${IMAGE_REF}
