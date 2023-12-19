@@ -4,7 +4,6 @@ channels:
   - nodefaults
 dependencies:
   - awscli=2.14.1
-  - botocore=1.33.13
   - earthaccess=0.8.2
   - parallel=20231122
   - perl=5.32.1
@@ -15,7 +14,7 @@ dependencies:
   - r-base=4.3.1
   - r-biocmanager=1.30.22
   - r-broom=1.0.5
-  - r-car
+  - r-car=3.1_2
   - r-classint=0.4_10
   - r-covr=3.6.4
   - r-data.table=1.14.10
