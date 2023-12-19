@@ -10,6 +10,34 @@ RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
+RUN apt-get clean && apt-get update && \
+    apt-get install -y --no-install-recommends gdal-bin \
+    lbzip2 \
+    libfftw3-dev \
+    libgdal-dev \
+    libgeos-dev \
+    libgsl0-dev \
+    libgl1-mesa-dev \
+    libglu1-mesa-dev \
+    libhdf4-alt-dev \
+    libhdf5-dev \
+    libjq-dev \
+    libpq-dev \
+    libproj-dev \
+    libprotobuf-dev \
+    libnetcdf-dev \
+    libsqlite3-dev \
+    libssl-dev \
+    libudunits2-dev \
+    netcdf-bin \
+    postgis \
+    protobuf-compiler \
+    sqlite3 \
+    tk-dev \
+    unixodbc-dev && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 COPY ./environment.yml /tmp
 RUN conda env create -y -f "/tmp/environment.yml" \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
