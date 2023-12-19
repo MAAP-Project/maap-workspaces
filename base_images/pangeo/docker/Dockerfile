@@ -19,7 +19,6 @@ RUN conda env create -y -f "/tmp/environment.yml" \
 SHELL ["conda", "run", "-n", "pangeo", "/bin/bash", "-c"]
 
 # Install maap-py library
-#ENV MAAP_CONF='/maap-py/'
 RUN mkdir /maap-py \
     && git clone --single-branch --branch v3.1.3 https://github.com/MAAP-Project/maap-py.git /maap-py/ \
     && pip install -e /maap-py/
