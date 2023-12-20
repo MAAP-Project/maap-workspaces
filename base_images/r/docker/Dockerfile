@@ -51,9 +51,9 @@ SHELL ["conda", "run", "-n", "r", "/bin/bash", "-c"]
 
 # Install maap-py library
 #ENV MAAP_CONF='/maap-py/'
-RUN mkdir /maap-py \
-    && git clone --single-branch --branch v3.1.3 https://github.com/MAAP-Project/maap-py.git /maap-py/ \
-    && pip install -e /maap-py/
+#RUN mkdir /maap-py \
+#    && git clone --single-branch --branch v3.1.3 https://github.com/MAAP-Project/maap-py.git /maap-py/ \
+#    && pip install -e /maap-py/
 
 RUN conda list
 
