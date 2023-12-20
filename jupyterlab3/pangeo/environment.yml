@@ -3,30 +3,27 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - awscli
-  - folium
-  - gitpython
-  - gh
-  - git-lfs
-  - ipyevents
-  - ipyleaflet
-  - ipywidgets
+  - folium=0.15.1
+  - gitpython=3.1.40
+  - gh=2.40.1
+  - git-lfs=3.4.1
+  - ipyevents=2.0.2
+  - ipyleaflet=0.18.1
+  - ipywidgets=8.1.0
+  - jupyter-packaging=0.12.3
   - jupyterlab=3.6.1
   - jupyterlab-git=0.34.2
-  - jupyter-packaging=0.12.3
   - jupyterlab_widgets=3.0.7
-  - nbstripout
+  - nbstripout=0.6.1
   - nodejs=18.15.0
-  - pangeo-notebook
-  - plotly
-  - pydantic
-  - rioxarray
-  - xarray_leaflet
-  - pip
+  - pangeo-notebook=0.0.2
+  - plotly=5.18.0
+  - pydantic=2.5.2
+  - xarray_leaflet=0.2.3
+  - pip=23.3.2
   - pip:
     - jupyter-resource-usage==0.7.2
-    - rio_tiler
-    - pystac_client
+    - rio-tiler==6.2.8
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.5#egg-info=stac_ipyleaflet
 variables:
   TITILER_STAC_ENDPOINT: 'https://titiler-stac.maap-project.org/'
