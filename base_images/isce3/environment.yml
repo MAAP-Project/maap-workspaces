@@ -8,7 +8,7 @@ dependencies:
   - boto3=1.34.3
   - cython=3.0.7
   - earthengine-api=0.1.384
-  - ffspec
+  - fsspec
   - gdal=3.7.0
   - geopandas=0.14.1
   - h5py=3.9.0
