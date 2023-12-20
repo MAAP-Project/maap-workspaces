@@ -16,7 +16,6 @@ RUN apt-get clean && apt-get update && \
     libfftw3-dev=3.3.8-2 \
     libgdal-dev=3.2.2+dfsg-2+deb11u2 \
     libgeos-dev=3.9.0-1 \
-    libgsl0-dev \
     libgl1-mesa-dev=20.3.5-1 \
     libglu1-mesa-dev=9.0.1-1 \
     libhdf4-alt-dev=4.2.15-3 \
