@@ -1,0 +1,16 @@
+name: isce3
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - fsspec
+  - hvplot
+  - isce3
+  - scikit-learn
+  - xarray
+  - pip
+  - pip:
+    - git+https://github.com/MAAP-Project/maap-py.git@v3.1.3#egg-info=maappy
+    - git+https://github.com/opera-adt/RTC.git@v0.3
+variables:
+  MAAP_CONF: '/maap-py/'
