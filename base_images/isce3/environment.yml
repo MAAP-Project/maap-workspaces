@@ -6,6 +6,7 @@ dependencies:
   - fsspec
   - hvplot
   - isce3
+  - python=3.10.13
   - xarray
   - pip:
     - git+https://github.com/opera-adt/RTC.git@v0.3
