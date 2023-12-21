@@ -7,13 +7,17 @@ export DEBIAN_FRONTEND=noninteractive
 ## build ARGs
 NCPUS=${NCPUS:--1}
 
-install2.r --error --skipmissing --skipinstalled -n "$NCPUS" \
-    Fgmutils \
-    nlraa \
-    sfarrow 
+Rscript /scripts/install2.r --error --skipmissing --skipinstalled -n "$NCPUS" nlraa sfarrow fgmutils
+#R -e install.packages('nlraa')
 
 # Clean up
 rm -rf /var/lib/apt/lists/*
-rm -r /tmp/downloaded_packages
+if [ -d '/tmp/downloaded_packages']; then 
+    rm -r /tmp/downloaded_packages
+fi
+#rm -r /tmp/downloaded_packages
 
-strip /usr/local/lib/R/site-library/*/libs/*.so
+if [ -f '/usr/local/lib/R/site-library/*/libs/*.so']; then
+    strip /usr/local/lib/R/site-library/*/libs/*.so
+fi
+#strip /usr/local/lib/R/site-library/*/libs/*.so

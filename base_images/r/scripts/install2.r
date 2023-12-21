@@ -9,10 +9,14 @@
 # Released under GPL (>= 2)
 
 ## load docopt package from CRAN
+print("at the beginning of r script")
+install.packages('docopt', repos = "http://cran.us.r-project.org")
 library(docopt)
+print("done with libary docopt command")
 
 ## default to first library location in .libPaths()
 libloc <- .libPaths()[1]
+print("here1")
 
 ## configuration for docopt
 doc <- paste0("Usage: install2.r [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n NCPUS] [-r REPOS...] [-m METHOD] [-t TYPE] [--error] [--skipmissing] [--] [PACKAGES ...]
@@ -29,8 +33,10 @@ doc <- paste0("Usage: install2.r [-l LIBLOC] [-h] [-x] [-s] [-d DEPS] [-n NCPUS]
 -h --help           show this help text
 -x --usage          show help and short example usage")
 opt <- docopt(doc)			# docopt parsing
-
+print("here2 and opt is ")
+print(opt)
 if (opt$usage) {
+    print("here3")
     cat(doc, "\n\n")
     cat("where PACKAGES... can be one or more CRAN package names, or local (binary or source)
 package files (where extensions .tar.gz, .tgz and .zip are recognised). Optional
@@ -48,15 +54,18 @@ install2.r is part of littler which brings 'r' to the command-line.
 See https://dirk.eddelbuettel.com/code/littler.html for more information.\n")
     q("no")
 }
-
+print("here4")
 if (opt$deps == "TRUE" || opt$deps == "FALSE") {
+    print("here5")
     opt$deps <- as.logical(opt$deps)
 } else if (opt$deps == "NA") {
+    print("here6")
     opt$deps <- NA
 }
-
+print("here7")
 ## docopt results are characters, so if we meant NULL we have to set NULL
 if (length(opt$repos) == 1 && "NULL" %in% opt$repos) {
+    print("in print statement settings repos to null")
     opt$repos <- NULL
 }
 
@@ -81,8 +90,9 @@ if (opt$type == "getOption") {
 
 ## ensure installation is stripped
 Sys.setenv("_R_SHLIB_STRIP_"="true")
-
+print("right before declaration of install_packages2")
 install_packages2 <- function(pkgs, ..., error = FALSE, skipmissing = FALSE, skipinstalled = FALSE) {
+    print("in install_packages2 function")
     e <- NULL
     capture <- function(e) {
         if (error) {
@@ -112,6 +122,7 @@ isMatchingFile <- function(f) (file.exists(f) && grepl("(\\.tar\\.gz|\\.tgz|\\.z
 
 ## helper function which switches to local (ie NULL) repo if matching file is presented
 installArg <- function(f, lib, rep, dep, iopts, error, skipmissing, skipinstalled, ncpus, method, type) {
+    print("about to call install_packages2 first time")
     install_packages2(pkgs=f,
                       lib=lib,
                       repos=if (isMatchingFile(f)) NULL else rep,
@@ -148,12 +159,15 @@ isLocal <- sapply(opt$PACKAGES, isMatchingFile)
 ## packages pass vector to install_packages2 which does the rest (and
 ## possibly in parallel using up to ncpus)
 if (any(isLocal)) {
+    print("in above if statement so not calling install_packages2 right away")
     sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps,
            installOpts, opt$error, opt$skipmissing, opt$skipinstalled, opt$ncpus, opt$method, opt$type)
 } else {
+    print("about to call install_packages2 second time so changing what repos is")
+    print(opt$repos)
     install_packages2(pkgs = opt$PACKAGES,
                       lib = opt$libloc,
-                      repos = opt$repos,
+                      repos = "http://cran.us.r-project.org",
                       dependencies = opt$deps,
                       INSTALL_opts = installOpts,
                       Ncpus = opt$ncpus,
@@ -166,3 +180,4 @@ if (any(isLocal)) {
 
 ## clean up any temp file containing CRAN directory information
 sapply(list.files(path=tempdir(), pattern="^(repos|libloc).*\\.rds$", full.names=TRUE), unlink)
+print("at the end of the script")
