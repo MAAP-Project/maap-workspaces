@@ -48,6 +48,10 @@ RUN conda env create -y -f "/tmp/environment.yml" \
 # we won't need this line unless other envrionment specific commands are added
 SHELL ["conda", "run", "-n", "r", "/bin/bash", "-c"]
 
+RUN pwd
+RUN cat /scripts/install_cran_packages_r.sh
+RUN /scripts/install_cran_packages_r.sh
+
 # Install maap-py library
 RUN mkdir /maap-py \
     && git clone --single-branch --branch v3.1.3 https://github.com/MAAP-Project/maap-py.git /maap-py/ \
