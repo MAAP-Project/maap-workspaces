@@ -7,7 +7,7 @@ export DEBIAN_FRONTEND=noninteractive
 ## build ARGs
 NCPUS=${NCPUS:--1}
 
-Rscript /scripts/install2.r --error --skipmissing --skipinstalled -n "$NCPUS" Fgmutils
+Rscript /scripts/install2.r --error --skipmissing --skipinstalled -n "$NCPUS" nlraa sfarrow
 #R -e install.packages('nlraa')
 
 # Clean up
