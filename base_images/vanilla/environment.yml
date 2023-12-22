@@ -3,9 +3,11 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
+  - awscli
   - backoff=2.2.1
   - boto3=1.34.3
   - cython=3.0.7
+  - cryptography=40.0.1
   - earthengine-api=0.1.384
   - gdal=3.7.0
   - geopandas=0.14.1
@@ -18,6 +20,7 @@ dependencies:
   - numba=0.58.1
   - numpy=1.26.2
   - pandas=2.1.4
+  - prompt-toolkit=3.0.38
   - pycurl=7.45.1
   - pygeos=0.14
   - pyogrio=0.6.0
