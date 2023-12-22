@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - awscli=2.14.6
+  - awscli=2.14.1
   - backoff
   - boto3
   - cython
