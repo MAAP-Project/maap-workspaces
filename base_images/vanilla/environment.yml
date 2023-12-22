@@ -7,7 +7,7 @@ dependencies:
   - backoff
   - boto3
   - cython
-  - cryptography=40.0.1
+  - cryptography
   - earthengine-api
   - gdal
   - geopandas
@@ -20,7 +20,7 @@ dependencies:
   - numba
   - numpy
   - pandas
-  - prompt-toolkit=3.0.38
+  - prompt-toolkit
   - pycurl
   - pygeos
   - pyogrio

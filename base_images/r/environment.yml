@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - python=3.10.13
+  - python
   - r=3.6
   - r-aws.s3
   - r-base
@@ -61,7 +61,7 @@ dependencies:
   - r-rlist
   - r-rmarkdown
   - r-rnaturalearth
-  - r-rnaturalearthdata
+#  - r-rnaturalearthdata
   - r-RNetCDF
 #  - r-rockchalk
   - r-rodbc
