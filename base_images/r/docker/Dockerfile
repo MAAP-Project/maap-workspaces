@@ -56,7 +56,7 @@ RUN /scripts/install_cran_packages_r.sh
 
 # Install maap-py library
 RUN mkdir /maap-py \
-    && git clone --single-branch --branch v3.1.3 https://github.com/MAAP-Project/maap-py.git /maap-py/ \
+    && git clone --single-branch --branch bugs/dependency-issues https://github.com/MAAP-Project/maap-py.git /maap-py/ \
     && pip install -e /maap-py/
 
 RUN conda list
