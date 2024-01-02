@@ -50,6 +50,8 @@ SHELL ["conda", "run", "-n", "r", "/bin/bash", "-c"]
 
 RUN conda list
 
+RUN conda install -c conda-forge --solver=libmamba  r-rsqlite r-chron r-png r-devemf r-plyr r-sqldf r-proto r-gsubfn r-plogr
+
 ADD . /
 RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
 #RUN cat /scripts/install_cran_packages_r.sh
