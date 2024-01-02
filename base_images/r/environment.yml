@@ -1,6 +1,7 @@
 name: r
 channels:
   - conda-forge
+  - r
   - nodefaults
 dependencies:
   - awscli=2.14.1
