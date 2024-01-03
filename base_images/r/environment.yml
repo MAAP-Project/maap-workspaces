@@ -24,7 +24,7 @@ dependencies:
   - r-devemf=4.0_2
   - r-dplyr=1.1.4
   - r-egg=0.4.5
-  - r-essentials=4.3
+  - r-essentials=4.2
   - r-fs=1.6.3
   - r-geojsonio=0.11.3
   - r-geojsonsf=2.0.3
