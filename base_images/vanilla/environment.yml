@@ -9,6 +9,7 @@ dependencies:
   - cython=3.0.7
   - earthengine-api=0.1.384
   - gdal=3.7.0
+  - geocube=0.4.2
   - geopandas=0.14.1
   - h5py=3.9.0
   - hdf5=1.14.1
