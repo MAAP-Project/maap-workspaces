@@ -12,6 +12,7 @@ dependencies:
   - jupyterlab_widgets=3.0.7
   - nodejs=18.15.0
   - plotly=5.18.0
+  - plotnine
   - pip=23.3.2
   - pip:
     - jupyter-resource-usage==0.7.2

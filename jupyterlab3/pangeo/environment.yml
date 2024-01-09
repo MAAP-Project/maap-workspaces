@@ -18,6 +18,7 @@ dependencies:
   - nodejs=18.15.0
   - pangeo-notebook=0.0.2
   - plotly=5.18.0
+  - plotnine
   - pydantic=2.5.2
   - xarray_leaflet=0.2.3
   - pip=23.3.2
