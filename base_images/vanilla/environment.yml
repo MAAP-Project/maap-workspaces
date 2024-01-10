@@ -46,6 +46,6 @@ dependencies:
   - xmltodict=0.13.0
   - pip=23.3.2
   - pip:
-    - morecantile
+    - morecantile==5.1.0
 variables:
   MAAP_CONF: '/maap-py/'
