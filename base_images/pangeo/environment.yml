@@ -91,6 +91,6 @@ dependencies:
   - zarr=2.16.1
   - pip=23.3.2
   - pip:
-    - morecantil==5.1.0
+    - morecantil
 variables:
   MAAP_CONF: '/maap-py/'
