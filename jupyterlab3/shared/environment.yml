@@ -6,13 +6,14 @@ dependencies:
   - folium=0.15.1
   - gitpython=3.1.40
   - ipyleaflet=0.18.1
-  - jupyterlab=3.6.1
+  - jupyterlab=3.6.3
   - jupyterlab-git=0.34.2
   - jupyter-packaging=0.12.3
   - jupyterlab_widgets=3.0.7
   - nodejs=18.15.0
   - plotly=5.18.0
-  - plotnine
+  - plotnine=0.12.2
   - pip=23.3.2
   - pip:
     - jupyter-resource-usage==0.7.2
+    - rio-tiler==6.2.8
