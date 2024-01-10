@@ -11,6 +11,9 @@ RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
 USER root
 
+RUN conda config --system --add channels conda-forge
+RUN conda config --system --remove channels defaults
+
 # Install additional libraries required by Python packages which are in
 # the minimal base image. Also install 'rsync' so the 'oc rsync' command
 # can be used to copy files into the running container.
