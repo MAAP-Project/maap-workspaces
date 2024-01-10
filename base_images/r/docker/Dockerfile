@@ -48,13 +48,9 @@ RUN conda env create -y -f "/tmp/environment.yml" \
 # we won't need this line unless other envrionment specific commands are added
 SHELL ["conda", "run", "-n", "r", "/bin/bash", "-c"]
 
-RUN conda list
-
 ADD . /
 RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
-#RUN cat /scripts/install_cran_packages_r.sh
 RUN /scripts/install_cran_packages_r.sh
-#RUN R -e install.packages('nlraa', repos = "http://cran.us.r-project.org")
 
 # Install maap-py library
 RUN mkdir /maap-py \
