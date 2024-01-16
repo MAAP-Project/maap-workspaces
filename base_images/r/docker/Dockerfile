@@ -1,31 +1,63 @@
-FROM continuumio/miniconda3:22.11.1
+FROM continuumio/miniconda3:23.10.0-1
 ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
 
-# install maap-py library
-ENV MAAP_CONF='/maap-py/'
-RUN git clone --single-branch --branch v3.1.3 https://github.com/MAAP-Project/maap-py.git \
-    && cd maap-py \
-    && pip install -e .
-
-RUN set -ex \
- && apt-get update
+#RUN set -ex \
+# && apt-get update
 
 RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
-RUN conda install -y -c conda-forge pyOpenSSL=23.2.0 && \
-    conda install -y -n base conda-libmamba-solver=23.7.0 && \
-    conda config --system --set solver libmamba
+RUN apt-get clean && apt-get update && \
+    apt-get install -y --no-install-recommends gdal-bin=3.2.2+dfsg-2+deb11u2 \
+    lbzip2=2.5-2.1 \
+    libfftw3-dev=3.3.8-2 \
+    libgdal-dev=3.2.2+dfsg-2+deb11u2 \
+    libgeos-dev=3.9.0-1 \
+    libgl1-mesa-dev=20.3.5-1 \
+    libglu1-mesa-dev=9.0.1-1 \
+    libhdf4-alt-dev=4.2.15-3 \
+    libhdf5-dev=1.10.6+repack-4+deb11u1 \
+    libjq-dev=1.6-2.1 \
+    libpq-dev=13.13-0+deb11u1 \
+    libproj-dev=7.2.1-1 \
+    libprotobuf-dev=3.12.4-1+deb11u1 \
+    libnetcdf-dev=1:4.7.4-1 \
+    libsqlite3-dev=3.34.1-3 \
+    libssl-dev=1.1.1w-0+deb11u1 \
+    libudunits2-dev=2.2.28-3 \
+    netcdf-bin=1:4.7.4-1 \
+    postgis=3.1.1+dfsg-1+deb11u2 \
+    protobuf-compiler=3.12.4-1+deb11u1 \
+    sqlite3=3.34.1-3 \
+    tk-dev=8.6.11+1 \
+    unixodbc-dev=2.3.6-0.1+b1 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN conda install -y --solver=libmamba -c conda-forge r==4.2 r-rgdal==1.5_32 r-sf==1.0_7 r-irkernel==1.3.2 r-gridExtra==2.3 \
-    r-tidyverse==2.0.0 r-randomForest==4.7_1.1 r-raster==3.6_20 r-data.table==1.14.8 r-rlist==0.4.6.2 \
-    r-gdalutils==2.0.3.2 r-stringr==1.5.0 && \
-    find /opt/conda/ -follow -type f -name '*.a' -delete && \
-    find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
-    /opt/conda/bin/conda clean -afy
+COPY ./environment.yml /tmp
+RUN conda env create -y -f "/tmp/environment.yml" \
+    && find /opt/conda/ -follow -type f -name '*.a' -delete \
+    && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
+    && /opt/conda/bin/conda clean -afy
+
+# Set the conda environemnt for all subsequent docker RUN commands
+# When maap-py is updated and installed via our environment.yml,
+# we won't need this line unless other envrionment specific commands are added
+SHELL ["conda", "run", "-n", "r", "/bin/bash", "-c"]
+
+ADD . /
+RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
+RUN /scripts/install_cran_packages_r.sh
+
+# Install maap-py library
+RUN mkdir /maap-py \
+    && git clone --single-branch --branch v3.1.4 https://github.com/MAAP-Project/maap-py.git /maap-py/ \
+    && pip install -e /maap-py/
+
+RUN conda list
 
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH=${IMAGE_REF}
