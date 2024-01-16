@@ -1,7 +1,27 @@
 ARG BASE_IMAGE
-FROM ${BASE_IMAGE} as jupyterlab_base
-
 ARG BASE_IMAGE_TYPE
+
+FROM ${BASE_IMAGE} as jupyterlab_base
+ARG BASE_IMAGE_TYPE
+# Set WORKSPACE_TYPE, used by entrypoint.sh
+ENV WORKSPACE_TYPE=${BASE_IMAGE_TYPE}
+
+# Create base images for each workspace needed for build stage later
+FROM jupyterlab_base as workspace_base_pangeo
+SHELL ["conda", "run", "-n", "pangeo", "/bin/bash", "-c"]
+
+FROM jupyterlab_base as workspace_base_vanilla
+SHELL ["conda", "run", "-n", "vanilla", "/bin/bash", "-c"]
+
+FROM jupyterlab_base as workspace_base_r
+SHELL ["conda", "run", "-n", "r", "/bin/bash", "-c"]
+
+FROM jupyterlab_base as workspace_base_isce3
+SHELL ["conda", "run", "-n", "isce3", "/bin/bash", "-c"]
+
+FROM workspace_base_${BASE_IMAGE_TYPE} AS workspace_base
+
+FROM workspace_base as workspace_build_stage
 
 ADD . /
 
@@ -23,18 +43,17 @@ RUN apt-get clean && apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install workspace specific packages for conda environment
-RUN echo "Checking if environment.yml exists for ${BASE_IMAGE_TYPE}" \
-    ; if [ -f "/${BASE_IMAGE_TYPE}/environment.yml" ]; then \
-        echo "Installing packages from '/${BASE_IMAGE_TYPE}/environment.yml'" \
-        ; conda env update --name base --file "/${BASE_IMAGE_TYPE}/environment.yml" --solver libmamba \
+RUN echo "Checking if environment.yml exists for ${WORKSPACE_TYPE}" \
+    ; if [ -f "/${WORKSPACE_TYPE}/environment.yml" ]; then \
+        echo "Installing packages from '/${WORKSPACE_TYPE}/environment.yml'" \
+        ; conda env update --file "/${WORKSPACE_TYPE}/environment.yml" \
     ; else \
-        echo "Installing packages from '/shared/environment.yml'" \
-        ; conda env update --name base --file "/shared/environment.yml" --solver libmamba \
+        sed -i "s/WORKSPACE_ENVIRONMENT_NAME/${WORKSPACE_TYPE}/g" /shared/environment.yml \
+        ; echo "Installing packages from '/shared/environment.yml'" \
+        ; conda env update --file "/shared/environment.yml" \
     ; fi
 
 RUN npm install typescript -g
-RUN pip install jupyter-server==2.5.0
-RUN pip install jupyter-resource-usage==0.7.2
 
 # Adjust permissions on home directory so writable by group root.
 RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
@@ -87,5 +106,10 @@ ENV ENVIRONMENTS_FILE_PATH=/opt/environments.json
 COPY ./environments.json $ENVIRONMENTS_FILE_PATH
 
 RUN echo 'printf "\e[101mNOTE: This terminal uses the default environment which might not be the same as your notebook.\e[49m\n\n"' >> /etc/profile
+
+RUN conda list
+
+# Reset Shell
+SHELL ["/bin/sh", "-c"]
 
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
