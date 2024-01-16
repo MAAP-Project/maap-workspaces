@@ -16,7 +16,7 @@ RUN conda env create -y -f "/tmp/environment.yml" \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
 
-# Set the conda environemnt for all subsequent docker RUN commands
+# Set the conda environment for all subsequent docker RUN commands
 # When maap-py is updated and installed via our environment.yml,
 # we won't need this line unless other envrionment specific commands are added
 SHELL ["conda", "run", "-n", "isce3", "/bin/bash", "-c"]
