@@ -90,8 +90,11 @@ done
 # allows `base_url` to be set so that HTTP *responses* include the `base_url` so that browsers make the correct
 # call. However, it strips out `base_url` when listening for *requests* so that handles the ingress/nginx proxy
 # requests correctly.
-export NOTEBOOKLIBPATH=$(find /opt/conda/lib/ -maxdepth 3 -type d -name "notebook")
-export JUPYTERSERVERLIBPATH=$(find /opt/conda/lib -maxdepth 3 -type d -name "jupyter_server")
+export NOTEBOOKLIBPATH=$(find /opt/conda/envs/$WORKSPACE_TYPE/lib -maxdepth 3 -type d -name "notebook")
+export JUPYTERSERVERLIBPATH=$(find /opt/conda/envs/$WORKSPACE_TYPE/lib -maxdepth 3 -type d -name "jupyter_server")
+
+# Fix "fatal: not a git repository" error on startup
+export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
 read -r -d '' JUPYTER_PATCH << EOM
     # Fix for Tornado's inability to handle proxy requests
@@ -120,10 +123,15 @@ fi
 # Dump all env variables into file so they exist still though SSH
 env | grep _ >> /etc/environment
 
-# Add conda bin to path
-export PATH=$PATH:/opt/conda/bin
-cp /root/.bashrc ~/.bash_profile
-conda init
+# Add workspace env conda bin to path
+export PATH=$PATH:/opt/conda/envs/$WORKSPACE_TYPE/bin
+
+# Set up default conda environment for terminals
+echo ". /opt/conda/etc/profile.d/conda.sh ; conda activate $WORKSPACE_TYPE" > /etc/profile.d/init_conda.sh
+
+# Cleanup ~/.bash_profile
+sed -i "s/\. \/opt\/conda\/etc\/profile.d\/conda\.sh//g" ~/.bash_profile
+sed -i "s/conda activate base//g" ~/.bash_profile
 
 # Need to fix directory permissions for publickey authentication
 chmod 700 /projects
@@ -155,7 +163,7 @@ MEMORY=$(get_max_memory "$NAMESPACE")
 
 # TBD maap-py install
 
-source /opt/conda/bin/activate base
+source /opt/conda/bin/activate $WORKSPACE_TYPE
 export SHELL=/bin/bash
 VERSION=$(jupyter lab --version)
 if [[ $VERSION > '2' ]] && [[ $VERSION < '3' ]]; then
