@@ -55,6 +55,10 @@ components:
                     mountPath: /projects/shared-buckets
                     subPath: shared-buckets
                     mountPropagation: HostToContainer
+                  - name: s3fs-volume
+                    mountPath: /projects/triaged_job
+                    subPath: triaged-jobs
+                    mountPropagation: HostToContainer
               - name: s3fs
                 image: 'mas.ops.maap-project.org/root/che-sidecar-s3fs:master'
                 imagePullPolicy: Always
@@ -75,6 +79,10 @@ components:
                   - name: s3fs-volume
                     mountPath: /shared-buckets
                     subPath: shared-buckets
+                    mountPropagation: Bidirectional
+                  - name: s3fs-volume
+                    mountPath: /triaged-jobs
+                    subPath: triaged-jobs
                     mountPropagation: Bidirectional
         - apiVersion: v1
           kind: PersistentVolumeClaim
