@@ -13,6 +13,7 @@ dependencies:
   - r=4.2
   - r-aws.s3=0.3.22
   - r-base=4.2.3
+  - r-BiocManager=1.30.22
   - r-broom=1.0.5
   - r-car=3.1_2
   - r-chron=2.3_61
