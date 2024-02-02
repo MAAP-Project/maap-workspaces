@@ -76,13 +76,7 @@ RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
 RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.5.2 --no-build
 
 # PyPi package prepended with 'maap' so it more easily discoverable
-#RUN pip install maap-jupyter-server-extension==1.2.2
-#RUN jupyter server extension enable jupyter_server_extension
-RUN git clone --single-branch --branch feature/update-ssh-info https://github.com/MAAP-Project/jupyter-server-extension.git
-RUN cd jupyter-server-extension \
-    && npm install \
-    && npm run build \
-    && jupyter labextension install --no-build
+RUN pip install -i https://test.pypi.org/simple/ maap-jupyter-server-extension==1.2.2
 RUN jupyter server extension enable jupyter_server_extension
 
 RUN jupyter labextension install @maap-jupyterlab/algorithms_jupyter_extension@0.2.0 --no-build
