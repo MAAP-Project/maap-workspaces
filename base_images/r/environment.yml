@@ -11,7 +11,7 @@ dependencies:
   - postgis=3.4.0
   - python=3.10.13
   - r=4.2
-  - r-arrow=14.01
+  - r-arrow=14.0.1
   - r-aws.s3=0.3.22
   - r-base=4.2.3
   - r-BiocManager=1.30.22
