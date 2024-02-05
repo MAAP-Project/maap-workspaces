@@ -4,6 +4,7 @@ channels:
   - r
   - nodefaults
 dependencies:
+  - arrow
   - awscli=2.14.1
   - earthaccess=0.8.2
   - parallel=20231122
