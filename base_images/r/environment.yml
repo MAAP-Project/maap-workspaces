@@ -106,5 +106,6 @@ dependencies:
   - pip:
     - ff==0.0.10
     - grid==0.7.1
+    - rio-tiler==6.2.8
 variables:
   MAAP_CONF: '/maap-py/'

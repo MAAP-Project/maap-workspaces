@@ -16,4 +16,3 @@ dependencies:
   - pip=23.3.2
   - pip:
     - jupyter-resource-usage==0.7.2
-    - rio-tiler==6.2.8
