@@ -25,6 +25,9 @@ RUN mkdir /maap-py \
     && git clone --single-branch --branch v3.1.4 https://github.com/MAAP-Project/maap-py.git /maap-py/ \
     && pip install -e /maap-py/
 
+WORKDIR /projects
+RUN git clone https://github.com/CARDAMOM-framework/CARDAMOM_v2.3.git projects/cardamom/
+
 RUN conda list
 
 ARG IMAGE_REF
