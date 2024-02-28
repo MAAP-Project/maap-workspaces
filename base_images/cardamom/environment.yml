@@ -1,0 +1,13 @@
+name: cardamom
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - gcc 
+  - hdf5
+  - python=3.10
+  - netcdf4
+  - pip:
+    - git+https://github.com/CARDAMOM-framework/CARDAMOM_v2.3.git@main
+variables:
+  MAAP_CONF: '/maap-py/'

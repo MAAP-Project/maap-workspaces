@@ -19,6 +19,9 @@ SHELL ["conda", "run", "-n", "r", "/bin/bash", "-c"]
 FROM jupyterlab_base as workspace_base_isce3
 SHELL ["conda", "run", "-n", "isce3", "/bin/bash", "-c"]
 
+FROM jupyterlab_base as workspace_base_cardamom
+SHELL ["conda", "run", "-n", "cardamom", "/bin/bash", "-c"]
+
 FROM workspace_base_${BASE_IMAGE_TYPE} AS workspace_base
 
 FROM workspace_base as workspace_build_stage
