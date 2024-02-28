@@ -3,9 +3,9 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - gcc 
-  - hdf5
+  - gcc=13.2.0
+  - hdf5=1.14.3
   - python=3.10
-  - netcdf4
+  - netcdf4=1.6.5
 variables:
   MAAP_CONF: '/maap-py/'
