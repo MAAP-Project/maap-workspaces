@@ -1,0 +1,6 @@
+---
+displayName: "MAAP CARDAMOM"
+description: Latest version of MAAP CARDAMOM
+tags: ["JupyterLab", "Python", "MAAP", "CARDAMOM"]
+icon: /devfiles/isce2/devfile/cardamom.png
+globalMemoryLimit: 2710Mi
