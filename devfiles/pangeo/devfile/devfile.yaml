@@ -56,7 +56,7 @@ components:
                     subPath: shared-buckets
                     mountPropagation: HostToContainer
                   - name: s3fs-volume
-                    mountPath: /projects/triaged_job
+                    mountPath: /projects/triaged-jobs
                     subPath: triaged-jobs
                     mountPropagation: HostToContainer
               - name: s3fs
