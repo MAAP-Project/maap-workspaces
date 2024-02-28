@@ -4,9 +4,9 @@ export BASE_IMAGE_NAME = "${PROJECT_PREFIX}base_${IMAGE_NAME}"
 export JUPYTER_IMAGE_NAME = "${PROJECT_PREFIX}jupyter_${IMAGE_NAME}"
 export RUN_OPTIONS = 
 
-build-images: build-base-image build-jupyter-image
+build-images: build-base-image build-jupyter-image		## Build both the base and jupyterlab image
 
-build-images-no-cache: build-base-image-no-cache build-jupyter-image-no-cache
+build-images-no-cache: build-base-image-no-cache build-jupyter-image-no-cache		## Build both the base and jupyterlab image without using the docker cache
 
 build-base-image:		## Build the base image for the 'vanilla' workspace (default), or the workspace specified by setting the argument, IMAGE_NAME=<image_name>
 	@cd base_images/${IMAGE_NAME}; \
@@ -46,11 +46,11 @@ help:						## (DEFAULT) This help information
 	@echo ====================================================================
 	@grep -E '^## .*$$'  \
 		$(MAKEFILE_LIST)  \
-		| awk 'BEGIN { FS="## " }; {printf "\033[33m%-20s\033[0m \n", $$2}'
+		| awk 'BEGIN { FS="## " }; {printf "\033[33m%-30s\033[0m \n", $$2}'
 	@echo
 	@grep -E '^[0-9a-zA-Z_-]+:.*?## .*$$'  \
 		$(MAKEFILE_LIST)  \
-		| awk 'BEGIN { FS=":.*?## " }; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'  \
+		| awk 'BEGIN { FS=":.*?## " }; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'  \
 #		 | sort
 .PHONY: help
 .DEFAULT_GOAL := help

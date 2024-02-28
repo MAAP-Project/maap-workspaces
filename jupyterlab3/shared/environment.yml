@@ -16,3 +16,10 @@ dependencies:
   - pip=23.3.2
   - pip:
     - jupyter-resource-usage==0.7.2
+    - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6#egg-info=stac_ipyleaflet
+variables:
+  TITILER_STAC_ENDPOINT: 'https://titiler-stac.maap-project.org/'
+  TITILER_ENDPOINT: 'https://titiler.maap-project.org/'
+  STAC_CATALOG_NAME: 'MAAP STAC'
+  STAC_CATALOG_URL: 'https://stac.maap-project.org/'
+  STAC_BROWSER_URL: 'https://stac-browser.maap-project.org/'
