@@ -60,7 +60,7 @@ components:
                     subPath: triaged-jobs
                     mountPropagation: HostToContainer
               - name: s3fs
-                image: 'mas.ops.maap-project.org/root/che-sidecar-s3fs:master'
+                image: 'mas.dit.maap-project.org/root/che-sidecar-s3fs:master'
                 imagePullPolicy: Always
                 resources:
                   limits:
