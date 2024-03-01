@@ -2,14 +2,14 @@ apiVersion: 1.0.0
 metadata:
   generateName: cardamom-
 attributes:
-  editorFree: "true"
+  editorFree: 'true'
 components:
   - endpoints:
       - attributes:
           type: ide
-          discoverable: "false"
+          discoverable: 'false'
           path: /
-          public: "true"
+          public: 'true'
           protocol: http
         name: jupyter
         port: 3100
