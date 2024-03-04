@@ -97,8 +97,8 @@ RUN jupyter lab build && \
     rm -rf $HOME/.node-gyp && \
     rm -rf $HOME/.local
 
-RUN find /opt/conda/ -follow -type f -name '*.a' -delete && \
-    find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
+#RUN find /opt/conda/ -follow -type f -name '*.a' -delete && \
+RUN find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy && \
     npm cache clean --force
 

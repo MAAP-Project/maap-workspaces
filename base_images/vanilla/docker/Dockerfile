@@ -9,7 +9,7 @@ RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
 COPY ./environment.yml /tmp
 RUN conda env create -y -f "/tmp/environment.yml" \
-    && find /opt/conda/ -follow -type f -name '*.a' -delete \
+    #&& find /opt/conda/ -follow -type f -name '*.a' -delete \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
 
