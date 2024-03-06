@@ -84,7 +84,7 @@ RUN pip install -i https://test.pypi.org/simple/ dps-jupyter-extension==0.5.8
 RUN jupyter labextension install @maap-jupyterlab/algorithms_jupyter_extension@0.2.0 --no-build
 
 # RUN jupyter labextension install @maap-jupyterlab/maap-libs-jupyter-extension@1.0.2 --no-build
-RUN pip install -i maap-help-jupyter-extension==1.2.0
+RUN pip install -i https://test.pypi.org/simple/ maap-libs-jupyter-extension==1.1.0
 
 # RUN jupyter labextension install @maap-jupyterlab/edsc-jupyter-extension@1.0.4 --no-build
 RUN pip install -i https://test.pypi.org/simple/ edsc-jupyter-extension==1.0.5
@@ -92,7 +92,9 @@ RUN pip install -i https://test.pypi.org/simple/ edsc-jupyter-extension==1.0.5
 #RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@0.0.5 --no-build
 RUN pip install -i https://test.pypi.org/simple/ user-workspace-management-jupyter-extension==0.0.5
 
-RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@1.0.1 --no-build
+# RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@1.0.1 --no-build
+RUN pip install maap-help-jupyter-extension==1.2.0
+
 
 # RUN jupyter labextension install @maap-jupyterlab/che-sidebar-visibility-jupyter-extension@1.0.1 --no-build
 RUN pip install -i https://test.pypi.org/simple/ che-sidebar-visibility-jupyter-extension==1.0.1
