@@ -77,11 +77,7 @@ RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.5.9 --
 
 # PyPi package prepended with 'maap' so it more easily discoverable
 #RUN pip install maap-jupyter-server-extension==1.2.2
-RUN git clone --single-branch --branch bug/pin-jupyter-server https://github.com/MAAP-Project/jupyter-server-extension.git
-RUN cd jupyter-server-extension \
-    && npm install \
-    && npm run build \
-    && jupyter labextension install --no-build
+RUN jupyter labextension install maap-jupyter-server-extension@1.2.3 --no-build
 RUN jupyter server extension enable jupyter_server_extension
 
 RUN jupyter labextension install @maap-jupyterlab/algorithms_jupyter_extension@0.2.0 --no-build
