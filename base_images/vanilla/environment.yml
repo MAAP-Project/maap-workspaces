@@ -19,6 +19,7 @@ dependencies:
   - matplotlib=3.7.3
   - mizani=0.10.0
   - mpl-scatter-density=0.7
+  - netcdf4
   - numba=0.58.1
   - numpy=1.26.3
   - pandas=2.1.4
