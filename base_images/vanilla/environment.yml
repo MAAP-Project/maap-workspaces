@@ -9,6 +9,7 @@ dependencies:
   - boto3=1.34.15
   - cython=3.0.7
   - earthengine-api=0.1.384
+  - gcc=13.2.0
   - gdal=3.7.0
   - geocube=0.4.2
   - geopandas=0.14.2
@@ -24,6 +25,7 @@ dependencies:
   - numpy=1.26.3
   - pandas=2.1.4
   - pandarallel=1.6.5
+  - parallel=20240122
   - pycurl=7.45.1
   - pygeos=0.14
   - pyogrio=0.6.0
