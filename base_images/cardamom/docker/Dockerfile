@@ -7,20 +7,12 @@ RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
-RUN apt-get update \
-    && apt-get install -y git
-
 COPY ./environment.yml /tmp
 RUN conda env create -y -f "/tmp/environment.yml" \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
 
 SHELL ["conda", "run", "-n", "cardamom", "/bin/bash", "-c"]
-
-WORKDIR /projects
-RUN git clone https://github.com/CARDAMOM-framework/CARDAMOM_v2.3.git projects/cardamom/
-
-RUN bash projects/cardamom/BASH/CARDAMOM_COMPILE.sh
 
 # Install maap-py library
 RUN mkdir /maap-py \
