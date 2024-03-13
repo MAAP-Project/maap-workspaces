@@ -12,6 +12,7 @@ dependencies:
   - gdal=3.7.0
   - geocube=0.4.2
   - geopandas=0.14.2
+  - groff=1.22.4
   - h5py=3.9.0
   - hdf5=1.14.0
   - httpx=0.26.0
