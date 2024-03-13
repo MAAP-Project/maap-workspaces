@@ -75,7 +75,7 @@ RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
 ###############################
 
 # PyPi package prepended with 'maap' so it more easily discoverable
-RUN pip install maap-jupyter-server-extension==1.2.2
+RUN pip install -i https://test.pypi.org/simple/ maap-jupyter-server-extension==1.2.30
 RUN jupyter server extension enable jupyter_server_extension
 
 #RUN jupyter labextension install @maap-jupyterlab/dps-jupyter-extension@0.5.2 --no-build
@@ -90,7 +90,7 @@ RUN pip install -i https://test.pypi.org/simple/ maap-libs-jupyter-extension==1.
 RUN pip install -i https://test.pypi.org/simple/ edsc-jupyter-extension==1.0.5
 
 #RUN jupyter labextension install @maap-jupyterlab/user-workspace-management-jupyter-extension@0.0.5 --no-build
-RUN pip install -i https://test.pypi.org/simple/ user-workspace-management-jupyter-extension==0.0.5
+RUN pip install -i https://test.pypi.org/simple/ user-workspace-management-jupyter-extension==0.0.7
 
 # RUN jupyter labextension install @maap-jupyterlab/maap-help-jupyter-extension@1.0.1 --no-build
 RUN pip install maap-help-jupyter-extension==1.2.0
