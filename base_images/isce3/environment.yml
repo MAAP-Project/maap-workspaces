@@ -11,6 +11,7 @@ dependencies:
   - fsspec=2023.12.2
   - gdal=3.7.0
   - geopandas=0.14.1
+  - groff=1.22.4
   - h5py=3.9.0
   - hdf5=1.14.1
   - httpx=0.25.2
@@ -47,5 +48,6 @@ dependencies:
   - pip=23.3.2
   - pip:
     - git+https://github.com/opera-adt/RTC.git@v0.3
+    - rio-tiler==6.2.8
 variables:
   MAAP_CONF: '/maap-py/'

@@ -6,6 +6,7 @@ channels:
 dependencies:
   - awscli=2.14.1
   - earthaccess=0.8.2
+  - groff=1.22.4
   - parallel=20231122
   - perl=5.32.1
   - postgis=3.4.0
@@ -106,5 +107,6 @@ dependencies:
   - pip:
     - ff==0.0.10
     - grid==0.7.1
+    - rio-tiler==6.2.8
 variables:
   MAAP_CONF: '/maap-py/'
