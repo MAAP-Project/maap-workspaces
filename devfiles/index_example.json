@@ -29,21 +29,6 @@
     }
   },
   {
-    "displayName": "MAAP RGEDI Stable",
-    "description": "Latest version of MAAP RGEDI",
-    "tags": [
-      "JupyterLab",
-      "Python",
-      "R",
-      "MAAP"
-    ],
-    "icon": "/images/r.png",
-    "globalMemoryLimit": "2710Mi",
-    "links": {
-      "self": "/devfiles/rgedi/devfile.yaml"
-    }
-  },
-  {
     "displayName": "MAAP ESA EDAV",
     "description": "Latest version of MAAP ESA EDAV",
     "tags": [
