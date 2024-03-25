@@ -12,6 +12,8 @@ RUN conda env create -y -f "/tmp/environment.yml" \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
 
+RUN find / -typ f -name "CARDAMOM_COMPILE.sh" -exec bash {} \;
+
 SHELL ["conda", "run", "-n", "cardamom", "/bin/bash", "-c"]
 
 # Install maap-py library
@@ -20,8 +22,6 @@ RUN mkdir /maap-py \
     && pip install -e /maap-py/
 
 RUN conda list
-
-RUN find / -typ f -name "CARDAMOM_COMPILE.sh" -exec bash {} \;
 
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH=${IMAGE_REF}
