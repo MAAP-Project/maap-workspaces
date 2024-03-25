@@ -21,5 +21,7 @@ RUN mkdir /maap-py \
 
 RUN conda list
 
+RUN bash projects/cardamom/BASH/CARDAMOM_COMPILE.sh
+
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH=${IMAGE_REF}
