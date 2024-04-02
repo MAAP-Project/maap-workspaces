@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - awscli~=2.15
+  - awscli=2.14.6
   - backoff
   - basemap
   - boto3
