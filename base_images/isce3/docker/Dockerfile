@@ -21,9 +21,8 @@ RUN conda env create -y -f "/tmp/environment.yml" \
 # we won't need this line unless other envrionment specific commands are added
 SHELL ["conda", "run", "-n", "isce3", "/bin/bash", "-c"]
 
-RUN conda list
 RUN mkdir /maap-py \
-    && git clone --single-branch --branch bug/unpinned-versions https://github.com/MAAP-Project/maap-py.git /maap-py/ \
+    && git clone --single-branch --branch v3.1.5 https://github.com/MAAP-Project/maap-py.git /maap-py/ \
     && pip install -e /maap-py/
 
 RUN conda list
