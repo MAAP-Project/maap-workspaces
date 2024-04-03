@@ -52,6 +52,7 @@ ADD . /
 RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
 RUN /scripts/install_cran_packages_r.sh
 
+RUN conda list 
 # Install maap-py library
 RUN mkdir /maap-py \
     && git clone --single-branch --branch bug/unpinned-versions https://github.com/MAAP-Project/maap-py.git /maap-py/ \
