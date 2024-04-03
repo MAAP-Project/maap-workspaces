@@ -19,7 +19,6 @@ RUN conda env create -y -f "/tmp/environment.yml" \
 # Set the conda environment for all subsequent docker RUN commands
 # When maap-py is updated and installed via our environment.yml,
 # we won't need this line unless other envrionment specific commands are added
-RUN conda list
 SHELL ["conda", "run", "-n", "isce3", "/bin/bash", "-c"]
 
 RUN conda list
