@@ -25,7 +25,7 @@ RUN conda list
 
 # Install maap-py library
 RUN mkdir /maap-py \
-    && git clone --single-branch --branch bug/dependency-errors https://github.com/MAAP-Project/maap-py.git /maap-py/ \
+    && git clone --single-branch --branch bug/unpinned-versions https://github.com/MAAP-Project/maap-py.git /maap-py/ \
     && pip install -e /maap-py/
 
 RUN conda list
