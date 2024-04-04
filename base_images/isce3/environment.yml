@@ -48,6 +48,6 @@ dependencies:
   - pip=23.3.2
   - pip:
     - git+https://github.com/opera-adt/RTC.git@v0.3
-    - rio-tiler==6.2.8
 variables:
   MAAP_CONF: '/maap-py/'
+

@@ -51,3 +51,4 @@ dependencies:
     - rio-tiler==6.2.8
 variables:
   MAAP_CONF: '/maap-py/'
+
