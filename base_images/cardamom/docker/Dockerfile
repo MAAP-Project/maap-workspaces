@@ -12,9 +12,9 @@ RUN conda env create -y -f "/tmp/environment.yml" \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
 
-RUN find / -typ f -name "CARDAMOM_COMPILE.sh" -exec bash {} \;
-
 SHELL ["conda", "run", "-n", "cardamom", "/bin/bash", "-c"]
+RUN conda list 
+RUN find / -type f -name "CARDAMOM_COMPILE.sh" -exec bash {} \;
 
 # Install maap-py library
 RUN mkdir /maap-py \
