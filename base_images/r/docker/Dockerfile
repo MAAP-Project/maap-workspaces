@@ -21,7 +21,7 @@ RUN apt-get clean && apt-get update && \
     libhdf4-alt-dev=4.2.15-3 \
     libhdf5-dev=1.10.6+repack-4+deb11u1 \
     libjq-dev=1.6-2.1 \
-    libpq-dev=13.13-0+deb11u1 \
+    libpq-dev=13.14-0+deb11u1 \
     libproj-dev=7.2.1-1 \
     libprotobuf-dev=3.12.4-1+deb11u1 \
     libnetcdf-dev=1:4.7.4-1 \
@@ -54,7 +54,7 @@ RUN /scripts/install_cran_packages_r.sh
 
 # Install maap-py library
 RUN mkdir /maap-py \
-    && git clone --single-branch --branch v3.1.4 https://github.com/MAAP-Project/maap-py.git /maap-py/ \
+    && git clone --single-branch --branch v3.1.5 https://github.com/MAAP-Project/maap-py.git /maap-py/ \
     && pip install -e /maap-py/
 
 RUN conda list
