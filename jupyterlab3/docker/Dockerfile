@@ -48,15 +48,26 @@ RUN chmod g+w /etc/passwd
 ###############################
 # Non Custom Jupyter Extensions
 ###############################
-#SHELL ["/bin/bash", "-c"] # Added this line to base image dockerfiles for now before maap-py is extracted to environment.yml
-RUN source activate $WORKSPACE_TYPE && \
-    npm install typescript -g && \
-    npm install jupyterlab-plotly@5.5.0 && \
-    jupyter labextension disable @jupyterlab/apputils-extension:announcements && \
-    jupyter server extension enable jupyter_server_extension
+# RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
+# RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
 
-RUN source activate $WORKSPACE_TYPE && \
-    jupyter lab build && \
+###############################
+# Custom Jupyter Extensions
+###############################
+
+# PyPi packages prepended with 'maap' so they are more easily discoverable
+# RUN pip install maap-jupyter-server-extension==1.3.4
+# RUN jupyter server extension enable jupyter_server_extension
+
+# RUN pip install maap-dps-jupyter-extension==0.7.0
+# RUN pip install maap-algorithms-jupyter-extension==0.3.0
+# RUN pip install maap-libs-jupyter-extension==1.2.0
+# RUN pip install maap-edsc-jupyter-extension==1.1.0
+# RUN pip install maap-user-workspace-management-jupyter-extension==0.1.0
+# RUN pip install maap-help-jupyter-extension==1.3.1
+# RUN pip install maap-che-sidebar-visibility-jupyter-extension==1.1.0
+
+RUN jupyter lab build && \
     jupyter lab clean && \
     jlpm cache clean && \
     npm cache clean --force && \
