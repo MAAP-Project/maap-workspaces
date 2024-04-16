@@ -67,7 +67,7 @@ RUN chmod g+w /etc/passwd
 # RUN pip install maap-help-jupyter-extension==1.3.1
 # RUN pip install maap-che-sidebar-visibility-jupyter-extension==1.1.0
 
-RUN jupyter lab build && \
+RUN jupyter lab build
     # jupyter lab clean && \
     # jlpm cache clean && \
     # npm cache clean --force && \
