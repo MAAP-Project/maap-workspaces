@@ -11,7 +11,8 @@ FROM jupyterlab_base as workspace_base_pangeo
 SHELL ["conda", "run", "-n", "pangeo", "/bin/bash", "-c"]
 
 FROM jupyterlab_base as workspace_base_vanilla
-SHELL ["conda", "run", "-n", "vanilla", "/bin/bash", "-c"]
+#SHELL ["conda", "run", "-n", "vanilla", "/bin/bash", "-c"]
+#SHELL ["conda", "activate", "-n", "vanilla"]
 
 FROM jupyterlab_base as workspace_base_r
 SHELL ["conda", "run", "-n", "r", "/bin/bash", "-c"]
@@ -33,6 +34,7 @@ USER root
 
 RUN conda config --system --add channels conda-forge
 RUN conda config --system --remove channels defaults
+RUN conda list 
 
 # Install additional libraries required by Python packages which are in
 # the minimal base image. Also install 'rsync' so the 'oc rsync' command
