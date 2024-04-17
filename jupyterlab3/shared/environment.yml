@@ -8,7 +8,7 @@ dependencies:
   - ipyleaflet=0.18.1
   - jupyterlab=4.1.6
   - jupyterlab-git=0.50.0
-  - jupyter_server==2.12.5
+  - jupyter_server=2.12.5
   # - jupyter-packaging=0.12.3 -- hatch builder recommended
   - jupyterlab_widgets
   - nodejs=18.15.0
