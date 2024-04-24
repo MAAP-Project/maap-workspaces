@@ -7,6 +7,7 @@ ARG BASE_IMAGE_TYPE
 ENV WORKSPACE_TYPE=${BASE_IMAGE_TYPE}
 
 # Create base images for each workspace needed for build stage later
+# removing starting here 
 FROM jupyterlab_base as workspace_base_pangeo
 SHELL ["conda", "run", "-n", "pangeo", "/bin/bash", "-c"]
 
@@ -23,6 +24,7 @@ SHELL ["conda", "run", "-n", "isce3", "/bin/bash", "-c"]
 FROM workspace_base_${BASE_IMAGE_TYPE} AS workspace_base
 
 FROM workspace_base as workspace_build_stage
+# remove ending here 
 
 ADD . /
 
