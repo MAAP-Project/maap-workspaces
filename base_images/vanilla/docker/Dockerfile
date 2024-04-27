@@ -45,17 +45,14 @@ RUN cat ~/.bashrc
 #RUN source activate vanilla
 #SHELL ["source", "activate", "vanilla"]
 
-RUN /opt/conda/envs/vanilla/bin/pip install scipy
-RUN conda install --name vanilla -y s3fs
-RUN conda list
+# RUN /opt/conda/envs/vanilla/bin/pip install scipy
+# RUN conda install --name vanilla -y s3fs
+# RUN conda list
 
 # Install maap-py library
-# RUN mkdir /maap-py \
-#     && git clone --single-branch --branch v3.1.5 https://github.com/MAAP-Project/maap-py.git /maap-py/ \
-#     && /opt/conda/envs/vanilla/bin/pip install -e /maap-py/
-
-SHELL ["conda", "run", "-n", "vanilla", "/bin/bash", "-c"]
-RUN conda list
+RUN mkdir /maap-py \
+    && git clone --single-branch --branch v3.1.5 https://github.com/MAAP-Project/maap-py.git /maap-py/ \
+    && /opt/conda/envs/vanilla/bin/pip install -e /maap-py/
 
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH=${IMAGE_REF}

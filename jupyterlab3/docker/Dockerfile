@@ -6,26 +6,6 @@ ARG BASE_IMAGE_TYPE
 # Set WORKSPACE_TYPE, used by entrypoint.sh
 ENV WORKSPACE_TYPE=${BASE_IMAGE_TYPE}
 
-# Create base images for each workspace needed for build stage later
-# removing starting here 
-FROM jupyterlab_base as workspace_base_pangeo
-SHELL ["conda", "run", "-n", "pangeo", "/bin/bash", "-c"]
-
-FROM jupyterlab_base as workspace_base_vanilla
-#SHELL ["conda", "run", "-n", "vanilla", "/bin/bash", "-c"]
-#SHELL ["conda", "activate", "-n", "vanilla"]
-
-FROM jupyterlab_base as workspace_base_r
-SHELL ["conda", "run", "-n", "r", "/bin/bash", "-c"]
-
-FROM jupyterlab_base as workspace_base_isce3
-SHELL ["conda", "run", "-n", "isce3", "/bin/bash", "-c"]
-
-FROM workspace_base_${BASE_IMAGE_TYPE} AS workspace_base
-
-FROM workspace_base as workspace_build_stage
-# remove ending here 
-
 ADD . /
 
 RUN mkdir -p /projects
@@ -41,10 +21,12 @@ RUN conda list
 # Install additional libraries required by Python packages which are in
 # the minimal base image. Also install 'rsync' so the 'oc rsync' command
 # can be used to copy files into the running container.
+RUN apt list --installed 
 RUN apt-get clean && apt-get update && \
     apt-get install -y --no-install-recommends rsync gcc python3 vim && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+RUN apt list --installed 
 
 # Install workspace specific packages for conda environment
 RUN echo "Checking if environment.yml exists for ${WORKSPACE_TYPE}" \
