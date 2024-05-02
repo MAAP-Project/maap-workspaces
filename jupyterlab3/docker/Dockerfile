@@ -57,7 +57,7 @@ RUN chmod g+w /etc/passwd
 
 # PyPi packages prepended with 'maap' so they are more easily discoverable
 RUN pip install -i https://test.pypi.org/simple/ maap-jupyter-server-extension
-RUN jupyter server extension enable jupyter_server_extension
+RUN jupyter server extension enable maap_jupyter_server_extension
 
 RUN pip install -i https://test.pypi.org/simple/ maap-dps-jupyter-extension==0.7.0
 RUN pip install -i https://test.pypi.org/simple/ maap-algorithms-jupyter-extension==0.3.0
