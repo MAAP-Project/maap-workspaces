@@ -39,6 +39,8 @@ RUN echo "Checking if environment.yml exists for ${WORKSPACE_TYPE}" \
         ; conda env update --file "/shared/environment.yml" \
     ; fi
 
+# Need to install nodejs to do an npm install. We should be getting the same version of typescript from the environment.yml
+RUN conda install -y -c conda-forge nodejs=18.15.0
 RUN npm install typescript -g
 
 # Adjust permissions on home directory so writable by group root.
