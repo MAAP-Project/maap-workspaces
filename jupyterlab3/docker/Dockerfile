@@ -75,7 +75,7 @@ RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
 ###############################
 
 # Jupyter server extension needs to be specifially enabled 
-RUN jupyter server extension enable maap_jupyter_server_extension
+RUN jupyter server extension enable jupyter_server_extension
 
 RUN jupyter lab build && \
     jupyter lab clean && \
