@@ -55,6 +55,7 @@ RUN chmod g+w /etc/passwd
 ###############################
 # Non Custom Jupyter Extensions
 ###############################
+RUN conda install -y -c conda-forge jupyterlab=3.6.3
 RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
 RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
 
