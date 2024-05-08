@@ -6,6 +6,14 @@ ARG BASE_IMAGE_TYPE
 # Set WORKSPACE_TYPE, used by entrypoint.sh
 ENV WORKSPACE_TYPE=${BASE_IMAGE_TYPE}
 
+# DELETE STARTING HERE 
+FROM jupyterlab_base as workspace_base_vanilla
+SHELL ["conda", "run", "-n", "vanilla", "/bin/bash", "-c"]
+
+FROM workspace_base_${BASE_IMAGE_TYPE} AS workspace_base
+
+FROM workspace_base as workspace_build_stage
+# DELETE ENDING HERE
 ADD . /
 
 RUN mkdir -p /projects
@@ -41,6 +49,7 @@ RUN echo "Checking if environment.yml exists for ${WORKSPACE_TYPE}" \
 
 # Need to install nodejs to do an npm install. We should be getting the same version of typescript from the environment.yml
 #RUN conda install -y -c conda-forge nodejs=18.15.0
+RUN which npm
 RUN /opt/conda/envs/vanilla/bin/npm install typescript -g
 
 # Adjust permissions on home directory so writable by group root.
