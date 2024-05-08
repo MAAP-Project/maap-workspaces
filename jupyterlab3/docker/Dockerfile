@@ -56,15 +56,15 @@ RUN chmod g+w /etc/passwd
 # Non Custom Jupyter Extensions
 ###############################
 RUN conda install -y -c conda-forge jupyterlab=3.6.3
-RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
-RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
+RUN /opt/conda/envs/vanilla/bin/jupyter labextension install --no-build jupyterlab-plotly@5.5.0
+RUN /opt/conda/envs/vanilla/bin/jupyter labextension disable @jupyterlab/apputils-extension:announcements
 
 ###############################
 # Custom Jupyter Extensions
 ###############################
 
 # Jupyter server extension needs to be specifially enabled 
-RUN jupyter server extension enable jupyter_server_extension
+RUN /opt/conda/envs/vanilla/bin/jupyter server extension enable jupyter_server_extension
 
 RUN jupyter lab build && \
     jupyter lab clean && \
