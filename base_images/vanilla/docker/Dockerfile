@@ -38,6 +38,7 @@ RUN conda env create -y -f "/tmp/environment.yml" \
 #SHELL ["/bin/bash", "-c"]
 #RUN echo "conda activate vanilla" >> ~/.bashrc
 #RUN echo "conda activate vanilla" >> ~/.bash_profile
+SHELL ["/bin/bash", "-c"] 
 RUN conda init && echo "conda activate vanilla" >> ~/.bashrc
 RUN cat ~/.bashrc
 #RUN cat ~/.bash_profile
