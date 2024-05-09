@@ -55,12 +55,11 @@ RUN chmod g+w /etc/passwd
 # Non Custom Jupyter Extensions
 ###############################
 #RUN conda install -y -c conda-forge jupyterlab=3.6.3
-RUN /bin/bash -c 'source activate vanilla'
-#RUN source activate vanilla 
-    # npm install typescript -g && \
-    # npm install jupyterlab-plotly@5.5.0 && \
-    # jupyter labextension disable @jupyterlab/apputils-extension:announcements && \
-    # jupyter server extension enable jupyter_server_extension
+RUN /bin/bash -c 'source activate vanilla && \
+    npm install typescript -g && \
+    npm install jupyterlab-plotly@5.5.0 && \
+    jupyter labextension disable @jupyterlab/apputils-extension:announcements && \
+    jupyter server extension enable jupyter_server_extension'
 
 
 RUN /bin/bash -c 'source activate vanilla && \
@@ -71,10 +70,12 @@ RUN /bin/bash -c 'source activate vanilla && \
     rm -rf $HOME/.node-gyp && \
     rm -rf $HOME/.local'
 
-RUN find /opt/conda/ -follow -type f -name '*.a' -delete && \
-    find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
+RUN /bin/bash -c 'source activate vanilla && \
+    find /opt/conda/ -follow -type f -name \'*.a\' -delete && \
+    find /opt/conda/ -follow -type f -name \'*.js.map\' -delete && \
     /opt/conda/bin/conda clean -afy && \
-    npm cache clean --force
+    npm cache clean --force'
+
 
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./jupyter_patch /opt/jupyter_patch
