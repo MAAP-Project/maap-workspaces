@@ -57,7 +57,8 @@ RUN chmod g+w /etc/passwd
 #RUN conda install -y -c conda-forge jupyterlab=3.6.3
 ENV PATH="$PATH:/opt/conda/envs/$WORKSPACE_TYPE/bin"
 RUN npm install typescript -g
-RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
+#RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
+RUN npm install jupyterlab-plotly@5.5.0
 RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
 
 ###############################
