@@ -55,20 +55,14 @@ RUN chmod g+w /etc/passwd
 # Non Custom Jupyter Extensions
 ###############################
 #RUN conda install -y -c conda-forge jupyterlab=3.6.3
-ENV PATH="$PATH:/opt/conda/envs/$WORKSPACE_TYPE/bin"
-RUN npm install typescript -g
-#RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
-RUN npm install jupyterlab-plotly@5.5.0
-RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
+RUN source activate $WORKSPACE_TYPE && \
+    npm install typescript -g && \
+    npm install jupyterlab-plotly@5.5.0 && \
+    jupyter labextension disable @jupyterlab/apputils-extension:announcements && \
+    jupyter server extension enable jupyter_server_extension
 
-###############################
-# Custom Jupyter Extensions
-###############################
-
-# Jupyter server extension needs to be specifially enabled 
-RUN jupyter server extension enable jupyter_server_extension
-
-RUN jupyter lab build && \
+RUN source activate $WORKSPACE_TYPE && \
+    jupyter lab build && \
     jupyter lab clean && \
     jlpm cache clean && \
     npm cache clean --force && \
