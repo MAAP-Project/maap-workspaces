@@ -42,7 +42,7 @@ RUN conda init && echo "conda activate vanilla" >> ~/.bashrc
 RUN cat ~/.bashrc
 #RUN cat ~/.bash_profile
 #RUN source ~/.bashrc
-#RUN source activate vanilla
+RUN source activate vanilla
 #SHELL ["source", "activate", "vanilla"]
 
 # RUN /opt/conda/envs/vanilla/bin/pip install scipy
