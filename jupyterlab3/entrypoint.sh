@@ -124,7 +124,7 @@ fi
 env | grep _ >> /etc/environment
 
 # Add workspace env conda bin to path
-#export PATH=$PATH:/opt/conda/envs/$WORKSPACE_TYPE/bin
+export PATH=$PATH:/opt/conda/envs/$WORKSPACE_TYPE/bin
 
 # Set up default conda environment for terminals
 echo ". /opt/conda/etc/profile.d/conda.sh ; conda activate $WORKSPACE_TYPE" > /etc/profile.d/init_conda.sh
