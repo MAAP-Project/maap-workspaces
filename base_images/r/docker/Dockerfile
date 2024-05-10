@@ -43,19 +43,17 @@ RUN conda env create -y -f "/tmp/environment.yml" \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
 
-# Set the conda environment for all subsequent docker RUN commands
-# When maap-py is updated and installed via our environment.yml,
-# we won't need this line unless other envrionment specific commands are added
-SHELL ["conda", "run", "-n", "r", "/bin/bash", "-c"]
+RUN conda init && echo "conda activate r" >> ~/.bashrc
 
 ADD . /
 RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
 RUN /scripts/install_cran_packages_r.sh
 
+# Going to extract this install into the environment.yml by this next release 
 # Install maap-py library
 RUN mkdir /maap-py \
     && git clone --single-branch --branch v3.1.5 https://github.com/MAAP-Project/maap-py.git /maap-py/ \
-    && pip install -e /maap-py/
+    && /opt/conda/envs/r/bin/pip install -e /maap-py/
 
 RUN conda list
 

@@ -15,6 +15,7 @@ RUN conda env create -y -f "/tmp/environment.yml" \
 
 RUN conda init && echo "conda activate vanilla" >> ~/.bashrc
 
+# Going to extract this install into the environment.yml by this next release 
 # Install maap-py library
 RUN mkdir /maap-py \
     && git clone --single-branch --branch v3.1.5 https://github.com/MAAP-Project/maap-py.git /maap-py/ \
