@@ -13,42 +13,7 @@ RUN conda env create -y -f "/tmp/environment.yml" \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
 
-# Set the conda environment for all subsequent docker RUN commands
-# When maap-py is updated and installed via our environment.yml,
-# we won't need this line unless other envrionment specific commands are added
-#SHELL ["conda", "run", "-n", "vanilla", "/bin/bash", "-c"]
-#RUN which pip
-# RUN ls
-# RUN echo "conda activate vanilla" >> ~/.bashrc
-# RUN ls
-# RUN conda init bash
-# RUN /bin/bash -c "source ~/.bashrc && conda install -y boto3"
-
-# RUN conda list 
-#RUN conda list
-#RUN conda init bash
-#RUN cat ~/.bashrc
-#RUN source /opt/conda/bin/activate vanilla
-#SHELL ["conda", "init"]
-# RUN conda init
-# RUN conda list 
-# RUN conda intall -n vanilla boto3
-# RUN conda list 
-#RUN conda init bash
-#SHELL ["/bin/bash", "-c"]
-#RUN echo "conda activate vanilla" >> ~/.bashrc
-#RUN echo "conda activate vanilla" >> ~/.bash_profile
-SHELL ["/bin/bash", "-c"] 
 RUN conda init && echo "conda activate vanilla" >> ~/.bashrc
-RUN cat ~/.bashrc
-#RUN cat ~/.bash_profile
-#RUN source ~/.bashrc
-RUN /bin/bash -c 'source activate vanilla'
-#SHELL ["source", "activate", "vanilla"]
-
-# RUN /opt/conda/envs/vanilla/bin/pip install scipy
-# RUN conda install --name vanilla -y s3fs
-# RUN conda list
 
 # Install maap-py library
 RUN mkdir /maap-py \

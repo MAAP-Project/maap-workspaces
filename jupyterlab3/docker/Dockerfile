@@ -16,17 +16,14 @@ USER root
 
 RUN conda config --system --add channels conda-forge
 RUN conda config --system --remove channels defaults
-RUN conda list 
 
 # Install additional libraries required by Python packages which are in
 # the minimal base image. Also install 'rsync' so the 'oc rsync' command
 # can be used to copy files into the running container.
-RUN apt list --installed 
 RUN apt-get clean && apt-get update && \
     apt-get install -y --no-install-recommends rsync gcc python3 vim && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-RUN apt list --installed 
 
 # Install workspace specific packages for conda environment
 RUN echo "Checking if environment.yml exists for ${WORKSPACE_TYPE}" \
@@ -55,27 +52,26 @@ RUN chmod g+w /etc/passwd
 # Non Custom Jupyter Extensions
 ###############################
 #RUN conda install -y -c conda-forge jupyterlab=3.6.3
-RUN /bin/bash -c 'source activate vanilla && \
+SHELL ["/bin/bash", "-c"]
+RUN source activate vanilla && \
     npm install typescript -g && \
     npm install jupyterlab-plotly@5.5.0 && \
     jupyter labextension disable @jupyterlab/apputils-extension:announcements && \
-    jupyter server extension enable jupyter_server_extension'
+    jupyter server extension enable jupyter_server_extension
 
-
-RUN /bin/bash -c 'source activate vanilla && \
+RUN source activate vanilla && \
     jupyter lab build && \
     jupyter lab clean && \
     jlpm cache clean && \
     npm cache clean --force && \
     rm -rf $HOME/.node-gyp && \
-    rm -rf $HOME/.local'
+    rm -rf $HOME/.local
 
-RUN /bin/bash -c 'source activate vanilla && \
-    find /opt/conda/ -follow -type f -name \'*.a\' -delete && \
-    find /opt/conda/ -follow -type f -name \'*.js.map\' -delete && \
+RUN source activate vanilla && \
+    find /opt/conda/ -follow -type f -name '*.a' -delete && \
+    find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy && \
-    npm cache clean --force'
-
+    npm cache clean --force
 
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./jupyter_patch /opt/jupyter_patch
