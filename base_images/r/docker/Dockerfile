@@ -45,13 +45,14 @@ RUN conda env create -y -f "/tmp/environment.yml" \
 
 RUN conda init && echo "conda activate r" >> ~/.bashrc
 
+SHELL ["/bin/bash", "-c"]
 ADD . /
 RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
-RUN /scripts/install_cran_packages_r.sh
+RUN source activate r && \
+    /scripts/install_cran_packages_r.sh
 
 # Going to extract this install into the environment.yml by this next release 
 # Install maap-py library
-SHELL ["/bin/bash", "-c"]
 RUN source activate r && \
     mkdir /maap-py && \
     git clone --single-branch --branch v3.1.5 https://github.com/MAAP-Project/maap-py.git /maap-py/ && \
