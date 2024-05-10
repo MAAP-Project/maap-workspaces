@@ -48,7 +48,7 @@ RUN chmod g+w /etc/passwd
 ###############################
 # Non Custom Jupyter Extensions
 ###############################
-SHELL ["/bin/bash", "-c"]
+#SHELL ["/bin/bash", "-c"]
 RUN source activate vanilla && \
     npm install typescript -g && \
     npm install jupyterlab-plotly@5.5.0 && \
