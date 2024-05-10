@@ -36,9 +36,6 @@ RUN echo "Checking if environment.yml exists for ${WORKSPACE_TYPE}" \
         ; conda env update --file "/shared/environment.yml" \
     ; fi
 
-# Need to install nodejs to do an npm install. We should be getting the same version of typescript from the environment.yml
-#RUN conda install -y -c conda-forge nodejs=18.15.0
-
 # Adjust permissions on home directory so writable by group root.
 RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
 
@@ -51,7 +48,6 @@ RUN chmod g+w /etc/passwd
 ###############################
 # Non Custom Jupyter Extensions
 ###############################
-#RUN conda install -y -c conda-forge jupyterlab=3.6.3
 SHELL ["/bin/bash", "-c"]
 RUN source activate vanilla && \
     npm install typescript -g && \
