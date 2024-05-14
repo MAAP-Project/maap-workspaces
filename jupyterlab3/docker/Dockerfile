@@ -48,7 +48,7 @@ RUN chmod g+w /etc/passwd
 ###############################
 # Non Custom Jupyter Extensions
 ###############################
-#SHELL ["/bin/bash", "-c"]
+#SHELL ["/bin/bash", "-c"] # Added this line to base image dockerfiles for now before maap-py is extracted to environment.yml
 RUN source activate $WORKSPACE_TYPE && \
     npm install typescript -g && \
     npm install jupyterlab-plotly@5.5.0 && \
