@@ -28,13 +28,12 @@ dependencies:
   - pydantic=2.7.1
   - python-gist=0.10.6
   - python-graphviz=0.20.3
-#  - rise=5.7.1
+#  - rise # Right now this only works if rise is commented out 
   - snakeviz=2.2.0
   - xarray_leaflet=0.2.3
   - pip=24.0
   - pip:
     - jupyter-resource-usage==1.0.2
-    - rio-tiler==6.6.1 #Do we need to repeat this from base images?
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6#egg-info=stac_ipyleaflet
     - maap-algorithms-jupyter-extension==0.3.0
     - maap-che-sidebar-visibility-jupyter-extension==1.1.0

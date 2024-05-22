@@ -13,7 +13,7 @@ dependencies:
   - nodejs=20.1.0 # Downgrade suggested but not taken: 12.4.0, trying to manually upgrade to avoid error messages
   - plotly=5.22.0
   - plotnine=0.13.6
-  - pip=24.0
+  - pip=24.0 # Potentially remove but check for errors in the console 
   - pip:
     - jupyter-resource-usage==1.0.2
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6#egg-info=stac_ipyleaflet
