@@ -39,7 +39,7 @@ dependencies:
   - holoviews=1.18.3
   - httpx=0.27.0
   - hvplot=0.10.0
-  - intake-esm=2024.2.6 # Downgrade suggested but not taken: 2023.11.10
+  - intake-esm # Downgrade suggested but not taken: 2023.11.10
   - intake-geopandas=0.4.0
   - intake-stac=0.4.0
   - intake-xarray=0.7.0
@@ -56,7 +56,7 @@ dependencies:
   - mpl-scatter-density=0.7
   - nc-time-axis=1.4.1
   - netcdf4=1.6.4
-  - numba=0.59.1
+  - numba
   - numbagg=0.8.1
   - numcodecs=0.12.1
   - numpy=1.26.4

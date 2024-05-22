@@ -15,7 +15,7 @@ dependencies:
   - r=4.3
   - r-arrow=14.0.1
   - r-aws.s3=0.3.22
-  - r-base=4.3.3
+  - r-base
   - r-BiocManager=1.30.23
   - r-broom=1.0.6
   - r-car=3.1_2
