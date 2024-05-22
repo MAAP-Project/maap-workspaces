@@ -28,7 +28,7 @@ dependencies:
   - pydantic=2.7.1
   - python-gist=0.10.6
   - python-graphviz=0.20.3
-  - rise=5.7.1
+#  - rise=5.7.1
   - snakeviz=2.2.0
   - xarray_leaflet=0.2.3
   - pip=24.0
