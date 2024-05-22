@@ -21,7 +21,7 @@ dependencies:
   - jupyterlab=4.2.0
   - nb_conda_kernels=2.5.1
   - nbstripout=0.7.1
-  - nodejs=18.15.0 # Downgrade suggested but not taken: 12.4.0
+  - nodejs=20.1.0 # Downgrade suggested but not taken: 12.4.0, trying to manually upgrade to avoid error messages
   - pangeo-notebook=2024.05.20
   - plotly=5.22.0
   - plotnine=0.13.6

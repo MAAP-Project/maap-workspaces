@@ -10,7 +10,7 @@ dependencies:
   - jupyterlab-git=0.50.0
   - jupyter-packaging=0.12.3
   - jupyterlab_widgets=3.0.10
-  - nodejs=18.15.0 # Downgrade suggested but not taken: 12.4.0
+  - nodejs=20.1.0 # Downgrade suggested but not taken: 12.4.0, trying to manually upgrade to avoid error messages
   - plotly=5.22.0
   - plotnine=0.13.6
   - pip=24.0
