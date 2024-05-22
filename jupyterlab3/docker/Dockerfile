@@ -67,7 +67,8 @@ RUN source activate $WORKSPACE_TYPE && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy && \
-    npm cache clean --force
+    npm cache clean --force && \
+    conda list
 
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./jupyter_patch /opt/jupyter_patch
@@ -76,9 +77,6 @@ ENV ENVIRONMENTS_FILE_PATH=/opt/environments.json
 COPY ./environments.json $ENVIRONMENTS_FILE_PATH
 
 RUN echo 'printf "\e[101mNOTE: This terminal uses the default environment which might not be the same as your notebook.\e[49m\n\n"' >> /etc/profile
-
-RUN source activate $WORKSPACE_TYPE && \
-    conda list
 
 # Reset Shell
 SHELL ["/bin/sh", "-c"]
