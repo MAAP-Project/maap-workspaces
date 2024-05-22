@@ -3,19 +3,19 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - folium=0.15.1
-  - gitpython=3.1.40
-  - ipyleaflet=0.18.1
-  - jupyterlab=3.6.3
-  - jupyterlab-git=0.34.2
+  - folium=0.16.0
+  - gitpython=3.1.43
+  - ipyleaflet=0.19.1
+  - jupyterlab=4.2.0
+  - jupyterlab-git=0.50.0
   - jupyter-packaging=0.12.3
-  - jupyterlab_widgets=3.0.7
-  - nodejs=18.15.0
-  - plotly=5.18.0
-  - plotnine=0.12.2
-  - pip=23.3.2
+  - jupyterlab_widgets=3.0.10
+  - nodejs=18.15.0 # Downgrade suggested but not taken: 12.4.0
+  - plotly=5.22.0
+  - plotnine=0.13.6
+  - pip=24.0
   - pip:
-    - jupyter-resource-usage==0.7.2
+    - jupyter-resource-usage==1.0.2
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6#egg-info=stac_ipyleaflet
     - maap-algorithms-jupyter-extension==0.3.0
     - maap-che-sidebar-visibility-jupyter-extension==1.1.0
