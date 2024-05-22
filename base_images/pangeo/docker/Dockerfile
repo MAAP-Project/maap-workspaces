@@ -23,7 +23,8 @@ RUN source activate pangeo && \
     git clone --single-branch --branch v3.1.5 https://github.com/MAAP-Project/maap-py.git /maap-py/ && \
     /opt/conda/envs/pangeo/bin/pip install -e /maap-py/
 
-RUN conda list
+RUN source activate pangeo && \
+    conda list
 
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH=${IMAGE_REF}

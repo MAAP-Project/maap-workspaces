@@ -23,5 +23,8 @@ RUN source activate vanilla && \
     git clone --single-branch --branch v3.1.5 https://github.com/MAAP-Project/maap-py.git /maap-py/ && \
     /opt/conda/envs/vanilla/bin/pip install -e /maap-py/
 
+RUN source activate vanilla && \
+    conda list
+
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH=${IMAGE_REF}
