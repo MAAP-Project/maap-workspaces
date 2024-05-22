@@ -5,12 +5,33 @@ channels:
   - nodefaults
 dependencies:
   - awscli=2.14.1 # Downgrade suggested but not taken: 1.32.106
+  - backoff
+  - basemap
   - boto3=1.34.106
+  - cython
   - earthaccess=0.9.0
+  - earthengine-api
+  - geocube
+  - geopandas
   - groff=1.22.4
+  - h5py
+  - httpx
+  - mapclassify
+  - matplotlib
+  - mizani
+  - mpl-scatter-density
+  - numba
+  - numpy
+  - pandas
+  - pandarallel
   - parallel=20240322
   - perl=5.32.1
-  - postgis=3.4.2
+  - postgis # Need to add version back but trying to fix bug
+  - pycurl
+  - pygeos
+  - pyogrio
+  - pyproj
+  - pystac-client
   - python=3.10.13
   - r=4.3
   - r-arrow=14.0.1
@@ -48,7 +69,7 @@ dependencies:
   - r-leafem=0.2.3
   - r-leaflet=2.2.2
   - r-lidR=4.1.1
-  - r-lwgeom=0.2_14
+  - r-lwgeom # Removed version to fix bug
   - r-mapdata=2.3.1
   - r-mapproj=1.2.11
   - r-maps=3.4.2
@@ -71,6 +92,7 @@ dependencies:
   - r-rcolorbrewer=1.1_3
   - r-readxl=1.4.3
   - r-reticulate=1.36.1
+  - r-rgdal
   - r-rgee=1.1.7
   - r-rgeos=0.6_4
   - r-rlas=1.6.2
@@ -104,10 +126,26 @@ dependencies:
   - r-tmap=3.3_4
   - r-units=0.8_5
   - r-viridis=0.6.5
+  - rasterio
+  - rasterstats
+  - requests
+  - rio-cogeo
+  - rtree
+  - s3f3
+  - scikit-learn
+  - scipy
+  - seaborn
+  - shapely
+  - sliderule
+  - statsmodels
+  - tqdm
+  - unidecode
+  - xmltodict
   - pip=24.0
   - pip:
     - ff==0.0.10
     - grid==0.7.1
+    - morecantile==5.3.0
     - rio-tiler==6.6.1
 variables:
   MAAP_CONF: '/maap-py/'
