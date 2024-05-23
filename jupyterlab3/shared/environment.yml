@@ -8,9 +8,11 @@ dependencies:
   - ipyleaflet=0.19.1
   - jupyterlab=4.2.0
   - jupyterlab-git=0.50.0
-  - jupyter-packaging=0.12.3
-  - jupyterlab_widgets=3.0.10
+#  - jupyter-packaging=0.12.3
+  - jupyter_server=2.12.5
+  - jupyterlab_widgets # Suggested: =3.0.10 but Marjorie removed the version so trying that 
   - nodejs=20.1.0 # Downgrade suggested but not taken: 12.4.0, trying to manually upgrade to avoid error messages
+  - notebook=6.4.12 # Should not upgrade yet because appears notebook v7 doesnt support extensions
   - plotly=5.22.0
   - plotnine=0.13.6
   - pip=24.0 # Potentially remove but check for errors in the console 
