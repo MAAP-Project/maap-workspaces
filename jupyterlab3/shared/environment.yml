@@ -18,7 +18,6 @@ dependencies:
   - pip=23.3.2
   - pip:
     - jupyter-resource-usage==0.7.2
-    - plotly==5.22.0
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6#egg-info=stac_ipyleaflet
     - maap-algorithms-jupyter-extension==0.3.0
     - maap-che-sidebar-visibility-jupyter-extension==1.1.0
