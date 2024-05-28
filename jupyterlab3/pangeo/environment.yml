@@ -19,6 +19,7 @@ dependencies:
   - jupyterlab-git=0.50.0
   - jupyterlab-s3-browser=0.12.0
   - jupyterlab=4.2.0
+  - nb_conda
   - nb_conda_kernels=2.5.1
   - nbstripout=0.7.1
   - nodejs=20.1.0 # Downgrade suggested but not taken: 12.4.0, trying to manually upgrade to avoid error messages
@@ -28,7 +29,7 @@ dependencies:
   - pydantic=2.7.1
   - python-gist=0.10.6
   - python-graphviz=0.20.3
-#  - rise # Right now this only works if rise is commented out 
+  - rise # Right now this only works if rise is commented out 
   - snakeviz=2.2.0
   - xarray_leaflet=0.2.3
   - pip=24.0
