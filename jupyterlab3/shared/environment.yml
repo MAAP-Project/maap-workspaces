@@ -6,7 +6,6 @@ dependencies:
   - folium=0.16.0
   - gitpython=3.1.43
   - ipyleaflet=0.19.1
-  - jupyter-packaging # Remove later 
   - jupyter_server=2.12.5
   - jupyterlab=4.2.0
   - jupyterlab-git=0.50.0
