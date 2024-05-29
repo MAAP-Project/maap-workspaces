@@ -56,7 +56,7 @@ dependencies:
   - mpl-scatter-density=0.7
   - nc-time-axis=1.4.1
   - netcdf4=1.6.4
-  - numba=0.59.0 # Had to downgrade to get it to work from 0.59.1 (note that 0.58.1 works), try again with more update version or the same
+  - numba=0.58.1 # Had to downgrade to get it to work from 0.59.1 (note that 0.58.1 works), try again with more update version or the same
   - numbagg=0.8.1
   - numcodecs=0.12.1
   - numpy=1.26.4
