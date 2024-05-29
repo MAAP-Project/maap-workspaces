@@ -15,6 +15,7 @@ dependencies:
   - notebook=6.4.12 # Should not upgrade yet because appears notebook v7 doesnt support extensions
   - plotly=5.22.0 # make sure this is compatible in jupyter labextension list 
   - plotnine=0.13.6
+  - xmltodict
   - pip=24.0 # Potentially remove because already in base images but check for errors in the console 
   - pip:
     - jupyter-resource-usage==1.0.2

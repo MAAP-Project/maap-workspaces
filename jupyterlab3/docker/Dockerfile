@@ -68,8 +68,6 @@ RUN chmod g+w /etc/passwd
 # Non Custom Jupyter Extensions
 ###############################
 RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
-# REMOVE THIS LINE LATER
-RUN npm install jupyterlab-plotly@5.5.0 
 
 ###############################
 # Custom Jupyter Extensions
