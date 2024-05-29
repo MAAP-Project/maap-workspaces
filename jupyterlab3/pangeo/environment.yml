@@ -24,7 +24,7 @@ dependencies:
   - nbstripout=0.7.1
   - nodejs=20.1.0 # Downgrade suggested but not taken: 12.4.0, tried to manually upgrade to avoid error messages
   - pangeo-notebook=2024.05.20
-  - plotly=5.22.0
+  - plotly=5.18.0
   - plotnine=0.13.6
   - pydantic=2.7.1
   - python-gist=0.10.6
