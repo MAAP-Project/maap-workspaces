@@ -12,11 +12,10 @@ dependencies:
   - notebook=6.4.12 # Should not upgrade yet because appears notebook v7 doesnt support extensions
   # - jupyter-packaging=0.12.3 -- hatch builder recommended
   - jupyterlab_widgets
-  - nodejs=18.15.0
+  - nodejs=18.20.0
   - plotly=5.18.0
   - plotnine=0.12.2
   - pip=23.3.2
-  - xmltodict
   - pip:
     - jupyter-resource-usage==0.7.2
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6#egg-info=stac_ipyleaflet
