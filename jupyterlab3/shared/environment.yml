@@ -10,7 +10,7 @@ dependencies:
   - jupyterlab=4.2.0
   - jupyterlab-git=0.50.0
   - jupyterlab_widgets=3.0.10 
-  - nodejs=18.20.2 # Works with: 20.1.0 # Downgrade suggested but not taken: 12.4.0, trying to manually upgrade to avoid error messages 
+  - nodejs=20.1.0 # Works with: 20.1.0 # Downgrade suggested but not taken: 12.4.0, trying to manually upgrade to avoid error messages 
   - notebook=6.4.12 # Should not upgrade yet because appears notebook v7 doesnt support extensions
   - plotly=5.18.0 # make sure this is compatible in jupyter labextension list 
   - plotnine=0.13.6
