@@ -6,12 +6,11 @@ dependencies:
   - folium=0.16.0
   - gitpython=3.1.43
   - ipyleaflet=0.19.1
-  - jupyter-packaging # Get the version from update all then seeing the version, vanilla/r/isce3: 0.12.3
   - jupyter_server=2.12.5
   - jupyterlab=4.2.0
   - jupyterlab-git=0.50.0
-  - jupyterlab_widgets=3.0.10 # Suggested: =3.0.10 but Marjorie removed the version so trying that. Pangeo has as 3.0.10, isce3 3.0.1, vanilla 3.0.10, r 3.0.11
-  - nodejs=20.1.0 # Downgrade suggested but not taken: 12.4.0, trying to manually upgrade to avoid error messages 
+  - jupyterlab_widgets=3.0.10 
+  - nodejs=18.20.2 # Works with: 20.1.0 # Downgrade suggested but not taken: 12.4.0, trying to manually upgrade to avoid error messages 
   - notebook=6.4.12 # Should not upgrade yet because appears notebook v7 doesnt support extensions
   - plotly=5.18.0 # make sure this is compatible in jupyter labextension list 
   - plotnine=0.13.6

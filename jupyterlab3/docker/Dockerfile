@@ -67,8 +67,6 @@ RUN chmod g+w /etc/passwd
 ###############################
 # Non Custom Jupyter Extensions
 ###############################
-#RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
-RUN npm install jupyterlab-plotly@5.5.0
 RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
 
 ###############################
@@ -77,7 +75,7 @@ RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
 
 # Jupyter server extension needs to be specifially enabled 
 #RUN jupyter server extension enable jupyter_server_extension
-RUN pip install -i https://test.pypi.org/simple/ maap-jupyter-server-extension
+RUN pip install -i https://test.pypi.org/simple/ maap-jupyter-server-extension==2.0.2
 RUN jupyter server extension enable maap_jupyter_server_extension
 
 RUN pip install -i https://test.pypi.org/simple/ maap-dps-jupyter-extension
