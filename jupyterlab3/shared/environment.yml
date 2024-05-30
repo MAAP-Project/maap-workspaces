@@ -12,7 +12,7 @@ dependencies:
   - notebook=6.4.12 # Should not upgrade yet because appears notebook v7 doesnt support extensions
   # - jupyter-packaging=0.12.3 -- hatch builder recommended
   - jupyterlab_widgets
-  - nodejs=18.20.0
+  - nodejs
   - plotly=5.18.0
   - plotnine=0.12.2
   - pip=23.3.2
