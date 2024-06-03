@@ -77,7 +77,7 @@ RUN npm install jupyterlab-plotly@5.5.0
 
 # Jupyter server extension needs to be specifially enabled 
 #RUN jupyter server extension enable jupyter_server_extension
-RUN pip install -i https://test.pypi.org/simple/ maap-jupyter-server-extension==2.0.2
+RUN pip install -i https://test.pypi.org/simple/ maap-jupyter-server-extension==2.0.6
 RUN jupyter server extension enable maap_jupyter_server_extension
 
 RUN pip install -i https://test.pypi.org/simple/ maap-dps-jupyter-extension
