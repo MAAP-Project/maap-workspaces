@@ -62,7 +62,12 @@ RUN source activate $WORKSPACE_TYPE && \
     jupyter server extension enable maap_jupyter_server_extension
 
 RUN source activate $WORKSPACE_TYPE && \
-    jupyter lab build
+    jupyter lab build && \
+    jupyter lab clean && \
+    jlpm cache clean && \
+    npm cache clean --force && \
+    rm -rf $HOME/.node-gyp && \
+    rm -rf $HOME/.local
 
 RUN source activate $WORKSPACE_TYPE && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
