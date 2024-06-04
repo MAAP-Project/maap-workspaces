@@ -7,4 +7,4 @@ ${BASE_IMAGE_TYPE}:
     - bash base_images/build-image.sh ${BASE_IMAGE_TYPE}
     - cat built_images.txt
     - export BASE_IMAGE_NAME=$(tail -1 built_images.txt)
-    - bash jupyterlab3/build-image.sh
+    - bash jupyterlab/build-image.sh
