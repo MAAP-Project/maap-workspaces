@@ -48,14 +48,15 @@ RUN chmod g+w /etc/passwd
 ###############################
 # Custom Jupyter Extensions
 ###############################
-RUN pip install -i https://test.pypi.org/simple/ maap-jupyter-server-extension==2.0.6
-RUN pip install -i https://test.pypi.org/simple/ maap-dps-jupyter-extension
-RUN pip install -i https://test.pypi.org/simple/ maap-algorithms-jupyter-extension
-RUN pip install -i https://test.pypi.org/simple/ maap-libs-jupyter-extension
-RUN pip install -i https://test.pypi.org/simple/ maap-edsc-jupyter-extension
-RUN pip install -i https://test.pypi.org/simple/ maap-user-workspace-management-jupyter-extension
-RUN pip install -i https://test.pypi.org/simple/ maap-help-jupyter-extension
-RUN pip install -i https://test.pypi.org/simple/ maap-che-sidebar-visibility-jupyter-extension
+RUN source activate $WORKSPACE_TYPE && \
+    pip install -i https://test.pypi.org/simple/ maap-jupyter-server-extension==2.0.6 && \
+    pip install -i https://test.pypi.org/simple/ maap-dps-jupyter-extension && \
+    pip install -i https://test.pypi.org/simple/ maap-algorithms-jupyter-extension && \
+    pip install -i https://test.pypi.org/simple/ maap-libs-jupyter-extension && \
+    pip install -i https://test.pypi.org/simple/ maap-edsc-jupyter-extension && \
+    pip install -i https://test.pypi.org/simple/ maap-user-workspace-management-jupyter-extension && \
+    pip install -i https://test.pypi.org/simple/ maap-help-jupyter-extension && \
+    pip install -i https://test.pypi.org/simple/ maap-che-sidebar-visibility-jupyter-extension
 
 ###############################
 # Non Custom Jupyter Extensions
