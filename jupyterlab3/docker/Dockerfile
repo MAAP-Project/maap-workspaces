@@ -55,16 +55,16 @@ RUN chmod g+w /etc/passwd
 ###############################
 
 # PyPi packages prepended with 'maap' so they are more easily discoverable
-RUN pip install -i https://test.pypi.org/simple/ maap-jupyter-server-extension==2.0.6
+RUN pip install maap-jupyter-server-extension==2.0.7
 RUN jupyter server extension enable maap_jupyter_server_extension
 
-RUN pip install -i https://test.pypi.org/simple/ maap-dps-jupyter-extension
-RUN pip install -i https://test.pypi.org/simple/ maap-algorithms-jupyter-extension
-RUN pip install -i https://test.pypi.org/simple/ maap-libs-jupyter-extension
-RUN pip install -i https://test.pypi.org/simple/ maap-edsc-jupyter-extension
-RUN pip install -i https://test.pypi.org/simple/ maap-user-workspace-management-jupyter-extension
-RUN pip install -i https://test.pypi.org/simple/ maap-help-jupyter-extension
-RUN pip install -i https://test.pypi.org/simple/ maap-che-sidebar-visibility-jupyter-extension
+RUN pip install maap-dps-jupyter-extension==0.7.1
+RUN pip install maap-algorithms-jupyter-extension==0.3.1
+RUN pip install maap-libs-jupyter-extension==1.2.3
+RUN pip install maap-edsc-jupyter-extension==1.1.1
+RUN pip install maap-user-workspace-management-jupyter-extension==0.1.2
+RUN pip install maap-help-jupyter-extension==2.0.0
+RUN pip install maap-che-sidebar-visibility-jupyter-extension==1.1.2
 
 RUN jupyter lab build
     # jupyter lab clean && \
