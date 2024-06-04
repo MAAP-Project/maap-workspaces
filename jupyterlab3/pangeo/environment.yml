@@ -13,6 +13,7 @@ dependencies:
   - ipyleaflet=0.19.1
   - ipytree=0.2.2
   - ipywidgets=8.1.2
+  - jupyter_server=2.12.5
   - jupyter-packaging=0.12.3
   - jupyter-panel-proxy=0.1.0
   - jupyterlab_widgets=3.0.10
