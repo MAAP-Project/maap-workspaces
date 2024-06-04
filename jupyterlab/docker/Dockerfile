@@ -58,6 +58,7 @@ RUN chmod g+w /etc/passwd
 #SHELL ["/bin/bash", "-c"] # Added this line to base image dockerfiles for now before maap-py is extracted to environment.yml
 RUN source activate $WORKSPACE_TYPE && \
     npm install typescript -g && \
+    npm install jupyterlab-plotly@5.5.0 && \
     jupyter labextension disable @jupyterlab/apputils-extension:announcements && \
     jupyter server extension enable maap_jupyter_server_extension
 
