@@ -12,6 +12,7 @@ RUN conda env create -y -f "/tmp/environment.yml" \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
+RUN conda install -y anywidget=0.9.12
 
 RUN conda init && echo "conda activate pangeo" >> ~/.bashrc
 

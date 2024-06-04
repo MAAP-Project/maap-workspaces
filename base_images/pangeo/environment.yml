@@ -46,6 +46,7 @@ dependencies:
   - intake=2.0.5
   - kerchunk=0.2.5
   - line_profiler=4.1.1
+  - lonboard=0.9.3
   - lxml=4.9.3
   - lz4=4.3.3
   - mapclassify=2.6.1
