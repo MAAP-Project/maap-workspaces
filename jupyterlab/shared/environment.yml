@@ -9,16 +9,24 @@ dependencies:
   - jupyter_server=2.12.5
   - jupyterlab=4.2.0
   - jupyterlab-git=0.50.0
-  - jupyterlab_widgets=3.0.10 
+  - jupyterlab_widgets=3.0.11 
   - nodejs=20.1.0 # Works with: 20.1.0 # Downgrade suggested but not taken: 12.4.0, trying to manually upgrade to avoid error messages 
   - notebook=6.4.12 # Should not upgrade yet because appears notebook v7 doesnt support extensions
   - plotly=5.22.0 # make sure this is compatible in jupyter labextension list 
   - plotnine=0.13.6
-  - xmltodict
+#  - xmltodict why did I add this?
   - pip=24.0 # Potentially remove because already in base images but check for errors in the console 
   - pip:
     - jupyter-resource-usage==1.0.2
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6#egg-info=stac_ipyleaflet
+    - maap-algorithms-jupyter-extension==0.3.1
+    - maap-che-sidebar-visibility-jupyter-extension==1.1.2
+    - maap-dps-jupyter-extension==0.7.1
+    - maap-edsc-jupyter-extension==1.1.1
+    - maap-help-jupyter-extension==2.0.0
+    - maap-jupyter-server-extension==2.0.7
+    - maap-libs-jupyter-extension==1.2.3
+    - maap-user-workspace-management-jupyter-extension==0.1.2
 variables:
   TITILER_STAC_ENDPOINT: 'https://titiler-stac.maap-project.org/'
   TITILER_ENDPOINT: 'https://titiler.maap-project.org/'

@@ -46,21 +46,15 @@ RUN chmod a+rwx -R /opt/conda/lib/python*/site-packages/
 RUN chmod g+w /etc/passwd
 
 ###############################
-# Custom Jupyter Extensions
-###############################
-RUN source activate $WORKSPACE_TYPE && \
-    pip install -i https://test.pypi.org/simple/ maap-jupyter-server-extension==2.0.6 && \
-    pip install -i https://test.pypi.org/simple/ maap-dps-jupyter-extension && \
-    pip install -i https://test.pypi.org/simple/ maap-algorithms-jupyter-extension && \
-    pip install -i https://test.pypi.org/simple/ maap-libs-jupyter-extension && \
-    pip install -i https://test.pypi.org/simple/ maap-edsc-jupyter-extension && \
-    pip install -i https://test.pypi.org/simple/ maap-user-workspace-management-jupyter-extension && \
-    pip install -i https://test.pypi.org/simple/ maap-help-jupyter-extension && \
-    pip install -i https://test.pypi.org/simple/ maap-che-sidebar-visibility-jupyter-extension
-
-###############################
 # Non Custom Jupyter Extensions
 ###############################
+# RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
+
+###############################
+# Custom Jupyter Extensions
+###############################
+
+# PyPi packages prepended with 'maap' so they are more easily discoverable
 #SHELL ["/bin/bash", "-c"] # Added this line to base image dockerfiles for now before maap-py is extracted to environment.yml
 # Jupyter server extension needs to be specifially enabled 
 RUN source activate $WORKSPACE_TYPE && \
