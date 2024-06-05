@@ -104,6 +104,7 @@ dependencies:
   - r-tmap=3.3_4
   - r-units=0.8_5
   - r-viridis=0.6.4
+  - xmltodict=0.13.0
   - pip=23.3.2
   - pip:
     - ff==0.0.10

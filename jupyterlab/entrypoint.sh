@@ -168,7 +168,7 @@ export SHELL=/bin/bash
 VERSION=$(jupyter lab --version)
 if [[ $VERSION > '2' ]] && [[ $VERSION < '3' ]]; then
     jupyter lab --ip=0.0.0.0 --port=3100 --allow-root --NotebookApp.token='' --NotebookApp.base_url=$PREVIEW_URL --no-browser --debug
-elif [[ $VERSION > '3' ]] && [[ $VERSION < '4' ]]; then
+elif [[ $VERSION > '3' ]] && [[ $VERSION < '5' ]]; then
     jupyter lab --ip=0.0.0.0 --port=3100 --allow-root --ContentsManager.allow_hidden=True --ServerApp.token='' --ServerApp.base_url=$PREVIEW_URL --no-browser --debug --ServerApp.disable_check_xsrf=True --ResourceUseDisplay.mem_limit=$MEMORY --ResourceUseDisplay.mem_warning_threshold=0.2
 else
     echo "Error! Jupyterlab version not supported."
