@@ -15,7 +15,6 @@ dependencies:
   - plotly=5.22.0 # make sure this is compatible in jupyter labextension list 
   - plotnine=0.13.6
 #  - xmltodict why did I add this?
-  - pip=24.0 # Potentially remove because already in base images but check for errors in the console 
   - pip:
     - jupyter-resource-usage==1.0.2
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6#egg-info=stac_ipyleaflet
