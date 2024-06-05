@@ -65,29 +65,29 @@ RUN source activate $WORKSPACE_TYPE && \
 # Jupyter server extension needs to be specifially enabled 
 RUN source activate $WORKSPACE_TYPE && \
     npm install typescript -g && \
-    #npm install jupyterlab-plotly@5.5.0 && \
+    npm install jupyterlab-plotly@5.5.0 && \
     jupyter labextension disable @jupyterlab/apputils-extension:announcements && \
     jupyter server extension enable maap_jupyter_server_extension
 
-# RUN source activate $WORKSPACE_TYPE && \
-#     jupyter lab build && \
-#     jupyter lab clean && \
-#     jlpm cache clean && \
-#     npm cache clean --force && \
-#     rm -rf $HOME/.node-gyp && \
-#     rm -rf $HOME/.local
 RUN source activate $WORKSPACE_TYPE && \
-    jupyter lab build 
-RUN source activate $WORKSPACE_TYPE && \
-    jupyter lab clean 
-RUN source activate $WORKSPACE_TYPE && \
-    jlpm cache clean 
-RUN source activate $WORKSPACE_TYPE && \
-    npm cache clean --force 
-RUN source activate $WORKSPACE_TYPE && \
-    rm -rf $HOME/.node-gyp 
-RUN source activate $WORKSPACE_TYPE && \
+    jupyter lab build && \
+    jupyter lab clean && \
+    jlpm cache clean && \
+    npm cache clean --force && \
+    rm -rf $HOME/.node-gyp && \
     rm -rf $HOME/.local
+# RUN source activate $WORKSPACE_TYPE && \
+#     jupyter lab build 
+# RUN source activate $WORKSPACE_TYPE && \
+#     jupyter lab clean 
+# RUN source activate $WORKSPACE_TYPE && \
+#     jlpm cache clean 
+# RUN source activate $WORKSPACE_TYPE && \
+#     npm cache clean --force 
+# RUN source activate $WORKSPACE_TYPE && \
+#     rm -rf $HOME/.node-gyp 
+# RUN source activate $WORKSPACE_TYPE && \
+#     rm -rf $HOME/.local
 
 RUN source activate $WORKSPACE_TYPE && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
