@@ -1,4 +1,4 @@
-name: vanilla
+name: python
 channels:
   - conda-forge
   - nodefaults
