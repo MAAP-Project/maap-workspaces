@@ -18,8 +18,6 @@ RUN conda init && echo "conda activate pangeo" >> ~/.bashrc
 # Going to extract this install into the environment.yml by this next release 
 # Install maap-py library
 SHELL ["/bin/bash", "-c"]
-#RUN conda install -y -c conda-forge -n base anywidget=0.9.12
-RUN conda list 
 RUN source activate pangeo && \
     mkdir /maap-py && \
     git clone --single-branch --branch v3.1.5 https://github.com/MAAP-Project/maap-py.git /maap-py/ && \

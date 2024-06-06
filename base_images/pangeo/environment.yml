@@ -27,7 +27,7 @@ dependencies:
   - flox=0.9.7
   - fsspec=2024.5.0
   - gcm_filters=0.3.0
-  - gdal=3.7.0 
+  - gdal=3.7.0
   - geocube=0.5.2
   - geogif=0.1.5
   - geopandas=0.14.4
