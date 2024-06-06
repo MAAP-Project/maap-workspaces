@@ -33,7 +33,7 @@ dependencies:
   - rise=5.7.1 
   - snakeviz=2.2.0
   - xarray_leaflet=0.2.3
- # - xmltodict
+  - pip=24.0
   - pip:
     - jupyter-resource-usage==1.0.2
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6#egg-info=stac_ipyleaflet
