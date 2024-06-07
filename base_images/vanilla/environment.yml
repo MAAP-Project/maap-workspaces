@@ -47,7 +47,6 @@ dependencies:
   - xmltodict=0.13.0
   - pip=24.0
   - pip:
-    - jupyter-fs==1.0.0
     - morecantile==5.3.0 
     - rio-tiler==6.6.1 
 variables:

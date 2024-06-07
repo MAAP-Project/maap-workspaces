@@ -72,6 +72,7 @@ RUN source activate $WORKSPACE_TYPE && \
 # Jupyter server extension needs to be specifially enabled 
 RUN source activate $WORKSPACE_TYPE && \
     npm install typescript -g && \
+    npm install jupyter-fs@1.0.0 && \
     jupyter labextension disable @jupyterlab/apputils-extension:announcements && \
     jupyter server extension enable maap_jupyter_server_extension
 
