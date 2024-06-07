@@ -17,7 +17,7 @@ build-base-image-no-cache: RUN_OPTIONS = "--no-cache"
 build-base-image-no-cache: build-base-image
 
 build-jupyter-image:		## Build the jupyter image for the 'vanilla' workspace (default), or the workspace specified by setting the argument, IMAGE_NAME=<image_name>
-	@cd jupyterlab3; \
+	@cd jupyterlab; \
 	pwd; \
 	docker buildx build --platform linux/amd64 --progress=plain $(RUN_OPTIONS) -t ${JUPYTER_IMAGE_NAME} --build-arg BASE_IMAGE_TYPE=${IMAGE_NAME} --build-arg BASE_IMAGE=${BASE_IMAGE_NAME} -f docker/Dockerfile .
 
