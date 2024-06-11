@@ -5,7 +5,7 @@ channels:
 dependencies:
   - awscli=2.14.1
   - backoff=2.2.1
-  - boto3=1.34.3
+  - boto3=1.34.41
   - cython=3.0.7
   - earthengine-api=0.1.384
   - fsspec=2023.12.2
@@ -49,3 +49,6 @@ dependencies:
   - pip:
     - git+https://github.com/opera-adt/RTC.git@v0.3
     - rio-tiler==6.2.8
+variables:
+  MAAP_CONF: '/maap-py/'
+
