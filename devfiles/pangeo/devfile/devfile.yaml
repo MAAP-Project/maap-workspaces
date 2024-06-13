@@ -33,6 +33,9 @@ components:
               - name: jupyter
                 image: 'mas.dit.maap-project.org/root/maap-workspaces/jupyterlab/pangeo:develop'
                 imagePullPolicy: Always
+                env:
+                - name: DOCKERIMAGE_PATH
+                  value: 'mas.dit.maap-project.org/root/maap-workspaces/base_images/pangeo:develop'
                 resources:
                   limits:
                     memory: 8096Mi
