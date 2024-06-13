@@ -1,6 +1,6 @@
 ---
 displayName: "Pangeo"
-description: "MAAP Pangeo version: 3.1.5"
+description: "Pangeo workspace version: 3.1.5"
 tags: ["Pangeo", "JupyterLab", "MAAP"]
 icon: /devfiles/pangeo/devfile/pangeo_simple_logo.svg
 globalMemoryLimit: 2710Mi
