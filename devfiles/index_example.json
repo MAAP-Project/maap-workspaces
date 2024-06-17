@@ -11,12 +11,12 @@
     "icon": "/images/r.png",
     "globalMemoryLimit": "2710Mi",
     "links": {
-      "self": "/devfiles/maap-r/devfile_2.0.yaml"
+      "self": "/devfiles/r/devfile_2.0.yaml"
     }
   },
   {
-    "displayName": "Basic",
-    "description": "MAAP Basic workspace v2.0. Released September 2022.",
+    "displayName": "Python",
+    "description": "MAAP Python workspace v2.0. Released September 2022.",
     "tags": [
       "JupyterLab",
       "Python",
@@ -25,7 +25,7 @@
     "icon": "/images/jupyter.png",
     "globalMemoryLimit": "2810Mi",
     "links": {
-      "self": "/devfiles/maap-vanilla/devfile_2.0.yaml"
+      "self": "/devfiles/python/devfile_2.0.yaml"
     }
   },
   {
@@ -53,12 +53,12 @@
     "icon": "/images/r.png",
     "globalMemoryLimit": "2710Mi",
     "links": {
-      "self": "/devfiles/maap-r/devfile.yaml"
+      "self": "/devfiles/r/devfile.yaml"
     }
   },
   {
-    "displayName": "Basic (v1.0)",
-    "description": "MAAP Basic workspace v1.0. Released February 2022.",
+    "displayName": "Python (v1.0)",
+    "description": "MAAP Python workspace v1.0. Released February 2022.",
     "tags": [
       "JupyterLab",
       "Python",
@@ -67,7 +67,7 @@
     "icon": "/images/jupyter.png",
     "globalMemoryLimit": "2810Mi",
     "links": {
-      "self": "/devfiles/maap-vanilla/devfile.yaml"
+      "self": "/devfiles/python/devfile.yaml"
     }
   }
 ]
