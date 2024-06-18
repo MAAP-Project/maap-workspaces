@@ -55,7 +55,7 @@ RUN source activate r && \
 # Install maap-py library
 RUN source activate r && \
     mkdir /maap-py && \
-    git clone --single-branch --branch v3.1.5 https://github.com/MAAP-Project/maap-py.git /maap-py/ && \
+    git clone --single-branch --branch community-909 https://github.com/MAAP-Project/maap-py.git /maap-py/ && \
     /opt/conda/envs/r/bin/pip install -e /maap-py/
 
 RUN source activate r && \

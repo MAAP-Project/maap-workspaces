@@ -20,7 +20,7 @@ RUN conda init && echo "conda activate python" >> ~/.bashrc
 SHELL ["/bin/bash", "-c"]
 RUN source activate python && \
     mkdir /maap-py && \
-    git clone --single-branch --branch v3.1.5 https://github.com/MAAP-Project/maap-py.git /maap-py/ && \
+    git clone --single-branch --branch community-909 https://github.com/MAAP-Project/maap-py.git /maap-py/ && \
     /opt/conda/envs/python/bin/pip install -e /maap-py/
 
 RUN source activate python && \

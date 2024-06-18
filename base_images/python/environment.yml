@@ -52,5 +52,3 @@ dependencies:
   - pip:
     - morecantile==5.3.0 
     - rio-tiler==6.6.1 
-variables:
-  MAAP_CONF: '/maap-py/'
