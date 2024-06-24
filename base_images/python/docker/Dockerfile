@@ -15,6 +15,7 @@ RUN conda env create -y -f "/tmp/environment.yml" \
 
 RUN conda init && echo "conda activate python" >> ~/.bashrc
 
+SHELL ["/bin/bash", "-c"]
 RUN source activate python && \
     conda list
 

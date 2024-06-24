@@ -18,6 +18,7 @@ RUN conda env create -y -f "/tmp/environment.yml" \
 
 RUN conda init && echo "conda activate isce3" >> ~/.bashrc
 
+SHELL ["/bin/bash", "-c"]
 RUN source activate isce3 && \
     conda list
 
