@@ -1,6 +1,8 @@
 ---
-displayName: "MAAP R Stable"
-description: "MAAP R version: 3.1.5"
+displayName: "R/Python"
+description: "R/Python workspace version: 3.1.5"
 tags: ["Python", "R", "JupyterLab", "MAAP"]
 icon: /devfiles/r/devfile/r.png
+links: 
+  self: "/devfiles/r/devfile/devfile.yaml"
 globalMemoryLimit: 2710Mi

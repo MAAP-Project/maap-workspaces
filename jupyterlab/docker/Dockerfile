@@ -6,23 +6,6 @@ ARG BASE_IMAGE_TYPE
 # Set WORKSPACE_TYPE, used by entrypoint.sh
 ENV WORKSPACE_TYPE=${BASE_IMAGE_TYPE}
 
-# Create base images for each workspace needed for build stage later
-FROM jupyterlab_base as workspace_base_pangeo
-SHELL ["conda", "run", "-n", "pangeo", "/bin/bash", "-c"]
-
-FROM jupyterlab_base as workspace_base_vanilla
-SHELL ["conda", "run", "-n", "vanilla", "/bin/bash", "-c"]
-
-FROM jupyterlab_base as workspace_base_r
-SHELL ["conda", "run", "-n", "r", "/bin/bash", "-c"]
-
-FROM jupyterlab_base as workspace_base_isce3
-SHELL ["conda", "run", "-n", "isce3", "/bin/bash", "-c"]
-
-FROM workspace_base_${BASE_IMAGE_TYPE} AS workspace_base
-
-FROM workspace_base as workspace_build_stage
-
 ADD . /
 
 RUN mkdir -p /projects
@@ -53,8 +36,6 @@ RUN echo "Checking if environment.yml exists for ${WORKSPACE_TYPE}" \
         ; conda env update --file "/shared/environment.yml" \
     ; fi
 
-RUN npm install typescript -g
-
 # Adjust permissions on home directory so writable by group root.
 RUN chgrp -Rf root /home/$NB_USER && chmod -Rf g+w /home/$NB_USER
 
@@ -67,36 +48,33 @@ RUN chmod g+w /etc/passwd
 ###############################
 # Non Custom Jupyter Extensions
 ###############################
-RUN jupyter labextension install --no-build jupyterlab-plotly@5.5.0
-RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
+# RUN jupyter labextension disable @jupyterlab/apputils-extension:announcements
 
 ###############################
 # Custom Jupyter Extensions
 ###############################
 
 # PyPi packages prepended with 'maap' so they are more easily discoverable
-RUN pip install maap-jupyter-server-extension==1.3.4
-RUN jupyter server extension enable jupyter_server_extension
+#SHELL ["/bin/bash", "-c"] # Added this line to base image dockerfiles for now before maap-py is extracted to environment.yml
+# Jupyter server extension needs to be specifially enabled 
+RUN source activate $WORKSPACE_TYPE && \
+    npm install typescript -g && \
+    jupyter labextension disable @jupyterlab/apputils-extension:announcements && \
+    jupyter server extension enable maap_jupyter_server_extension
 
-RUN pip install maap-dps-jupyter-extension==0.7.0
-RUN pip install maap-algorithms-jupyter-extension==0.3.0
-RUN pip install maap-libs-jupyter-extension==1.2.0
-RUN pip install maap-edsc-jupyter-extension==1.1.0
-RUN pip install maap-user-workspace-management-jupyter-extension==0.1.0
-RUN pip install maap-help-jupyter-extension==1.3.1
-RUN pip install maap-che-sidebar-visibility-jupyter-extension==1.1.0
-
-RUN jupyter lab build && \
+RUN source activate $WORKSPACE_TYPE && \
+    jupyter lab build && \
     jupyter lab clean && \
-    jlpm cache clean && \
     npm cache clean --force && \
     rm -rf $HOME/.node-gyp && \
     rm -rf $HOME/.local
 
-RUN find /opt/conda/ -follow -type f -name '*.a' -delete && \
+RUN source activate $WORKSPACE_TYPE && \
+    find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy && \
-    npm cache clean --force
+    npm cache clean --force && \
+    conda list
 
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./jupyter_patch /opt/jupyter_patch
@@ -105,8 +83,6 @@ ENV ENVIRONMENTS_FILE_PATH=/opt/environments.json
 COPY ./environments.json $ENVIRONMENTS_FILE_PATH
 
 RUN echo 'printf "\e[101mNOTE: This terminal uses the default environment which might not be the same as your notebook.\e[49m\n\n"' >> /etc/profile
-
-RUN conda list
 
 # Reset Shell
 SHELL ["/bin/sh", "-c"]

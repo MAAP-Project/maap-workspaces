@@ -3,9 +3,6 @@ ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
 
-#RUN set -ex \
-# && apt-get update
-
 RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
@@ -16,10 +13,10 @@ RUN conda env create -y -f "/tmp/environment.yml" \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
 
-RUN conda init && echo "conda activate isce3" >> ~/.bashrc
+RUN conda init && echo "conda activate python" >> ~/.bashrc
 
 SHELL ["/bin/bash", "-c"]
-RUN source activate isce3 && \
+RUN source activate python && \
     conda list
 
 ARG IMAGE_REF
