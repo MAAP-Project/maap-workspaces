@@ -3,4 +3,6 @@ displayName: "ESA EDAV"
 description: "Latest version of MAAP ESA EDAV"
 tags: ["EDAV", "MAAP"]
 icon: /devfiles/edav/devfile/earth.png
+links: 
+  self: "/devfiles/edav/devfile/devfile.yaml"
 globalMemoryLimit: 2710Mi
