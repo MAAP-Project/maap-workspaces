@@ -1,6 +1,6 @@
 ---
 displayName: "Python (default)"
-description: "Python workspace version: 3.1.5"
+description: "Basic MAAP Python workspace"
 tags: ["JupyterLab", "Python", "MAAP"]
 icon: /devfiles/python/devfile/python-logo-generic.svg
 links: 
