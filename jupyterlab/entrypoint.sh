@@ -43,7 +43,9 @@ data=$(get_request_data "$1" "endpoints")
 
 import os
 che_workspace_id = os.environ.get('CHE_WORKSPACE_ID')
-che_machine_name = os.environ.get('CHE_MACHINE_NAME').lower().replace('/', '-')
+
+# Disallow insecure workspaces. Assume that the workspace runs behind a jwtproxy container.
+che_machine_name = '-jwtproxy' # os.environ.get('CHE_MACHINE_NAME').lower().replace('/', '-')
 
 endpoints = data['items']
 for endpoint in endpoints:

@@ -8,7 +8,9 @@ components:
       - attributes:
           type: ide
           discoverable: 'false'
+          secure: 'true'
           path: /
+          cookiesAuthEnabled: 'true'
           public: 'true'
           protocol: http
         name: jupyter
