@@ -1,0 +1,9 @@
+name: isce2
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - xmltodict
+  - pip=24.0
+  - pip:
+    - git+https://github.com/MAAP-Project/maap-py.git@v4.0.0
