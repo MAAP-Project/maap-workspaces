@@ -18,7 +18,7 @@ dependencies:
   - pip:
     - jupyter-resource-usage==1.0.2
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6#egg-info=stac_ipyleaflet
-    - maap-algorithms-jupyter-extension==0.3.3
+    - maap-algorithms-jupyter-extension==0.3.4
     - maap-che-sidebar-visibility-jupyter-extension==1.1.2
     - maap-dps-jupyter-extension==0.7.1
     - maap-edsc-jupyter-extension==1.1.1
