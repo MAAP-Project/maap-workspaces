@@ -82,7 +82,7 @@ dependencies:
   - r-ncdf4=1.21
   - r-nlme=3.1_164
   - r-patchwork=1.2.0
-  - r-paws
+  - r-paws=0.6.0
   - r-plogr=0.2.0
   - r-plyr=1.8.9
   - r-png=0.1_8
