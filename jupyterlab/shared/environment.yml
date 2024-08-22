@@ -23,7 +23,7 @@ dependencies:
     - maap-dps-jupyter-extension==0.7.1
     - maap-edsc-jupyter-extension==1.1.1
     - maap-help-jupyter-extension==2.0.0
-#    - maap-jupyter-server-extension==2.0.7
+    - maap-jupyter-server-extension==2.0.8
     - maap-libs-jupyter-extension==1.2.4
     - maap-user-workspace-management-jupyter-extension==0.1.3
 variables:
