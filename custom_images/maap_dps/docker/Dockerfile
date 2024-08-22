@@ -15,9 +15,6 @@ RUN wget -O Miniconda3-installer.sh ${MINICONDA_INSTALLER} && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy && \
-    /opt/conda/bin/conda init bash
+    /opt/conda/bin/conda init --all --system
 
-ENV PATH /opt/conda/bin:$PATH
-USER ops
-RUN /opt/conda/bin/conda init bash
 ENV PATH /opt/conda/bin:$PATH
