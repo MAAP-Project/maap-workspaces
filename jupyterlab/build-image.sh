@@ -6,7 +6,7 @@ BRANCH=$(basename ${BRANCH})
 pushd ${jupyterlab_dir}
 if [[ -z ${BASE_IMAGE_NAME} ]]; then
     echo "WARNING: No value provided for BASE_IMAGE_NAME, will ./build with default miniconda3 image"
-    BASE_IMAGE_NAME=${CI_REGISTRY_IMAGE}/base_images/vanilla:${BRANCH}
+    BASE_IMAGE_NAME=${CI_REGISTRY_IMAGE}/base_images/python:${BRANCH}
 fi
 [[ $(basename ${BASE_IMAGE_NAME}) =~ (([^:]*)\:) ]];
 BASE_IMAGE_TYPE=${BASH_REMATCH[2]}

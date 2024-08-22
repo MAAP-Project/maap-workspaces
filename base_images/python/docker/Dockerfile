@@ -13,17 +13,10 @@ RUN conda env create -y -f "/tmp/environment.yml" \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
 
-RUN conda init && echo "conda activate vanilla" >> ~/.bashrc
+RUN conda init && echo "conda activate python" >> ~/.bashrc
 
-# Going to extract this install into the environment.yml by this next release 
-# Install maap-py library
 SHELL ["/bin/bash", "-c"]
-RUN source activate vanilla && \
-    mkdir /maap-py && \
-    git clone --single-branch --branch v3.1.5 https://github.com/MAAP-Project/maap-py.git /maap-py/ && \
-    /opt/conda/envs/vanilla/bin/pip install -e /maap-py/
-
-RUN source activate vanilla && \
+RUN source activate python && \
     conda list
 
 ARG IMAGE_REF

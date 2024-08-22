@@ -1,0 +1,8 @@
+---
+displayName: "Python (default)"
+description: "Basic MAAP python workspace (version 4.0.0)"
+tags: ["JupyterLab", "Python", "MAAP"]
+icon: /devfiles/python/devfile/python-logo-generic.svg
+links: 
+  self: "/devfiles/python/devfile/devfile.yaml"
+globalMemoryLimit: 2710Mi
