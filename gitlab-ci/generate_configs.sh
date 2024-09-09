@@ -7,7 +7,7 @@ LATEST_COMMIT=$(git log -n 1 --all --format='%h')
 if [[ ! -z ${FORCE_REF_BUILD} ]]; then
     LATEST_COMMIT=${FORCE_REF_BUILD}
 fi
-git checkout ${LATEST_COMMIT}
+git checkout "${LATEST_COMMIT}"
 
 if [[ ! -z ${BUILD_ALL_BASE_IMAGES} ]]; then
     ls -d base_images/*/* > ${basedir}/files_changed.txt
@@ -26,19 +26,30 @@ cat ${basedir}/files_changed.txt
 export LATEST_COMMIT
 popd
 rm -rf maap-workspaces
-template="${basedir}/stage.yml.tmpl"
+touch stages.yml
 # For each file changed, check if its in one of the base images directory
 cat ${basedir}/files_changed.txt | while read path
 do
   if [[ "$path" == base_images/*/* ]]; then
+    template="${basedir}/stage.yml.tmpl"
     second_dir=$(echo "$path" | cut -d'/' -f2)
     export BASE_IMAGE_TYPE="$second_dir"
     echo "Adding stage for $path"
     # Add the base image changed file to build stage for downstream pipeline
     cat ${template} | CI_JOB_TOKEN='$CI_JOB_TOKEN' CI_REGISTRY='$CI_REGISTRY' envsubst >> stages.yml
   else
-    echo "Path does not begin with base_images or does not have a second directory, will not do anything"
-    touch stages.yml
+    echo "Path does not begin with base_images or does not have a second level directory, will not do anything"
+  fi
+  # This is not an elif because we can have both custom and base image repos with changes
+  if [[ "$path" == custom_images/*/* ]]; then
+    template="${basedir}/custom-image-build.yml.tmpl"
+    second_dir=$(echo "$path" | cut -d'/' -f2)
+    export BASE_IMAGE_TYPE="$second_dir"
+    echo "Adding stage for $path"
+    # Add the base image changed file to build stage for downstream pipeline
+    cat "${template}" | CI_JOB_TOKEN='$CI_JOB_TOKEN' CI_REGISTRY='$CI_REGISTRY' envsubst >> stages.yml
+  else
+    echo "Path does not begin with base_images or custom_images or does not have a second level directory, will not do anything"
   fi
 done
 

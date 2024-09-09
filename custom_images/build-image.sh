@@ -5,7 +5,7 @@ base_image_dir=$(dirname "$0")
 # Check if on a branch or in a detached HEAD state get commit sha
 BRANCH=$(basename "$(git symbolic-ref -q --short HEAD || git rev-parse --short HEAD)")
 if [ "$#" -eq 0 ]; then
-  DIRS_LIST=( "maap_dps" )
+  DIRS_LIST=( "maap_base" )
 else
   DIRS_LIST=( "$@" )
 fi
