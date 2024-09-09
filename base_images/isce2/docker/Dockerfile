@@ -43,7 +43,7 @@ RUN conda env create -y -f "/tmp/environment.yml" \
 
 RUN conda init && echo "conda activate isce2" >> ~/.bashrc
 
-RUN ln -s /home/pkgs/isce2/isce /opt/conda/envs/isce2/lib/python3.12/site-packages/isce
+RUN ln -s /home/pkgs/isce2/isce /opt/conda/envs/isce2/lib/python3.10/site-packages/isce
 
 SHELL ["/bin/bash", "-c"]
 RUN source activate isce2 && \

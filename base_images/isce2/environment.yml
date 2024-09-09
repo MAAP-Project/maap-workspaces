@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  #- python=3.10.13
+  - python=3.10.13
   - xmltodict
   - pip=24.0
   - pip:
