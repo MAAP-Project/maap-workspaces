@@ -1,10 +1,14 @@
 ${BASE_IMAGE_TYPE}:
   script:
-    - docker login -u gitlab-ci-token -p "$CI_JOB_TOKEN" "$CI_REGISTRY"
+    - docker login -u "$CI_DEPLOY_USER" -p "$CI_DEPLOY_PASSWORD" "$CI_REGISTRY"
     - git clone https://github.com/MAAP-Project/maap-workspaces.git
     - pushd maap-workspaces
     - git checkout ${LATEST_COMMIT}
+    - cp -r ../overlays/ ./
     - bash base_images/build-image.sh ${BASE_IMAGE_TYPE}
     - cat built_images.txt
     - export BASE_IMAGE_NAME=$(tail -1 built_images.txt)
     - bash jupyterlab/build-image.sh
+    - scp -vr devfiles/${BASE_IMAGE_TYPE}/devfile/ ${DIT_API_MACHINE}:/var/www/devfile-registry/devfiles/${BASE_IMAGE_TYPE}/
+    - scp -vr devfiles/devfile_compile.py ${DIT_API_MACHINE}:/var/www/devfile-registry/devfiles/devfile_compile.py
+    - ssh ${DIT_API_MACHINE} python3 /var/www/devfile-registry/devfiles/devfile_compile.py
