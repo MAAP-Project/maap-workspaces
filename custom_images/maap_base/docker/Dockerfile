@@ -6,7 +6,7 @@ ARG MINICONDA_INSTALLER_SHA256="a098a5b1581d8fd078c430b82e27106602223e335efef708
 RUN apt-get update -y && apt-get install -y vim wget git && \
     apt-get clean all
 
-RUN groupadd ops && groupadd conda-users  && useradd -d /home/ops -g ops -G conda-users ops
+RUN groupadd conda-users
 
 RUN wget -O Miniconda3-installer.sh ${MINICONDA_INSTALLER} && \
     echo "${MINICONDA_INSTALLER_SHA256} Miniconda3-installer.sh" | sha256sum --check --status && \
