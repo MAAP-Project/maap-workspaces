@@ -22,6 +22,21 @@ else
     echo "Getting files changed in last commit"
     git diff --name-only HEAD HEAD~1 > ${basedir}/files_changed.txt
 fi
+
+if [[ ! -z ${BUILD_ALL_CUSTOM_IMAGES} ]]; then
+    ls -d custom_images/*/* > ${basedir}/files_changed.txt
+elif [[ ! -z ${BUILD_SPECIFIC_CUSTOM_IMAGES} ]]; then
+    custom_image_array=(${BUILD_SPECIFIC_CUSTOM_IMAGES})
+    for path in ${custom_image_array[@]}; do
+        echo "custom_images/${path}/docker" >> ${basedir}/files_changed.txt
+    done
+else
+    # Find files changed in the latest commit
+    echo "BUILD_ALL_CUSTOM_IMAGES and BUILD_SPECIFIC_CUSTOM_IMAGES unset"
+    echo "Getting files changed in last commit"
+    git diff --name-only HEAD HEAD~1 > ${basedir}/files_changed.txt
+fi
+
 cat ${basedir}/files_changed.txt
 export LATEST_COMMIT
 popd
