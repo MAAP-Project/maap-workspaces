@@ -76,10 +76,6 @@ RUN source activate $WORKSPACE_TYPE && \
     npm cache clean --force && \
     conda list
 
-COPY ./maap_algorithms_jupyter_extension-0.3.6-py3-none-any.whl /maap_algorithms_jupyter_extension-0.3.6-py3-none-any.whl
-RUN source activate $WORKSPACE_TYPE && \
-    pip install /maap_algorithms_jupyter_extension-0.3.6-py3-none-any.whl
-
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./jupyter_patch /opt/jupyter_patch
 
