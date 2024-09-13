@@ -1,0 +1,8 @@
+${BASE_IMAGE_TYPE}:
+  script:
+    - docker login -u "$CI_DEPLOY_USER" -p "$CI_DEPLOY_PASSWORD" "$CI_REGISTRY"
+    - git clone https://github.com/MAAP-Project/maap-workspaces.git
+    - pushd maap-workspaces
+    - git checkout ${LATEST_COMMIT}
+    - bash custom_images/build-image.sh ${BASE_IMAGE_TYPE}
+    - cat built_images.txt
