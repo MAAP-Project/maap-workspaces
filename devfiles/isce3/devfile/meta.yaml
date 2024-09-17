@@ -1,6 +1,6 @@
 ---
 displayName: "ISCE3"
-description: "ISCE3 workspace version: 3.1.5"
+description: "ISCE3 MAAP workspace (version 4.1.0)"
 tags: ["JupyterLab", "Python", "MAAP", "ISCE3"]
 icon: /devfiles/isce3/devfile/isce.png
 links: 

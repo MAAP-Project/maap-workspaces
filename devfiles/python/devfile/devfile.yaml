@@ -8,7 +8,9 @@ components:
       - attributes:
           type: ide
           discoverable: 'false'
+          secure: 'true'
           path: /
+          cookiesAuthEnabled: 'true'
           public: 'true'
           protocol: http
         name: jupyter
@@ -35,9 +37,9 @@ components:
                 imagePullPolicy: Always
                 env:
                 - name: DOCKERIMAGE_PATH
-                  value: 'mas.dit.maap-project.org/root/maap-workspaces/base_images/vanilla:develop'
+                  value: 'mas.dit.maap-project.org/root/maap-workspaces/base_images/python:develop'
                 - name: MAAP_API_HOST
-                  value: ade.dit.maap-project.org
+                  value: api.dit.maap-project.org
                 resources:
                   limits:
                     memory: 8096Mi
