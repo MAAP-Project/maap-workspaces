@@ -1,6 +1,6 @@
 ---
 displayName: "Pangeo"
-description: "Pangeo MAAP workspace (version 4.0.0)"
+description: "Pangeo MAAP workspace (version 4.1.0)"
 tags: ["Pangeo", "JupyterLab", "MAAP"]
 icon: /devfiles/pangeo/devfile/pangeo_simple_logo.svg
 links: 
