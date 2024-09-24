@@ -79,9 +79,6 @@ RUN source activate $WORKSPACE_TYPE && \
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./jupyter_patch /opt/jupyter_patch
 
-ENV ENVIRONMENTS_FILE_PATH=/opt/environments.json
-COPY ./environments.json $ENVIRONMENTS_FILE_PATH
-
 RUN echo 'printf "\e[101mNOTE: This terminal uses the default environment which might not be the same as your notebook.\e[49m\n\n"' >> /etc/profile
 
 # Reset Shell
