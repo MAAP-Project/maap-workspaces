@@ -18,6 +18,7 @@ dependencies:
   - httpx
   - hvplot
   - isce3=0.22.1
+  - pyOpenSSL=23.1.0
   - requests
   - rio-cogeo
   - rtree
