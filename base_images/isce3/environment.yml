@@ -18,6 +18,35 @@ dependencies:
   - httpx
   - hvplot
   - isce3=0.22.1
+    - lonboard
+  - mapclassify
+  - matplotlib
+  - mpl-scatter-density
+  - numba
+  - numpy
+  - pandas
+  - pycurl
+  - pyogrio
+  - pyproj
+  - pystac-client
+  - python
+  - rasterio
+  - rasterstats
+  - requests
+  - rio-cogeo
+  - rtree
+  - s3fs
+  - scikit-learn
+  - scipy
+  - seaborn
+  - shapely
+  - sliderule
+  - statsmodels
+  - tqdm
+  - unidecode
+  - unzip
+  - xmltodict
+  - xarray
   - pip=24.2
   - pip:
     - git+https://github.com/opera-adt/RTC.git@v1.0.2
