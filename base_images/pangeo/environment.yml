@@ -30,7 +30,7 @@ dependencies:
   - gdal=3.7.0
   - geocube=0.5.3
   - geogif=0.1.5
-  - geopandas=0.14.4
+  - geopandas=1.0.1
   - geopy=2.4.1
   - geoviews-core=1.13.0
   - groff=1.22.4

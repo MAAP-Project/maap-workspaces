@@ -51,6 +51,5 @@ dependencies:
   - xarray
   - pip=24.2
   - pip:
-    - git+https://github.com/opera-adt/RTC.git@v1.0.2
-    - rio-tiler==6.6.1
+    - rio-tiler==6.7.0
     - git+https://github.com/MAAP-Project/maap-py.git@v4.1.0

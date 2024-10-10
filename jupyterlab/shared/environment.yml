@@ -3,20 +3,20 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - folium=0.16.0
+  - folium=0.17.0
   - gitpython=3.1.43
-  - ipyleaflet=0.19.1
-  - jupyter_server=2.12.5
-  - jupyterlab=4.2.0
-  - jupyterlab-git=0.50.0
-  - jupyterlab_widgets=3.0.11 
-  - nodejs=20.1.0
+  - ipyleaflet=0.19.2
+  - jupyter_server=2.14.2
+  - jupyterlab=4.2.5
+  - jupyterlab-git=0.50.1
+  - jupyterlab_widgets=3.0.13
+  - nodejs=22.9.0
   - notebook=6.4.12 # Should not upgrade yet because appears notebook v7 doesnt support extensions
-  - plotly=5.22.0 
+  - plotly=5.24.1
   - plotnine=0.13.6
-  - pip=24.0
+  - pip=24.2
   - pip:
-    - jupyter-resource-usage==1.0.2
+    - jupyter-resource-usage==1.1.0
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6#egg-info=stac_ipyleaflet
     - maap-algorithms-jupyter-extension==0.3.6
     - maap-che-sidebar-visibility-jupyter-extension==1.1.2
