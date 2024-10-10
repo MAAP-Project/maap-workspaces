@@ -28,6 +28,7 @@ dependencies:
   - pycurl
   - pygeos
   - pyogrio
+  - pyOpenSSL=23.1.0
   - pyproj
   - pystac-client
   - python
