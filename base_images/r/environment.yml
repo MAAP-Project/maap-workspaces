@@ -31,7 +31,6 @@ dependencies:
   - perl=5.32.1
   - postgis=3.3.3
   - pycurl=7.45.1
-  - pygeos=0.14
   - pyogrio=0.6.0
   - pyproj=3.5.0
   - pystac-client=0.7.5 
