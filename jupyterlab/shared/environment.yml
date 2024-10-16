@@ -13,7 +13,7 @@ dependencies:
   - nodejs=22.9.0
   - notebook=6.4.12 # Should not upgrade yet because appears notebook v7 doesnt support extensions
   - plotly=5.24.1
-  - plotnine=0.13.6
+  - plotnine
   - pip=24.2
   - pip:
     - jupyter-resource-usage==1.1.0

@@ -17,10 +17,10 @@ dependencies:
   - h5py=3.11.0
   - hdf5=1.14.3
   - httpx=0.27.2
-  - lonboard=0.10.2
+  - lonboard
   - mapclassify=2.8.1
   - matplotlib=3.8.4
-  - mizani=0.12.2
+  - mizani
   - mpl-scatter-density=0.7
   - numba
   - numpy=1.26.4
