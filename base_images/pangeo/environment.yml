@@ -69,7 +69,6 @@ dependencies:
   - pycamhd=0.7.0
   - pycurl=7.45.1
   - pydap=3.4.0
-  - pygeos=0.14
   - pyogrio=0.6.0
   - pyproj=3.5.0
   - pystac-client=0.8.0

@@ -27,7 +27,6 @@ dependencies:
   - pandas=2.2.2
   - pandarallel=1.6.5
   - pycurl=7.45.1
-  - pygeos=0.14
   - pyogrio=0.6.0
   - pyproj=3.5.0
   - pystac-client=0.7.5
