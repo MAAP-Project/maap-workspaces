@@ -61,6 +61,10 @@ COPY ./maap_jupyter_server_extension-2.0.9-py3-none-any.whl /maap_jupyter_server
 RUN source activate $WORKSPACE_TYPE && \
     pip install /maap_jupyter_server_extension-2.0.9-py3-none-any.whl
 
+COPY ./maap_dps_jupyter_extension-0.7.2-py3-none-any.whl /maap_dps_jupyter_extension-0.7.2-py3-none-any.whl
+RUN source activate $WORKSPACE_TYPE && \
+    pip install /maap_dps_jupyter_extension-0.7.2-py3-none-any.whl
+
 RUN source activate $WORKSPACE_TYPE && \
     npm install typescript -g && \
     jupyter labextension disable @jupyterlab/apputils-extension:announcements && \
@@ -82,10 +86,6 @@ RUN source activate $WORKSPACE_TYPE && \
 
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./jupyter_patch /opt/jupyter_patch
-
-# graceal remove later
-ENV ENVIRONMENTS_FILE_PATH=/opt/environments.json
-COPY ./environments.json $ENVIRONMENTS_FILE_PATH
 
 RUN echo 'printf "\e[101mNOTE: This terminal uses the default environment which might not be the same as your notebook.\e[49m\n\n"' >> /etc/profile
 
