@@ -18,14 +18,14 @@ dependencies:
   - dask-ml=2024.4.4
   - datashader=0.16.3
   - descartes=1.1.0
-  - earthaccess
+  - earthaccess=0.11.0
   - earthengine-api=1.1.1
   - eofs=1.4.1
   - erddapy=2.2.3
-  - esmpy
+  - esmpy=8.6.1
   - fastjmd95=0.2.1
   - flox=0.9.12
-  - fsspec
+  - fsspec=2024.10.0
   - gcm_filters
   - gdal
   - geocube
