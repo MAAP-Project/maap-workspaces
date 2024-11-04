@@ -4,7 +4,7 @@ channels:
   - nodefaults
 dependencies:
   - anywidget=0.9.13
-  - awscli=2.18.15 
+  - awscli
   - backoff=2.2.1
   - basemap
   - bokeh=3.5.2
@@ -103,7 +103,7 @@ dependencies:
   - xarray=2024.10.0
   - xarrayutils=2.0.1
   - xbatcher=0.4.0
-  - xcape=0.1.4
+  - xcape
   - xclim=0.53.1
   - xcube=1.5.1
   - xesmf=0.8.7
