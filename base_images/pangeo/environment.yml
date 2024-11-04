@@ -18,24 +18,24 @@ dependencies:
   - dask-ml=2024.4.4
   - datashader=0.16.3
   - descartes=1.1.0
-  - earthaccess=0.11.0
+  - earthaccess
   - earthengine-api=1.1.1
   - eofs=1.4.1
   - erddapy=2.2.3
-  - esmpy=8.6.1
+  - esmpy
   - fastjmd95=0.2.1
   - flox=0.9.12
-  - fsspec=2024.10.0
-  - gcm_filters
+  - fsspec
+  - gcm_filters=0.5.0
   - gdal
   - geocube
   - geogif=0.1.5
-  - geopandas
+  - geopandas=0.7.0
   - geopy=2.4.1
   - geoviews-core=1.13.0
   - groff=1.22.4
-  - h5netcdf
-  - h5py
+  - h5netcdf=1.4.0
+  - h5py=3.12.1
   - hdf5
   - holoviews=1.19.1
   - httpx=0.27.2
