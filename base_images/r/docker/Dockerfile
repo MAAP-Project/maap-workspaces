@@ -38,10 +38,11 @@ RUN apt-get clean && apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY ./environment.yml /tmp
-RUN conda env create -y -f "/tmp/environment.yml" \
-    && find /opt/conda/ -follow -type f -name '*.a' -delete \
-    && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
-    && /opt/conda/bin/conda clean -afy
+RUN conda create env --name r
+# RUN conda env create -y -f "/tmp/environment.yml" \
+#     && find /opt/conda/ -follow -type f -name '*.a' -delete \
+#     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
+#     && /opt/conda/bin/conda clean -afy
 
 RUN conda init && echo "conda activate r" >> ~/.bashrc
 
