@@ -39,7 +39,7 @@ RUN apt-get clean && apt-get update && \
 
 COPY ./environment.yml /tmp
 #RUN conda create --name r -c conda-forge r=4.2
-RUN conda env create -y -f "/tmp/environment.yml" \
+RUN conda env create -y -f "/tmp/environment.yml" --no-plugins \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
