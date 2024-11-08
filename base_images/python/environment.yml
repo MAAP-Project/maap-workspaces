@@ -51,4 +51,4 @@ dependencies:
   - pip:
     - morecantile==5.3.0
     - rio-tiler==6.6.1
-    - git+https://github.com/MAAP-Project/maap-py.git@feature/maappy-gets-username
+    - git+https://github.com/MAAP-Project/maap-py.git@develop
