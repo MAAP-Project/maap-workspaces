@@ -45,7 +45,7 @@ RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
 RUN source activate r && \
     /scripts/install_cran_packages_r.sh
 
-RUN conda env update -y -f "/tmp/environment.yml" \
+RUN conda env update -f "/tmp/environment.yml" \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
