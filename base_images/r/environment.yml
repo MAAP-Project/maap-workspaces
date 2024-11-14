@@ -36,7 +36,6 @@ dependencies:
   - pystac-client=0.7.5  
   - python=3.10.13
   - r=4.2
-  - r-arrow=16.1.0
   - r-aws.s3=0.3.22
   - r-base=4.2.3
   - r-BiocManager=1.30.23
