@@ -37,7 +37,7 @@ RUN apt-get clean && apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN conda create --name r -c conda-forge r=4.2 r-arrow=16.1.0
+RUN conda create --name r -c conda-forge r=4.2 r-arrow=16.1.0 r-sf=1.0_16
 COPY ./environment.yml /tmp
 SHELL ["/bin/bash", "-c"]
 ADD . /
