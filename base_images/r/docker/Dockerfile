@@ -37,20 +37,19 @@ RUN apt-get clean && apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN conda create --name r -c conda-forge r=4.2 r-arrow=16.1.0 r-sf=1.0_16
 COPY ./environment.yml /tmp
-SHELL ["/bin/bash", "-c"]
-ADD . /
-RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
-RUN source activate r && \
-    /scripts/install_cran_packages_r.sh
-
-RUN conda env update -f "/tmp/environment.yml" \
+RUN conda env create -y -f "/tmp/environment.yml" \
     && find /opt/conda/ -follow -type f -name '*.a' -delete \
     && find /opt/conda/ -follow -type f -name '*.js.map' -delete \
     && /opt/conda/bin/conda clean -afy
 
 RUN conda init && echo "conda activate r" >> ~/.bashrc
+
+SHELL ["/bin/bash", "-c"]
+ADD . /
+RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
+RUN source activate r && \
+    /scripts/install_cran_packages_r.sh
 
 RUN source activate r && \
     conda list
