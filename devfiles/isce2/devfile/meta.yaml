@@ -1,8 +1,8 @@
 ---
-displayName: "ISCE3"
-description: "ISCE3 MAAP workspace (version 4.0.0)"
-tags: ["JupyterLab", "Python", "MAAP", "ISCE3"]
-icon: /devfiles/isce3/devfile/isce.png
+displayName: "ISCE2"
+description: "ISCE2 MAAP workspace (version 4.2.0)"
+tags: ["JupyterLab", "Python", "MAAP", "ISCE2"]
+icon: /devfiles/isce2/devfile/isce.png
 links: 
-  self: "/devfiles/isce3/devfile/devfile.yaml"
+  self: "/devfiles/isce2/devfile/devfile.yaml"
 globalMemoryLimit: 2710Mi
