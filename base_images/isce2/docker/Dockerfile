@@ -1,4 +1,4 @@
-FROM mas.maap-project.org/bnarayanarao/isce2:f6c1a08e72dce7771287e4931c2d69941aed9377
+FROM mas.maap-project.org/bnarayanarao/isce2:f6c1a08e72dce7771287e4931c2d69941aed937
 ENV LANG=en_US.UTF-8
 ENV TZ=US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
