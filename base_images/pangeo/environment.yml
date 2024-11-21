@@ -5,8 +5,8 @@ channels:
 dependencies:
   - anywidget=0.9.13
   - awscli
-  - backoff
-  - basemap
+  #- backoff
+  #- basemap
   - bokeh=3.5.2
   - boto3=1.35.36
   - bottleneck=1.4.2
@@ -14,7 +14,7 @@ dependencies:
   - cdsapi=0.7.4
   - cf_xarray=0.10.0
   - cfgrib=0.9.14.1
-  - cython
+  #- cython
   - dask-ml=2024.4.4
   - datashader=0.16.3
   - descartes=1.1.0
@@ -74,7 +74,7 @@ dependencies:
   - pystac-client=0.8.5
   - pystac=1.11.0
   - python-blosc=1.11.2
-  - python=3.12.7
+  - python
   - rasterio=1.4.2
   #- rasterstats
   - rechunker=0.5.2
