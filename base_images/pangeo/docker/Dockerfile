@@ -20,4 +20,4 @@ RUN source activate pangeo && \
     conda list
 
 ARG IMAGE_REF
-ENV DOCKERIMAGE_PATH=${IMAGE_REF}
+ENV DOCKERIMAGE_PATH_BASE_IMAGE=${IMAGE_REF}

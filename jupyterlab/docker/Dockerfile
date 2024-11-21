@@ -57,14 +57,6 @@ RUN chmod g+w /etc/passwd
 # PyPi packages prepended with 'maap' so they are more easily discoverable
 #SHELL ["/bin/bash", "-c"] # Added this line to base image dockerfiles for now before maap-py is extracted to environment.yml
 # Jupyter server extension needs to be specifially enabled 
-COPY ./maap_algorithms_jupyter_extension-0.3.6-py3-none-any.whl /maap_algorithms_jupyter_extension-0.3.6-py3-none-any.whl
-RUN source activate $WORKSPACE_TYPE && \
-    pip install /maap_algorithms_jupyter_extension-0.3.6-py3-none-any.whl
-
-COPY ./maap_jupyter_server_extension-2.0.9-py3-none-any.whl /maap_jupyter_server_extension-2.0.9-py3-none-any.whl
-RUN source activate $WORKSPACE_TYPE && \
-    pip install /maap_jupyter_server_extension-2.0.9-py3-none-any.whl
-
 RUN source activate $WORKSPACE_TYPE && \
     npm install typescript -g && \
     jupyter labextension disable @jupyterlab/apputils-extension:announcements && \
