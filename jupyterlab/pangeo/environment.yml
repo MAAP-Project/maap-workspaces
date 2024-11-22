@@ -38,7 +38,7 @@ dependencies:
     - rio-tiler==6.2.8
     - maap-algorithms-jupyter-extension==0.3.8
     - maap-che-sidebar-visibility-jupyter-extension==1.1.2
-    - maap-dps-jupyter-extension==0.7.1
+    - maap-dps-jupyter-extension==0.7.2
     - maap-edsc-jupyter-extension==1.1.1
     - maap-help-jupyter-extension==2.0.0
     - maap-jupyter-server-extension==2.1.1
