@@ -15,7 +15,7 @@ for dir in "${DIRS_LIST[@]}"; do
     IMAGE_PATH=$(basename "$base_image_dir")
     IMAGE_REF=${CI_REGISTRY_IMAGE}/${IMAGE_PATH}/${IMAGE_NAME}:${BRANCH}
     DEFAULT_DOCKERFILE_PATH=${CI_REGISTRY_IMAGE}/base_image/dps_base_image:dps_base_image
-    docker build -t "${IMAGE_REF}" --build-arg IMAGE_REF="${IMAGE_REF}" DEFAULT_DOCKERFILE_PATH=${DEFAULT_DOCKERFILE_PATH} -f docker/Dockerfile .
+    docker build -t "${IMAGE_REF}" --build-arg IMAGE_REF="${IMAGE_REF}" --build-arg DEFAULT_DOCKERFILE_PATH=${DEFAULT_DOCKERFILE_PATH} -f docker/Dockerfile .
     docker push "${IMAGE_REF}"
     popd
     echo "$IMAGE_REF" >> built_images.txt
