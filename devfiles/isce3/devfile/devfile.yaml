@@ -39,7 +39,7 @@ components:
                 - name: DOCKERIMAGE_PATH_DEFAULT
                   value: 'mas.dit.maap-project.org/root/maap-workspaces/base_images/isce3:develop'
                 - name: DOCKERIMAGE_PATH_BASE_IMAGE
-                  value: 'mas.dit.maap-project.org/root/maap-workspaces/base_image/dps_base_image:dps_base_image'
+                  value: 'mas.dit.maap-project.org/root/maap-workspaces/custom_images/maap_base:develop'
                 - name: MAAP_API_HOST
                   value: api.dit.maap-project.org
                 resources:
