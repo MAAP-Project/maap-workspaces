@@ -5,7 +5,7 @@ channels:
 dependencies:
   - anywidget=0.9.13
   - awscli
-  #- backoff
+  - backoff
   #- basemap
   - bokeh=3.5.2
   - boto3=1.35.36
@@ -19,7 +19,7 @@ dependencies:
   - datashader=0.16.3
   - descartes=1.1.0
   - earthaccess=0.11.0
-  #- earthengine-api
+  - earthengine-api
   - eofs=1.4.1
   - erddapy=2.2.3
   - esmpy=8.6.1
@@ -55,7 +55,7 @@ dependencies:
   - memory_profiler=0.61.0
   - metpy=1.6.3
   #- mizani
-  #- mpl-scatter-density
+  - mpl-scatter-density
   - nc-time-axis=1.4.1
   - netcdf4=1.7.1
   - numba=0.60.0
@@ -97,7 +97,7 @@ dependencies:
   - timezonefinder=6.5.4
   - tqdm=4.67.0
   #- unidecode
-  #- unzip
+  - unzip
   #- xarray-datatree
   - xarray-spatial=0.4.0
   - xarray=2024.10.0
