@@ -14,7 +14,7 @@ dependencies:
   - cdsapi=0.7.4
   - cf_xarray=0.10.0
   - cfgrib=0.9.14.1
-  - cython
+  #- cython
   - dask-ml=2024.4.4
   - datashader=0.16.3
   - descartes=1.1.0
