@@ -63,11 +63,11 @@ dependencies:
   - numcodecs=0.13.1
   - numpy=2.0.2
   - odc-stac=0.3.10
-  #- pandarallel
+  - pandarallel
   - pandas=2.2.3
   - pyarrow=17.0.0
   - pycamhd=0.7.0
-  #- pycurl
+  - pycurl
   - pydap=3.5.1
   - pyogrio=0.10.0
   - pyproj=3.7.0
@@ -81,7 +81,7 @@ dependencies:
   - requests=2.32.3
   - rio-cogeo=5.3.6
   - rioxarray=0.17.0
-  #- rtree
+  - rtree
   - s3fs=2024.10.0
   - satpy=0.53.0
   - scikit-image=0.24.0
