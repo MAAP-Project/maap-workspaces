@@ -6,7 +6,7 @@ dependencies:
   - anywidget=0.9.13
   - awscli
   - backoff
-  - basemap
+  #- basemap
   - bokeh=3.5.2
   - boto3=1.35.36
   - bottleneck=1.4.2
@@ -14,7 +14,7 @@ dependencies:
   - cdsapi=0.7.4
   - cf_xarray=0.10.0
   - cfgrib=0.9.14.1
-  - cython
+  #- cython
   - dask-ml=2024.4.4
   - datashader=0.16.3
   - descartes=1.1.0
@@ -29,11 +29,11 @@ dependencies:
   - gcm_filters=0.5.0
   - gdal=3.9.3
   - geocube=0.7.0
-  - geogif
+  #- geogif
   - geopandas=1.0.1
   - geopy=2.4.1
   - geoviews-core=1.13.0
-  #- groff
+  - groff
   - h5netcdf=1.4.0
   - h5py=3.12.1
   - hdf5=1.14.3
@@ -51,10 +51,10 @@ dependencies:
   - lxml=5.3.0
   - lz4=4.3.3
   - mapclassify=2.8.1
-  #- matplotlib
+  - matplotlib
   - memory_profiler=0.61.0
   - metpy=1.6.3
-  #- mizani
+  - mizani
   - mpl-scatter-density
   - nc-time-axis=1.4.1
   - netcdf4=1.7.1
