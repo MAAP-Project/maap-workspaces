@@ -98,14 +98,14 @@ dependencies:
   - tqdm=4.67.0
   - unidecode
   - unzip
-  #- xarray-datatree
+  - xarray-datatree
   - xarray-spatial=0.4.0
   - xarray=2024.10.0
   - xarrayutils=2.0.1
   - xbatcher=0.4.0
-  #- xcape
+  - xcape
   - xclim=0.53.1
-  #- xcube
+  - xcube
   - xesmf=0.8.8
   - xgboost=2.1.2
   - xgcm=0.8.1
