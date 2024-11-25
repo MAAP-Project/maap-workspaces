@@ -103,7 +103,7 @@ dependencies:
   - xarray=2024.10.0
   - xarrayutils=2.0.1
   - xbatcher=0.4.0
-  - xcape
+  #- xcape
   - xclim=0.53.1
   - xcube
   - xesmf=0.8.8
