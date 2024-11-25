@@ -76,7 +76,7 @@ dependencies:
   - python-blosc=1.11.2
   - python
   - rasterio=1.4.2
-  #- rasterstats
+  - rasterstats
   - rechunker=0.5.2
   - requests=2.32.3
   - rio-cogeo=5.3.6
@@ -89,14 +89,14 @@ dependencies:
   - scipy=1.14.1
   - seaborn=0.13.2
   - shapely=2.0.6
-  #- sliderule
+  - sliderule
   - sparse=0.15.4
   - stackstac=0.5.1
   - statsmodels=0.14.4
   - tiledb-py=0.32.5
   - timezonefinder=6.5.4
   - tqdm=4.67.0
-  #- unidecode
+  - unidecode
   - unzip
   #- xarray-datatree
   - xarray-spatial=0.4.0
