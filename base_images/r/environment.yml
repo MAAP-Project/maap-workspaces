@@ -119,7 +119,7 @@ dependencies:
   - r-spdep=1.3_5
   - r-sqldf=0.4_11
   - r-stars=0.6_5
-  - r-stringr=1.5.1
+  - r-stringr
   - r-terra=1.7_78
   - r-testthat=3.2.1.1 
   - r-tibble=3.2.1

@@ -171,6 +171,18 @@ if (any(isLocal)) {
     sapply(opt$PACKAGES, installArg, opt$libloc, opt$repos, opt$deps,
            installOpts, opt$error, opt$skipmissing, opt$skipinstalled, opt$ncpus, opt$method, opt$type)
 } else {
+    print("graceal1 arguments to install ")
+    print(opt$PACKAGES)
+    print(opt$libloc)
+    print(opt$repos)
+    print(opt$deps)
+    print(installOpts)
+    print(opt$ncpus)
+    print(opt$method)
+    print(opt$type)
+    print(opt$error)
+    print(opt$skipmissing)
+    print(opt$skipinstalled)
     install_packages2(pkgs = opt$PACKAGES,
                       lib = opt$libloc,
                       repos = opt$repos,
