@@ -101,7 +101,7 @@ if (opt$type == "getOption") {
 
 ## ensure installation is stripped
 Sys.setenv("_R_SHLIB_STRIP_"="true")
-install_packages2 <- function(pkgs, ..., error = FALSE, skipmissing = FALSE, skipinstalled = FALSE) {
+install_packages2 <- function(pkgs, ..., error = FALSE, skipmissing = FALSE, skipinstalled = FALSE, verbose = TRUE) {
     e <- NULL
     capture <- function(e) {
         if (error) {
@@ -140,6 +140,7 @@ installArg <- function(f, lib, rep, dep, iopts, error, skipmissing, skipinstalle
                       method = method,
                       type = type,
                       error = error,
+                      verbose = TRUE,
                       skipmissing = skipmissing,
                       skipinstalled = skipinstalled)
 }
@@ -179,6 +180,7 @@ if (any(isLocal)) {
                       method = opt$method,
                       type = opt$type,
                       error = opt$error,
+                      verbose = TRUE,
                       skipmissing = opt$skipmissing,
                       skipinstalled = opt$skipinstalled)
 }
