@@ -7,7 +7,8 @@ export DEBIAN_FRONTEND=noninteractive
 ## build ARGs
 NCPUS=${NCPUS:--1}
 
-Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r "http://cran.us.r-project.org" -n "$NCPUS" nlraa sfarrow tidyverse stringi stringr Fgmutils
+Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r "http://cran.us.r-project.org" -n "$NCPUS" tidyverse stringi stringr
+Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r "http://cran.us.r-project.org" -n "$NCPUS" nlraa sfarrow Fgmutils
 
 # Clean up
 rm -rf /var/lib/apt/lists/*
