@@ -7,7 +7,7 @@ export DEBIAN_FRONTEND=noninteractive
 ## build ARGs
 NCPUS=${NCPUS:--1}
 
-Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r "http://cran.us.r-project.org" -n "$NCPUS" knitr roxygen2 selectr tidyverse stringi stringr
+Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r "http://cran.us.r-project.org" -n "$NCPUS" knitr selectr tidyverse stringi stringr
 Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r "http://cran.us.r-project.org" -n "$NCPUS" nlraa sfarrow 
 
 # Clean up
