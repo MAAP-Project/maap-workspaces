@@ -58,10 +58,10 @@ dependencies:
   - mpl-scatter-density
   - nc-time-axis~=1.4
   - netcdf4~=1.7
-  - numba~=0.60
+  - numba
   - numbagg~=0.8
   - numcodecs~=0.13
-  - numpy~=2.0
+  - numpy
   - odc-stac~=0.3
   - pandarallel
   - pandas~=2.2
