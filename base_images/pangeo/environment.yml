@@ -6,7 +6,7 @@ dependencies:
   - anywidget~=0.9
   - awscli
   - backoff
-  - basemap
+  #- basemap
   - bokeh~=3.5
   - boto3~=1.35
   - bottleneck~=1.4
@@ -29,7 +29,7 @@ dependencies:
   - gcm_filters~=0.5
   - gdal~=3.9
   - geocube~=0.7
-  - geogif
+  - geogif>=0.1.4
   - geopandas~=1.0
   - geopy~=2.4
   - geoviews-core~=1.13
@@ -103,7 +103,7 @@ dependencies:
   - xarray~=2024.10
   - xarrayutils~=2.0
   - xbatcher~=0.4
-  - xcape
+  #- xcape
   - xclim~=0.53
   - xcube
   - xesmf~=0.8
