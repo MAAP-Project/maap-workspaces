@@ -18,7 +18,7 @@ dependencies:
   - httpx=0.27.2
   - hvplot=0.11.1
   - isce3
-  - lonboard=0.10.3
+  - lonboard
   - mapclassify=2.8.1
   - matplotlib
   - mpl-scatter-density
