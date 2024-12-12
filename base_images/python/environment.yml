@@ -23,7 +23,7 @@ dependencies:
   - matplotlib
   - mpl-scatter-density
   - numba=0.60.0
-  - numpy=2.0.2
+  - numpy
   - pandas=2.2.3
   - pycurl
   - pyogrio=0.10.0
