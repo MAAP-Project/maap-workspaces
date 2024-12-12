@@ -4,49 +4,50 @@ channels:
   - nodefaults
 dependencies:
   - anywidget=0.9.13
-  - awscli=2.18.6
-  - backoff=2.2.1
-  - basemap=1.4.1
-  - boto3=1.35.40
-  - cython=3.0.11
-  - earthengine-api=1.1.3
-  - gdal=3.9.1
-  - geocube=0.7.0
+  - awscli=2.19.4
+  - backoff
+  - boto3=1.35.36
+  - cython
+  - earthengine-api
+  - fsspec=2024.10.0
+  - gdal=3.9.3
   - geopandas=1.0.1
-  - groff=1.22.4
-  - h5py=3.11.0
+  - groff
+  - h5py=3.12.1
   - hdf5=1.14.3
   - httpx=0.27.2
-  - lonboard=0.9.3
+  - hvplot=0.11.1
+  - isce3
+  - lonboard=0.10.3
   - mapclassify=2.8.1
-  - matplotlib=3.8.4
-  - mizani=0.12.2
-  - mpl-scatter-density=0.7
+  - matplotlib
+  - mpl-scatter-density
   - numba=0.60.0
-  - numpy=1.26.4
+  - numpy=2.0.2
   - pandas=2.2.3
-  - pandarallel=1.6.5
-  - pycurl=7.45.3
-  - pyogrio=0.9.0
-  - pyproj=3.6.1
-  - pystac-client=0.6.1
-  - python=3.10.13
-  - rasterio=1.3.10
-  - rasterstats=0.20.0
-  - requests=2.31.0
+  - pycurl
+  - pyogrio=0.10.0
+  - pyOpenSSL=23.1.1
+  - pyproj=3.7.0
+  - pystac-client=0.8.5
+  - python=3.12.7
+  - rasterio=1.4.2
+  - rasterstats
+  - requests=2.32.3
   - rio-cogeo=5.3.6
-  - rtree=1.3.0
-  - s3fs=0.4.2
+  - rtree
+  - s3fs=2024.10.0
   - scikit-learn=1.5.2
   - scipy=1.14.1
   - seaborn=0.13.2
-  - shapely=2.0.4
-  - sliderule=4.7.1
+  - shapely=2.0.6
+  - sliderule
   - statsmodels=0.14.4
-  - tqdm=4.66.5
-  - unidecode=1.3.8
-  - unzip=6.0
-  - xmltodict=0.13.0
+  - tqdm=4.67.0
+  - unidecode
+  - unzip
+  - xmltodict
+  - xarray=2024.10.0
   - pip=24.3.1
   - pip:
     - morecantile==6.1.0
