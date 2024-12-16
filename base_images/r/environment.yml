@@ -1,7 +1,6 @@
 name: r
 channels:
   - conda-forge
-  - r
   - nodefaults
 dependencies:
   - anywidget=0.9.13
