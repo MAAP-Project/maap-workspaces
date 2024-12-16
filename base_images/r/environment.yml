@@ -4,7 +4,7 @@ channels:
   - nodefaults
 dependencies:
   - anywidget=0.9.13
-  - awscli=2.19.1
+  - awscli
   - backoff=2.2.1
   - basemap
   - boto3=1.35.23
