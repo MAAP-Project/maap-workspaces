@@ -95,7 +95,7 @@ dependencies:
   - r-rcolorbrewer=1.1_3
   - r-readxl=1.4.3
   - r-reticulate=1.38.0
-  - r-rgdal=1.5_32
+  - r-rgdal
   - r-rgee=1.1.7
   - r-rgeos=0.6_4
   - r-rlas=1.6.2
