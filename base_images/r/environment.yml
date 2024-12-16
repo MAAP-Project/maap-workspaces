@@ -6,7 +6,7 @@ dependencies:
   - anywidget=0.9.13
   - awscli=2.19.1
   - backoff=2.2.1
-  - basemap=1.4.1
+  - basemap
   - boto3=1.35.23
   - cython=3.0.11
   - earthaccess=0.11.0
