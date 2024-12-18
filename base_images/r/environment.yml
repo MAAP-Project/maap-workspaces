@@ -3,182 +3,182 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-- _sysroot_linux-64_curr_repodata_hack
-- anywidget
-- async-timeout
-- awscli
-- backoff
-- basemap
-- boost-cpp
-- boto3
-- cython
-- earthaccess
-- earthengine-api
-- gdal
-- geocube
-- geopandas
-- groff
-- h5py
-- httpx
-- icu
-- importlib_metadata
-- jupyter_server
-- libarrow-flight
-- libarrow-flight-sql
-- libarrow-gandiva
-- libclang
-- libgcrypt
-- libnl
-- lonboard
-- mapclassify
-- matplotlib
-- mizani
-- mpl-scatter-density
-- munch
-- numba
-- numpy
-- pandas
-- pandarallel
-- parallel
-- perl
-- postgis
-- pycurl
-- pyogrio
-- pyproj
-- pystac-client
-- python
-- r
-- r-arrow
-- r-aws.s3
-- r-base
-- r-BiocManager
-- r-broom
-- r-car
-- r-chron
-- r-classint
-- r-covr
-- r-data.table
-- r-dbi
-- r-deldir
-- r-dplyr
-- r-egg
-- r-essentials
-- r-fs
-- r-future # Geotrees focused
-- r-geojsonio
-- r-geojsonsf
-- r-geor
-- r-geosphere
-- r-ggnewscale
-- r-ggplot2
-- r-ggpubr # Geotrees focused
-- r-ggspatial
-- r-ggtext
-- r-gridExtra
-- r-gstat
-- r-gsubfn
-- r-hdf5r
-- r-httr2 # Geotrees focused
-- r-interleave
-- r-irkernel
-- r-jpeg
-- r-knitr
-- r-leafem
-- r-leaflet
-- r-lidR
-- r-lwgeom
-- r-mapdata
-- r-mapproj
-- r-maps
-- r-maptools
-- r-mapview
-- r-microbenchmark
-- r-minpack.lm # for BIOMASS
-- r-ncdf4
-- r-nlme
-- r-patchwork
-- r-paws
-- r-plogr
-- r-plyr
-- r-png
-- r-pool
-- r-proj4
-- r-proto
-- r-protolite
-- r-r.methodss3
-- r-r.oo
-- r-r.utils
-- r-randomFields
-- r-randomForest
-- r-raster
-- r-rcolorbrewer
-- r-rcsf # Geotrees focused
-- r-readxl
-- r-reticulate
-- r-rgdal
-- r-rgee
-- r-rgeos
-- r-rio
-- r-rlas
-- r-rlist
-- r-rmarkdown
-- r-rnaturalearth
-- r-rnaturalearthdata
-- r-RNetCDF
-- r-rockchalk
-- r-rodbc
-- r-RPostgres
-- r-RPostgreSQL
-- r-RSQLite
-- r-rstac
-- r-rstoolbox # Geotrees focused
-- r-scales
-- r-sf
-- r-snow
-- r-spacetime
-- r-spatialreg
-- r-spatialwidget
-- r-spatstat
-- r-spdep
-- r-sqldf
-- r-stars
-- r-stringi
-- r-stringr
-- r-terra
-- r-testthat
-- r-tibble
-- r-tidync
-- r-tidyr
-- r-tidyverse
-- r-tmap
-- r-units
-- r-viridis
-- r-writexl
-- rasterio
-- rasterstats
-- rdma-core
-- requests
-- rio-cogeo
-- rtree
-- s3fs
-- scikit-learn
-- scipy
-- seaborn
-- setuptools-scm
-- setuptools_scm
-- shapely
-- sliderule
-- statsmodels
-- tqdm
-- ucx
-- unidecode
-- unzip
-- wheel
-- xorg-kbproto
-- xorg-renderproto
-- xorg-xextproto
-- xorg-xproto
-- xmltodict
+  - _sysroot_linux-64_curr_repodata_hack
+  - anywidget
+  - async-timeout
+  - awscli
+  - backoff
+  - basemap
+  - boost-cpp
+  - boto3
+  - cython
+  - earthaccess
+  - earthengine-api
+  - gdal
+  - geocube
+  - geopandas
+  - groff
+  - h5py
+  - httpx
+  - icu
+  - importlib_metadata
+  - jupyter_server
+  - libarrow-flight
+  - libarrow-flight-sql
+  - libarrow-gandiva
+  - libclang
+  - libgcrypt
+  - libnl
+  - lonboard
+  - mapclassify
+  - matplotlib
+  - mizani
+  - mpl-scatter-density
+  - munch
+  - numba
+  - numpy
+  - pandas
+  - pandarallel
+  - parallel
+  - perl
+  - postgis
+  - pycurl
+  - pyogrio
+  - pyproj
+  - pystac-client
+  - python
+  - r
+  - r-arrow
+  - r-aws.s3
+  - r-base
+  - r-BiocManager
+  - r-broom
+  - r-car
+  - r-chron
+  - r-classint
+  - r-covr
+  - r-data.table
+  - r-dbi
+  - r-deldir
+  - r-dplyr
+  - r-egg
+  - r-essentials
+  - r-fs
+  - r-future # Geotrees focused
+  - r-geojsonio
+  - r-geojsonsf
+  - r-geor
+  - r-geosphere
+  - r-ggnewscale
+  - r-ggplot2
+  - r-ggpubr # Geotrees focused
+  - r-ggspatial
+  - r-ggtext
+  - r-gridExtra
+  - r-gstat
+  - r-gsubfn
+  - r-hdf5r
+  - r-httr2 # Geotrees focused
+  - r-interleave
+  - r-irkernel
+  - r-jpeg
+  - r-knitr
+  - r-leafem
+  - r-leaflet
+  - r-lidR
+  - r-lwgeom
+  - r-mapdata
+  - r-mapproj
+  - r-maps
+  - r-maptools
+  - r-mapview
+  - r-microbenchmark
+  - r-minpack.lm # for BIOMASS
+  - r-ncdf4
+  - r-nlme
+  - r-patchwork
+  - r-paws
+  - r-plogr
+  - r-plyr
+  - r-png
+  - r-pool
+  - r-proj4
+  - r-proto
+  - r-protolite
+  - r-r.methodss3
+  - r-r.oo
+  - r-r.utils
+  - r-randomFields
+  - r-randomForest
+  - r-raster
+  - r-rcolorbrewer
+  - r-rcsf # Geotrees focused
+  - r-readxl
+  - r-reticulate
+  - r-rgdal
+  - r-rgee
+  - r-rgeos
+  - r-rio
+  - r-rlas
+  - r-rlist
+  - r-rmarkdown
+  - r-rnaturalearth
+  - r-rnaturalearthdata
+  - r-RNetCDF
+  - r-rockchalk
+  - r-rodbc
+  - r-RPostgres
+  - r-RPostgreSQL
+  - r-RSQLite
+  - r-rstac
+  - r-rstoolbox # Geotrees focused
+  - r-scales
+  - r-sf
+  - r-snow
+  - r-spacetime
+  - r-spatialreg
+  - r-spatialwidget
+  - r-spatstat
+  - r-spdep
+  - r-sqldf
+  - r-stars
+  - r-stringi
+  - r-stringr
+  - r-terra
+  - r-testthat
+  - r-tibble
+  - r-tidync
+  - r-tidyr
+  - r-tidyverse
+  - r-tmap
+  - r-units
+  - r-viridis
+  - r-writexl
+  - rasterio
+  - rasterstats
+  - rdma-core
+  - requests
+  - rio-cogeo
+  - rtree
+  - s3fs
+  - scikit-learn
+  - scipy
+  - seaborn
+  - setuptools-scm
+  - setuptools_scm
+  - shapely
+  - sliderule
+  - statsmodels
+  - tqdm
+  - ucx
+  - unidecode
+  - unzip
+  - wheel
+  - xorg-kbproto
+  - xorg-renderproto
+  - xorg-xextproto
+  - xorg-xproto
+  - xmltodict
   - pip
   - pip:
     - ff==0.0.10
