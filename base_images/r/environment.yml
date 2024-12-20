@@ -5,31 +5,23 @@ channels:
 dependencies:
   - _sysroot_linux-64_curr_repodata_hack=3
   - anywidget=0.9.12
-  - argparse=1.4.0
   - async-timeout=4.0.3
   - awscli=2.14.1
   - backoff=2.2.1
   - basemap=1.3.7
   - boost-cpp=1.78.0
   - boto3=1.35.26
-  - chroma-py=0.1.0.dev1
-  - color-operations=0.1.5
-  - colour=0.1.5
-  - configparser=7.1.0
   - cython=3.0.10
   - earthaccess=0.9.0
   - earthengine-api=0.1.404
   - gdal=3.7.0
   - geocube=0.5.2
-  - geojson=3.1.0 
   - geopandas=0.14.4
   - groff=1.22.4
   - h5py=3.9.0
   - httpx=0.27.0
   - icu=72.1
-  - iniconfig=2.0.0
   - importlib_metadata=8.5.0
-  - ipyevents=2.0.2
   - jupyter_server=2.12.5
   - libarrow-flight=14.0.1
   - libarrow-flight-sql=14.0.1
@@ -38,29 +30,23 @@ dependencies:
   - libgcrypt=1.11.0
   - libnl=3.10.0
   - lonboard=0.9.3
-  - mapboxgl=0.10.2
   - mapclassify=2.6.1
   - matplotlib=3.7.3
   - mizani=0.11.4
   - mpl-scatter-density=0.7
   - munch=4.0.0
   - numba=0.59.1
-  - numexpr=2.10.1
   - numpy=1.26.4
   - pandas=2.2.2
   - pandarallel=1.6.5
   - parallel=20240522
   - perl=5.32.1
-  - pluggy=1.5.0 
-  - postgis=3.3.3
-  - psutil=5.9.8  
+  - postgis=3.3.3 
   - pycurl=7.45.1
   - pyogrio=0.6.0
   - pyproj=3.5.0
   - pystac-client=0.6.1
-  - pytest=8.1.2
   - python=3.10.13
-  - python-dotenv=1.0.1
   - r=4.2
   - r-arrow=14.0.1
   - r-aws.s3=0.3.22
@@ -178,7 +164,6 @@ dependencies:
   - scikit-learn=1.5.0
   - scipy=1.13.1
   - seaborn=0.13.2
-  - setuptools=69.5.1
   - setuptools-scm=8.1.0
   - setuptools_scm=8.1.0
   - shapely=2.0.1
@@ -196,10 +181,25 @@ dependencies:
   - xmltodict=0.13.0
   - pip=24.0
   - pip:
+    - argparse==1.4.0
+    - chroma-py==0.1.0.dev1
+    - color-operations==0.1.5
+    - colour==0.1.5
+    - configparser==7.1.0
     - ff==0.0.10
+    - geojson==3.1.0 
     - grid==0.7.1
+    - iniconfig==2.0.0
+    - ipyevents==2.0.2
     - jupyter-contrib-core==0.4.2
     - jupyter-nbextensions-configurator==0.6.4
+    - mapboxgl==0.10.2
     - morecantile==6.1.0
+    - numexpr==2.10.1
+    - pluggy==1.5.0 
+    - psutil==5.9.8  
+    - pytest==8.1.2
+    - python-dotenv==1.0.1
     - rio-tiler==7.2.2
+    - setuptools==69.5.1
     - git+https://github.com/MAAP-Project/maap-py.git@develop
