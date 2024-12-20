@@ -19,12 +19,10 @@ dependencies:
   - cython=3.0.10
   - earthaccess=0.9.0
   - earthengine-api=0.1.404
-  - ff=0.0.10
   - gdal=3.7.0
   - geocube=0.5.2
   - geojson=3.1.0 
   - geopandas=0.14.4
-  - grid=0.7.1
   - groff=1.22.4
   - h5py=3.9.0
   - httpx=0.27.0
@@ -33,8 +31,6 @@ dependencies:
   - importlib_metadata=8.5.0
   - ipyevents=2.0.2
   - jupyter_server=2.12.5
-  - jupyter-contrib-core=0.4.2
-  - jupyter-nbextensions-configurator=0.6.4
   - libarrow-flight=14.0.1
   - libarrow-flight-sql=14.0.1
   - libarrow-gandiva=14.0.1
@@ -202,6 +198,8 @@ dependencies:
   - pip:
     - ff==0.0.10
     - grid==0.7.1
+    - jupyter-contrib-core==0.4.2
+    - jupyter-nbextensions-configurator==0.6.4
     - morecantile==6.1.0
     - rio-tiler==7.2.2
     - git+https://github.com/MAAP-Project/maap-py.git@develop
