@@ -36,7 +36,9 @@ components:
                 image: 'mas.dit.maap-project.org/root/maap-workspaces/jupyterlab/python:develop'
                 imagePullPolicy: Always
                 env:
-                - name: DOCKERIMAGE_PATH
+                - name: DOCKERIMAGE_PATH_DEFAULT
+                  value: 'mas.dit.maap-project.org/root/maap-workspaces/custom_images/maap_base:develop'
+                - name: DOCKERIMAGE_PATH_BASE_IMAGE
                   value: 'mas.dit.maap-project.org/root/maap-workspaces/base_images/python:develop'
                 - name: MAAP_API_HOST
                   value: api.dit.maap-project.org
