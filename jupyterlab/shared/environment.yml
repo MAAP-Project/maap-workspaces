@@ -10,7 +10,7 @@ dependencies:
   - jupyterlab=4.3.0
   - jupyterlab-git=0.50.2
   - jupyterlab_widgets=3.0.13
-  - nodejs=22.12.0 # isce3 is 22.12.0 python is 22.12.0 R is 22.6.0 
+  - nodejs=22.6.0 # isce3 is 22.12.0 python is 22.12.0 R is 22.6.0 
   - notebook=6.4.12 # Should not upgrade yet because appears notebook v7 doesnt support extensions
   - plotly=5.24.1 # isce3 is 5.24.1 python is 5.24.1 R is 5.24.1
   - plotnine=0.14.4 # isce3 0.14.4 python is 0.14.4 R is 0.14.4
