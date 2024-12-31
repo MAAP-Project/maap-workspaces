@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:23.10.0-1
+FROM mas.maap-project.org/root/maap-workspaces/custom_images/maap_base:v4.1.0
 ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
