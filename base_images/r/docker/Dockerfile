@@ -46,7 +46,6 @@ RUN conda env create -y -f "/tmp/environment.yml" \
 RUN conda init && echo "conda activate r" >> ~/.bashrc
 
 SHELL ["/bin/bash", "-c"]
-
 ADD . /
 RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
 RUN source activate r && \
