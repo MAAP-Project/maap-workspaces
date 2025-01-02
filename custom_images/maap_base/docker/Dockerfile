@@ -20,7 +20,7 @@ RUN apt-get clean && apt-get update && \
     libpq-dev=13.18-0+deb11u1 \
     libproj-dev=7.2.1-1 \
     libprotobuf-dev=3.12.4-1+deb11u1 \
-    libnetcdf-dev \
+    libnetcdf-dev=1:4.7.4-1 \
     libsqlite3-dev=3.34.1-3 \
     libssl-dev=1.1.1w-0+deb11u1 \
     libudunits2-dev=2.2.28-3 \
