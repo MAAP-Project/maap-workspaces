@@ -3,9 +3,10 @@ FROM ubuntu:24.10
 ARG MINICONDA_INSTALLER="https://repo.anaconda.com/miniconda/Miniconda3-py311_24.7.1-0-Linux-x86_64.sh"
 ARG MINICONDA_INSTALLER_SHA256="a098a5b1581d8fd078c430b82e27106602223e335efef708a124e723814d120c"
 
-RUN apt-get install software-properties-common
-
-RUN add-apt-repository "http://deb.debian.org/debian"
+#RUN apt-get install software-properties-common
+#RUN add-apt-repository "http://deb.debian.org/debian"
+RUN echo "deb http://deb.debian.org/debian bullseye main" >> /etc/apt/sources.list && \
+    echo "deb-src http://deb.debian.org/debian bullseye main" >> /etc/apt/sources.list
 
 RUN apt-get update -y && apt-get install -y vim wget git && \
     apt-get clean all
