@@ -3,39 +3,39 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - black=24.4.2
-  - folium=0.16.0
+  - black=24.10.0
+  - folium=0.18.0
   - gh-scoped-creds=4.1
-  - gh=2.49.2
+  - gh=2.61.0
   - git-lfs=3.5.1
   - gitpython=3.1.43
   - ipyevents=2.0.2
-  - ipyleaflet=0.19.1
+  - ipyleaflet=0.19.2
   - ipytree=0.2.2
-  - ipywidgets=8.1.2
+  - ipywidgets=8.1.5
   - jupyter_server=2.12.5
   - jupyter-panel-proxy=0.1.0
-  - jupyterlab_widgets=3.0.10
-  - jupyterlab-git=0.50.0
-  - jupyterlab=4.2.0
+  - jupyterlab_widgets=3.0.13
+  - jupyterlab-git=0.50.2
+  - jupyterlab=4.3.0
   - nb_conda=2.2.1
   - nb_conda_kernels=2.5.1
-  - nbstripout=0.7.1
-  - nodejs=20.1.0 
-  - pangeo-notebook=2024.05.20
-  - plotly=5.22.0
-  - plotnine=0.13.6
-  - pydantic=2.7.1
+  - nbstripout=0.8.0
+  - nodejs=22.11.0
+  - pangeo-notebook=2024.11.11
+  - plotly=5.24.1
+  - plotnine=0.14.3
+  - pydantic=2.9.2
   - python-gist=0.10.6
   - python-graphviz=0.20.3
-  - rise=5.7.1 
+  - rise=5.7.1
   - snakeviz=2.2.0
   - xarray_leaflet=0.2.3
-  - pip=24.0
+  - pip=24.3.1
   - pip:
-    - jupyter-resource-usage==1.0.2
+    - jupyter-resource-usage==1.1.0
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6#egg-info=stac_ipyleaflet
-    - rio-tiler==6.2.8
+    - rio-tiler==7.2.2
     - maap-algorithms-jupyter-extension==0.3.8
     - maap-che-sidebar-visibility-jupyter-extension==1.1.2
     - maap-dps-jupyter-extension==0.7.2
