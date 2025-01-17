@@ -1,12 +1,14 @@
 name: r
 channels:
   - conda-forge
+  - bioconda
   - nodefaults
 dependencies:
   - anywidget=0.9.13
   - awscli=2.22.15
   - backoff=2.2.1
   - basemap=1.4.1
+  - bioconductor-rhdf5=2.46.1
   - boto3=1.35.88
   - cython=3.0.11
   - earthaccess=0.12.0
