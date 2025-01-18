@@ -10,7 +10,7 @@ RUN mkdir /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
-RUN conda init
+RUN /opt/conda init
 
 COPY ./environment.yml /tmp
 RUN conda env create -y -f "/tmp/environment.yml" \
