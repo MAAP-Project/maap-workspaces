@@ -1,4 +1,4 @@
-FROM debian:12
+FROM debian:11
 
 ARG MINIFORGE_VERSION="24.11.2-1"
 RUN apt update -y && apt install -y vim wget git && \
