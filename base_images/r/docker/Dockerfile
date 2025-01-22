@@ -1,4 +1,4 @@
-FROM mas.dit.maap-project.org/root/maap-workspaces/custom_images/maap_base:2a0f99b
+FROM mas.dit.maap-project.org/root/maap-workspaces/custom_images/maap_base:adf017d
 ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
