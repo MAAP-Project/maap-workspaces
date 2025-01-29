@@ -54,9 +54,9 @@ RUN chmod g+w /etc/passwd
 # PyPi packages prepended with 'maap' so they are more easily discoverable
 #SHELL ["/bin/bash", "-c"] # Added this line to base image dockerfiles for now before maap-py is extracted to environment.yml
 # Jupyter server extension needs to be specifially enabled 
-COPY ./maap_jupyter_server_extension-2.1.2-py3-none-any.whl /maap_jupyter_server_extension-2.1.2-py3-none-any.whl
+COPY ./maap_user_workspace_management_jupyter_extension-0.1.3-py3-none-any.whl /maap_user_workspace_management_jupyter_extension-0.1.3-py3-none-any.whl
 RUN source activate $WORKSPACE_TYPE && \
-    pip install /maap_jupyter_server_extension-2.1.2-py3-none-any.whl
+    pip install /maap_user_workspace_management_jupyter_extension-0.1.3-py3-none-any.whl
 
 RUN source activate $WORKSPACE_TYPE && \
     npm install typescript -g && \
