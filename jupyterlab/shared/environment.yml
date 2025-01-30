@@ -3,17 +3,10 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - folium=0.18.0
-  - gitpython=3.1.43
-  - ipyleaflet=0.19.2
   - jupyter_server=2.14.2
   - jupyterlab=4.3.0
-  - jupyterlab-git=0.50.2
-  - jupyterlab_widgets=3.0.13
   - nodejs=22.6.0
   - notebook=6.4.12 # Should not upgrade yet because appears notebook v7 doesnt support extensions
-  - plotly=5.24.1
-  - plotnine=0.14.4
   - pip=24.3.1
   - pip:
     - jupyter-resource-usage==1.1.0
