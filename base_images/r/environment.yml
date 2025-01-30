@@ -901,5 +901,4 @@ dependencies:
     - python-dotenv==1.0.1
     - rio-tiler==6.6.1
     - setuptools==69.5.1
-    - stac-ipyleaflet==0.3.6
     - git+https://github.com/MAAP-Project/maap-py.git@develop
