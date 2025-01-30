@@ -24,7 +24,6 @@ RUN apt-get update -y && apt-get install -y libgdal-dev libgeos-dev libproj-dev 
 SHELL ["/bin/bash", "-c"]
 ADD . /
 RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
-RUN source activate r && \
-    /scripts/install_cran_packages_r.sh
+RUN /scripts/install_cran_packages_r.sh
 
 ENV PATH=/opt/conda/bin:$PATH
