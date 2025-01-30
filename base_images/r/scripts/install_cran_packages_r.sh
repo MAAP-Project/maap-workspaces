@@ -7,7 +7,7 @@ export DEBIAN_FRONTEND=noninteractive
 ## build ARGs
 NCPUS=${NCPUS:--1}
 
-Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r "https://r-lidar.r-universe.dev" -n "$NCPUS" lasR
+Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r "https://r-lidar.r-universe.dev" lasR
 Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r "http://cran.us.r-project.org" -n "$NCPUS" nlraa sfarrow tidyterra BIOMASS cforest
 
 # Clean up
