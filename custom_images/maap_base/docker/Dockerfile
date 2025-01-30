@@ -12,4 +12,14 @@ RUN wget -O Miniforge3-installer.sh https://github.com/conda-forge/miniforge/rel
     /opt/conda/bin/conda clean -afy && \
     echo "source /opt/conda/etc/profile.d/conda.sh" >> /root/.bashrc
 
+RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+RUN apt-get update
+RUN apt-get install libgdal-dev libgeos-dev libproj-dev
+
+SHELL ["/bin/bash", "-c"]
+ADD . /
+RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
+RUN source activate r && \
+    /scripts/install_cran_packages_r.sh
+
 ENV PATH=/opt/conda/bin:$PATH
