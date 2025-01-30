@@ -12,6 +12,8 @@ RUN wget -O Miniforge3-installer.sh https://github.com/conda-forge/miniforge/rel
     /opt/conda/bin/conda clean -afy && \
     echo "source /opt/conda/etc/profile.d/conda.sh" >> /root/.bashrc
 
+RUN apt-get update && apt-get install -y software-properties-common
+
 RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable
 RUN apt-get update
 RUN apt-get install libgdal-dev libgeos-dev libproj-dev
