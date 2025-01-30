@@ -876,30 +876,30 @@ dependencies:
   - zlib=1.3.1
   - zstd=1.5.6
   - pip:
-    - argparse=1.4.0
-    - boto3=1.35.26
-    - botocore=1.35.41
-    - chroma-py=0.1.0.dev1
-    - color-operations=0.1.5
-    - colour=0.1.5
-    - configparser=7.1.0
-    - ff=0.0.10
-    - geojson=3.1.0
-    - grid=0.7.1
-    - iniconfig=2.0.0
-    - ipyevents=2.0.2
-    - jupyter-contrib-core=0.4.2
-    - jupyter-nbextensions-configurator=0.6.4
-    - jupyter-resource-usage=1.0.2
-    - mapboxgl=0.10.2
-    - morecantile=5.3.0
-    - numexpr=2.10.1
-    - pluggy=1.5.0
-    - psutil=5.9.8
-    - pystac-client=0.6.1
-    - pytest=8.1.2
-    - python-dotenv=1.0.1
-    - rio-tiler=6.6.1
-    - setuptools=69.5.1
-    - stac-ipyleaflet=0.3.6
+    - argparse==1.4.0
+    - boto3==1.35.26
+    - botocore==1.35.41
+    - chroma-py==0.1.0.dev1
+    - color-operations==0.1.5
+    - colour==0.1.5
+    - configparser==7.1.0
+    - ff==0.0.10
+    - geojson==3.1.0
+    - grid==0.7.1
+    - iniconfig==2.0.0
+    - ipyevents==2.0.2
+    - jupyter-contrib-core==0.4.2
+    - jupyter-nbextensions-configurator==0.6.4
+    - jupyter-resource-usage==1.0.2
+    - mapboxgl==0.10.2
+    - morecantile==5.3.0
+    - numexpr==2.10.1
+    - pluggy==1.5.0
+    - psutil==5.9.8
+    - pystac-client==0.6.1
+    - pytest==8.1.2
+    - python-dotenv==1.0.1
+    - rio-tiler==6.6.1
+    - setuptools==69.5.1
+    - stac-ipyleaflet==0.3.6
     - git+https://github.com/MAAP-Project/maap-py.git@develop
