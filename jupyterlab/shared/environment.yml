@@ -5,7 +5,7 @@ channels:
 dependencies:
   - jupyter_server=2.14.2
   - jupyterlab=4.3.0
-  - nodejs=22.6.0
+  - nodejs
   - notebook=6.4.12 # Should not upgrade yet because appears notebook v7 doesnt support extensions
   - pip=24.3.1
   - pip:
