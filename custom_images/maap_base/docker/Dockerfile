@@ -14,6 +14,8 @@ RUN wget -O Miniforge3-installer.sh https://github.com/conda-forge/miniforge/rel
 
 RUN apt-get update && apt-get install -y software-properties-common
 
+RUN ls /etc/apt/sources.list.d
+
 RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable
 RUN apt-get update
 RUN apt-get install libgdal-dev libgeos-dev libproj-dev
