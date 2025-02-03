@@ -58,6 +58,10 @@ COPY ./maap_user_workspace_management_jupyter_extension-0.1.3-py3-none-any.whl /
 RUN source activate $WORKSPACE_TYPE && \
     pip install /maap_user_workspace_management_jupyter_extension-0.1.3-py3-none-any.whl
 
+COPY ./maap_jupyter_server_extension-2.1.2-py3-none-any.whl /maap_jupyter_server_extension-2.1.2-py3-none-any.whl
+RUN source activate $WORKSPACE_TYPE && \
+    pip install /maap_jupyter_server_extension-2.1.2-py3-none-any.whl
+
 RUN source activate $WORKSPACE_TYPE && \
     npm install typescript -g && \
     jupyter labextension disable @jupyterlab/apputils-extension:announcements && \
