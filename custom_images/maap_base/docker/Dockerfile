@@ -1,7 +1,7 @@
-FROM debian:11
+FROM ubuntu:24.10
 
 ARG MINIFORGE_VERSION="24.11.2-1"
-RUN apt-get update -y && apt-get install -y vim wget git && \
+RUN apt-get update -y && apt-get install -y vim wget git gnupg && \
     apt-get clean all
 
 RUN groupadd conda-users
@@ -16,8 +16,8 @@ RUN apt-get update && apt-get install -y software-properties-common
 
 RUN ls /etc/apt/sources.list.d
 
-#RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable
-#RUN apt-get update
+RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+RUN apt-get update
 RUN apt-get update -y && apt-get install -y libgdal-dev libgeos-dev libproj-dev && \
     apt-get clean all
 
