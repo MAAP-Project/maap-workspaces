@@ -1,4 +1,4 @@
-FROM mas.dit.maap-project.org/root/maap-workspaces/custom_images/maap_base:adf017d
+FROM mas.dit.maap-project.org/root/maap-workspaces/custom_images/maap_base:d20ade0
 ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
@@ -36,6 +36,8 @@ RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 #     unixodbc-dev && \
 #     apt-get clean && \
 #     rm -rf /var/lib/apt/lists/*
+RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+RUN apt-get update
 RUN apt-get update -y && apt-get install -y libgdal-dev libgeos-dev libproj-dev && \
     apt-get clean all
 
