@@ -1,4 +1,4 @@
-FROM ubuntu:24.10
+FROM ubuntu:24.04
 
 ARG MINIFORGE_VERSION="24.11.2-1"
 RUN apt-get update -y && apt-get install -y vim wget git gnupg && \
@@ -16,7 +16,9 @@ RUN apt-get update && apt-get install -y software-properties-common
 
 RUN ls /etc/apt/sources.list.d
 
-RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+#RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+RUN deb https://ppa.launchpadcontent.net/ubuntugis/ubuntugis-unstable/ubuntu noble main 
+RUN deb-src https://ppa.launchpadcontent.net/ubuntugis/ubuntugis-unstable/ubuntu noble main 
 RUN apt-get update
 RUN apt-get update -y && apt-get install -y libgdal-dev libgeos-dev libproj-dev && \
     apt-get clean all
