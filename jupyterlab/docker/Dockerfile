@@ -8,9 +8,9 @@ ENV WORKSPACE_TYPE=${BASE_IMAGE_TYPE}
 
 ADD . /
 
-RUN mkdir -p /projects
-WORKDIR /projects
-RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
+# RUN mkdir -p /projects
+# WORKDIR /projects
+# RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
 USER root
 
