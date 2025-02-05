@@ -4,6 +4,10 @@ channels:
   - bioconda
   - nodefaults
 dependencies:
+  - cxx-compiler
+  - gdal
+  - openmp
   - r
+  - r-base=4.3.3
   - pip:
     - git+https://github.com/MAAP-Project/maap-py.git@develop
