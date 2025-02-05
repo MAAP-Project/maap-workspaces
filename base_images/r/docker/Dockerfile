@@ -8,9 +8,9 @@ ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN mkdir /projects
-WORKDIR /projects
-RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
+# RUN mkdir /projects
+# WORKDIR /projects
+# RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
 #USER ${NB_UID}
 
