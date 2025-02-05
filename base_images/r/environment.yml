@@ -9,5 +9,6 @@ dependencies:
   - openmp
   - r
   - r-base=4.3.3
+  - r-irkernel
   - pip:
     - git+https://github.com/MAAP-Project/maap-py.git@develop
