@@ -54,19 +54,19 @@ RUN chmod g+w /etc/passwd
 # PyPi packages prepended with 'maap' so they are more easily discoverable
 #SHELL ["/bin/bash", "-c"] # Added this line to base image dockerfiles for now before maap-py is extracted to environment.yml
 # Jupyter server extension needs to be specifially enabled 
-RUN source activate $WORKSPACE_TYPE && \
+RUN source activate && \
     npm install typescript -g && \
-    jupyter labextension disable @jupyterlab/apputils-extension:announcements && \
-    jupyter server extension enable maap_jupyter_server_extension
+    jupyter labextension disable @jupyterlab/apputils-extension:announcements 
+    # && \ jupyter server extension enable maap_jupyter_server_extension
 
-RUN source activate $WORKSPACE_TYPE && \
+RUN source activate && \
     jupyter lab build && \
     jupyter lab clean && \
     npm cache clean --force && \
     rm -rf $HOME/.node-gyp && \
     rm -rf $HOME/.local
 
-RUN source activate $WORKSPACE_TYPE && \
+RUN source activate && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy && \

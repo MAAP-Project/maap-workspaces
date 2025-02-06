@@ -16,7 +16,7 @@ RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
 USER ${NB_UID}
 
-RUN mamba install --yes \
+RUN conda install --yes \
     'anywidget=0.9.13' \
     'awscli=2.22.15' \
     'backoff=2.2.1' \
@@ -156,7 +156,7 @@ RUN mamba install --yes \
     'xmltodict=0.14.2' \
     'pip=24.3.1' && \
     pip install ff==0.0.10 grid==0.7.1 earthengine-api==1.4.3 morecantile==6.1.0 rio-tiler==7.2.2 mpl-scatter-density==0.8 && \
-    mamba clean --all -f -y  && \
+    conda clean --all -f -y  && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}" && \
     conda install r::r-devemf=4.4_1 r-biocmanager=1.30.25
