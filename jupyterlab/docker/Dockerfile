@@ -55,23 +55,19 @@ RUN chmod g+w /etc/passwd
 #SHELL ["/bin/bash", "-c"] # Added this line to base image dockerfiles for now before maap-py is extracted to environment.yml
 # Jupyter server extension needs to be specifially enabled 
 RUN source activate && \
-    npm install typescript -g && \
     jupyter labextension disable @jupyterlab/apputils-extension:announcements 
     # && \ jupyter server extension enable maap_jupyter_server_extension
 
 RUN source activate && \
     jupyter lab build && \
     jupyter lab clean && \
-    npm cache clean --force && \
     rm -rf $HOME/.node-gyp && \
     rm -rf $HOME/.local
 
 RUN source activate && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
-    /opt/conda/bin/conda clean -afy && \
-    npm cache clean --force && \
-    conda list
+    /opt/conda/bin/conda clean -afy 
 
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./jupyter_patch /opt/jupyter_patch
