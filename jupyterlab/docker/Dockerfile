@@ -6,13 +6,13 @@ ARG BASE_IMAGE_TYPE
 # Set WORKSPACE_TYPE, used by entrypoint.sh
 ENV WORKSPACE_TYPE=${BASE_IMAGE_TYPE}
 
+USER root
+
 ADD . /
 
 RUN mkdir -p /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
-
-USER root
 
 # Install additional libraries required by Python packages which are in
 # the minimal base image. Also install 'rsync' so the 'oc rsync' command
