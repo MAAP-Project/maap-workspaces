@@ -8,11 +8,11 @@ ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
 
-# RUN mkdir /projects
-# WORKDIR /projects
-# RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
+USER ${NB_UID}
 
-#USER ${NB_UID}
+RUN mkdir /projects
+WORKDIR /projects
+RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
 RUN mamba install --yes \
     'anywidget=0.9.13' \
