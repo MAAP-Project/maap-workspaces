@@ -13,12 +13,14 @@ dependencies:
   - cython=3.0.11
   - earthaccess=0.12.0
   - earthengine-api=1.4.3
+  - gcc
   - gdal=3.8.5
   - geocube=0.7.0
   - geopandas=1.0.1
   - groff=1.22.4
   - h5py=3.12.1
   - httpx=0.28.1
+  - libgcc 
   - lonboard=0.9.3
   - mapclassify=2.8.1
   - matplotlib=3.8.4
