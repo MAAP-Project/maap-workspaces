@@ -1,3 +1,4 @@
+
 ARG BASE_IMAGE
 ARG BASE_IMAGE_TYPE
 
@@ -6,13 +7,13 @@ ARG BASE_IMAGE_TYPE
 # Set WORKSPACE_TYPE, used by entrypoint.sh
 ENV WORKSPACE_TYPE=${BASE_IMAGE_TYPE}
 
-USER root
-
 ADD . /
 
 RUN mkdir -p /projects
 WORKDIR /projects
 RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
+
+USER root
 
 # Install additional libraries required by Python packages which are in
 # the minimal base image. Also install 'rsync' so the 'oc rsync' command
@@ -54,20 +55,24 @@ RUN chmod g+w /etc/passwd
 # PyPi packages prepended with 'maap' so they are more easily discoverable
 #SHELL ["/bin/bash", "-c"] # Added this line to base image dockerfiles for now before maap-py is extracted to environment.yml
 # Jupyter server extension needs to be specifially enabled 
-RUN source activate && \
-    jupyter labextension disable @jupyterlab/apputils-extension:announcements 
-    # && \ jupyter server extension enable maap_jupyter_server_extension
+RUN source activate $WORKSPACE_TYPE && \
+    npm install typescript -g && \
+    jupyter labextension disable @jupyterlab/apputils-extension:announcements && \
+    jupyter server extension enable maap_jupyter_server_extension
 
-RUN source activate && \
+RUN source activate $WORKSPACE_TYPE && \
     jupyter lab build && \
     jupyter lab clean && \
+    npm cache clean --force && \
     rm -rf $HOME/.node-gyp && \
     rm -rf $HOME/.local
 
-RUN source activate && \
+RUN source activate $WORKSPACE_TYPE && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
-    /opt/conda/bin/conda clean -afy 
+    /opt/conda/bin/conda clean -afy && \
+    npm cache clean --force && \
+    conda list
 
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./jupyter_patch /opt/jupyter_patch
