@@ -48,7 +48,7 @@ RUN conda init && echo "conda activate r" >> ~/.bashrc
 RUN echo $LD_LIBRARY_PATH
 RUN export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 RUN find /opt/conda/ -name "libgcc.so*"
-#RUN ln -s /opt/conda/envs/r/lib/libgcc.so /usr/lib/libgcc.so
+RUN ln -s /opt/conda/envs/r/lib/libgcc.so /usr/lib/libgcc.so
 
 SHELL ["/bin/bash", "-c"]
 ADD . /
