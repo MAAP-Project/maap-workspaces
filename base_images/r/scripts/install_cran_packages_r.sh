@@ -9,6 +9,7 @@ NCPUS=${NCPUS:--1}
 
 Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r "http://cran.us.r-project.org" -n "$NCPUS" nlraa sfarrow
 Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r NULL -n "$NCPUS" "https://cran.r-project.org/src/contrib/Archive/tidyterra/tidyterra_0.6.2.tar.gz"
+Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r "http://cran.us.r-project.org" -n "$NCPUS" partykit
 
 # Clean up
 rm -rf /var/lib/apt/lists/*

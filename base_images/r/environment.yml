@@ -10,10 +10,14 @@ dependencies:
   - basemap=1.4.1
   - bioconductor-rhdf5=2.46.1
   - boto3=1.35.88
+  - c-compiler
+  - cxx-compiler
   - cython=3.0.11
   - earthaccess=0.12.0
   - earthengine-api=1.4.3
   - gcc
+  - gcc_linux-64
+  - gxx_linux-64
   - gdal=3.8.5
   - geocube=0.7.0
   - geopandas=1.0.1
@@ -21,6 +25,7 @@ dependencies:
   - h5py=3.12.1
   - httpx=0.28.1
   - libgcc 
+  - libgcc-ng
   - lonboard=0.9.3
   - mapclassify=2.8.1
   - matplotlib=3.8.4
