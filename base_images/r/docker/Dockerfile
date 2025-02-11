@@ -56,6 +56,7 @@ RUN ld --version
 # RUN export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 # RUN find /opt/conda/ -name "libgcc.so*"
 # RUN ln -s /opt/conda/envs/r/lib/libgcc.so /usr/lib/libgcc.so
+RUN ls -s /usr/bin/ /opt/conda/envs/r/bin/ 
 
 #SHELL ["/bin/bash", "-c"]
 ADD . /
