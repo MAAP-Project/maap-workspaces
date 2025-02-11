@@ -9,6 +9,7 @@ dependencies:
   - backoff=2.2.1
   - basemap=1.4.1
   - bioconductor-rhdf5=2.46.1
+  - binutils
   - boto3=1.35.88
   - c-compiler
   - cxx-compiler

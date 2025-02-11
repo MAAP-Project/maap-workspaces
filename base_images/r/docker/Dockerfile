@@ -49,6 +49,9 @@ SHELL ["/bin/bash", "-c"]
 RUN source activate r && \
     conda list 
 
+RUN which ld 
+RUN ld --version
+
 # RUN echo $LD_LIBRARY_PATH
 # RUN export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 # RUN find /opt/conda/ -name "libgcc.so*"
