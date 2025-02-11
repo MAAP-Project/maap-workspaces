@@ -7,7 +7,10 @@ export DEBIAN_FRONTEND=noninteractive
 ## build ARGs
 NCPUS=${NCPUS:--1}
 
-Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r "http://cran.us.r-project.org" -n "$NCPUS" nlraa sfarrow tidyterra BIOMASS cforest
+Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r NULL -n "$NCPUS" "https://cran.r-project.org/src/contrib/Archive/tidyterra/tidyterra_0.6.2.tar.gz"
+Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r NULL -n "$NCPUS" "https://cran.r-project.org/src/contrib/Archive/BIOMASS/BIOMASS_2.1.11.tar.gz"
+Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r NULL -n "$NCPUS" "https://cran.r-project.org/src/contrib/Archive/nlraa/nlraa_1.9.3.tar.gz"
+Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r NULL -n "$NCPUS" "https://cran.r-project.org/src/contrib/Archive/sfarrow/sfarrow_0.4.0.tar.gz"
 
 # Clean up
 rm -rf /var/lib/apt/lists/*
