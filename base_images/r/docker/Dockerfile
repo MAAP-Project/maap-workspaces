@@ -1,4 +1,3 @@
-
 FROM mas.dit.maap-project.org/root/maap-workspaces/custom_images/maap_base:adf017d
 ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
@@ -53,9 +52,7 @@ RUN source activate r && \
     /scripts/install_cran_packages_r.sh
 
 RUN source activate r && \
-    conda install r-lasr-0.13.5-r43h5888daf_0.conda
-
-RUN source activate r && \
+    conda install r-lasr-0.13.5-r43h5888daf_0.conda && \
     conda list
 
 ARG IMAGE_REF
