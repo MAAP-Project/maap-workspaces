@@ -41,9 +41,9 @@ dependencies:
     - maap-dps-jupyter-extension==0.7.6
     - maap-edsc-jupyter-extension==1.1.1
     - maap-help-jupyter-extension==2.0.0
-    - maap-jupyter-server-extension==2.1.2
+    - maap-jupyter-server-extension==2.1.3
     - maap-libs-jupyter-extension==1.2.4
-    - maap-user-workspace-management-jupyter-extension==0.1.3
+    - maap-user-workspace-management-jupyter-extension==0.1.4
 variables:
   TITILER_STAC_ENDPOINT: 'https://titiler-stac.maap-project.org/'
   TITILER_ENDPOINT: 'https://titiler.maap-project.org/'
