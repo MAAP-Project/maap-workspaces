@@ -22,9 +22,9 @@ dependencies:
     - maap-che-sidebar-visibility-jupyter-extension==1.1.2
     - maap-edsc-jupyter-extension==1.1.1
     - maap-help-jupyter-extension==2.0.0
-    - maap-jupyter-server-extension==2.1.3
+    #- maap-jupyter-server-extension==2.1.3
     - maap-libs-jupyter-extension==1.2.4
-    - maap-user-workspace-management-jupyter-extension==0.1.4
+    #- maap-user-workspace-management-jupyter-extension==0.1.4
     - maap-dps-jupyter-extension==0.7.6
 variables:
   TITILER_STAC_ENDPOINT: 'https://titiler-pgstac.maap-project.org/'
