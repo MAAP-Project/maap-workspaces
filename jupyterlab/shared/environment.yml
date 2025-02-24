@@ -18,8 +18,7 @@ dependencies:
   - pip:
     - jupyter-resource-usage==1.1.0
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6#egg-info=stac_ipyleaflet
-    # - maap-algorithms-jupyter-extension==0.3.9
-
+    - maap-algorithms-jupyter-extension==0.3.10
     - maap-che-sidebar-visibility-jupyter-extension==1.1.2
     - maap-edsc-jupyter-extension==1.1.1
     - maap-help-jupyter-extension==2.0.0
@@ -27,8 +26,6 @@ dependencies:
     - maap-libs-jupyter-extension==1.2.4
     - maap-user-workspace-management-jupyter-extension==0.1.4
     - maap-dps-jupyter-extension==0.7.6
-    - --extra-index-url https://test.pypi.org/simple/
-    - maap-algorithms-jupyter-extension==0.3.10
 variables:
   TITILER_STAC_ENDPOINT: 'https://titiler-pgstac.maap-project.org/'
   TITILER_ENDPOINT: 'https://titiler.maap-project.org/'
