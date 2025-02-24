@@ -27,7 +27,7 @@ dependencies:
     - maap-libs-jupyter-extension==1.2.4
     - maap-user-workspace-management-jupyter-extension==0.1.4
     - maap-dps-jupyter-extension==0.7.6
-    - -i https://test.pypi.org/pypi/ --extra-index-url https://pypi.org/simple
+    - --extra-index-url https://test.pypi.org/simple/
     - maap-algorithms-jupyter-extension==0.3.10
 variables:
   TITILER_STAC_ENDPOINT: 'https://titiler-pgstac.maap-project.org/'
