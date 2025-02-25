@@ -1,6 +1,6 @@
 ---
 displayName: "R/Python"
-description: "R/Python MAAP workspace (version 4.1.1)"
+description: "R/Python MAAP workspace (version 4.2.0)"
 tags: ["Python", "R", "JupyterLab", "MAAP"]
 icon: /devfiles/r/devfile/r.png
 links: 
