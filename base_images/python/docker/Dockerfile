@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:23.10.0-1
+FROM mas.dit.maap-project.org/root/maap-workspaces/custom_images/maap_base:develop
 ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
@@ -20,4 +20,6 @@ RUN source activate python && \
     conda list
 
 ARG IMAGE_REF
-ENV DOCKERIMAGE_PATH=${IMAGE_REF}
+ENV DOCKERIMAGE_PATH_BASE_IMAGE=${IMAGE_REF}
+ARG DEFAULT_DOCKERFILE_PATH
+ENV DOCKERIMAGE_PATH_DEFAULT=${DEFAULT_DOCKERFILE_PATH}

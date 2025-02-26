@@ -14,9 +14,6 @@ RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
 
 USER root
 
-RUN conda config --system --add channels conda-forge
-RUN conda config --system --remove channels defaults
-
 # Install additional libraries required by Python packages which are in
 # the minimal base image. Also install 'rsync' so the 'oc rsync' command
 # can be used to copy files into the running container.
@@ -78,9 +75,6 @@ RUN source activate $WORKSPACE_TYPE && \
 
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./jupyter_patch /opt/jupyter_patch
-
-ENV ENVIRONMENTS_FILE_PATH=/opt/environments.json
-COPY ./environments.json $ENVIRONMENTS_FILE_PATH
 
 RUN echo 'printf "\e[101mNOTE: This terminal uses the default environment which might not be the same as your notebook.\e[49m\n\n"' >> /etc/profile
 
