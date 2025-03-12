@@ -18,9 +18,12 @@ USER root
 # the minimal base image. Also install 'rsync' so the 'oc rsync' command
 # can be used to copy files into the running container.
 RUN apt-get clean && apt-get update && \
-    apt-get install -y --no-install-recommends rsync gcc python3 vim && \
+    apt-get install -y --no-install-recommends rsync gcc python3 vim systemctl openssh-server && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+RUN mkdir /var/run/sshd && \
+    chmod 0755 /var/run/sshd
 
 # Install workspace specific packages for conda environment
 RUN echo "Checking if environment.yml exists for ${WORKSPACE_TYPE}" \
