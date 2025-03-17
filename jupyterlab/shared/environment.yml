@@ -16,6 +16,7 @@ dependencies:
   - plotnine=0.14.4
   - pip=24.3.1
   - pip:
+    - jupyter-fs==1.0.1
     - jupyter-resource-usage==1.1.0
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6#egg-info=stac_ipyleaflet
     - maap-algorithms-jupyter-extension==0.3.10
