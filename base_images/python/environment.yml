@@ -52,4 +52,4 @@ dependencies:
   - pip:
     - morecantile==6.1.0
     - rio-tiler==7.2.2
-    - git+https://github.com/MAAP-Project/maap-py.git@v4.2.3a2
+    - git+https://github.com/MAAP-Project/maap-py.git@develop
