@@ -115,7 +115,7 @@ dependencies:
   - zarr=2.18.3
   - pip=24.3.1
   - pip:
+    - maap-py==4.2.0
     - morecantile==6.1.0
     - rio-tiler==7.2.2
     - streamjoy==0.0.10
-    - git+https://github.com/MAAP-Project/maap-py.git@v4.2.0a2
