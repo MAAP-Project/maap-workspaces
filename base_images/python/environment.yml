@@ -53,3 +53,4 @@ dependencies:
     - maap-py==4.2.0
     - morecantile==6.1.0
     - rio-tiler==7.2.2
+    - cwltool==3.1.20250110105449
