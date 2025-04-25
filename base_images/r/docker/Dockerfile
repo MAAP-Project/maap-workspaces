@@ -52,7 +52,7 @@ RUN source activate r && \
     /scripts/install_cran_packages_r.sh
 
 RUN source activate r && \
-    conda install /packages/r-lasr-0.13.5-r43h5888daf_0.conda && \
+    conda install /packages/r-lasr-0.13.7-r43h5888daf_0.conda && \
     conda list
 
 ARG IMAGE_REF
