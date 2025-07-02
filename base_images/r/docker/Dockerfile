@@ -26,7 +26,7 @@ RUN apt-get clean && apt-get update && \
     libprotobuf-dev=3.12.4-1+deb11u1 \
     libnetcdf-dev=1:4.7.4-1 \
     libsqlite3-dev=3.34.1-3+deb11u1 \
-    libssl-dev=1.1.1w-0+deb11u2 \
+    libssl-dev=1.1.1w-0+deb11u3 \
     libudunits2-dev=2.2.28-3 \
     netcdf-bin=1:4.7.4-1 \
     postgis=3.1.1+dfsg-1+deb11u2 \
