@@ -7,7 +7,7 @@ dependencies:
   - anywidget
   - awscli
   - backoff
-  - basemap
+#  - basemap
   - bioconductor-rhdf5
   - boto3
   - cython
@@ -36,10 +36,10 @@ dependencies:
   - pyproj
   - pystac-client
   - python
-  - r=4.4
+#  - r
   - r-arrow
   - r-aws.s3
-  - r-base
+  - r-base==4.4.*
   - r-BiocManager
   - r-broom
   - r-car
@@ -54,7 +54,7 @@ dependencies:
   - r-essentials
   - r-fs
   - r-future
-  - r-geojsonio
+#  - r-geojsonio
   - r-geojsonsf
   - r-geor
   - r-geosphere
@@ -71,16 +71,16 @@ dependencies:
   - r-irkernel
   - r-jpeg
   - r-knitr
-  - r-lasr
+#  - r-lasr
   - r-leafem
   - r-leaflet
-  - r-lidR
+#  - r-lidR
   - r-lwgeom
   - r-mapdata
   - r-mapproj
   - r-maps
-  - r-maptools
-  - r-mapview
+#  - r-maptools
+  - r-mapview #trying to remove leafpop dependency
   - r-microbenchmark
   - r-minpack.lm
   - r-ncdf4
@@ -102,9 +102,8 @@ dependencies:
   - r-rcsf
   - r-readxl
   - r-reticulate
-  - r-rgdal
   - r-rgee
-  - r-rgeos
+#  - r-rgeos
   - r-rlas
   - r-rlist
   - r-rmarkdown
@@ -117,7 +116,7 @@ dependencies:
   - r-RPostgreSQL
   - r-RSQLite
   - r-rstac
-  - r-rstoolbox
+#  - r-rstoolbox
   - r-scales
   - r-sf
   - r-snow
