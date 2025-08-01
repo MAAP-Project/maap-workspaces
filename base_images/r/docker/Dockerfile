@@ -33,7 +33,9 @@ RUN apt-get clean && apt-get update && \
     protobuf-compiler=3.12.4-1+deb11u1 \
     sqlite3=3.34.1-3+deb11u1 \
     tk-dev=8.6.11+1 \
-    unixodbc-dev=2.3.6-0.1+b1 && \
+    unixodbc-dev=2.3.6-0.1+b1 \
+    curl \
+    libjpeg62-turbo && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
