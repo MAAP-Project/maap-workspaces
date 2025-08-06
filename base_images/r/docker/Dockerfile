@@ -33,9 +33,7 @@ RUN apt-get clean && apt-get update && \
     protobuf-compiler=3.12.4-1+deb11u1 \
     sqlite3=3.34.1-3+deb11u1 \
     tk-dev=8.6.11+1 \
-    unixodbc-dev=2.3.6-0.1+b1 \
-    curl \
-    libjpeg62-turbo && \
+    unixodbc-dev=2.3.6-0.1+b1 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -56,19 +54,6 @@ RUN source activate r && \
 RUN source activate r && \
     conda install /packages/r-lasr-0.16.1-r44hecca717_0.conda && \
     conda list
-
-#RUN source activate r && conda remove -y r-base
-
-# Install patched R 4.3.3 from Posit
-# ENV R_VERSION=4.3.3
-# RUN curl -O https://cdn.posit.co/r/ubuntu-2204/pkgs/r-${R_VERSION}_1_$(dpkg --print-architecture).deb && \
-#     apt-get update && \
-#     ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so.62 /usr/lib/x86_64-linux-gnu/libjpeg.so.8 || true && \
-#     dpkg -i --force-depends ./r-${R_VERSION}_1_$(dpkg --print-architecture).deb && \
-#     apt-get install -y -f && \
-#     rm r-${R_VERSION}_1_$(dpkg --print-architecture).deb && \
-#     ln -s /opt/R/${R_VERSION}/bin/R /usr/local/bin/R && \
-#     ln -s /opt/R/${R_VERSION}/bin/Rscript /usr/local/bin/Rscript
 
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH_BASE_IMAGE=${IMAGE_REF}
