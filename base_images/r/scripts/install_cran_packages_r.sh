@@ -8,14 +8,10 @@ export DEBIAN_FRONTEND=noninteractive
 NCPUS=${NCPUS:--1}
 
 # Install CRAN packages using the patched R in conda environment with explicit library path
-/opt/conda/envs/r/bin/Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "/opt/conda/envs/r/lib/R/library" -r NULL -n "$NCPUS" "https://cran.r-project.org/src/contrib/Archive/tidyterra/tidyterra_0.6.2.tar.gz"
-/opt/conda/envs/r/bin/Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "/opt/conda/envs/r/lib/R/library" -r NULL -n "$NCPUS" "https://cran.r-project.org/src/contrib/Archive/BIOMASS/BIOMASS_2.1.11.tar.gz"
-/opt/conda/envs/r/bin/Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "/opt/conda/envs/r/lib/R/library" -r NULL -n "$NCPUS" "https://cran.r-project.org/src/contrib/Archive/nlraa/nlraa_1.9.3.tar.gz"
-/opt/conda/envs/r/bin/Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "/opt/conda/envs/r/lib/R/library" -r NULL -n "$NCPUS" "https://cran.r-project.org/src/contrib/Archive/sfarrow/sfarrow_0.4.0.tar.gz"
-
-# Clean up
-apt-get clean
-rm -rf /var/lib/apt/lists/*
+Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r NULL -n "$NCPUS" "https://cran.r-project.org/src/contrib/Archive/tidyterra/tidyterra_0.6.2.tar.gz"
+Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r NULL -n "$NCPUS" "https://cran.r-project.org/src/contrib/Archive/BIOMASS/BIOMASS_2.1.11.tar.gz"
+Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r NULL -n "$NCPUS" "https://cran.r-project.org/src/contrib/Archive/nlraa/nlraa_1.9.3.tar.gz"
+Rscript /scripts/install2.r --error --skipmissing --skipinstalled -r NULL -n "$NCPUS" "https://cran.r-project.org/src/contrib/Archive/sfarrow/sfarrow_0.4.0.tar.gz"
 
 # Clean up
 rm -rf /var/lib/apt/lists/*

@@ -56,18 +56,18 @@ RUN source activate r && \
 RUN source activate r && \
     conda list
 
-RUN source activate r && conda remove -y r-base
+#RUN source activate r && conda remove -y r-base
 
 # Install patched R 4.3.3 from Posit
-ENV R_VERSION=4.3.3
-RUN curl -O https://cdn.posit.co/r/ubuntu-2204/pkgs/r-${R_VERSION}_1_$(dpkg --print-architecture).deb && \
-    apt-get update && \
-    ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so.62 /usr/lib/x86_64-linux-gnu/libjpeg.so.8 || true && \
-    dpkg -i --force-depends ./r-${R_VERSION}_1_$(dpkg --print-architecture).deb && \
-    apt-get install -y -f && \
-    rm r-${R_VERSION}_1_$(dpkg --print-architecture).deb && \
-    ln -s /opt/R/${R_VERSION}/bin/R /usr/local/bin/R && \
-    ln -s /opt/R/${R_VERSION}/bin/Rscript /usr/local/bin/Rscript
+# ENV R_VERSION=4.3.3
+# RUN curl -O https://cdn.posit.co/r/ubuntu-2204/pkgs/r-${R_VERSION}_1_$(dpkg --print-architecture).deb && \
+#     apt-get update && \
+#     ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so.62 /usr/lib/x86_64-linux-gnu/libjpeg.so.8 || true && \
+#     dpkg -i --force-depends ./r-${R_VERSION}_1_$(dpkg --print-architecture).deb && \
+#     apt-get install -y -f && \
+#     rm r-${R_VERSION}_1_$(dpkg --print-architecture).deb && \
+#     ln -s /opt/R/${R_VERSION}/bin/R /usr/local/bin/R && \
+#     ln -s /opt/R/${R_VERSION}/bin/Rscript /usr/local/bin/Rscript
 
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH_BASE_IMAGE=${IMAGE_REF}
