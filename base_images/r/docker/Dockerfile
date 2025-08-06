@@ -54,6 +54,7 @@ RUN source activate r && \
     /scripts/install_cran_packages_r.sh
 
 RUN source activate r && \
+    conda install /packages/r-lasr-0.16.1-r44hecca717_0.conda && \
     conda list
 
 #RUN source activate r && conda remove -y r-base

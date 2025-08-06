@@ -7,7 +7,7 @@ dependencies:
   - anywidget
   - awscli
   - backoff
-  - basemap
+  #- basemap
   - bioconductor-rhdf5
   - boto3
   - cython
@@ -100,7 +100,6 @@ dependencies:
   - r-rcsf # Geotrees focused
   - r-readxl
   - r-reticulate
-  - r-rgdal
   - r-rgee
   - r-rlas
   - r-rlist
