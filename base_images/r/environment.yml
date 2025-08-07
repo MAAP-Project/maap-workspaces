@@ -133,7 +133,7 @@ dependencies:
   - r-tmap=3.3_4
   - r-units=0.8_7
   - r-viridis=0.6.5
-  - rasterio=1.4.3
+  - rasterio
   - rasterstats=0.20.0
   - requests=2.32.4
   - rio-cogeo=5.4.2
