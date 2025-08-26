@@ -21,7 +21,7 @@ RUN apt-get clean && apt-get update && \
     libhdf4-alt-dev=4.2.15-3 \
     libhdf5-dev=1.10.6+repack-4+deb11u1 \
     libjq-dev=1.6-2.1 \
-    libpq-dev \
+    libpq-dev=13.22-0+deb11u1  \
     libproj-dev=7.2.1-1 \
     libprotobuf-dev=3.12.4-1+deb11u1 \
     libnetcdf-dev=1:4.7.4-1 \
