@@ -99,7 +99,7 @@ dependencies:
   - r-rcolorbrewer=1.1_3
   - r-rcsf=1.0.2 # Geotrees focused 
   - r-readxl=1.4.5
-  - r-reticulate=1.40.0
+  - r-reticulate=1.41.0
   - r-rgee=1.1.7
   - r-rlas=1.6.2
   - r-rlist=0.4.6.2
