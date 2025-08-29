@@ -52,9 +52,8 @@ RUN source activate r && \
     /scripts/install_cran_packages_r.sh
 
 RUN source activate r && \
+    conda install /packages/r-lasr-0.17.1-r44h573188a_0.conda && \
     conda list
-#     conda install /packages/r-lasr-0.17.0-r44hecca717_0.conda && \
-#    conda list
 
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH_BASE_IMAGE=${IMAGE_REF}
