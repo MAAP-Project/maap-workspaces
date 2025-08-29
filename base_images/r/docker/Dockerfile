@@ -21,12 +21,12 @@ RUN apt-get clean && apt-get update && \
     libhdf4-alt-dev=4.2.15-3 \
     libhdf5-dev=1.10.6+repack-4+deb11u1 \
     libjq-dev=1.6-2.1 \
-    libpq-dev=13.20-0+deb11u1 \
+    libpq-dev=13.22-0+deb11u1 \
     libproj-dev=7.2.1-1 \
     libprotobuf-dev=3.12.4-1+deb11u1 \
     libnetcdf-dev=1:4.7.4-1 \
     libsqlite3-dev=3.34.1-3+deb11u1 \
-    libssl-dev=1.1.1w-0+deb11u2 \
+    libssl-dev=1.1.1w-0+deb11u3 \
     libudunits2-dev=2.2.28-3 \
     netcdf-bin=1:4.7.4-1 \
     postgis=3.1.1+dfsg-1+deb11u2 \
@@ -52,7 +52,7 @@ RUN source activate r && \
     /scripts/install_cran_packages_r.sh
 
 RUN source activate r && \
-    conda install /packages/r-lasr-0.13.5-r43h5888daf_0.conda && \
+    conda install /packages/r-lasr-0.17.1-r44h573188a_0.conda && \
     conda list
 
 ARG IMAGE_REF
