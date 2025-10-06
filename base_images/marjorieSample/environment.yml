@@ -1,0 +1,33 @@
+name: pangeo
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - ipykernel
+  # Dependencies for VS Code IDE
+  - code-server>=3.2
+  - jupyter-vscode-proxy
+  - openssh
+  - pre_commit
+  # Remove once Pangeo has upstream.
+  - virtualizarr>=2.0.0
+  - icechunk
+  # Working around https://github.com/holoviz/geoviews/pull/794
+  - geoviews-core==1.14.1
+  # Working around https://github.com/stac-utils/pystac/issues/1575
+  - pystac==1.14.1
+  - pip
+  - pip:
+    - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6
+    - jupyter-sshd-proxy
+    - jupyterlab-bxplorer
+    - maap-algorithms-jupyter-extension==0.3.10
+    - maap-jupyter-server-extension==2.1.4
+    - maap-dps-jupyter-extension==0.7.6
+variables:
+  TITILER_STAC_ENDPOINT: 'https://openveda.cloud/api/stac'
+  TITILER_ENDPOINT: 'https://openveda.cloud/api/raster'
+  STAC_CATALOG_NAME: 'VEDA STAC'
+  STAC_CATALOG_URL: 'https://openveda.cloud/api/stac'
+  STAC_BROWSER_URL: 'https://openveda.cloud/'
+  MAAP_API: 'https://api.maap-project.org/api/'
