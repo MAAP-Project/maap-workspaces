@@ -1,12 +1,20 @@
-#FROM mas.dit.maap-project.org/root/maap-workspaces/custom_images/maap_base:develop
 FROM pangeo/pangeo-notebook:2025.08.14
-# ENV LANG=en_US.UTF-8
-# ENV TZ=US/Pacific
-# ARG DEBIAN_FRONTEND=noninteractive
+ENV LANG=en_US.UTF-8
+ENV TZ=US/Pacific
+ARG DEBIAN_FRONTEND=noninteractive
 
-# RUN mkdir /projects
-# WORKDIR /projects
-# RUN sed -i -e 's/\/root/\/projects/g' /etc/passwd
+# TODO
+# - make sure this builds and puts all necessary info in projects and 
+# - starts pangeo by default
+# - touch up the environment.yml file and pin packages 
+
+# Copy home directory contents to /projects and set as new home
+USER root
+RUN mkdir -p /projects && \
+    cp -a /home/${NB_USER}/. /projects/ && \
+    usermod -d /projects ${NB_USER} && \
+    chown -R ${NB_USER}:${NB_USER} /projects
+WORKDIR /projects
 
 # should user be root?
 USER ${NB_USER}
@@ -20,8 +28,8 @@ RUN conda env update -n pangeo -f "/tmp/environment.yml" \
     && find ${CONDA_DIR}/ -follow -type f -name '*.js.map' -delete \
     && ${CONDA_DIR}/bin/conda clean -afy
 
-USER root
 RUN conda init
+USER root
 RUN echo ". ${CONDA_DIR}/etc/profile.d/conda.sh ; conda activate pangeo" > /etc/profile.d/init_conda.sh
 USER ${NB_USER}
 
