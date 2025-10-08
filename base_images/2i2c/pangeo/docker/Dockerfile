@@ -10,17 +10,20 @@ FROM pangeo/pangeo-notebook:2025.08.14
 
 # should user be root?
 USER ${NB_USER}
+ENV CONDA_DIR=/srv/conda
 
 RUN conda create -n pangeo --clone notebook
 
 COPY ./environment.yml /tmp
 RUN conda env update -n pangeo -f "/tmp/environment.yml" \
-    && find /srv/conda/ -follow -type f -name '*.a' -delete \
-    && find /srv/conda/ -follow -type f -name '*.js.map' -delete \
-    && /srv/conda/bin/conda clean -afy
+    && find ${CONDA_DIR}/ -follow -type f -name '*.a' -delete \
+    && find ${CONDA_DIR}/ -follow -type f -name '*.js.map' -delete \
+    && ${CONDA_DIR}/bin/conda clean -afy
 
-# .bashrc not going to the right place so this isnt actually activating on startup 
-RUN conda init && echo "conda activate pangeo" >> ~/.bashrc
+USER root
+RUN conda init
+RUN echo ". ${CONDA_DIR}/etc/profile.d/conda.sh ; conda activate pangeo" > /etc/profile.d/init_conda.sh
+USER ${NB_USER}
 
 SHELL ["/bin/bash", "-c"]
 RUN source activate pangeo && \
