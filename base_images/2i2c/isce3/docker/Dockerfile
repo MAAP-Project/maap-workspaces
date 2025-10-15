@@ -1,4 +1,5 @@
-FROM pangeo/pangeo-notebook:2025.08.14
+FROM pangeo/pangeo-notebook:2024.06.02
+#FROM pangeo/pangeo-notebook:2025.08.14
 
 # Copy home directory contents to /projects and set as new home
 # Also need to change workdir in 2i2c infrastructure settings
