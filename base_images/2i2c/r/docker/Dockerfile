@@ -1,20 +1,22 @@
-FROM rocker/binder:4
+FROM ghcr.io/nmfs-opensci/container-images/py-rocket-geospatial:latest
+
+RUN printenv
 
 USER root
+RUN mkdir -p /projects && \
+    cp -a /home/${NB_USER}/. /projects/ && \
+    usermod -d /projects ${NB_USER} && \
+    chown -R ${NB_USER}:${NB_USER} /projects
+WORKDIR /projects
 
-# 3. Use the system package manager (apt-get) to install Python, pip, and dev tools.
-# Chaining commands reduces image layers. Cleaning up afterwards keeps the image smaller.
-RUN apt-get update && \
-    apt-get install -y python3 python3-pip python3-dev && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+# TODO should user be root?
+USER ${NB_USER}
 
-# TODO install missing R packages 
+# Install additional packages from environment.yml
+COPY ./environment.yml /tmp
+RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
+    && find ${CONDA_DIR}/ -follow -type f -name '*.a' -delete \
+    && find ${CONDA_DIR}/ -follow -type f -name '*.js.map' -delete \
+    && ${CONDA_DIR}/bin/conda clean -afy
 
-# Install maap specific python packages
-COPY ./requirements.txt .
-RUN pip install --break-system-packages --no-cache-dir -r requirements.txt
-
-# TODO is this the user to set back to??
-USER rstudio
-CMD ["jupyter-labhub"]
+RUN conda init
