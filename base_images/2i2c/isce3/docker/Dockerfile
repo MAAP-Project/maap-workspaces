@@ -1,4 +1,4 @@
-FROM pangeo/pangeo-notebook:2024.06.02
+FROM pangeo/pangeo-notebook:latest
 #FROM pangeo/pangeo-notebook:2025.08.14
 
 # Copy home directory contents to /projects and set as new home

@@ -3,8 +3,8 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - isce3=0.20.0
-  - pip=25.2
+  - isce3=*=*cpu*
+  - pip
   - pip:
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6
     - morecantile==6.1.0
