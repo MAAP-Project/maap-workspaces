@@ -1,0 +1,6 @@
+#!/bin/bash -l
+# Activate the conda environment
+source /srv/conda/etc/profile.d/conda.sh
+conda activate notebook
+# Execute whatever command was passed to the container
+exec "$@"

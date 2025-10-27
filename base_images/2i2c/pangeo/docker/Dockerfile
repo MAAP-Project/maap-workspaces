@@ -1,4 +1,7 @@
 FROM pangeo/pangeo-notebook:2025.08.14
+ENV LANG en_US.UTF-8
+ENV TZ US/Pacific
+ARG DEBIAN_FRONTEND=noninteractive
 
 # Copy home directory contents to /projects and set as new home
 # Also need to change workdir in 2i2c infrastructure settings
@@ -20,3 +23,6 @@ RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
     && ${CONDA_DIR}/bin/conda clean -afy
 
 RUN conda init
+
+ENV DOCKERIMAGE_PATH_BASE_IMAGE="mas.dit.maap-project.org/root/maap-workspaces/2i2c/pangeo:v5.0.0"
+ENV DOCKERIMAGE_PATH_DEFAULT="mas.dit.maap-project.org/root/maap-workspaces/custom_images/maap_base:develop"

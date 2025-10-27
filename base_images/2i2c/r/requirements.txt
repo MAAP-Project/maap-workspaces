@@ -1,6 +1,0 @@
-maap-py==4.2.0
-maap-algorithms-jupyter-extension==0.3.10
-maap-jupyter-server-extension==2.1.4
-maap-dps-jupyter-extension==0.7.6
-jupyterhub
-jupyterlab

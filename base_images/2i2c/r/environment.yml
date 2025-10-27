@@ -3,6 +3,10 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
+  # Python packages only - NO R packages in conda
+  - gdal
+  - rtree
+  - unzip
   - pip=25.2
   - pip:
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6
