@@ -3,23 +3,31 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
+  - anywidget
   - awscli
+  - backoff
   - boto3
   - cython
   - earthengine-api
+  - fsspec
   - gdal
   - geopandas
+  - groff
   - h5py
   - hdf5
+  - httpx
+  - hvplot
   - isce3>=0.25.0
   - jupyterlab
   - lonboard
+  - mapclassify
   - matplotlib
   - numba
   - numpy
   - pandas
   - pycurl
   - pyproj
+  - pyopenssl
   #- rasterio
   #- rasterstats
   - requests
@@ -28,6 +36,9 @@ dependencies:
   - scipy
   - seaborn
   - shapely
+  - statsmodels
+  - tqdm
+  - unidecode
   - unzip
   - xarray
   - pip
