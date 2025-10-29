@@ -1,10 +1,9 @@
 FROM pangeo/pangeo-notebook:2025.08.14
 ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
-ARG DEBIAN_FRONTEND=noninteractive
+ARG DEBIAN_FRONTEND noninteractive
 
 # Copy home directory contents to /projects and set as new home
-# Also need to change workdir in 2i2c infrastructure settings
 USER root
 RUN mkdir -p /projects && \
     cp -a /home/${NB_USER}/. /projects/ && \
@@ -12,7 +11,6 @@ RUN mkdir -p /projects && \
     chown -R ${NB_USER}:${NB_USER} /projects
 WORKDIR /projects
 
-# TODO should user be root?
 USER ${NB_USER}
 
 # Install additional packages from environment.yml
