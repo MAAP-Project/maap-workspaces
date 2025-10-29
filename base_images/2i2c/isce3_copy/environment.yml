@@ -6,21 +6,29 @@ dependencies:
   - awscli
   - boto3
   - cython
+  - earthengine-api
   - gdal
   - geopandas
+  - h5py
   - hdf5
   - isce3>=0.25.0
   - jupyterlab
+  - lonboard
   - matplotlib
+  - numba
   - numpy
   - pandas
   - pycurl
   - pyproj
   #- rasterio
+  #- rasterstats
   - requests
+  - s3fs
   - scikit-learn
   - scipy
+  - seaborn
   - shapely
+  - unzip
   - xarray
   - pip
   - pip:
