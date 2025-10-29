@@ -5,16 +5,23 @@ channels:
 dependencies:
   - awscli
   - boto3
+  - cython
   - gdal
   - geopandas
+  - hdf5
   - isce3>=0.25.0
   - jupyterlab
+  - matplotlib
   - numpy
   - pandas
+  - pycurl
+  - pyproj
+  #- rasterio
   - requests
   - scikit-learn
   - scipy
   - shapely
+  - xarray
   - pip
   - pip:
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6
