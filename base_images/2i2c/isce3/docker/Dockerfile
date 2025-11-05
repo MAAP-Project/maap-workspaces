@@ -3,17 +3,9 @@ ENV LANG en_US.UTF-8
 ENV TZ US/Pacific
 ARG DEBIAN_FRONTEND noninteractive
 
-# Copy home directory contents to /projects and set as new home
 USER root
-RUN mkdir -p /projects && \
-    cp -a /home/${NB_USER}/. /projects/ && \
-    usermod -d /projects ${NB_USER} && \
-    chown -R ${NB_USER}:${NB_USER} /projects
-WORKDIR /projects
-
 RUN apt-get update -y && apt-get install -y vim wget git && \
     apt-get clean all
-
 USER ${NB_USER}
 
 COPY ./environment.yml /tmp
