@@ -1,7 +1,7 @@
 FROM ghcr.io/nmfs-opensci/container-images/py-rocket-geospatial:2025.04.26
-ENV LANG en_US.UTF-8
-ENV TZ US/Pacific
-ARG DEBIAN_FRONTEND noninteractive
+ENV LANG=en_US.UTF-8
+ENV TZ=US/Pacific
+ARG DEBIAN_FRONTEND=noninteractive
 
 USER root
 
@@ -56,6 +56,3 @@ RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
 RUN export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && \
     /scripts/install_cran_packages_r.sh
 USER ${NB_USER}
-
-ENV DOCKERIMAGE_PATH_BASE_IMAGE="mas.dit.maap-project.org/root/maap-workspaces/2i2c/r:v5.0.0"
-ENV DOCKERIMAGE_PATH_DEFAULT="mas.dit.maap-project.org/root/maap-workspaces/custom_images/maap_base:develop"

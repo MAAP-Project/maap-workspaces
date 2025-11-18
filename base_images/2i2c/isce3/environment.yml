@@ -23,6 +23,7 @@ dependencies:
   - mapclassify=2.10.0
   - matplotlib=3.9.1
   - mpl-scatter-density=0.8
+  - nodejs=24.9.0
   - numba=0.62.1
   - numpy=2.3.4
   - pandas=2.3.3
@@ -49,7 +50,7 @@ dependencies:
   - pip=25.2
   - pip:
     - jupyter-resource-usage==1.2.0
-    - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6
+    #- git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6
     - morecantile==6.1.0
     - rio-tiler==7.2.2
     - maap-py==4.2.0
@@ -62,4 +63,6 @@ variables:
   STAC_CATALOG_NAME: 'VEDA STAC'
   STAC_CATALOG_URL: 'https://openveda.cloud/api/stac'
   STAC_BROWSER_URL: 'https://openveda.cloud/'
-  MAAP_API: 'https://api.maap-project.org/api/'
+  MAAP_API_HOST: 'api.dit.maap-project.org'
+  DOCKERIMAGE_PATH_BASE_IMAGE: 'mas.dit.maap-project.org/root/maap-workspaces/2i2c/isce3:v5.0.0'
+  DOCKERIMAGE_PATH_DEFAULT: 'mas.dit.maap-project.org/root/maap-workspaces/custom_images/maap_base:develop'

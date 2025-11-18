@@ -1,7 +1,7 @@
 FROM pangeo/pangeo-notebook:2025.08.14
-ENV LANG en_US.UTF-8
-ENV TZ US/Pacific
-ARG DEBIAN_FRONTEND noninteractive
+ENV LANG=en_US.UTF-8
+ENV TZ=US/Pacific
+ARG DEBIAN_FRONTEND=noninteractive
 
 USER ${NB_USER}
 
@@ -14,5 +14,4 @@ RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
 
 RUN conda init
 
-ENV DOCKERIMAGE_PATH_BASE_IMAGE="mas.dit.maap-project.org/root/maap-workspaces/2i2c/pangeo:v5.0.0"
-ENV DOCKERIMAGE_PATH_DEFAULT="mas.dit.maap-project.org/root/maap-workspaces/custom_images/maap_base:develop"
+RUN jupyter server extension enable maap_jupyter_server_extension
