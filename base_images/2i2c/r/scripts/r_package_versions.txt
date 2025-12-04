@@ -1,0 +1,45 @@
+Since it is difficult to pin the version for R packages because once the current package we have pinned goes
+into the archives because a new package was released, the link like https://cran.r-project.org/src/contrib/codetools_0.2-20.tar.gz
+will break because archive needs to be added to the url for that version 
+To avoid constantly having to update these links, I propose we just record the package versions for our R packages
+in this text file in case we need to reference them later 
+The R script called print_package_versions.R will generate a list of all R package versions for the R packages we are installing in install_cran_packages_r.sh
+
+Release 5.0: 
+codetools            0.2.20
+tidyterra            0.7.2
+BIOMASS              2.2.4.1
+nlraa                1.9.10
+essentials           0.1.0
+geojsonio            0.11.3
+future               1.68.0
+lasR                 0.17.3
+partykit             1.2.24
+randomForest         4.7.1.2
+RCSF                 1.0.2
+RPostgreSQL          0.7.8
+car                  3.1.3
+chron                2.3.62
+egg                  0.4.5
+ggpubr               0.6.2
+ggspatial            1.1.10
+ggtext               0.1.2
+gsubfn               0.7
+microbenchmark       1.5.0
+minpack.lm           1.2.4
+patchwork            1.3.2
+paws                 0.9.0
+pool                 1.0.4
+proto                1.0.0
+protolite            2.3.1
+rgee                 1.1.8
+rlist                0.4.6.2
+rnaturalearth        1.0.1
+rockchalk            1.8.157
+RODBC                1.3.26
+rstac                1.0.1
+RStoolbox            1.0.2.1
+snow                 0.4.4
+sqldf                0.4.11
+duckdb               1.2.1
+rhdf5                2.50.2

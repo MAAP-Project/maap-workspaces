@@ -1,0 +1,29 @@
+name: notebook
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  # Python packages only - NO R packages in conda
+  - gdal=3.10.2
+  - nodejs=20.19.5
+  - rtree=1.4.1 
+  - unzip=6.0
+  - pip=25.2
+  - pip:
+    # - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6
+    - morecantile==6.1.0
+    - rio-tiler==7.2.2
+    - maap-py==4.2.0
+    - maap-algorithms-jupyter-extension==0.5.1
+    - maap-jupyter-server-extension==3.0.0
+    - maap-dps-jupyter-extension==0.7.7
+    # - maap-edsc-jupyter-extension==1.1.1
+    - maap-help-jupyter-extension==2.0.2
+    - maap-libs-jupyter-extension==1.2.5
+    - maap-user-workspace-management-jupyter-extension==1.0.0
+variables:
+  TITILER_STAC_ENDPOINT: 'https://openveda.cloud/api/stac'
+  TITILER_ENDPOINT: 'https://openveda.cloud/api/raster'
+  STAC_CATALOG_NAME: 'VEDA STAC'
+  STAC_CATALOG_URL: 'https://openveda.cloud/api/stac'
+  STAC_BROWSER_URL: 'https://openveda.cloud/'

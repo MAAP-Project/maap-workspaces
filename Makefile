@@ -3,6 +3,17 @@ export PROJECT_PREFIX = maap_
 export BASE_IMAGE_NAME = "${PROJECT_PREFIX}base_${IMAGE_NAME}"
 export JUPYTER_IMAGE_NAME = "${PROJECT_PREFIX}jupyter_${IMAGE_NAME}"
 export RUN_OPTIONS = 
+export 2i2c_IMAGE_NAME ?= pangeo
+export BASE_2i2c_IMAGE_NAME = "${PROJECT_PREFIX}2i2c_${2i2c_IMAGE_NAME}"
+
+# 2i2c commands
+build-2i2c-image:		
+	@cd base_images/2i2c/${IMAGE_NAME}; \
+	pwd; \
+	docker buildx build --platform linux/amd64 --progress=plain $(RUN_OPTIONS) -t ${BASE_2i2c_IMAGE_NAME} -f docker/Dockerfile .
+
+build-2i2c-image-no-cache: RUN_OPTIONS = "--no-cache"
+build-2i2c-image-no-cache: build-2i2c-image
 
 build-images: build-base-image build-jupyter-image		## Build both the base and jupyterlab image
 
