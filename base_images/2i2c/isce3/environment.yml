@@ -50,19 +50,20 @@ dependencies:
   - pip=25.2
   - pip:
     - jupyter-resource-usage==1.2.0
-    #- git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6
+    # - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6
     - morecantile==6.1.0
     - rio-tiler==7.2.2
     - maap-py==4.2.0
-    - maap-algorithms-jupyter-extension==0.3.10
-    - maap-jupyter-server-extension==2.1.4
-    - maap-dps-jupyter-extension==0.7.6
+    - maap-algorithms-jupyter-extension==0.5.1
+    - maap-jupyter-server-extension==3.0.0
+    - maap-dps-jupyter-extension==0.7.7
+    # - maap-edsc-jupyter-extension==1.1.1
+    - maap-help-jupyter-extension==2.0.2
+    - maap-libs-jupyter-extension==1.2.5
+    - maap-user-workspace-management-jupyter-extension==1.0.0
 variables:
   TITILER_STAC_ENDPOINT: 'https://openveda.cloud/api/stac'
   TITILER_ENDPOINT: 'https://openveda.cloud/api/raster'
   STAC_CATALOG_NAME: 'VEDA STAC'
   STAC_CATALOG_URL: 'https://openveda.cloud/api/stac'
   STAC_BROWSER_URL: 'https://openveda.cloud/'
-  MAAP_API_HOST: 'api.dit.maap-project.org'
-  DOCKERIMAGE_PATH_BASE_IMAGE: 'mas.dit.maap-project.org/root/maap-workspaces/2i2c/isce3:v5.0.0'
-  DOCKERIMAGE_PATH_DEFAULT: 'mas.dit.maap-project.org/root/maap-workspaces/custom_images/maap_base:develop'

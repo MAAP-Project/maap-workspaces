@@ -11,21 +11,16 @@ dependencies:
     - morecantile==6.1.0
     - rio-tiler==7.2.2
     - maap-py==4.2.0
-    - maap-algorithms-jupyter-extension==0.4.0
-    - git+https://github.com/MAAP-Project/jupyter-server-extension.git@feature/2i2c-compatibility
-    # - maap-jupyter-server-extension==3.0.0 (will need to release 3.0.0)
+    - maap-algorithms-jupyter-extension==0.5.1
+    - maap-jupyter-server-extension==3.0.0
     - maap-dps-jupyter-extension==0.7.7
     # - maap-edsc-jupyter-extension==1.1.1
     - maap-help-jupyter-extension==2.0.2
     - maap-libs-jupyter-extension==1.2.5
-    #- maap-user-workspace-management-jupyter-extension==1.0.0 (will need to release 1.0)
-    - git+https://github.com/MAAP-Project/user-workspace-management-jupyter-extension.git@feature/2i2c
+    - maap-user-workspace-management-jupyter-extension==1.0.0
 variables:
   TITILER_STAC_ENDPOINT: 'https://openveda.cloud/api/stac'
   TITILER_ENDPOINT: 'https://openveda.cloud/api/raster'
   STAC_CATALOG_NAME: 'VEDA STAC'
   STAC_CATALOG_URL: 'https://openveda.cloud/api/stac'
   STAC_BROWSER_URL: 'https://openveda.cloud/'
-  MAAP_API_HOST: 'api.dit.maap-project.org'
-  DOCKERIMAGE_PATH_BASE_IMAGE: 'mas.dit.maap-project.org/root/maap-workspaces/2i2c/pangeo:v5.0.0'
-  DOCKERIMAGE_PATH_DEFAULT: 'mas.dit.maap-project.org/root/maap-workspaces/custom_images/maap_base:develop'
