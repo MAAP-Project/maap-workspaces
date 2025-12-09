@@ -1,0 +1,69 @@
+name: notebook
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - anywidget=0.9.18
+  - awscli=1.42.49
+  - backoff=2.2.1
+  - boto3=1.40.49
+  - cython=3.1.6
+  - earthengine-api=1.6.14
+  - fsspec=2025.9.0
+  - gdal=3.11.4
+  - geopandas=1.1.1
+  - groff=1.23.0
+  - h5py=3.15.1
+  - hdf5=1.14.6
+  - httpx=0.28.1
+  - hvplot=0.12.1
+  - isce3=0.25.3
+  - jupyterlab=4.4.10
+  - lonboard=0.12.1
+  - mapclassify=2.10.0
+  - matplotlib=3.9.1
+  - mpl-scatter-density=0.8
+  - nodejs=24.9.0
+  - numba=0.62.1
+  - numpy=2.3.4
+  - pandas=2.3.3
+  - pycurl=7.45.7
+  - pyproj=3.7.2
+  #- pyogrio causes dependency conflicts with isce3
+  - pyopenssl=25.1.0
+  #- rasterio causes dependency conflicts with isce3
+  #- rasterstats causes dependency conflicts with isce3
+  - requests=2.32.5
+  #- rio-cogeo causes dependency conflicts with isce3
+  - rtree=1.4.1
+  - s3fs=2025.9.0
+  - scikit-learn=1.7.2
+  - scipy=1.16.3
+  - seaborn=0.13.2
+  - shapely=2.1.2
+  - sliderule=4.5.3
+  - statsmodels=0.14.5
+  - tqdm=4.67.1
+  - unidecode=1.3.8
+  - unzip=6.0
+  - xarray=2025.10.1
+  - pip=25.2
+  - pip:
+    - jupyter-resource-usage==1.2.0
+    # - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6
+    - morecantile==6.1.0
+    - rio-tiler==7.2.2
+    - maap-py==4.2.0
+    - maap-algorithms-jupyter-extension==0.5.1
+    - maap-jupyter-server-extension==3.0.0
+    - maap-dps-jupyter-extension==0.7.7
+    # - maap-edsc-jupyter-extension==1.1.1
+    - maap-help-jupyter-extension==2.0.2
+    - maap-libs-jupyter-extension==1.2.5
+    - maap-user-workspace-management-jupyter-extension==1.0.0
+variables:
+  TITILER_STAC_ENDPOINT: 'https://openveda.cloud/api/stac'
+  TITILER_ENDPOINT: 'https://openveda.cloud/api/raster'
+  STAC_CATALOG_NAME: 'VEDA STAC'
+  STAC_CATALOG_URL: 'https://openveda.cloud/api/stac'
+  STAC_BROWSER_URL: 'https://openveda.cloud/'
