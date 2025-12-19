@@ -10,6 +10,7 @@ R_LIB=${R_LIB:-/usr/local/lib/R/site-library}
 
 # Install recommended R packages first to avoid warnings
 Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "$R_LIB" -r "https://cran.r-project.org" -n "$NCPUS" "codetools"
+Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "$R_LIB" -r "https://cran.r-project.org" -n "$NCPUS" "tmap"
 Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "$R_LIB" -r "https://cran.r-project.org" -n "$NCPUS" "tidyterra"
 Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "$R_LIB" -r "https://cran.r-project.org" -n "$NCPUS" "BIOMASS"
 Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "$R_LIB" -r "https://cran.r-project.org" -n "$NCPUS" "nlraa"

@@ -19,7 +19,7 @@ RUN apt-get clean && apt-get update && \
     libhdf4-alt-dev=4.2.15-4 \
     libhdf5-dev=1.10.7+repack-4ubuntu2 \
     libjq-dev=1.6-2.1ubuntu3.1 \
-    libpq-dev=14.19-0ubuntu0.22.04.1 \
+    libpq-dev \
     libproj-dev=8.2.1-1 \
     libprotobuf-dev=3.12.4-1ubuntu7.22.04.4 \
     libnetcdf-dev=1:4.8.1-1 \

@@ -8,7 +8,7 @@ export BASE_2i2c_IMAGE_NAME = "${PROJECT_PREFIX}2i2c_${2i2c_IMAGE_NAME}"
 
 # 2i2c commands
 build-2i2c-image:		
-	@cd base_images/2i2c/${IMAGE_NAME}; \
+	@cd base_images/2i2c/${2i2c_IMAGE_NAME}; \
 	pwd; \
 	docker buildx build --platform linux/amd64 --progress=plain $(RUN_OPTIONS) -t ${BASE_2i2c_IMAGE_NAME} -f docker/Dockerfile .
 
