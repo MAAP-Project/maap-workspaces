@@ -55,4 +55,10 @@ RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
 # Clear conda's compiler paths to force use of system compiler
 RUN export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && \
     /scripts/install_cran_packages_r.sh
+
+RUN PYTHON_PATH=$(which python) && \
+    echo "library(reticulate)" > ~/.Rprofile && \
+    echo "use_python(\"$PYTHON_PATH\", required = TRUE)" >> ~/.Rprofile && \
+    echo "py_config()" >> ~/.Rprofile
+
 USER ${NB_USER}
