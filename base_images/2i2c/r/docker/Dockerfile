@@ -57,8 +57,8 @@ RUN export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && \
     /scripts/install_cran_packages_r.sh
 
 RUN PYTHON_PATH=$(which python) && \
-    echo "library(reticulate)" > ~/.Rprofile && \
-    echo "use_python(\"$PYTHON_PATH\", required = TRUE)" >> ~/.Rprofile && \
-    echo "py_config()" >> ~/.Rprofile
+    echo "library(reticulate)" > /home/jovyan/.Rprofile && \
+    echo "use_python(\"$PYTHON_PATH\", required = TRUE)" >> /home/jovyan/.Rprofile && \
+    echo "py_config()" >> /home/jovyan/.Rprofile
 
 USER ${NB_USER}
