@@ -1,0 +1,22 @@
+name: notebook
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - nodejs=22.21.1
+  - pip=25.2
+  - pip:
+    - jupyter-resource-usage==1.2.0
+    - maap-py==4.2.0
+    - maap-algorithms-jupyter-extension==0.5.1
+    - maap-jupyter-server-extension==3.0.0
+    - maap-dps-jupyter-extension==0.7.7
+    - maap-help-jupyter-extension==2.0.2
+    - maap-libs-jupyter-extension==1.2.5
+    - maap-user-workspace-management-jupyter-extension==1.0.0
+variables:
+  TITILER_STAC_ENDPOINT: 'https://openveda.cloud/api/stac'
+  TITILER_ENDPOINT: 'https://openveda.cloud/api/raster'
+  STAC_CATALOG_NAME: 'VEDA STAC'
+  STAC_CATALOG_URL: 'https://openveda.cloud/api/stac'
+  STAC_BROWSER_URL: 'https://openveda.cloud/'
