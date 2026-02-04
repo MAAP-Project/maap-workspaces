@@ -28,7 +28,7 @@ dependencies:
   - pydantic=2.9.2
   - python-gist=0.10.6
   - python-graphviz=0.20.3
-  - rise=5.7.1
+  #- rise=5.7.1
   - snakeviz=2.2.0
   - xarray_leaflet=0.2.3
   - pip=24.3.1
@@ -36,12 +36,12 @@ dependencies:
     - jupyter-resource-usage==1.1.0
     - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6#egg-info=stac_ipyleaflet
     - rio-tiler==7.2.2
-    - maap-algorithms-jupyter-extension==0.3.9
+    - git+https://github.com/MAAP-Project/algorithms-jupyter-extension.git@feature/major-refactor
     - maap-che-sidebar-visibility-jupyter-extension==1.1.2
     - maap-dps-jupyter-extension==0.7.6
     - maap-edsc-jupyter-extension==1.1.1
     - maap-help-jupyter-extension==2.0.0
-    - maap-jupyter-server-extension==2.1.4
+    - maap-jupyter-server-extension==3.0.0
     - maap-libs-jupyter-extension==1.2.4
     - maap-user-workspace-management-jupyter-extension==0.1.5
 variables:
