@@ -56,9 +56,13 @@ RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
 RUN export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && \
     /scripts/install_cran_packages_r.sh
 
-RUN PYTHON_PATH=$(which python) && \
-    echo "library(reticulate)" > /home/jovyan/.Rprofile && \
-    echo "use_python(\"$PYTHON_PATH\", required = TRUE)" >> /home/jovyan/.Rprofile && \
-    echo "py_config()" >> /home/jovyan/.Rprofile
+RUN PYTHON_PATH=$(which python) && \                                                                   
+    echo "library(reticulate)" > /home/jovyan/.Rprofile && \                                           
+    echo "use_python(\"$PYTHON_PATH\", required = TRUE)" >> /home/jovyan/.Rprofile && \                
+    echo "py_config()" >> /home/jovyan/.Rprofile && \                                                  
+    echo "=== Contents of .Rprofile ===" && \                                                          
+    cat /home/jovyan/.Rprofile && \                                                                    
+    echo "=== End of file ===" && \                                                                    
+    ls -la /home/jovyan/.Rprofile  
 
 USER ${NB_USER}
