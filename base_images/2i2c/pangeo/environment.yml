@@ -4,18 +4,18 @@ channels:
   - nodefaults
 dependencies:
   - code-server=4.107.0
-  - duckdb=1.4.3
-  - icechunk=1.1.18
+  # Upgrade from pangeo-notebook image
+  - earthaccess>=0.16.0
   - jupyter-vscode-proxy=0.7
   - nodejs=22.21.1
+  - openssh
   - pre-commit=4.5.1
   - rustac=0.9.5
-  - virtualizarr=2.4.0
   - pip=25.2
   - pip:
     # - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6
-    - morecantile==6.1.0
-    - rio-tiler==7.2.2
+    - jupyter-sshd-proxy
+    - rio-tiler>=7.2.2
     - maap-py==4.2.0
     - maap-algorithms-jupyter-extension==0.5.1
     - maap-jupyter-server-extension==3.0.0
