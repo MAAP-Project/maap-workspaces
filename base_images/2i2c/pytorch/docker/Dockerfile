@@ -11,5 +11,3 @@ RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
     && ${CONDA_DIR}/bin/conda clean -afy
 
 RUN conda init
-
-RUN jupyter server extension enable maap_jupyter_server_extension
