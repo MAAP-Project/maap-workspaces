@@ -1,4 +1,4 @@
-FROM pangeo/pangeo-notebook:2026.01.30
+FROM public.ecr.aws/nasa-veda/pangeo-notebook-veda-image:2025.12.30-v1
 ENV LANG=en_US.UTF-8
 ENV TZ=US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
