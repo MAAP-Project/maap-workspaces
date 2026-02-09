@@ -3,10 +3,22 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
+  - ipykernel
+  # Dependencies for VS Code IDE
+  - code-server>=3.2
+  - jupyter-vscode-proxy
+  - openssh
+  - pre_commit
+  # Upgrade from pangeo-notebook image
+  - earthaccess>=0.16.0
+  # Pin down to avoid https://github.com/holoviz/pyviz_comms/issues/143
+  - pyviz_comms==3.0.4
   - nodejs=22.21.1
   - pip=25.2
   - pip:
+    - jupyter-sshd-proxy
     - jupyter-resource-usage==1.2.0
+    - jupyterlab-bxplorer
     - maap-py==4.2.0
     - maap-algorithms-jupyter-extension==0.5.1
     - maap-jupyter-server-extension==3.0.0
