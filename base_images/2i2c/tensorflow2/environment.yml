@@ -3,13 +3,11 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - ipykernel=7.1.0
   # Dependencies for VS Code IDE
   - code-server>=3.2
   - jupyter-vscode-proxy=0.7
-  - openssh=10.2p1
   - pre_commit=3.4.0
-  # Upgrade from pangeo-notebook image
+  # Upgrade from ml notebook image
   - earthaccess>=0.16.0
   # Pin down to avoid https://github.com/holoviz/pyviz_comms/issues/143
   - pyviz_comms==3.0.4
