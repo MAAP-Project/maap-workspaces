@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - ipykernel=7.2.0
+  - ipykernel
   # Dependencies for VS Code IDE
   - code-server>=3.2
   - jupyter-vscode-proxy=0.7
@@ -13,7 +13,6 @@ dependencies:
   - earthaccess>=0.16.0
   # Pin down to avoid https://github.com/holoviz/pyviz_comms/issues/143
   - pyviz_comms==3.0.4
-  - nodejs=22.21.1
   - pip=25.2
   - pip:
     - jupyter-sshd-proxy==0.3.0
