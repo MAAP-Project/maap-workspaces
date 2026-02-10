@@ -23,9 +23,3 @@ dependencies:
     - maap-help-jupyter-extension==2.0.2
     - maap-libs-jupyter-extension==1.2.5
     - maap-user-workspace-management-jupyter-extension==1.0.0
-variables:
-  TITILER_STAC_ENDPOINT: 'https://openveda.cloud/api/stac'
-  TITILER_ENDPOINT: 'https://openveda.cloud/api/raster'
-  STAC_CATALOG_NAME: 'VEDA STAC'
-  STAC_CATALOG_URL: 'https://openveda.cloud/api/stac'
-  STAC_BROWSER_URL: 'https://openveda.cloud/'
