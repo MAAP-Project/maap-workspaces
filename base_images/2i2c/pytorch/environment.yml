@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - ipykernel
+  - ipykernel=7.1.0
   # Dependencies for VS Code IDE
   - code-server>=3.2
   - jupyter-vscode-proxy=0.7
