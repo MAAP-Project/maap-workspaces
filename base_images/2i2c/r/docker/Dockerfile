@@ -56,13 +56,24 @@ RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
 RUN export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && \
     /scripts/install_cran_packages_r.sh
 
-RUN PYTHON_PATH=$(which python) && \                                                                   
-    echo "library(reticulate)" > /home/jovyan/.Rprofile && \                                           
-    echo "use_python(\"$PYTHON_PATH\", required = TRUE)" >> /home/jovyan/.Rprofile && \                
-    echo "py_config()" >> /home/jovyan/.Rprofile && \                                                  
-    echo "=== Contents of .Rprofile ===" && \                                                          
-    cat /home/jovyan/.Rprofile && \                                                                    
-    echo "=== End of file ===" && \                                                                    
-    ls -la /home/jovyan/.Rprofile  
+RUN PYTHON_PATH=$(which python) && \
+    R_HOME=$(R RHOME) && \
+    echo "library(reticulate)" >> "$R_HOME/etc/Rprofile.site" && \
+    echo "use_python(\"$PYTHON_PATH\", required = TRUE)" >> "$R_HOME/etc/Rprofile.site" && \
+    echo "py_config()" >> "$R_HOME/etc/Rprofile.site"
 
+COPY scripts/init-user.sh /usr/local/bin/init-user.sh
+
+# 3. Make the script executable
+RUN chmod +x /usr/local/bin/init-user.sh
+
+# 4. Switch back to the default notebook user (jovyan)
 USER ${NB_USER}
+
+# 5. Set the ENTRYPOINT to your script
+# This script will run every time the 2i2c container starts
+ENTRYPOINT ["/usr/local/bin/init-user.sh"]
+
+# 6. Keep the original CMD from the base image
+# This ensures JupyterHub/2i2c starts correctly after your script finishes
+CMD ["start-notebook.sh"]
