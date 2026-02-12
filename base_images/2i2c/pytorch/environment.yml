@@ -3,14 +3,22 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
+  # Dependencies for VS Code IDE
+  - code-server>=3.2
+  - jupyter-vscode-proxy=0.7
+  - pre_commit=3.4.0
+  # Upgrade from py torch notebook image
+  - earthaccess>=0.16.0
+  # Pin down to avoid https://github.com/holoviz/pyviz_comms/issues/143
+  - pyviz_comms==3.0.4
   - pip=25.2
   - pip:
-    - rio-tiler==8.0.5
+    - jupyter-sshd-proxy==0.3.0
+    - jupyterlab-bxplorer==0.2.30
     - maap-py==4.2.0
     - maap-algorithms-jupyter-extension==0.5.1
     - maap-jupyter-server-extension==3.0.0
     - maap-dps-jupyter-extension==0.7.7
-    # - maap-edsc-jupyter-extension==1.1.1
     - maap-help-jupyter-extension==2.0.2
     - maap-libs-jupyter-extension==1.2.5
     - maap-user-workspace-management-jupyter-extension==1.0.0
