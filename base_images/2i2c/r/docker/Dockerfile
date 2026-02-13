@@ -44,7 +44,7 @@ RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
     && find ${CONDA_DIR}/ -follow -type f -name '*.js.map' -delete \
     && ${CONDA_DIR}/bin/conda clean -afy
 
-RUN conda init
+#RUN conda init
 
 USER root
 SHELL ["/bin/bash", "-c"]
@@ -63,17 +63,13 @@ RUN PYTHON_PATH=$(which python) && \
     echo "py_config()" >> "$R_HOME/etc/Rprofile.site"
 
 COPY scripts/init-user.sh /usr/local/bin/init-user.sh
-
-# 3. Make the script executable
 RUN chmod +x /usr/local/bin/init-user.sh
 
 # 4. Switch back to the default notebook user (jovyan)
 USER ${NB_USER}
 
-# 5. Set the ENTRYPOINT to your script
 # This script will run every time the 2i2c container starts
 ENTRYPOINT ["/usr/local/bin/init-user.sh"]
 
-# 6. Keep the original CMD from the base image
-# This ensures JupyterHub/2i2c starts correctly after your script finishes
+# This ensures JupyterHub/2i2c starts correctly after the script finishes
 CMD ["start-notebook.sh"]
