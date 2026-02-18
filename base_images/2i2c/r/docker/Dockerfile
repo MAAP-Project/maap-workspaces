@@ -65,11 +65,7 @@ RUN PYTHON_PATH=$(which python) && \
 COPY scripts/init-user.sh /usr/local/bin/init-user.sh
 RUN chmod +x /usr/local/bin/init-user.sh
 
-# 4. Switch back to the default notebook user (jovyan)
 USER ${NB_USER}
 
 # This script will run every time the 2i2c container starts
 ENTRYPOINT ["/usr/local/bin/init-user.sh"]
-
-# # This ensures JupyterHub/2i2c starts correctly after the script finishes
-# CMD ["start-notebook.sh"]
