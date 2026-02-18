@@ -44,7 +44,7 @@ RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
     && find ${CONDA_DIR}/ -follow -type f -name '*.js.map' -delete \
     && ${CONDA_DIR}/bin/conda clean -afy
 
-#RUN conda init
+RUN conda init
 
 USER root
 SHELL ["/bin/bash", "-c"]
@@ -71,5 +71,5 @@ USER ${NB_USER}
 # This script will run every time the 2i2c container starts
 ENTRYPOINT ["/usr/local/bin/init-user.sh"]
 
-# This ensures JupyterHub/2i2c starts correctly after the script finishes
-CMD ["start-notebook.sh"]
+# # This ensures JupyterHub/2i2c starts correctly after the script finishes
+# CMD ["start-notebook.sh"]
