@@ -67,5 +67,5 @@ RUN chmod +x /usr/local/bin/init-user.sh
 
 USER ${NB_USER}
 
-# This script will run every time the 2i2c container starts
+# This script returns control to base image's /srv/start after 
 ENTRYPOINT ["/usr/local/bin/init-user.sh"]
