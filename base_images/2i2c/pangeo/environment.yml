@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - pip=25.2
+  - pip=26.0
   - pip:
     - rio-tiler==8.0.5
     - maap-py==4.2.0
