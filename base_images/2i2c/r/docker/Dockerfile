@@ -55,4 +55,17 @@ RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
 # Clear conda's compiler paths to force use of system compiler
 RUN export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && \
     /scripts/install_cran_packages_r.sh
+
+RUN PYTHON_PATH=$(which python) && \
+    R_HOME=$(R RHOME) && \
+    echo "library(reticulate)" >> "$R_HOME/etc/Rprofile.site" && \
+    echo "use_python(\"$PYTHON_PATH\", required = TRUE)" >> "$R_HOME/etc/Rprofile.site" && \
+    echo "py_config()" >> "$R_HOME/etc/Rprofile.site"
+
+COPY scripts/init-user.sh /usr/local/bin/init-user.sh
+RUN chmod +x /usr/local/bin/init-user.sh
+
 USER ${NB_USER}
+
+# This script returns control to base image's /srv/start after 
+ENTRYPOINT ["/usr/local/bin/init-user.sh"]
