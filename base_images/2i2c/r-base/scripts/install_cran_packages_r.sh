@@ -14,7 +14,6 @@ Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "$R_LIB" -r
 Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "$R_LIB" -r "https://cran.r-project.org" -n "$NCPUS" "tidyterra"
 Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "$R_LIB" -r "https://cran.r-project.org" -n "$NCPUS" "BIOMASS"
 Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "$R_LIB" -r "https://cran.r-project.org" -n "$NCPUS" "nlraa"
-Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "$R_LIB" -r "https://cran.r-project.org" -n "$NCPUS" "essentials"
 Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "$R_LIB" -r "https://cran.r-project.org" -n "$NCPUS" "geojsonio"
 Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "$R_LIB" -r "https://cran.r-project.org" -n "$NCPUS" "future"
 Rscript /scripts/install2.r --error --skipmissing --skipinstalled -l "$R_LIB" -r "https://r-lidar.r-universe.dev" -n "$NCPUS" "lasR"
