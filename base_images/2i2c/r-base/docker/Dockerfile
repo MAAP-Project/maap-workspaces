@@ -60,6 +60,7 @@ RUN export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && \
 
 RUN PYTHON_PATH=$(which python) && \
     R_HOME=$(R RHOME) && \
+    echo "LD_LIBRARY_PATH=${CONDA_PREFIX}/lib" >> "$R_HOME/etc/Renviron.site" && \
     echo "library(reticulate)" >> "$R_HOME/etc/Rprofile.site" && \
     echo "use_python(\"$PYTHON_PATH\", required = TRUE)" >> "$R_HOME/etc/Rprofile.site" && \
     echo "py_config()" >> "$R_HOME/etc/Rprofile.site"
