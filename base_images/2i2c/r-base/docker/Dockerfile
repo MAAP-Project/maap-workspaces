@@ -46,8 +46,6 @@ RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
 
 RUN conda init
 
-RUN awscliv2 --install
-
 USER root
 SHELL ["/bin/bash", "-c"]
 ADD . /
