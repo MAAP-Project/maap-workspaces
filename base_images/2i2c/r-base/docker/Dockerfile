@@ -58,6 +58,9 @@ RUN export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && \
 
 RUN PYTHON_PATH=$(which python) && \
     R_HOME=$(R RHOME) && \
+    CONDA_LIB="${CONDA_DIR}/envs/${CONDA_ENV}/lib" && \
+    echo "# Preload conda OpenSSL libraries to prevent GDAL from loading system OpenSSL" >> "$R_HOME/etc/Rprofile.site" && \
+    echo "Sys.setenv(LD_PRELOAD = '$CONDA_LIB/libcrypto.so.3:$CONDA_LIB/libssl.so.3')" >> "$R_HOME/etc/Rprofile.site" && \
     echo "library(reticulate)" >> "$R_HOME/etc/Rprofile.site" && \
     echo "use_python(\"$PYTHON_PATH\", required = TRUE)" >> "$R_HOME/etc/Rprofile.site" && \
     echo "py_config()" >> "$R_HOME/etc/Rprofile.site"
