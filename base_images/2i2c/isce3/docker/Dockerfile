@@ -1,4 +1,4 @@
-FROM pangeo/base-notebook:2025.08.14
+FROM pangeo/base-notebook:2026.01.30
 ENV LANG=en_US.UTF-8
 ENV TZ=US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive

@@ -1,9 +1,7 @@
-FROM public.ecr.aws/nasa-veda/pangeo-notebook-veda-image:2025.12.30-v1
+FROM quay.io/pangeo/ml-notebook:2025.12.30
 ENV LANG=en_US.UTF-8
 ENV TZ=US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
-
-USER ${NB_USER}
 
 # Install additional packages from environment.yml
 COPY ./environment.yml /tmp
