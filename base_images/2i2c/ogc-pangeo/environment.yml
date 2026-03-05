@@ -1,0 +1,19 @@
+name: notebook
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - icu=78.2
+  - nodejs=22.22.0
+  - rustac=0.9.7
+  - pip=26.0
+  - pip:
+    - rio-tiler==8.0.5
+    - git+https://github.com/MAAP-Project/jupyter-server-extension.git@feature/major-refactor
+    - git+https://github.com/MAAP-Project/maap-py.git@develop
+    - git+https://github.com/MAAP-Project/algorithms-jupyter-extension.git@feature/major-refactor
+    - git+https://github.com/MAAP-Project/dps-jupyter-extension.git@feature/v1-ogc
+    # - maap-edsc-jupyter-extension==1.1.1
+    - maap-help-jupyter-extension==2.0.2
+    - maap-libs-jupyter-extension==1.2.5
+    - maap-user-workspace-management-jupyter-extension==1.0.0
