@@ -3,6 +3,7 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
+  - nodejs=24.14.1
   - pip=26.0
   - pip:
     - maap-py==4.2.0
