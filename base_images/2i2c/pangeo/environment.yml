@@ -5,8 +5,8 @@ channels:
 dependencies:
   - icu=78.2
   - nodejs=22.22.0
-  - rustac=0.9.7
-  - pip=26.0
+  - rustac=0.9.9
+  - pip=26.0.1
   - pip:
     - rio-tiler==8.0.5
     - maap-py==4.2.0

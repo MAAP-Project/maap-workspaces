@@ -5,6 +5,10 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 USER ${NB_USER}
 
+# Use sharded repodata for faster resolve times 
+RUN conda install --name base 'conda-libmamba-solver>=25.11.0' -y
+RUN conda config --set plugins.use_sharded_repodata true
+
 # Install additional packages from environment.yml
 COPY ./environment.yml /tmp
 RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
@@ -15,3 +19,11 @@ RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
 RUN conda init
 
 RUN jupyter server extension enable maap_jupyter_server_extension
+
+USER root
+COPY scripts/init-user.sh /usr/local/bin/init-user.sh
+RUN chmod +x /usr/local/bin/init-user.sh
+USER ${NB_USER}
+
+# This script returns control to base image's /srv/start after 
+ENTRYPOINT ["/usr/local/bin/init-user.sh"]
