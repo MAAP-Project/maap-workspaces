@@ -4,11 +4,17 @@ channels:
   - nodefaults
 dependencies:
   # Python packages only - NO R packages in conda
-  - gdal=3.10.2
-  - nodejs=20.19.5
+  - awscliv2
+  - code-server
+  - gdal=3.11.4
+  - nodejs>=22.21.1 #(22.21.1 worked before)
+  - pdal=2.9.2 #(2.9.2 worked before)
+  - rclone
   - rtree=1.4.1 
   - unzip=6.0
-  - pip=26.0
+  - python
+  - py-xgboost
+  - pip=26.0.1
   - pip:
     # - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6
     - morecantile==6.1.0

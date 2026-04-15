@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - pip=26.0
+  - pip=26.0.1
   - pip:
     - maap-py==4.2.0
     - maap-algorithms-jupyter-extension==0.5.1

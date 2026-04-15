@@ -30,9 +30,9 @@ done
 echo "" >> "$R_SITE_ENV"
 
 # Needed to run awsv2 and aws 
-awscliv2 --install
-CONDA_BIN=$(dirname $(which python))
-ln -sf $(which awsv2) "$CONDA_BIN/aws"
+# awscliv2 --install
+# CONDA_BIN=$(dirname $(which python))
+# ln -sf $(which awsv2) "$CONDA_BIN/aws"
 
 # Hand control to the base image's /srv/start which handles all initialization
 exec /srv/start "$@"

@@ -1,4 +1,4 @@
-FROM ghcr.io/nmfs-opensci/container-images/py-rocket-geospatial-2:2026.01.25
+FROM ghcr.io/nmfs-opensci/container-images/py-rocket-geospatial-2:2026.02.18
 ENV LANG=en_US.UTF-8
 ENV TZ=US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
@@ -14,7 +14,7 @@ RUN apt-get clean && apt-get update && \
     libfftw3-dev=3.3.10-1ubuntu3 \
     libgdal-dev=3.8.4+dfsg-3ubuntu3 \
     libgeos-dev=3.12.1-3build1 \
-    libgl1-mesa-dev=25.0.7-0ubuntu0.24.04.2 \
+    libgl1-mesa-dev \
     libglu1-mesa-dev=9.0.2-1.1build1 \
     libhdf4-alt-dev=4.2.16-4build1 \
     libhdf5-dev=1.10.10+repack-3.1ubuntu4 \
@@ -24,7 +24,7 @@ RUN apt-get clean && apt-get update && \
     libprotobuf-dev=3.21.12-8.2ubuntu0.2 \
     libnetcdf-dev=1:4.9.2-5ubuntu4 \
     libsqlite3-dev=3.45.1-1ubuntu2.5 \
-    libssl-dev=3.0.13-0ubuntu3.6 \
+    libssl-dev \
     libudunits2-dev=2.2.28-7build1 \
     netcdf-bin=1:4.9.2-5ubuntu4 \
     postgis=3.4.2+dfsg-1ubuntu3 \
@@ -37,6 +37,10 @@ RUN apt-get clean && apt-get update && \
 
 USER ${NB_USER}
 
+# Use sharded repodata for faster resolve times 
+RUN conda install --name base 'conda-libmamba-solver>=25.11.0' -y
+RUN conda config --set plugins.use_sharded_repodata true
+
 # Install additional packages from environment.yml
 COPY ./environment.yml /tmp
 RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
@@ -46,24 +50,26 @@ RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
 
 RUN conda init
 
-USER root
-SHELL ["/bin/bash", "-c"]
-ADD . /
-RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
-# Install R packages using SYSTEM R (not conda R)
-# Do NOT activate conda environment here
-# Clear conda's compiler paths to force use of system compiler
-RUN export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && \
-    /scripts/install_cran_packages_r.sh
+RUN conda list
 
-RUN PYTHON_PATH=$(which python) && \
-    R_HOME=$(R RHOME) && \
-    CONDA_LIB="${CONDA_DIR}/envs/${CONDA_ENV}/lib" && \
-    echo "# Preload conda OpenSSL libraries to prevent GDAL from loading system OpenSSL" >> "$R_HOME/etc/Rprofile.site" && \
-    echo "Sys.setenv(LD_PRELOAD = '$CONDA_LIB/libcrypto.so.3:$CONDA_LIB/libssl.so.3')" >> "$R_HOME/etc/Rprofile.site" && \
-    echo "library(reticulate)" >> "$R_HOME/etc/Rprofile.site" && \
-    echo "use_python(\"$PYTHON_PATH\", required = TRUE)" >> "$R_HOME/etc/Rprofile.site" && \
-    echo "py_config()" >> "$R_HOME/etc/Rprofile.site"
+USER root
+# SHELL ["/bin/bash", "-c"]
+# ADD . /
+# RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
+# # Install R packages using SYSTEM R (not conda R)
+# # Do NOT activate conda environment here
+# # Clear conda's compiler paths to force use of system compiler
+# RUN export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && \
+#     /scripts/install_cran_packages_r.sh
+
+# RUN PYTHON_PATH=$(which python) && \
+#     R_HOME=$(R RHOME) && \
+#     CONDA_LIB="${CONDA_DIR}/envs/${CONDA_ENV}/lib" && \
+#     echo "# Preload conda OpenSSL libraries to prevent GDAL from loading system OpenSSL" >> "$R_HOME/etc/Rprofile.site" && \
+#     echo "Sys.setenv(LD_PRELOAD = '$CONDA_LIB/libcrypto.so.3:$CONDA_LIB/libssl.so.3')" >> "$R_HOME/etc/Rprofile.site" && \
+#     echo "library(reticulate)" >> "$R_HOME/etc/Rprofile.site" && \
+#     echo "use_python(\"$PYTHON_PATH\", required = TRUE)" >> "$R_HOME/etc/Rprofile.site" && \
+#     echo "py_config()" >> "$R_HOME/etc/Rprofile.site"
 
 COPY scripts/init-user.sh /usr/local/bin/init-user.sh
 RUN chmod +x /usr/local/bin/init-user.sh
