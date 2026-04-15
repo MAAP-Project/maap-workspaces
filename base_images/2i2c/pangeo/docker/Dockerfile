@@ -25,5 +25,10 @@ COPY scripts/init-user.sh /usr/local/bin/init-user.sh
 RUN chmod +x /usr/local/bin/init-user.sh
 USER ${NB_USER}
 
+ARG IMAGE_REF
+ENV DOCKERIMAGE_PATH_BASE_IMAGE=${IMAGE_REF}
+ARG DEFAULT_DOCKERFILE_PATH
+ENV DOCKERIMAGE_PATH_DEFAULT=${DEFAULT_DOCKERFILE_PATH}
+
 # This script returns control to base image's /srv/start after 
 ENTRYPOINT ["/usr/local/bin/init-user.sh"]

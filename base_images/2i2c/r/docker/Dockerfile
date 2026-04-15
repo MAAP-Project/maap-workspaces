@@ -13,3 +13,8 @@ RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
     && ${CONDA_DIR}/bin/conda clean -afy
 
 RUN conda init
+
+ARG IMAGE_REF
+ENV DOCKERIMAGE_PATH_BASE_IMAGE=${IMAGE_REF}
+ARG DEFAULT_DOCKERFILE_PATH
+ENV DOCKERIMAGE_PATH_DEFAULT=${DEFAULT_DOCKERFILE_PATH}
