@@ -1,4 +1,5 @@
-FROM mas.dit.maap-project.org/root/maap-workspaces/2i2c/r-base:develop
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
 ENV LANG=en_US.UTF-8
 ENV TZ=US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
