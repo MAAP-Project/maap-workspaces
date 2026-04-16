@@ -10,6 +10,7 @@ RUN wget -O Miniforge3-installer.sh https://github.com/conda-forge/miniforge/rel
     bash Miniforge3-installer.sh -b -p /opt/conda && \
     chgrp -R conda-users /opt/conda/ && chmod -R 775 /opt/conda/ && \
     /opt/conda/bin/conda clean -afy && \
+    rm Miniforge3-installer.sh && \
     echo "source /opt/conda/etc/profile.d/conda.sh" >> /root/.bashrc
 
 ENV PATH=/opt/conda/bin:$PATH
