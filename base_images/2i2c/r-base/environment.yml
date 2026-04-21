@@ -4,8 +4,8 @@ channels:
   - nodefaults
 dependencies:
   # Python packages only - NO R packages in conda
-  - awscliv2
-  - code-server
+  - awscliv2>=2.1.1
+  - code-server>=4.0.1
   - gdal=3.11.4
   - nodejs>=22.21.1 #(22.21.1 worked before)
   - pdal=2.9.2 #(2.9.2 worked before)
