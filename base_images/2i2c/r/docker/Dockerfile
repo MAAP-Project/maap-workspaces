@@ -13,3 +13,13 @@ RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
     && ${CONDA_DIR}/bin/conda clean -afy
 
 RUN conda init
+
+RUN jupyter server extension enable maap_jupyter_server_extension
+
+USER root
+COPY scripts/init-user.sh /usr/local/bin/init-user.sh
+RUN chmod +x /usr/local/bin/init-user.sh
+USER ${NB_USER}
+
+# This script returns control to base image's /srv/start after 
+ENTRYPOINT ["/usr/local/bin/init-user.sh"]

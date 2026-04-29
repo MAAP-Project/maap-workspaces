@@ -12,7 +12,7 @@ dependencies:
   - rclone
   - rtree=1.4.1 
   - unzip=6.0
-  - python
+  - python>=3.9.0
   - py-xgboost
   - pip=26.0.1
   - pip:
