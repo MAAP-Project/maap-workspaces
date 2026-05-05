@@ -4,8 +4,10 @@ channels:
   - nodefaults
 dependencies:
   # Python packages only - NO R packages in conda
-  - gdal>3.10.2
-  - nodejs>20.19.5
+  - gdal>=3.10.3
+  - nodejs>=20.20.2
+  - pdal>=2.8.4 #(2.8.4 works)
+  - rclone=1.74.0
   - rtree=1.4.1 
   - unzip=6.0
   - python
