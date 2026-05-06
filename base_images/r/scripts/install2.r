@@ -31,7 +31,7 @@
 
 ## load docopt package from CRAN
 # Grace Llewellyn added the repos parameter to fix a bug 
-install.packages('docopt', repos = "http://cran.us.r-project.org") 
+install.packages('docopt', repos = "https://cloud.r-project.org") 
 library(docopt)
 
 ## default to first library location in .libPaths()

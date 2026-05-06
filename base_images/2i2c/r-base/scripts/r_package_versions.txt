@@ -1,5 +1,5 @@
 Since it is difficult to pin the version for R packages because once the current package we have pinned goes
-into the archives because a new package was released, the link like https://cran.r-project.org/src/contrib/codetools_0.2-20.tar.gz
+into the archives because a new package was released, the link like https://cloud.r-project.org/src/contrib/codetools_0.2-20.tar.gz
 will break because archive needs to be added to the url for that version 
 To avoid constantly having to update these links, I propose we just record the package versions for our R packages
 in this text file in case we need to reference them later 

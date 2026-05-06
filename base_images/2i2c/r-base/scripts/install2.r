@@ -33,7 +33,7 @@
 # Grace Llewellyn added the repos parameter to fix a bug
 # Use first library location in .libPaths() for consistent installation
 libloc <- .libPaths()[1]
-install.packages('docopt', repos = "http://cran.us.r-project.org", lib = libloc)
+install.packages('docopt', repos = "https://cloud.r-project.org", lib = libloc)
 library(docopt)
 
 ## configuration for docopt
