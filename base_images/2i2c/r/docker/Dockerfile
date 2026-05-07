@@ -1,4 +1,4 @@
-FROM mas.dit.maap-project.org/root/maap-workspaces/2i2c/r-base:develop
+FROM r-base-pak:latest
 ENV LANG=en_US.UTF-8
 ENV TZ=US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
@@ -14,7 +14,7 @@ RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
 
 RUN conda init
 
-RUN jupyter server extension enable maap_jupyter_server_extension
+#RUN jupyter server extension enable maap_jupyter_server_extension
 
 USER root
 COPY scripts/init-user.sh /usr/local/bin/init-user.sh
