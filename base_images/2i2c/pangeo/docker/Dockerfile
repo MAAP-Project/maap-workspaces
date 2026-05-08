@@ -18,8 +18,6 @@ RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
 
 RUN conda init
 
-RUN jupyter server extension enable maap_jupyter_server_extension
-
 USER root
 COPY scripts/init-user.sh /usr/local/bin/init-user.sh
 RUN chmod +x /usr/local/bin/init-user.sh

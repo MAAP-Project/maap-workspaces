@@ -6,7 +6,7 @@ dependencies:
   # Dependencies for VS Code IDE
   - code-server>=3.2
   - jupyter-vscode-proxy=0.7
-  - pre_commit=3.4.0
+  - pre_commit
   # Upgrade from ml notebook image
   - earthaccess>=0.16.0
   # Pin down to avoid https://github.com/holoviz/pyviz_comms/issues/143
