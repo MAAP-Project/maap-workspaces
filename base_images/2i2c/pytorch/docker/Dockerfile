@@ -1,4 +1,4 @@
-FROM quay.io/pangeo/pytorch-notebook:2025.12.30
+FROM quay.io/pangeo/pytorch-notebook:2026.04.29
 ENV LANG=en_US.UTF-8
 ENV TZ=US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive

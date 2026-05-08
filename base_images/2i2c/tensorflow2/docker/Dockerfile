@@ -1,4 +1,4 @@
-FROM quay.io/pangeo/ml-notebook:2025.12.30
+FROM quay.io/pangeo/ml-notebook:2026.04.29
 ENV LANG=en_US.UTF-8
 ENV TZ=US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
@@ -11,5 +11,3 @@ RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
     && ${CONDA_DIR}/bin/conda clean -afy
 
 RUN conda init
-
-RUN jupyter server extension enable maap_jupyter_server_extension

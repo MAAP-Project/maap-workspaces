@@ -52,14 +52,14 @@ dependencies:
   - unidecode=1.4.0
   - unzip=6.0
   - xarray=2026.4.0
-  - pip=26.0.1
+  - pip=26.1.1
   - pip:
-    - jupyter-resource-usage==1.2.0
+    - jupyter-resource-usage==1.2.1
     - jupyter-sshd-proxy==0.3.0
     - jupyterlab-bxplorer==0.2.30
     # - git+https://github.com/MAAP-Project/stac_ipyleaflet.git@0.3.6
-    - morecantile==6.1.0
-    - rio-tiler==7.2.2
+    - morecantile==7.0.3
+    - rio-tiler==9.0.6
     - maap-py==4.2.0
     - maap-algorithms-jupyter-extension==0.5.1
     - maap-jupyter-server-extension==3.0.0

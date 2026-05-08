@@ -6,9 +6,9 @@ dependencies:
   - icu=78.2
   - nodejs=22.22.0
   - rustac=0.9.9
-  - pip=26.0.1
+  - pip=26.1.1
   - pip:
-    - rio-tiler==8.0.5
+    - rio-tiler==9.0.6
     - maap-py==4.2.0
     - maap-algorithms-jupyter-extension==0.5.1
     - maap-jupyter-server-extension==3.0.0
