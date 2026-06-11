@@ -37,6 +37,10 @@ RUN apt-get clean && apt-get update && \
 
 USER ${NB_USER}
 
+# Use sharded repodata for faster resolve times 
+RUN conda install --name base 'conda-libmamba-solver>=25.11.0' -y
+RUN conda config --set plugins.use_sharded_repodata true
+
 # Install additional packages from environment.yml
 COPY ./environment.yml /tmp
 RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
@@ -47,6 +51,14 @@ RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
 RUN conda init
 
 USER root
+
+# Set default CRAN mirror to use pre-built binaries from Posit Package Manager
+RUN R_HOME=$(R RHOME) && \
+    echo "options(repos = c(CRAN = 'https://packagemanager.posit.co/cran/__linux__/noble/latest'))" >> "$R_HOME/etc/Rprofile.site"
+
+# Install pak for better package management
+RUN Rscript -e "install.packages('pak', repos = sprintf('https://r-lib.github.io/p/pak/devel/%s/%s/%s', .Platform\$pkgType, R.Version()\$os, R.Version()\$arch))"
+
 SHELL ["/bin/bash", "-c"]
 ADD . /
 RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]

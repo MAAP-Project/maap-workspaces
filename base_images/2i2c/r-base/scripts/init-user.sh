@@ -3,7 +3,7 @@
 R_SITE_ENV=$(R RHOME)/etc/Renviron.site
 
 # Variables we want to add to Renviron
-VARS=("AWS_ROLE_ARN" "AWS_WEB_IDENTITY_TOKEN_FILE" "AWS_DEFAULT_REGION" "MAAP_PGT")
+VARS=("AWS_ROLE_ARN" "AWS_WEB_IDENTITY_TOKEN_FILE" "AWS_DEFAULT_REGION")
 
 echo "--- Updating R Site Environment Variables ---"
 
