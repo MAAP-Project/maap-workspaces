@@ -6,6 +6,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 USER root
 RUN apt-get update -y && apt-get install -y vim wget git && \
     apt-get clean all
+RUN mkdir -p /home/jovyan/.cache && chown -R 1000:100 /home/jovyan/.cache
 
 # Use sharded repodata for faster resolve times 
 RUN conda install --name base 'conda-libmamba-solver>=25.11.0' -y
