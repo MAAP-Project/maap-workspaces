@@ -16,10 +16,10 @@ dependencies:
   - pip:
     - jupyter-sshd-proxy==0.3.0
     - jupyterlab-bxplorer==0.2.30
-    - git+https://github.com/MAAP-Project/jupyter-server-extension.git@v3.0.0
+    - git+https://github.com/MAAP-Project/jupyter-server-extension.git@develop
     - git+https://github.com/MAAP-Project/maap-py.git@v5.1.0a2
-    - git+https://github.com/MAAP-Project/algorithms-jupyter-extension.git@v1.0.0
-    - git+https://github.com/MAAP-Project/dps-jupyter-extension.git@v2.0.0
+    - git+https://github.com/MAAP-Project/algorithms-jupyter-extension.git@develop
+    - git+https://github.com/MAAP-Project/dps-jupyter-extension.git@develop
     # - maap-edsc-jupyter-extension==1.1.1
     - maap-help-jupyter-extension==2.0.2
     - maap-libs-jupyter-extension==1.2.5
