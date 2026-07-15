@@ -1,4 +1,5 @@
-FROM mas.dit.maap-project.org/root/maap-workspaces/2i2c/r-base:develop
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
 ENV LANG=en_US.UTF-8
 ENV TZ=US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
@@ -13,3 +14,16 @@ RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
     && ${CONDA_DIR}/bin/conda clean -afy
 
 RUN conda init
+
+ARG IMAGE_REF
+ENV DOCKERIMAGE_PATH_BASE_IMAGE=${IMAGE_REF}
+ARG DEFAULT_DOCKERFILE_PATH
+ENV DOCKERIMAGE_PATH_DEFAULT=${DEFAULT_DOCKERFILE_PATH}
+
+USER root
+COPY scripts/init-user.sh /usr/local/bin/init-user.sh
+RUN chmod +x /usr/local/bin/init-user.sh
+USER ${NB_USER}
+
+# This script returns control to base image's /srv/start after, need this for rclone
+ENTRYPOINT ["/usr/local/bin/init-user.sh"]

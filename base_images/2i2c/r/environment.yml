@@ -3,13 +3,13 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - pip=26.0
+  - pip=26.1.1
   - pip:
-    - maap-py==4.2.0
-    - maap-algorithms-jupyter-extension==0.5.1
-    - maap-jupyter-server-extension==3.0.0
-    - maap-dps-jupyter-extension==0.7.7
+    - git+https://github.com/MAAP-Project/jupyter-server-extension.git@v3.0.0
+    - git+https://github.com/MAAP-Project/maap-py.git@v5.1.0a2
+    - git+https://github.com/MAAP-Project/algorithms-jupyter-extension.git@v1.0.0
+    - git+https://github.com/MAAP-Project/dps-jupyter-extension.git@v2.0.0
     # - maap-edsc-jupyter-extension==1.1.1
     - maap-help-jupyter-extension==2.0.2
     - maap-libs-jupyter-extension==1.2.5
-    - maap-user-workspace-management-jupyter-extension==1.0.0
+    - git+https://github.com/MAAP-Project/user-workspace-management-jupyter-extension.git@develop

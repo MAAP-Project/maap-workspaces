@@ -6,6 +6,8 @@ dependencies:
   # Python packages only - NO R packages in conda
   - gdal=3.10.2
   - nodejs=20.19.5
+  - pdal=2.8.4
+  - rclone=1.74.2
   - rtree=1.4.1 
   - unzip=6.0
   - pip=26.0

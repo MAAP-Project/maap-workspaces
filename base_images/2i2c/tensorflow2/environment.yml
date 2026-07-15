@@ -6,7 +6,7 @@ dependencies:
   # Dependencies for VS Code IDE
   - code-server>=3.2
   - jupyter-vscode-proxy=0.7
-  - pre_commit=3.4.0
+  - pre_commit
   # Upgrade from ml notebook image
   - earthaccess>=0.16.0
   # Pin down to avoid https://github.com/holoviz/pyviz_comms/issues/143
@@ -16,10 +16,11 @@ dependencies:
   - pip:
     - jupyter-sshd-proxy==0.3.0
     - jupyterlab-bxplorer==0.2.30
-    - maap-py==4.2.0
-    - maap-algorithms-jupyter-extension==0.5.1
-    - maap-jupyter-server-extension==3.0.0
-    - maap-dps-jupyter-extension==0.7.7
+    - git+https://github.com/MAAP-Project/jupyter-server-extension.git@v3.0.0
+    - git+https://github.com/MAAP-Project/maap-py.git@v5.1.0a2
+    - git+https://github.com/MAAP-Project/algorithms-jupyter-extension.git@v1.0.0
+    - git+https://github.com/MAAP-Project/dps-jupyter-extension.git@v2.0.0
+    # - maap-edsc-jupyter-extension==1.1.1
     - maap-help-jupyter-extension==2.0.2
     - maap-libs-jupyter-extension==1.2.5
-    - maap-user-workspace-management-jupyter-extension==1.0.0
+    - git+https://github.com/MAAP-Project/user-workspace-management-jupyter-extension.git@develop

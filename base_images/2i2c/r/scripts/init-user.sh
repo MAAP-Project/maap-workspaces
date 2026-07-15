@@ -1,9 +1,10 @@
 #!/bin/bash
 
+# First, set up R environment variables from r-base init script
 R_SITE_ENV=$(R RHOME)/etc/Renviron.site
 
 # Variables we want to add to Renviron
-VARS=("AWS_ROLE_ARN" "AWS_WEB_IDENTITY_TOKEN_FILE" "AWS_DEFAULT_REGION")
+VARS=("AWS_ROLE_ARN" "AWS_WEB_IDENTITY_TOKEN_FILE" "AWS_DEFAULT_REGION" "MAAP_PGT")
 
 echo "--- Updating R Site Environment Variables ---"
 
@@ -33,6 +34,10 @@ echo "" >> "$R_SITE_ENV"
 awscliv2 --install
 CONDA_BIN=$(dirname $(which python))
 ln -sf $(which awsv2) "$CONDA_BIN/aws"
+
+# Now set up rclone
+REGION="${AWS_DEFAULT_REGION:-us-west-2}"
+rclone config create maap-s3 s3 provider=AWS env_auth=true region="$REGION" no_check_bucket true
 
 # Hand control to the base image's /srv/start which handles all initialization
 exec /srv/start "$@"
