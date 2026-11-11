@@ -1,8 +1,0 @@
----
-displayName: "R/Python"
-description: "R/Python MAAP workspace (version 4.2.0)"
-tags: ["Python", "R", "JupyterLab", "MAAP"]
-icon: /devfiles/r/devfile/r.png
-links: 
-  self: "/devfiles/r/devfile/devfile.yaml"
-globalMemoryLimit: 2710Mi
