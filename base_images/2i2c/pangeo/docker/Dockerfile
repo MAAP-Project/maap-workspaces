@@ -1,13 +1,9 @@
-FROM public.ecr.aws/nasa-veda/pangeo-notebook-veda-image:2025.12.30-v1
+FROM public.ecr.aws/nasa-veda/pangeo-notebook-veda-image:2026.10.21-v1
 ENV LANG=en_US.UTF-8
 ENV TZ=US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
 
 USER ${NB_USER}
-
-# Use sharded repodata for faster resolve times 
-RUN conda install --name base 'conda-libmamba-solver>=25.11.0' -y
-RUN conda config --set plugins.use_sharded_repodata true
 
 # Install additional packages from environment.yml
 COPY ./environment.yml /tmp

@@ -3,12 +3,10 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - icu=78.2
-  - nodejs=22.22.0
-  - rustac=0.9.9
+  - rustac=0.9.19
   - pip=26.1.1
   - pip:
-    - rio-tiler==9.0.6
+    - rio-tiler==9.4.13
     - git+https://github.com/MAAP-Project/jupyter-server-extension.git@v3.0.0
     - git+https://github.com/MAAP-Project/maap-py.git@v5.1.0a2
     - git+https://github.com/MAAP-Project/algorithms-jupyter-extension.git@v1.0.0
