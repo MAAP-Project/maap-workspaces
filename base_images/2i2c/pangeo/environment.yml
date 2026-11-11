@@ -3,8 +3,6 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - icu=78.2
-  - nodejs=22.22.0
   - rustac=0.9.9
   - pip=26.1.1
   - pip:
