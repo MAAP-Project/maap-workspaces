@@ -1,4 +1,4 @@
-FROM pangeo/base-notebook:2026.01.30
+FROM pangeo/base-notebook:2026.10.21
 ENV LANG=en_US.UTF-8
 ENV TZ=US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive
@@ -7,10 +7,6 @@ USER root
 RUN apt-get update -y && apt-get install -y vim wget git && \
     apt-get clean all
 RUN mkdir -p /home/jovyan/.cache && chown -R 1000:100 /home/jovyan/.cache
-
-# Use sharded repodata for faster resolve times 
-RUN conda install --name base 'conda-libmamba-solver>=25.11.0' -y
-RUN conda config --set plugins.use_sharded_repodata true
 
 USER ${NB_USER}
 
