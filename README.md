@@ -12,4 +12,13 @@ Published with the most recent version of the isce3 conda package
 # R
 Built from rocker binder base image with important packages installed on top 
 
+# Tensorflow2
+Built from Pangeo ml notebook 
+
+# Pytorch 
+Built from Pangeo pytorch-notebook
+
+# MAAP base
+Minimalist MAAP base image 
+
 More documentation here: https://docs.maap-project.org/en/latest/system_reference_guide/create_workspace.html

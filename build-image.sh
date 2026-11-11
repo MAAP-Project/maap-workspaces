@@ -4,7 +4,7 @@ set -ex
 base_image_dir=$(dirname $0)
 # Check if on a branch or in a detached HEAD state get commit sha
 BRANCH=$(basename $(git symbolic-ref -q --short HEAD || git rev-parse --short HEAD))
-DIRS="python isce3 pangeo r pytorch tensorflow2"
+DIRS="python isce3 pangeo r pytorch tensorflow2 maap_base"
 if [[ ! -z "$@" ]]; then
     DIRS=$@
 fi

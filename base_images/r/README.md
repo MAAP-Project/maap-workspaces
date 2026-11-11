@@ -1,1 +1,0 @@
-Codebase for R image is here: https://github.com/MAAP-Project/maap-r-image
