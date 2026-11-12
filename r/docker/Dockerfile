@@ -6,8 +6,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 USER ${NB_USER}
 
 # Install shared MAAP extensions
-COPY ../maap-extensions-versions.txt /tmp/
-RUN ${CONDA_DIR}/bin/pip install -r /tmp/maap-extensions-versions.txt
+COPY maap-extensions-versions.txt /tmp/
+RUN ${CONDA_DIR}/envs/${CONDA_ENV}/bin/pip install -r /tmp/maap-extensions-versions.txt
 
 # TODO graceal evaluate if this is needed
 RUN conda init
@@ -18,7 +18,7 @@ ARG DEFAULT_DOCKERFILE_PATH
 ENV DOCKERIMAGE_PATH_DEFAULT=${DEFAULT_DOCKERFILE_PATH}
 
 USER root
-COPY scripts/init-user.sh /usr/local/bin/init-user.sh
+COPY r/scripts/init-user.sh /usr/local/bin/init-user.sh
 RUN chmod +x /usr/local/bin/init-user.sh
 USER ${NB_USER}
 

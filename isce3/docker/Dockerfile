@@ -14,20 +14,20 @@ RUN conda config --set plugins.use_sharded_repodata true
 
 USER ${NB_USER}
 
-COPY ./environment.yml /tmp
+COPY isce3/environment.yml /tmp
 RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
     && find /srv/conda/ -follow -type f -name '*.a' -delete \
     && find /srv/conda/ -follow -type f -name '*.js.map' -delete \
     && /srv/conda/bin/conda clean -afy
 
 # Install shared MAAP extensions
-COPY ../maap-extensions-versions.txt /tmp/
-RUN /srv/conda/bin/pip install -r /tmp/maap-extensions-versions.txt
+COPY maap-extensions-versions.txt /tmp/
+RUN /srv/conda/envs/${CONDA_ENV}/bin/pip install -r /tmp/maap-extensions-versions.txt
 
 RUN conda init
 
 USER root
-COPY scripts/init-user.sh /usr/local/bin/init-user.sh
+COPY isce3/scripts/init-user.sh /usr/local/bin/init-user.sh
 RUN chmod +x /usr/local/bin/init-user.sh
 USER ${NB_USER}
 

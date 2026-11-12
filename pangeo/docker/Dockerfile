@@ -10,20 +10,20 @@ RUN conda install --name base 'conda-libmamba-solver>=25.11.0' -y
 RUN conda config --set plugins.use_sharded_repodata true
 
 # Install additional packages from environment.yml
-COPY ./environment.yml /tmp
+COPY pangeo/environment.yml /tmp
 RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
     && find ${CONDA_DIR}/ -follow -type f -name '*.a' -delete \
     && find ${CONDA_DIR}/ -follow -type f -name '*.js.map' -delete \
     && ${CONDA_DIR}/bin/conda clean -afy
 
 # Install shared MAAP extensions
-COPY ../maap-extensions-versions.txt /tmp/
-RUN ${CONDA_DIR}/bin/pip install -r /tmp/maap-extensions-versions.txt
+COPY maap-extensions-versions.txt /tmp/
+RUN ${CONDA_DIR}/envs/${CONDA_ENV}/bin/pip install -r /tmp/maap-extensions-versions.txt
 
 RUN conda init
 
 USER root
-COPY scripts/init-user.sh /usr/local/bin/init-user.sh
+COPY pangeo/scripts/init-user.sh /usr/local/bin/init-user.sh
 RUN chmod +x /usr/local/bin/init-user.sh
 USER ${NB_USER}
 
