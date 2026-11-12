@@ -20,6 +20,10 @@ RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
     && find /srv/conda/ -follow -type f -name '*.js.map' -delete \
     && /srv/conda/bin/conda clean -afy
 
+# Install shared MAAP extensions
+COPY ../maap-extensions-versions.txt /tmp/
+RUN /srv/conda/bin/pip install -r /tmp/maap-extensions-versions.txt
+
 RUN conda init
 
 USER root
