@@ -18,7 +18,7 @@ dependencies:
   - h5py
   - hdf5
   - hvplot
-  - isce3=0.25.22=py312h* # Force CPU-only build (excludes CUDA builds)
+  - isce3=0.25.22=py313h* # Force CPU-only build (excludes CUDA builds)
   - jupyter-vscode-proxy
   - libcurl
   - libexpat
