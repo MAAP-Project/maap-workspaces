@@ -3,57 +3,18 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - anywidget
-  - awscli
-  - backoff
-  - boto3
-  - code-server
-  - cython
-  - earthaccess
-  - earthengine-api
-  - fsspec
-  - gdal
-  - geopandas
-  - groff
-  - h5py
-  - hdf5
-  - hvplot
+  - code-server>=3.2
+  - earthaccess>=0.16.0
   - isce3=0.25.22=py313h* # Force CPU-only build (excludes CUDA builds)
   - jupyter-vscode-proxy
-  - libcurl
-  - libexpat
-  - libpng
-  - lonboard
-  - mapclassify
-  - matplotlib
-  - mpl-scatter-density
-  - nodejs
-  - numba
-  - numpy
   - openssh
-  - pandas
   - pre_commit
-  - pycurl
-  - pyproj
-  - pyopenssl
-  - pyviz_comms
-  #- rasterstats
-  #- rio-cogeo
-  - rclone
-  - rtree
-  - s3fs
-  - scikit-learn
-  - scipy
-  - seaborn
-  - shapely
-  - sliderule
-  - statsmodels
-  - tqdm
-  - unidecode
-  - unzip
-  - xarray
+  # Pin down to avoid https://github.com/holoviz/pyviz_comms/issues/143
+  - pyviz_comms==3.0.4
   - pip
   - pip:
+    # Install via pip to avoid conda datafusion/libabseil solver conflicts with py3.12.
+    - arbalister
     - jupyter-resource-usage==1.3.0
     - jupyter-sshd-proxy==0.3.0
     - jupyterlab-bxplorer==0.2.32
