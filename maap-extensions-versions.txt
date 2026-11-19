@@ -1,0 +1,15 @@
+# MAAP Jupyter Extensions - Centralized Version Management
+#
+# This file is the single source of truth for MAAP extension versions across all images.
+# To update MAAP extension versions, modify this file only - changes will apply to all images.
+#
+# Used by images: pangeo, isce3, pytorch, tensorflow2
+# Not used by: maap_base, r-base, r
+
+git+https://github.com/MAAP-Project/jupyter-server-extension.git@v3.0.0
+git+https://github.com/MAAP-Project/maap-py.git@v5.1.0a2
+git+https://github.com/MAAP-Project/algorithms-jupyter-extension.git@v1.0.0
+git+https://github.com/MAAP-Project/dps-jupyter-extension.git@v2.0.0
+maap-help-jupyter-extension==2.0.2
+maap-libs-jupyter-extension==1.2.5
+git+https://github.com/MAAP-Project/user-workspace-management-jupyter-extension.git@develop
