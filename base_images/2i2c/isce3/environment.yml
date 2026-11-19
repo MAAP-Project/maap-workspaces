@@ -3,11 +3,27 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  # - code-server>=4.137.0
-  # - earthaccess>=0.16.0
+  # Force upgrade AWS SDK stack to be compatible with hdf5 2.2.0
+  - aws-c-common>=0.14.3
+  - aws-c-auth>=1.0.2
+  - aws-c-cal>=0.9.15
+  - aws-c-compression>=0.3.2
+  - aws-c-event-stream>=0.7.1
+  - aws-c-http>=1.0.0
+  - aws-c-io>=1.1.2
+  - aws-c-s3>=0.13.1
+  - aws-c-sdkutils>=0.2.7
+  - aws-sdk-cpp>=1.11.833
+  - awscrt>=0.36.0
+  # Force upgrade to satisfy isce3 requirements
   - hdf5>=2.2.0
   - giflib>=6.1.3
   - blosc>=1.21.7
+  - libgdal-core>=3.13.3
+  - libexpat>=2.9.0
+  - icu>=78.3
+  - libaec>=1.1.7
+  # Now install isce3
   - isce3=0.25.22=py313h* # Force CPU-only build (excludes CUDA builds)
   # - jupyter-vscode-proxy=0.7
   # - openssh>=8.6p1
