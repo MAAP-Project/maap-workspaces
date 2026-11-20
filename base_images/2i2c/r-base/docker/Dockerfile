@@ -18,6 +18,7 @@ RUN apt-get clean && apt-get update && \
     libglu1-mesa-dev \
     libhdf4-dev \
     libhdf5-dev \
+    libicu-dev \
     libjq-dev \
     libpq-dev \
     libproj-dev \
@@ -26,6 +27,7 @@ RUN apt-get clean && apt-get update && \
     libsqlite3-dev \
     libssl-dev \
     libudunits2-dev \
+    libxml2-dev \
     netcdf-bin \
     postgis \
     protobuf-compiler \
@@ -46,6 +48,9 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 USER ${NB_USER}
 
 # TODO graceal install MAAP extensions 
+# Install Google Earth Engine Python package for rgee
+RUN pip install --no-cache-dir earthengine-api
+
 
 USER root
 
