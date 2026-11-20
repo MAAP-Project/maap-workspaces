@@ -1,6 +1,6 @@
-#FROM pangeo/base-notebook:2026.10.21
+FROM pangeo/base-notebook:2026.10.21
 #FROM pangeo/pangeo-notebook:2026.10.21
-FROM public.ecr.aws/nasa-veda/pangeo-notebook-veda-image:2026.10.21-v1
+#FROM public.ecr.aws/nasa-veda/pangeo-notebook-veda-image:2026.10.21-v1
 ENV LANG=en_US.UTF-8
 ENV TZ=US/Pacific
 ARG DEBIAN_FRONTEND=noninteractive

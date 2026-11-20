@@ -3,34 +3,50 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  # Force upgrade AWS SDK stack to be compatible with hdf5 2.2.0
-  - aws-c-common>=0.14.3
-  - aws-c-auth>=1.0.2
-  - aws-c-cal>=0.9.15
-  - aws-c-compression>=0.3.2
-  - aws-c-event-stream>=0.7.1
-  - aws-c-http>=1.0.0
-  - aws-c-io>=1.1.2
-  - aws-c-s3>=0.13.1
-  - aws-c-sdkutils>=0.2.7
-  - aws-sdk-cpp>=1.11.833
-  - awscrt>=0.36.0
-  # Force upgrade to satisfy isce3 requirements
-  - hdf5>=2.2.0
-  - giflib>=6.1.3
-  - blosc>=1.21.7
-  - libgdal-core>=3.13.3
-  - libexpat>=2.9.0
-  - icu>=78.3
-  - libaec>=1.1.7
-  # Now install isce3
-  - isce3=0.25.22=py313h* # Force CPU-only build (excludes CUDA builds)
-  # - jupyter-vscode-proxy=0.7
-  # - openssh>=8.6p1
-  # - pre_commit=4.7.0
-  # # Pin down to avoid https://github.com/holoviz/pyviz_comms/issues/143
-  # - pyviz_comms=3.0.4
-  - pip
+  - anywidget
+  - awscli
+  - backoff
+  - boto3
+  - code-server
+  - cython
+  - earthaccess
+  - earthengine-api
+  - gdal
+  - geopandas
+  - groff
+  - h5py
+  - hdf5
+  - hvplot
+  - isce3=0.25.23=py313h* # Force CPU-only build (excludes CUDA builds)
+  - jupyter-vscode-proxy
+  - lonboard
+  - mapclassify
+  - matplotlib
+  - mpl-scatter-density
+  - nodejs
+  - numba
+  - openssh
+  - pre_commit
+  - pycurl
+  - pyproj
+  - pyopenssl
+  - pyviz_comms
+  #- rasterstats
+  #- rio-cogeo
+  - rclone
+  - rtree
+  - s3fs
+  - scikit-learn
+  - scipy
+  - seaborn
+  - shapely
+  - sliderule
+  - statsmodels
+  - tqdm
+  - unidecode
+  - unzip
+  - xarray
+  - pip=26.2.2
   - pip:
     # Install via pip to avoid conda datafusion/libabseil solver conflicts with py3.12.
     # - arbalister==0.2.3
