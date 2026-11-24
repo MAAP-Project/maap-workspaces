@@ -1,0 +1,10 @@
+name: notebook
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - rustac=0.9.19
+  - pip=26.3
+  - pip:
+    # MAAP extensions are installed from ../maap-extensions-versions.txt
+    - rio-tiler==9.4.13
