@@ -1,0 +1,38 @@
+#FROM pangeo/base-notebook:2026.10.21
+#FROM pangeo/pangeo-notebook:2026.10.21
+FROM public.ecr.aws/nasa-veda/pangeo-notebook-veda-image:2026.10.21-v1
+ENV LANG=en_US.UTF-8
+ENV TZ=US/Pacific
+ARG DEBIAN_FRONTEND=noninteractive
+
+USER root
+RUN apt-get update -y && apt-get install -y vim wget git && \
+    apt-get clean all
+RUN mkdir -p /home/jovyan/.cache && chown -R 1000:100 /home/jovyan/.cache
+
+USER ${NB_USER}
+
+COPY isce3/environment.yml /tmp
+RUN conda env update -n ${CONDA_ENV} -f "/tmp/environment.yml" \
+    && find /srv/conda/ -follow -type f -name '*.a' -delete \
+    && find /srv/conda/ -follow -type f -name '*.js.map' -delete \
+    && /srv/conda/bin/conda clean -afy
+
+# Install shared MAAP extensions
+COPY maap-extensions-versions.txt /tmp/
+RUN /srv/conda/envs/${CONDA_ENV}/bin/pip install -r /tmp/maap-extensions-versions.txt
+
+RUN conda init
+
+USER root
+COPY isce3/scripts/init-user.sh /usr/local/bin/init-user.sh
+RUN chmod +x /usr/local/bin/init-user.sh
+USER ${NB_USER}
+
+ARG IMAGE_REF
+ENV DOCKERIMAGE_PATH_BASE_IMAGE=${IMAGE_REF}
+ARG DEFAULT_DOCKERFILE_PATH
+ENV DOCKERIMAGE_PATH_DEFAULT=${DEFAULT_DOCKERFILE_PATH}
+
+# This script returns control to base image's /srv/start after 
+ENTRYPOINT ["/usr/local/bin/init-user.sh"]
