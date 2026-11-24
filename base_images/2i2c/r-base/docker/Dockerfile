@@ -48,10 +48,12 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 # Install runtime libraries that R packages need to load
 # libxml2-dev includes the runtime library, but we ensure it's present
 # libicu-dev provides the ICU libraries needed by stringi
+# Reinstall xml2, XML, and stringi from source to compile against current system libraries
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libxml2-dev \
     libicu-dev \
     && Rscript -e "install.packages('xml2', type = 'source', repos = 'https://cloud.r-project.org')" \
+    && Rscript -e "install.packages('XML', type = 'source', repos = 'https://cloud.r-project.org')" \
     && Rscript -e "install.packages('stringi', type = 'source', repos = 'https://cloud.r-project.org')" \
     && rm -rf /var/lib/apt/lists/*
 
