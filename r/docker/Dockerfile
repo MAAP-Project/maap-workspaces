@@ -7,10 +7,7 @@ USER ${NB_USER}
 
 # Install shared MAAP extensions
 COPY maap-extensions-versions.txt /tmp/
-RUN ${CONDA_DIR}/envs/${CONDA_ENV}/bin/pip install -r /tmp/maap-extensions-versions.txt
-
-# TODO graceal evaluate if this is needed
-RUN conda init
+RUN pip install -r /tmp/maap-extensions-versions.txt
 
 ARG IMAGE_REF
 ENV DOCKERIMAGE_PATH_BASE_IMAGE=${IMAGE_REF}

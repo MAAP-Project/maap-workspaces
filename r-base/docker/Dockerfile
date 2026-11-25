@@ -45,12 +45,18 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     ./aws/install && \
     rm -rf aws awscliv2.zip
 
+# Install runtime libraries that R packages need to load
+# libxml2-dev includes the runtime library, but we ensure it's present
+# libicu-dev provides the ICU libraries needed by stringi
+# Reinstall xml2, XML, and stringi from source to compile against current system libraries
+RUN Rscript -e "install.packages('xml2', type = 'source', repos = 'https://cloud.r-project.org')" \
+    && Rscript -e "install.packages('XML', type = 'source', repos = 'https://cloud.r-project.org')" \
+    && Rscript -e "install.packages('stringi', type = 'source', repos = 'https://cloud.r-project.org')" 
+
 USER ${NB_USER}
 
-# TODO graceal install MAAP extensions 
 # Install Google Earth Engine Python package for rgee
 RUN pip install --no-cache-dir earthengine-api
-
 
 USER root
 
@@ -63,20 +69,10 @@ RUN R_HOME=$(R RHOME) && \
 
 SHELL ["/bin/bash", "-c"]
 ADD . /
-RUN ["chmod", "+x", "/scripts/install_cran_packages_r.sh"]
+RUN ["chmod", "+x", "/r-base/scripts/install_cran_packages_r.sh"]
 # Install R packages using SYSTEM R
 RUN export PATH=/usr/local/bin:/usr/bin:/bin:$PATH && \
-    /scripts/install_cran_packages_r.sh
-
-# Reinstall xml2, XML, and stringi from source to override pre-compiled binaries
-# The binaries from Posit Package Manager were built on systems with different library versions:
-#   - xml2 and XML binaries expect libxml2.so.2 (old), but this system has libxml2.so.16
-#   - stringi binary expects libicui18n.so.74 (old), but this system has libicui18n.so.78
-# Rebuilding from source links them against the current system libraries
-# This fixes loading errors in ggtext (depends on xml2), RStoolbox (depends on XML), and rockchalk (depends on stringi)
-RUN Rscript -e "install.packages('xml2', lib = '$R_LIB', type = 'source', repos = 'https://cloud.r-project.org')" && \
-    Rscript -e "install.packages('XML', lib = '$R_LIB', type = 'source', repos = 'https://cloud.r-project.org')" && \
-    Rscript -e "install.packages('stringi', lib = '$R_LIB', type = 'source', repos = 'https://cloud.r-project.org')"
+    /r-base/scripts/install_cran_packages_r.sh
 
 # This fix is needed for these issues: https://github.com/MAAP-Project/maap-workspaces/pull/194 https://github.com/MAAP-Project/maap-workspaces/pull/191
 RUN PYTHON_PATH=$(which python) && \
@@ -85,7 +81,7 @@ RUN PYTHON_PATH=$(which python) && \
     echo "use_python(\"$PYTHON_PATH\", required = TRUE)" >> "$R_HOME/etc/Rprofile.site" && \
     echo "py_config()" >> "$R_HOME/etc/Rprofile.site"
 
-COPY scripts/init-user.sh /usr/local/bin/init-user.sh
+COPY r-base/scripts/init-user.sh /usr/local/bin/init-user.sh
 RUN chmod +x /usr/local/bin/init-user.sh
 
 USER ${NB_USER}
